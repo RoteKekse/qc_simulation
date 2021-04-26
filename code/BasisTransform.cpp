@@ -82,14 +82,14 @@ int main(int argc, char* argv[]) {
 
 
 
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_V.tensor";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 	std::ofstream write(name.c_str());
 	misc::stream_writer(write,V_MO,xerus::misc::FileFormat::BINARY);
 	write.close();
 
 
 
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_T.tensor";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
 	std::ofstream write2(name.c_str());
 	misc::stream_writer(write2,H_MO,xerus::misc::FileFormat::BINARY);
 	write2.close();
