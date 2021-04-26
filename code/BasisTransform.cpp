@@ -21,7 +21,10 @@ int main(int argc, char* argv[]) {
 	 * !!!!! Change Here !!!!
 	 */
 	auto V_AO = xerus::Tensor();
-	std::string name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_VAO_.tensor";
+	const auto geom = argv[1];
+	// Set basis functions
+	const auto basisname = argv[2];
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_VAO.tensor";
 	std::ifstream read(name.c_str());
 	misc::stream_reader(read,V_AO,xerus::misc::FileFormat::BINARY);
 	read.close();
@@ -38,11 +41,11 @@ int main(int argc, char* argv[]) {
 
 
 
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_TAO_.csv";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_TAO.csv";
 	Mat H_Mat = load_csv<Mat>(name);
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_C_.csv";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_C.csv";
 	Mat C_Mat = load_csv<Mat>(name);
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_SAO_.csv";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_SAO.csv";
 	Mat S_Mat = load_csv<Mat>(name);
 
 	std::cout << " C size " << C_Mat.rows() << "x" << C_Mat.cols() << std::endl;
@@ -79,14 +82,14 @@ int main(int argc, char* argv[]) {
 
 
 
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_V_.tensor";
+	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_V.tensor";
 	std::ofstream write(name.c_str());
 	misc::stream_writer(write,V_MO,xerus::misc::FileFormat::BINARY);
 	write.close();
 
 
 
-	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_T_.tensor";
+	name = "data/"+std::to_string(argv[1])+"_"+std::to_string(argv[2])+"_T.tensor";
 	std::ofstream write2(name.c_str());
 	misc::stream_writer(write2,H_MO,xerus::misc::FileFormat::BINARY);
 	write2.close();

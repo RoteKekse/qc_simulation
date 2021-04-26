@@ -106,8 +106,12 @@ void parallel_do(Lambda& lambda) {
  */
 int main(int argc, char* argv[]) {
 
-	// Set Molecule
-	const auto filename = argv[1]+argv[2];
+	const auto path = argv[1];
+	const auto geom = argv[2];
+	std::stringstream ss;
+	ss << path << geom << ".xyz";
+	std::string filename = ss.str();
+std::cout << filename << std::endl;
 	// Set basis functions
   const auto basisname = argv[3];
 
@@ -198,9 +202,9 @@ int main(int argc, char* argv[]) {
 
 
   libint2::finalize();  // done with libint
-  std::string name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_TAO_.csv";
+  std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_TAO.csv";
   writeToCSVfile(name, H);
-  name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_SAO_.csv";
+  name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_SAO.csv";
   writeToCSVfile(name, S);
 
   return 0;

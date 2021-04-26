@@ -115,8 +115,12 @@ void parallel_do(Lambda& lambda) {
  */
 int main(int argc, char* argv[]) {
 
-	const auto filename = argv[1]+argv[2];
-	// Set basis functions
+	const auto path = argv[1];
+	const auto geom = argv[2];
+	std::stringstream ss;
+	ss << path << geom << ".xyz";
+	std::string filename = ss.str();
+	std::cout << filename << std::endl;
 	const auto basisname = argv[3];
 
   // Import Geometry
@@ -152,6 +156,12 @@ int main(int argc, char* argv[]) {
       enuc += atoms[i].atomic_number * atoms[j].atomic_number / r;
     }
   cout << "Nuclear repulsion energy = " << std::setprecision(15) << enuc << endl;
+  xerus::Tensor nuc({1});
+  nuc[1] = enuc;
+  std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
+	std::ofstream write(name.c_str() );
+	xerus::misc::stream_writer(write,nuc,xerus::misc::FileFormat::BINARY);
+	write.close();
 
   libint2::Shell::do_enforce_unit_normalization(false);
 
@@ -187,7 +197,7 @@ int main(int argc, char* argv[]) {
 
   const auto F = compute_2body_fock(obs);
 
-  std::string name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_VAO_.tensor";
+  std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_VAO.tensor";
 	std::ofstream write(name.c_str() );
 	xerus::misc::stream_writer(write,F,xerus::misc::FileFormat::BINARY);
 	write.close();
