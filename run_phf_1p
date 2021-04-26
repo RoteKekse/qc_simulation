@@ -1,0 +1,6 @@
+clear
+rm pht_btt.out
+clang++ -std=c++11 -g -o  get_1elec_int.out code/Create1ParticleOperator.cc  -lint2 -lpthread
+clang++ -std=c++11 -g -o  get_2elec_int.out code/Create2ParticleOperator.cc  -lint2 -lpthread
+
+
