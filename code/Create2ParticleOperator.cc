@@ -157,7 +157,7 @@ int main(int argc, char* argv[]) {
     }
   cout << "Nuclear repulsion energy = " << std::setprecision(15) << enuc << endl;
   xerus::Tensor nuc({1});
-  nuc[1] = enuc;
+  nuc[0] = enuc;
   std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
 	std::ofstream write(name.c_str() );
 	xerus::misc::stream_writer(write,nuc,xerus::misc::FileFormat::BINARY);
