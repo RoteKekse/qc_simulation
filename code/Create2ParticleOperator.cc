@@ -198,9 +198,9 @@ int main(int argc, char* argv[]) {
   const auto F = compute_2body_fock(obs);
 
    name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_VAO.tensor";
-	std::ofstream write(name.c_str() );
-	xerus::misc::stream_writer(write,F,xerus::misc::FileFormat::BINARY);
-	write.close();
+	std::ofstream write2(name.c_str() );
+	xerus::misc::stream_writer(write2,F,xerus::misc::FileFormat::BINARY);
+	write2.close();
 
 
   libint2::finalize();  // done with libint
