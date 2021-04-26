@@ -42,15 +42,22 @@ TTOperator buildHamil(Tensor &T, Tensor &V){
 }
 
 
-value_t returnTValue(size_t p, size_t q)
+value_t returnTValue(Tensor T, size_t i, size_t j)
 {
-	if (p > q)
-		return T[{p , q }];
-	return T[{q , p }];
+	if (i%2 != j%2)
+		return 0;
+	i /=2;j /=2;
+	if (i > j)
+		return T[{i , j }];
+	return T[{j , i }];
 }
 
 
-value_t returnVValue(size_t i, size_t k, size_t j, size_t l){
+value_t returnVValue(Tensor V, size_t i, size_t k, size_t j, size_t l){
+	if (i%2 != j%2) || (k%2!=l%2))
+		return 0;
+	i /=2;k /=2;j /=2;l /=2;
+
 	//XERUS_LOG(info, i<<j<<k<<l );
 	if (j <= i){
 		if (k<= i && l <= (i==k ? j : k))
