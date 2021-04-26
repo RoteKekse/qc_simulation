@@ -107,9 +107,9 @@ void parallel_do(Lambda& lambda) {
 int main(int argc, char* argv[]) {
 
 	// Set Molecule
-	const auto filename = (argc > 1) ? argv[1] : "hartree-fock/n2.xyz";
+	const auto filename = argv[1]+argv[2];
 	// Set basis functions
-  const auto basisname = (argc > 2) ? argv[2] : "cc-pvtz";
+  const auto basisname = argv[3];
 
   // Import Geometry
   std::vector<Atom> atoms = read_geometry(filename);
