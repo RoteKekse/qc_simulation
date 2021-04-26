@@ -214,7 +214,7 @@ int main(int argc, char* argv[]) {
     // read geometry from a file; by default read from h2o.xyz, else take
     // filename (.xyz) from the command line
 	// Set Molecule
-	const auto filename = argv[1]+argv[2];
+	const auto filename = argv[1].c_str()+argv[2].c_str();
 	// Set basis functions
 	const auto basisname = argv[3];
     bool do_density_fitting = false;
