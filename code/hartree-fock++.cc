@@ -217,8 +217,9 @@ int main(int argc, char* argv[]) {
 	const auto path = argv[1];
 	const auto geom = argv[2];
 	std::stringstream ss;
-	ss << path << geom;
+	ss << path << geom << ".xyz";
 	std::string filename = ss.str();
+	std::cout << filename << std::endl;
 	// Set basis functions
 	const auto basisname = argv[3];
     bool do_density_fitting = false;
