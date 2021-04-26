@@ -213,8 +213,10 @@ int main(int argc, char* argv[]) {
 
     // read geometry from a file; by default read from h2o.xyz, else take
     // filename (.xyz) from the command line
-    const auto filename = (argc > 1) ? argv[1] : "hartree-fock/n2.xyz";
-    const auto basisname = (argc > 2) ? argv[2] : "cc-pvtz";
+	// Set Molecule
+	const auto filename = argv[1]+argv[2];
+	// Set basis functions
+	const auto basisname = argv[3];
     bool do_density_fitting = false;
 #ifdef HAVE_DENSITY_FITTING
     do_density_fitting = (argc > 3);
@@ -486,9 +488,9 @@ int main(int argc, char* argv[]) {
     printf("** Hartree-Fock energy = %20.12f\n", ehf + enuc);
 
     // write solution to csv file
-    std::string name = "Data/hartreeFockEigenvectors"+std::to_string(obs.nbf())+".csv";
+    std::string name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_C_.csv";
     writeToCSVfile(name, C);
-    name = "Data/hartreeFockEigenvvalues"+std::to_string(obs.nbf())+".csv";
+    std::string name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_eps_.csv";
     writeToCSVfile(name, evals);
 
     // dump orbs to a molden file

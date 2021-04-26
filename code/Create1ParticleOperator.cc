@@ -198,9 +198,9 @@ int main(int argc, char* argv[]) {
 
 
   libint2::finalize();  // done with libint
-  std::string name = "Data/oneParticleOperator"+std::to_string(obs.nbf())+".csv";
+  std::string name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_TAO_.csv";
   writeToCSVfile(name, H);
-  name = "Data/oneParticleOperator_overlap"+std::to_string(obs.nbf())+".csv";
+  name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_SAO_.csv";
   writeToCSVfile(name, S);
 
   return 0;

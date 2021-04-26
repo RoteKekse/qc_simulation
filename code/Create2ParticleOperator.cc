@@ -187,7 +187,7 @@ int main(int argc, char* argv[]) {
 
   const auto F = compute_2body_fock(obs);
 
-  std::string name = "Data/" + static_cast<std::string>(basisname) +std::to_string(obs.nbf())+ ".tensor";
+  std::string name = "data/"+std::to_string(argv[2])+"_"+std::to_string(argv[3])+"_VAO_.tensor";
 	std::ofstream write(name.c_str() );
 	xerus::misc::stream_writer(write,F,xerus::misc::FileFormat::BINARY);
 	write.close();
