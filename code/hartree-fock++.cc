@@ -215,9 +215,9 @@ int main(int argc, char* argv[]) {
     // filename (.xyz) from the command line
 	// Set Molecule
 	const auto path = argv[1];
-	const auto name = argv[2];
+	const auto geom = argv[2];
 	std::stringstream ss;
-	ss << path << name;
+	ss << path << geom;
 	std::string filename = ss.str();
 	// Set basis functions
 	const auto basisname = argv[3];
@@ -492,9 +492,9 @@ int main(int argc, char* argv[]) {
     printf("** Hartree-Fock energy = %20.12f\n", ehf + enuc);
 
     // write solution to csv file
-    std::string name = "data/"+static_cast<std::string>(name)+"_"+static_cast<std::string>(basisname)+"_C_.csv";
+    std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_C_.csv";
     writeToCSVfile(name, C);
-    name = "data/"+static_cast<std::string>(name)+"_"+static_cast<std::string>(basisname)+"_eps_.csv";
+    name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps_.csv";
     writeToCSVfile(name, evals);
 
     // dump orbs to a molden file
