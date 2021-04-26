@@ -31,8 +31,6 @@ int main(int argc, char* argv[]) {
 
 	size_t nob = V_AO.dimensions[0];
 	size_t dim = 2*nob; // 16 electron, 8 electron pairs !!!!! Change Here !!!!
-	const auto filename = argv[1];
-	const auto basisname  = argv[2];
 	std::cout << "-------------------------------------------- Loading Data ----------------------------" << std::endl;
 	auto C = xerus::Tensor({nob,nob});
 	auto S = xerus::Tensor({nob,nob});
