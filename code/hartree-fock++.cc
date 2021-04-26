@@ -488,9 +488,9 @@ int main(int argc, char* argv[]) {
     printf("** Hartree-Fock energy = %20.12f\n", ehf + enuc);
 
     // write solution to csv file
-    std::string name = "data/"argv[2]+"_"+argv[3]+"_C_.csv";
+    std::string name = "data/"+argv[2]+"_"+argv[3]+"_C_.csv";
     writeToCSVfile(name, C);
-    std::string name = "data/"+argv[2]+"_"+argv[3]+"_eps_.csv";
+    name = "data/"+argv[2]+"_"+argv[3]+"_eps_.csv";
     writeToCSVfile(name, evals);
 
     // dump orbs to a molden file
