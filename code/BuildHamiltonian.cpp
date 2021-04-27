@@ -12,12 +12,16 @@ Tensor V11f(size_t i,size_t d);
 Tensor V22f(size_t i,size_t d);
 size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
+//Tensor V12f(size_t n, Tensor T, Tensor V);
+Tensor V12f(size_t n.size_t d);
+value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
+
+
 
 int main(int argc, char* argv[]) {
-	auto test1 = V11f(1,8);
-	auto test2 = V22f(3,8);
-	XERUS_LOG(info,test1.dimensions);
-	XERUS_LOG(info,test1.is_sparse());
+	auto test1 = V12f(1,8);
+
+	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
 
 
 
@@ -104,6 +108,60 @@ Tensor V22f(size_t i,size_t d){
 	return comp;
 }
 
+//Tensor V12f(size_t n, Tensor T, Tensor V){
+Tensor V12f(size_t n, size_t d){
+    //size_t d = 2*V.dimensions[0]
+	XERUS_REQUIRE(n>=1,"n=0 doesent work");
+    Tensor comp(getsizeV11(n-1),getsizeV22(n,d))
+
+    for (size_t i = 1; i <= n;++i)
+        for (size_t l = n+2; l <= d; ++l)
+            comp[{1+i-1,l-(n+1)-1}] =1;// -getV(V,i,n,n,l); //(val,:AtAplus)
+
+	for (size_t l = 1; l <=n;++l)
+        for (size_t j = n+2; j<=d;++j)
+            comp[{l+n,K-(n+1)-1+j-(n+1)-1}] = 2;//getV(V,n,j,n,l); //  (val,:AtAminus)
+
+//    size_t count = 1;
+//    std::vector<Pair<size_t,size_t>> list;
+//    for (size_t i = 1; i <= n-1;++i){
+//        list.emplace_back(Pair(i,i));
+//        for (size_t k 1; k <= i-1;++k)
+//        	list.emplace_back(Pair(k,i));
+//        for (size_t k 1; k <= i-1;++k)
+//        	list.emplace_back(Pair(i,k));
+//    }
+//    for (auto pair : list){
+//    	auto i = pair.first;
+//    	auto k = pair.second;
+//        for (size_t l =n+1; l<=d; ++l)
+//            comp[{count+ 2*n-1,l-n}] =3;// -getV(V,i,n,k,l);//  (val,:Alrstar)
+//        for (size_t j = n+1; j<=d;++j)
+//            comp[{count+ 2*n-1,K-n+j-n}] =4;//-getV(V,i,j,k,n);//  (val,:Alr)
+//        comp[{count+ 2*n-1,getsizeV22(n,d)}] =5;//-getV(V,i,n,k,n); // (val,:AtAr)
+//        count+=1
+//    }
+//
+//    count = 1
+//    for (size_t j = 1; j < n;++j){
+//        for (size_t i = 0; i < j;++i){
+//            for (size_t l = n+1; l<d;++l)
+//                comp[{count+ 2*n-1+(n-1)*(n-1),l-n}] =6;//-getV(V,i,j,n,l); //  (val, :Arm)
+//            count+=1
+//        }
+//    }
+//
+//    count = 1
+//    for (size_t l = 2; l<=n-1;++l){
+//        for (size_t k = 1; k <=l-1;++k){
+//            for (size_t j = n+1; j <= d;++j)
+//                comp[{count+ 2*n-1+(n-1)*(n-1)+(n-1)*(n-2)/2,K-n+j-n}] =7;//-getV(V,n,j,k,l); //  (val, :Armstar)
+//            count+=1
+//        }
+//    }
+    return comp;
+}
+
 
 size_t getsizeV11(size_t i){
     return 1+2*(i+1)+(i+1)*(i+1)+(i+1)*(i);
@@ -111,6 +169,10 @@ size_t getsizeV11(size_t i){
 
 size_t getsizeV22(size_t i,size_t d){
     return 1+2*(d-i-1);
+}
+value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
+	value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
+    return val;
 }
 
 
