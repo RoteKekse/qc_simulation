@@ -10,7 +10,8 @@ value_t returnVValue(size_t i, size_t k, size_t j, size_t l);
 TTOperator buildHamil(Tensor &T, Tensor &V);
 Tensor V11f(size_t i,size_t d);
 Tensor V22f(size_t i,size_t d);
-
+size_t getsizeV11(size_t i);
+size_t getsizeV22(size_t i,size_t d);
 
 int main(int argc, char* argv[]) {
 
