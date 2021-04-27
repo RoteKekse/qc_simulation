@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 	auto test1 = V11f(1,8);
 	auto test2 = V22f(3,8);
 	XERUS_LOG(info,test1.dimensions);
-	XERUS_LOG(info,test1.sparse);
+	XERUS_LOG(info,test1.representation);
 
 
 
