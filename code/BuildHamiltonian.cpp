@@ -61,19 +61,19 @@ Tensor V11f(size_t i,size_t d){
 	comp[{0,0,1,2*(i+1)}] = 1;
 	comp[{0,1,1,2*(i+1)+1+i*i}] = 1;
 	for(size_t j = 0;j<i;++j){
-		comp[j+1,0,0,j+1] = 1; comp[j+1,1,1,j+1] = -1;
-		comp[j+i+1,0,0,j+i+1] = 1; comp[j+i+1,1,1,j+i+1] = -1;
-		comp[j+1,0,1,j+1+i*i+2*(i+1)+1] = 1;
-		comp[j+1,1,0,j+1+i*i+ 4*(i+1)+i*(i-1)/2-1] = 1;
-		comp[j+i+1,1,0,j+1+i*i+ 3*(i+1)] = 1;
-		comp[j+i+1,0,1,j+1+i*i+ 5*(i+1)+i*(i-1)-2] = 1;
+		comp[{j+1,0,0,j+1}] = 1; comp[{j+1,1,1,j+1}] = -1;
+		comp[{j+i+1,0,0,j+i+1}] = 1; comp[{j+i+1,1,1,j+i+1}] = -1;
+		comp[{j+1,0,1,j+1+i*i+2*(i+1)+1}] = 1;
+		comp[{j+1,1,0,j+1+i*i+ 4*(i+1)+i*(i-1)/2-1}] = 1;
+		comp[{j+i+1,1,0,j+1+i*i+ 3*(i+1)}] = 1;
+		comp[{j+i+1,0,1,j+1+i*i+ 5*(i+1)+i*(i-1)-2}] = 1;
 	}
 	for(size_t j = 0; j < i*i;++j){
-		comp[j+1+2*i,0,0,j+1+2*(i+1)] = 1;comp[j+1+2*i,1,1,j+1+2*(i+1)] = 1;
+		comp[{j+1+2*i,0,0,j+1+2*(i+1)}] = 1;comp[{j+1+2*i,1,1,j+1+2*(i+1)}] = 1;
 	}
 	for(size_t j = 0;  j <i*(i-1)/2; ++j){
-		comp[j+1+2*i+i*i,0,0,j+i*i+ 4*(i+1)] = 1; comp[j+1+2*i+i*i,1,1,j+i*i+ 4*(i+1)] = -1;
-		comp[j+1+2*i+i*i+i*(i-1)/2,0,0,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2] = 1; comp[j+1+2*i+i*i+i*(i-1)/2,1,1,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2] = -1;
+		comp[{j+1+2*i+i*i,0,0,j+i*i+ 4*(i+1)}] = 1; comp[{j+1+2*i+i*i,1,1,j+i*i+ 4*(i+1)}] = -1;
+		comp[{j+1+2*i+i*i+i*(i-1)/2,0,0,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2}] = 1; comp[{j+1+2*i+i*i+i*(i-1)/2,1,1,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2}] = -1;
 	}
 
 	if (reverse){
@@ -89,12 +89,12 @@ Tensor V22f(size_t i,size_t d){
 	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV22(i-1,d),2,2,getsizeV22(i,d)});
-	comp[0,0,1,getsizeV22(i,d)-1] = 1;
-	comp[d-i+1,1,0,getsizeV22(i,d)-1] = 1;
-	comp[getsizeV22(i,d)-1,0,0,getsizeV22(i,d)-1] = 1;comp[getsizeV22(i,d)-1,1,1,getsizeV22(i,d)-1] = 1;
+	comp[{0,0,1,getsizeV22(i,d)-1}] = 1;
+	comp[{d-i+1,1,0,getsizeV22(i,d)-1}] = 1;
+	comp[{getsizeV22(i,d)-1,0,0,getsizeV22(i,d)-1}] = 1;comp[{getsizeV22(i,d)-1,1,1,getsizeV22(i,d)-1}] = 1;
 	for(size_t j = 0; j < d-i;++j){
-		comp[j+1,0,0,j] = 1; comp[j+2,1,1,j+1] = -1;
-		comp[d-i+2+j,0,0,d-i+j] = 1; comp[d-i+2+j,1,1,d-i+j] = -1;
+		comp[{j+1,0,0,j}] = 1; comp[{j+2,1,1,j+1}] = -1;
+		comp[{d-i+2+j,0,0,d-i+j}] = 1; comp[{d-i+2+j,1,1,d-i+j}] = -1;
 	}
 	if (reverse){
 		Index i1,j1;
