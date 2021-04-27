@@ -84,10 +84,10 @@ Tensor V22f(size_t i,size_t d){
 	bool reverse = i < d/2 ? false : true;
 	if (reverse)
 		i = d-1-i;
-	Tensor comp({i == 0 ? 1 : getsizeV22(i-1),2,2,getsizeV22(i)});
-	comp[0,0,1,getsizeV22(i)-1] = 1;
-	comp[d-i+1,1,0,getsizeV22(i)-1] = 1;
-	comp[getsizeV22(i)-1,0,0,getsizeV22(i)-1] = 1;comp[getsizeV22(i)-1,1,1,getsizeV22(i)-1] = 1
+	Tensor comp({i == 0 ? 1 : getsizeV22(i-1,d),2,2,getsizeV22(i,d)});
+	comp[0,0,1,getsizeV22(i,d)-1] = 1;
+	comp[d-i+1,1,0,getsizeV22(i,d)-1] = 1;
+	comp[getsizeV22(i,d)-1,0,0,getsizeV22(i,d)-1] = 1;comp[getsizeV22(i,d)-1,1,1,getsizeV22(i,d)-1] = 1;
 	for(size_t j = 0; j < d-i;++j){
 		comp[j+1,0,0,j] = 1; comp[j+2,1,1,j+1] = -1;
 		comp[d-i+2+j,0,0,d-i+j] = 1; comp[d-i+2+j,1,1,d-i+j] = -1;
@@ -123,7 +123,7 @@ value_t returnTValue(Tensor T, size_t i, size_t j)
 
 
 value_t returnVValue(Tensor V, size_t i, size_t k, size_t j, size_t l){
-	if (i%2 != j%2) || (k%2!=l%2))
+	if ((i%2 != j%2) || (k%2!=l%2))
 		return 0;
 	i /=2;k /=2;j /=2;l /=2;
 
