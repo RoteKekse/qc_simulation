@@ -56,10 +56,10 @@ Tensor V11f(size_t i,size_t d){
 	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV11(i-1),2,2,getsizeV11(i)});
-	comp[0,0,0,0] = 1; comp[0,1,1,0] = 1;
-	comp[0,1,0,i+1] = 1;
-	comp[0,0,1,2*(i+1)] = 1;
-	comp[0,1,1,2*(i+1)+1+i*i] = 1;
+	comp[{0,0,0,0}] = 1; comp[{0,1,1,0}] = 1;
+	comp[{0,1,0,i+1}] = 1;
+	comp[{0,0,1,2*(i+1)}] = 1;
+	comp[{0,1,1,2*(i+1)+1+i*i}] = 1;
 	for(size_t j = 0;j<i;++j){
 		comp[j+1,0,0,j+1] = 1; comp[j+1,1,1,j+1] = -1;
 		comp[j+i+1,0,0,j+i+1] = 1; comp[j+i+1,1,1,j+i+1] = -1;
