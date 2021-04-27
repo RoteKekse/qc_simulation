@@ -20,7 +20,6 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,getsizeV22(2,8));
 	XERUS_LOG(info,getsizeV22(3,8));
 	XERUS_LOG(info,test1.dimensions << "\n" << test1);
-	XERUS_LOG(info,test1.dimensions << "\n" << test1);
 	XERUS_LOG(info,test2.dimensions << "\n" << test2);
 
 
@@ -107,7 +106,7 @@ Tensor V22f(size_t i,size_t d){
 
 
 size_t getsizeV11(size_t i){
-    return 1+2*(i+1)+(i+1)^2+(i+1)*(i);
+    return 1+2*(i+1)+(i+1)*(i+1)+(i+1)*(i);
 }
 
 size_t getsizeV22(size_t i,size_t d){
