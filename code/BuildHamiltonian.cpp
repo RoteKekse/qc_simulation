@@ -93,7 +93,7 @@ Tensor V22f(size_t i,size_t d){
 	comp[{0,getsizeV22(i,d)-1}] = 1;
 	comp[{d-i+1,getsizeV22(i,d)-1}] = 1;
 	comp[{getsizeV22(i,d)-1,getsizeV22(i,d)-1}] = 1;comp[{getsizeV22(i,d)-1,getsizeV22(i,d)-1}] = 1;
-	for(size_t j = 0; j < d-i;++j){
+	for(size_t j = 0; j < d-i-1;++j){
 		comp[{j+1,j}] = 1; comp[{j+1,j}] = -1;
 		comp[{d-i+2+j,d-i+j}] = 1; comp[{d-i+2+j,d-i+j}] = -1;
 	}
