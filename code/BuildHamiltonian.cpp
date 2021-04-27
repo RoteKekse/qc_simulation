@@ -14,8 +14,8 @@ size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
 
 int main(int argc, char* argv[]) {
-	auto test1 = V11f(0,8)
-	auto test2 = V22f(0,8)
+	auto test1 = V11f(0,8);
+	auto test2 = V22f(0,8);
 	XERUS_LOG(info,test1.dimensions << "\n" << test1);
 	XERUS_LOG(info,test2.dimensions << "\n" << test2);
 
