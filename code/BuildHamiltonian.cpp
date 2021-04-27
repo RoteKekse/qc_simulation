@@ -14,7 +14,7 @@ size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
 
 int main(int argc, char* argv[]) {
-	auto test1 = V11f(0,8);
+	auto test1 = V11f(1,8);
 	auto test2 = V22f(3,8);
 	XERUS_LOG(info,getsizeV11(0));
 	XERUS_LOG(info,getsizeV22(2,8));
@@ -62,7 +62,7 @@ Tensor V11f(size_t i,size_t d){
 	comp[{0,2*(i+1)+1+i*i}] = 1;
 	for(size_t j = 0;j<i;++j){
 		comp[{j+1,j+1}] = 1; comp[{j+1,j+1}] = -1;
-		comp[{j+i+1,j+i+1}] = 1; comp[{j+i+1,j+i+1}] = -1;
+		comp[{j+i+1,j+i+2}] = 1; comp[{j+i+1,j+i+2}] = -1;
 		comp[{j+1,j+1+i*i+2*(i+1)+1}] = 1;
 		comp[{j+1,j+1+i*i+ 4*(i+1)+i*(i-1)/2-1}] = 1;
 		comp[{j+i+1,j+1+i*i+ 3*(i+1)}] = 1;
