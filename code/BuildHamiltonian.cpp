@@ -89,6 +89,7 @@ Tensor V22f(size_t i,size_t d){
 	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV22(i-1,d),getsizeV22(i,d)});
+	XERUS_LOG(info,comp.dimensions);
 	comp[{0,getsizeV22(i,d)-1}] = 1;
 	comp[{d-i+1,getsizeV22(i,d)-1}] = 1;
 	comp[{getsizeV22(i,d)-1,getsizeV22(i,d)-1}] = 1;comp[{getsizeV22(i,d)-1,getsizeV22(i,d)-1}] = 1;
