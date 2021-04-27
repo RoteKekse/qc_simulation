@@ -1,6 +1,6 @@
 #include <xerus.h>
-#include <../classes/helpers.cpp>
-#include <../classes/loading_tensors.cpp>
+#include <classes/helpers.cpp>
+#include <classes/loading_tensors.cpp>
 
 using namespace xerus;
 using xerus::misc::operator<<;
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 
 Tensor V11f(size_t i,size_t d){
 	bool reverse = i < d/2 ? false : true;
-	if reverse
+	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV11(i-1),2,2,getsizeV11(i)});
 	comp[0,0,0,0] = 1; comp[0,1,1,0] = 1;
@@ -71,9 +71,9 @@ Tensor V11f(size_t i,size_t d){
 		comp[j+1+2*i+i*i+i*(i-1)/2,0,0,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2] = 1; comp[j+1+2*i+i*i+i*(i-1)/2,1,1,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2] = -1;
 	}
 
-	if reverse{
+	if (reverse){
 		Index i1,j1;
-		comp(i1,j1) = comp(j1,i1)
+		comp(i1,j1) = comp(j1,i1);
 		return comp;
 	}
 	return comp;
@@ -81,7 +81,7 @@ Tensor V11f(size_t i,size_t d){
 
 Tensor V22f(size_t i,size_t d){
 	bool reverse = i < d/2 ? false : true;
-	if reverse
+	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV22(i-1),2,2,getsizeV22(i)});
 	comp[0,0,1,getsizeV22(i)-1] = 1;
@@ -91,9 +91,9 @@ Tensor V22f(size_t i,size_t d){
 		comp[j+1,0,0,j] = 1; comp[j+2,1,1,j+1] = -1;
 		comp[d-i+2+j,0,0,d-i+j] = 1; comp[d-i+2+j,1,1,d-i+j] = -1;
 	}
-	if reverse{
+	if (reverse){
 		Index i1,j1;
-		comp(i1,j1) = comp(j1,i1)
+		comp(i1,j1) = comp(j1,i1);
 		return comp;
 	}
 	return comp;
