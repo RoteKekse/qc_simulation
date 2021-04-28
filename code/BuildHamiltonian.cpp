@@ -178,7 +178,7 @@ Tensor V21f(size_t n,size_t d){
     for (size_t i = d-1; i>n; --i){
         size_t countl = 0;
         for (size_t l = n;l>0; --l){
-            comp[{1+counti,countl}] =1;//-getV(V,i,n,n,l-1) //  (val, :AtAminus)
+            comp[{1+counti,countl}] = -getV(V,i,n,n,l-1) ;//  (val, :AtAminus)
             countl++;
 		}
         counti++;
@@ -187,7 +187,7 @@ Tensor V21f(size_t n,size_t d){
     for (size_t l = d-1; l>n;--l){
         size_t countj = 0;
         for (size_t j = n; j> 0;--j){
-            comp[{countl+n1+1,n+countj}] = 2;// getV(V,n,j-1,n,l) // :  (val,:AtAplus)
+            comp[{countl+n1+1,n+countj}] =  getV(V,n,j-1,n,l); // :  (val,:AtAplus)
             countj++;
 		}
         countl++;
@@ -208,15 +208,15 @@ Tensor V21f(size_t n,size_t d){
 		auto k = pair.second;
         size_t countl = 0;
         for (size_t l = n;l>0;--l){
-            comp[{count+ 2*n1+1,countl}] = 3;// -getV(V,i,n,k,l-1) //  (val,:Arlstar)
+            comp[{count+ 2*n1+1,countl}] =  -getV(V,i,n,k,l-1); //  (val,:Arlstar)
             countl++;
         }
         size_t countj = 0;
         for (size_t j = n;j>0;--j){
-            comp[{count+ 2*n1+1,n+countj}] =4; //-getV(V,i,j-1,k,n) // (val, :Arl)
+            comp[{count+ 2*n1+1,n+countj}] =-getV(V,i,j-1,k,n); // (val, :Arl)
             countj++;
         }
-        comp[{count+ 2*n1+1,getsizeV22(n1,d)-1}] = 5; //-getV(V,i,n,k,n) //  (val,:AtAl)
+        comp[{count+ 2*n1+1,getsizeV22(n1,d)-1}] = -getV(V,i,n,k,n); //  (val,:AtAl)
         count++;
     }
 
@@ -225,7 +225,7 @@ Tensor V21f(size_t n,size_t d){
         for (size_t i = d-1;i>j;--i){
             size_t countl = 0;
             for (size_t l = n;l>0;--l){
-                comp[{count+ 2*n1+1+n1*n1,countl}] = 6;//-getV(V,i,j,n,l-1)//  (val,:Alm)
+                comp[{count+ 2*n1+1+n1*n1,countl}] = -getV(V,i,j,n,l-1);//  (val,:Alm)
                 countl++;
             }
             count++;
@@ -237,7 +237,7 @@ Tensor V21f(size_t n,size_t d){
         for (size_t k = d-1; k>l;--k){
             size_t countj=0;
             for (size_t j = n;j>0;--j){
-                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,n+countj}] = 7; //-getV(V,n,j-1,k,l)//  (val,:Almstar)
+                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,n+countj}] = -getV(V,n,j-1,k,l);//  (val,:Almstar)
                 countj++;
             }
             count++;
@@ -257,8 +257,9 @@ size_t getsizeV22(size_t i,size_t d){
     return 1+2*(d-i-1);
 }
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
-	value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
-    return val;
+	//value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
+    value_t val = 1000*i+100*j+10*k+l;
+	return val;
 }
 
 
