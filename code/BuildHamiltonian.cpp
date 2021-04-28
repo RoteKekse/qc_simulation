@@ -171,7 +171,7 @@ Tensor V21f(size_t n,size_t d){
     //size_t d = 2*V.dimensions[0]
 
 
-    size_t n1 = d - n + 1;
+    size_t n1 = d - n - 1;
     Tensor comp({getsizeV11(n1-1),getsizeV22(n1,d)});
 
     size_t counti = 0;
