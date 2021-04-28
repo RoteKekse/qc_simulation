@@ -120,7 +120,7 @@ Tensor V12f(size_t n, size_t d){
     }
 	for (size_t l = 1; l <=n;++l){
         for (size_t j = n+2; j<=d;++j)
-            comp[{l+n,K-(n+1)-1+j-(n+1)-1}] = 2;//getV(V,n,j,n,l); //  (val,:AtAminus)
+            comp[{l+n,d-(n+1)-1+j-(n+1)-1}] = 2;//getV(V,n,j,n,l); //  (val,:AtAminus)
 	}
 //    size_t count = 1;
 //    std::vector<Pair<size_t,size_t>> list;
