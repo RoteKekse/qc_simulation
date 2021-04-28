@@ -186,7 +186,7 @@ Tensor V21f(size_t n,size_t d){
     size_t countl = 0;
     for (size_t l = d-1; l>n;--l){
         size_t countj = 0;
-        for (size_t j = n; j> 0;--j)
+        for (size_t j = n; j> 0;--j){
             comp[{countl+n1,n+countj}] = 2;// getV(V,n,j-1,n,l) // :  (val,:AtAplus)
             countj++;
 		}
