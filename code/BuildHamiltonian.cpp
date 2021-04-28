@@ -192,36 +192,32 @@ Tensor V21f(size_t n,size_t d){
 		}
         countl++;
     }
-//    count = 1
-//    list = []
-//    for i = K:-1:n+1
-//        push!(list,Pair(i,i))
-//        for k = K:-1:i+1
-//            push!(list,Pair(k,i))
-//        end
-//        for k = K:-1:i+1
-//            push!(list,Pair(i,k))
-//        end
-//    end
-//    for (i,k) ∈ list
-//        sign = i == k ? -1.0 : 1.0
-//        countl = 1
-//        for l = n-1:-1:1
-//            val = -getV(V,i,n,k,l)
-//            comp[count+ 2*n1-1,countl] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:Arlstar)
-//            countl +=1
-//        end
-//        countj = 1
-//        for j = n-1:-1:1
-//            val = -getV(V,i,j,k,n)
-//            comp[count+ 2*n1-1,n-1+countj] =abs(val) < 0.0 ? (0.0,:Z) :  (val, :Arl)
-//            countj+=1
-//        end
-//        val = -getV(V,i,n,k,n)
-//        comp[count+ 2*n1-1,end] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:AtAl)
-//        count+=1
-//    end
-//
+    size_t count = 0;
+    std::vector<std::pair<size_t,size_t>> list;
+    for (size_t i = d-1;i>n;--i){
+        list.emplace_back(std::pair<size_t,size_t>(i,i));
+        for (size_t k = d; k> i;--i)
+            list.emplace_back(std::pair<size_t,size_t>(k,i));
+        for (size_t k = d; k> i;--i)
+            list.emplace_back(std::pair<size_t,size_t>(i,k));
+    }
+    for (auto pair : list){
+		auto i = pair.first;
+		auto k = pair.second;
+        size_t countl = 0;
+        for (size_t l = n;l>0;--l){
+            comp[{count+ 2*n1+1,countl}] = 3;// -getV(V,i,n,k,l-1) //  (val,:Arlstar)
+            countl++;
+        }
+        size_t countj = 0;
+        for (size_t j = n;j>0;--j){
+            comp[{count+ 2*n1+1,n+countj}] =4; //-getV(V,i,j-1,k,n) // (val, :Arl)
+            countj++;
+        }
+        comp[count+ 2*n1+1,getsizeV22(n1,d)-1] = 5; //-getV(V,i,n,k,n) //  (val,:AtAl)
+        count++;
+    }
+
 //    count = 1
 //    for j = K-1:-1:n+1
 //        for i = K:-1:j+1
