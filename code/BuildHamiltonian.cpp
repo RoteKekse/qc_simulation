@@ -139,7 +139,7 @@ Tensor V12f(size_t n, size_t d){
             comp[{count+ 2*n+1,l-(n+1)}] =3;// -getV(V,i,n,k,l);//  (val,:Alrstar)
         for (size_t j = n+1; j<d;++j)
             comp[{count+ 2*n+1,d-2*(n+1)+j}] =4;//-getV(V,i,j,k,n);//  (val,:Alr)
-//        comp[{count+ 2*n-1,getsizeV22(n,d)}] =5;//-getV(V,i,n,k,n); // (val,:AtAr)
+        comp[{count+ 2*n+1,getsizeV22(n,d)-1}] =5;//-getV(V,i,n,k,n); // (val,:AtAr)
         count++;
     }
 //
