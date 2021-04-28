@@ -144,22 +144,22 @@ Tensor V12f(size_t n, size_t d){
     }
 
     count = 0;
-    for (size_t j = 0; j < n;++j){
+    for (size_t j = 1; j < n;++j){
         for (size_t i = 0; i < j;++i){
             for (size_t l = n+1; l<d;++l)
                 comp[{count+ 2*n+1+n*n,l-(n+1)}] =6;//-getV(V,i,j,n,l); //  (val, :Arm)
             count++;
         }
     }
-//
-//    count = 1
-//    for (size_t l = 2; l<=n-1;++l){
-//        for (size_t k = 1; k <=l-1;++k){
-//            for (size_t j = n+1; j <= d;++j)
-//                comp[{count+ 2*n-1+(n-1)*(n-1)+(n-1)*(n-2)/2,K-n+j-n}] =7;//-getV(V,n,j,k,l); //  (val, :Armstar)
-//            count+=1
-//        }
-//    }
+
+    count = 0;
+    for (size_t l = 1; l<n;++l){
+        for (size_t k = 0; k <l;++k){
+            for (size_t j = n+1; j < d;++j)
+                comp[{count+ 2*n+1+n*n+n*(n-1)/2,d-2*(n+1)+j}] =7;//-getV(V,n,j,k,l); //  (val, :Armstar)
+            count++;
+        }
+    }
     return comp;
 }
 
