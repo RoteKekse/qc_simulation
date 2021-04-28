@@ -250,7 +250,7 @@ Tensor V21f(size_t n,size_t d){
 //    end
 	Index i1,j1;
 	comp(i1,j1) = comp(j1,i1);
-    return comp
+    return comp;
 }
 
 
