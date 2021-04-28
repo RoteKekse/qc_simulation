@@ -122,15 +122,16 @@ Tensor V12f(size_t n, size_t d){
         for (size_t j = n+1; j<d;++j)
             comp[{l+n+1,d-2*(n+1)+j}] = 2;//getV(V,n,j,n,l); //  (val,:AtAminus)
 	}
-//    size_t count = 1;
-//    std::vector<Pair<size_t,size_t>> list;
-//    for (size_t i = 1; i <= n-1;++i){
-//        list.emplace_back(Pair(i,i));
-//        for (size_t k 1; k <= i-1;++k)
-//        	list.emplace_back(Pair(k,i));
-//        for (size_t k 1; k <= i-1;++k)
-//        	list.emplace_back(Pair(i,k));
-//    }
+    size_t count = 1;
+    std::vector<Pair<size_t,size_t>> list;
+    for (size_t i = 0; i < n;++i){
+        list.emplace_back(Pair(i,i));
+        for (size_t k = 0; k < i;++k)
+        	list.emplace_back(Pair(k,i));
+        for (size_t k = 0; k < i;++k)
+        	list.emplace_back(Pair(i,k));
+    }
+    XERUS_LOG(info,list);
 //    for (auto pair : list){
 //    	auto i = pair.first;
 //    	auto k = pair.second;
