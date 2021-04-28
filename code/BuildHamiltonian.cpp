@@ -123,13 +123,13 @@ Tensor V12f(size_t n, size_t d){
             comp[{l+n+1,d-2*(n+1)+j}] = 2;//getV(V,n,j,n,l); //  (val,:AtAminus)
 	}
     size_t count = 1;
-    std::vector<std::Pair<size_t,size_t>> list;
+    std::vector<std::pair<size_t,size_t>> list;
     for (size_t i = 0; i < n;++i){
-        list.emplace_back(std::Pair(i,i));
+        list.emplace_back(std::pair(i,i));
         for (size_t k = 0; k < i;++k)
-        	list.emplace_back(std::Pair(k,i));
+        	list.emplace_back(std::pair(k,i));
         for (size_t k = 0; k < i;++k)
-        	list.emplace_back(std::Pair(i,k));
+        	list.emplace_back(std::pair(i,k));
     }
     XERUS_LOG(info,list);
 //    for (auto pair : list){
