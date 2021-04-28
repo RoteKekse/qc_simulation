@@ -196,9 +196,9 @@ Tensor V21f(size_t n,size_t d){
     std::vector<std::pair<size_t,size_t>> list;
     for (size_t i = d-1;i>n;--i){
         list.emplace_back(std::pair<size_t,size_t>(i,i));
-        for (size_t k = d; k> i;--i)
+        for (size_t k = d; k> i;--k)
             list.emplace_back(std::pair<size_t,size_t>(k,i));
-        for (size_t k = d; k> i;--i)
+        for (size_t k = d; k> i;--k)
             list.emplace_back(std::pair<size_t,size_t>(i,k));
     }
     for (auto pair : list){
