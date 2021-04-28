@@ -23,8 +23,8 @@ value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 int main(int argc, char* argv[]) {
 	auto test1 = V12f(3,8);
 
-	Tensor T = tensor::random({4,4});
-	Tensor V = tensor::random({4,4,4,4});
+	Tensor T = Tensor::random({4,4});
+	Tensor V = Tensor::random({4,4,4,4});
 	auto test2 = V21f(4,T,V);
 
 	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
