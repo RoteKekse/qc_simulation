@@ -142,15 +142,15 @@ Tensor V12f(size_t n, size_t d){
         comp[{count+ 2*n+1,getsizeV22(n,d)-1}] =5;//-getV(V,i,n,k,n); // (val,:AtAr)
         count++;
     }
-//
-//    count = 1
-//    for (size_t j = 1; j < n;++j){
-//        for (size_t i = 0; i < j;++i){
-//            for (size_t l = n+1; l<d;++l)
-//                comp[{count+ 2*n-1+(n-1)*(n-1),l-n}] =6;//-getV(V,i,j,n,l); //  (val, :Arm)
-//            count+=1
-//        }
-//    }
+
+    count = 0;
+    for (size_t j = 0; j < n;++j){
+        for (size_t i = 0; i < j;++i){
+            for (size_t l = n+1; l<d;++l)
+                comp[{count+ 2*n+1+n*n,l-(n+1)}] =6;//-getV(V,i,j,n,l); //  (val, :Arm)
+            count++;
+        }
+    }
 //
 //    count = 1
 //    for (size_t l = 2; l<=n-1;++l){
