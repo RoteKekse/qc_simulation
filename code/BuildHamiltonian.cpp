@@ -171,7 +171,7 @@ Tensor V12f(size_t n, size_t d){
 }
 
 Tensor V21f(size_t n,Tensor T, Tensor V){
-    size_t d = 2*V.dimensions[0]
+    size_t d = 2*V.dimensions[0];
 
 
     size_t n1 = d - n - 1;
