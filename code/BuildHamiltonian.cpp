@@ -201,6 +201,8 @@ Tensor V21f(size_t n,size_t d){
         for (size_t k = d; k> i;--k)
             list.emplace_back(std::pair<size_t,size_t>(i,k));
     }
+    XERUS_LOG(info,list);
+
     for (auto pair : list){
 		auto i = pair.first;
 		auto k = pair.second;
