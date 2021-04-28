@@ -13,7 +13,7 @@ Tensor V22f(size_t i,size_t d);
 size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
 //Tensor V12f(size_t n, Tensor T, Tensor V);
-Tensor V12f(size_t n.size_t d);
+Tensor V12f(size_t n,size_t d);
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 
 
