@@ -220,7 +220,7 @@ Tensor V21f(size_t n,size_t d){
         count++;
     }
 
-    size_t count = 0;
+    count = 0;
     for (size_t j = d-2; j>n;--j){
         for (size_t i = d-1;i>j;--i){
             size_t countl = 0;
@@ -228,11 +228,11 @@ Tensor V21f(size_t n,size_t d){
                 comp[{count+ 2*n1+1+n1*n1,countl}] = 6;//-getV(V,i,j,n,l-1)//  (val,:Alm)
                 countl++;
             }
-            count+;
+            count++;
         }
     }
 
-    size_t count = 0;
+    count = 0;
     for (size_t l = d-2;l>n;--l){
         for (size_t k = d-1; k>l;--k){
             size_t countj=0;
