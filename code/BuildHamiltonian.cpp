@@ -14,14 +14,18 @@ size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
 //Tensor V12f(size_t n, Tensor T, Tensor V);
 Tensor V12f(size_t n,size_t d);
+Tensor V21f(size_t n,size_t d);
+
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 
 
 
 int main(int argc, char* argv[]) {
 	auto test1 = V12f(3,8);
+	auto test2 = V21f(5,8);
 
 	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
+	XERUS_LOG(info,test2.dimensions << "\n"  << test2);
 
 
 
@@ -80,8 +84,8 @@ Tensor V11f(size_t i,size_t d){
 	}
 
 	if (reverse){
-		Index i1,j1;
-		comp(i1,j1) = comp(j1,i1);
+		Index i1,j1,k1,l1;
+		comp(i1,k1,l1,j1) = comp(j1,k1,l1,i1);
 		return comp;
 	}
 	return comp;
@@ -101,8 +105,8 @@ Tensor V22f(size_t i,size_t d){
 		comp[{d-i+1+j,0,0,d-i+j-1}] = 1; comp[{d-i+1+j,1,1,d-i+j-1}] = -1;
 	}
 	if (reverse){
-		Index i1,j1;
-		comp(i1,j1) = comp(j1,i1);
+		Index i1,j1,k1,l1;
+		comp(i1,k1,l1,j1) = comp(j1,k1,l1,i1);
 		return comp;
 	}
 	return comp;
@@ -161,6 +165,92 @@ Tensor V12f(size_t n, size_t d){
         }
     }
     return comp;
+}
+
+Tensor V21f(size_t n,size_t d){
+    //size_t d = 2*V.dimensions[0]
+
+
+    size_t n1 = d - n + 1;
+    Tensor comp({getsizeV11(n1-1),getsizeV22(n1,d)});
+
+    size_t counti = 0;
+    for (size_t i = d-1; i>n; --i){
+        size_t countl = 0;
+        for (size_t l = n;l>0; --l){
+            comp[1+counti,countl] =1;//-getV(V,i,n,n,l-1) //  (val, :AtAminus)
+            countl++;
+		}
+        counti++;
+    }
+//    countl = 1
+//    for l = K:-1:n+1
+//        countj = 1
+//        for j = n-1:-1:1
+//            val =  getV(V,n,j,n,l)
+//            comp[countl+n1,n-1+countj] =abs(val) < 0.0 ? (0.0,:Z) :  (val,:AtAplus)
+//            countj+=1
+//        end
+//        countl+=1
+//    end
+//    count = 1
+//    list = []
+//    for i = K:-1:n+1
+//        push!(list,Pair(i,i))
+//        for k = K:-1:i+1
+//            push!(list,Pair(k,i))
+//        end
+//        for k = K:-1:i+1
+//            push!(list,Pair(i,k))
+//        end
+//    end
+//    for (i,k) ∈ list
+//        sign = i == k ? -1.0 : 1.0
+//        countl = 1
+//        for l = n-1:-1:1
+//            val = -getV(V,i,n,k,l)
+//            comp[count+ 2*n1-1,countl] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:Arlstar)
+//            countl +=1
+//        end
+//        countj = 1
+//        for j = n-1:-1:1
+//            val = -getV(V,i,j,k,n)
+//            comp[count+ 2*n1-1,n-1+countj] =abs(val) < 0.0 ? (0.0,:Z) :  (val, :Arl)
+//            countj+=1
+//        end
+//        val = -getV(V,i,n,k,n)
+//        comp[count+ 2*n1-1,end] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:AtAl)
+//        count+=1
+//    end
+//
+//    count = 1
+//    for j = K-1:-1:n+1
+//        for i = K:-1:j+1
+//            countl = 1
+//            for l = n-1:-1:1
+//                val = -getV(V,i,j,n,l)
+//                comp[count+ 2*n1-1+(n1-1)^2,countl] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:Alm)
+//                countl+=1
+//            end
+//            count+=1
+//        end
+//    end
+//
+//    count = 1
+//    for l = K-1:-1:n+1
+//        for k = K:-1:l+1
+//            countj=1
+//            for j = n-1:-1:1
+//                val = -getV(V,n,j,k,l)
+//                comp[count+ 2*n1-1+(n1-1)^2+binomial(n1-1,2),n-1+countj] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:Almstar)
+//                countj+=1
+//            end
+//            count+=1
+//        end
+//    end
+	Index i1,j1;
+	comp(i1,j1) = comp(j1,i1);
+    return comp
 }
 
 
