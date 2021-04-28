@@ -5,8 +5,8 @@
 using namespace xerus;
 using xerus::misc::operator<<;
 
-value_t returnTValue(size_t p, size_t q);
-value_t returnVValue(size_t i, size_t k, size_t j, size_t l);
+value_t returnTValue(Tensor T, size_t p, size_t q);
+value_t returnVValue(Tensor V, size_t i, size_t k, size_t j, size_t l);
 TTOperator buildHamil(Tensor &T, Tensor &V);
 Tensor V11f(size_t i,size_t d);
 Tensor V22f(size_t i,size_t d);
