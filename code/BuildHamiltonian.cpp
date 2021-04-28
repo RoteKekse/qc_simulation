@@ -125,11 +125,11 @@ Tensor V12f(size_t n, size_t d){
     size_t count = 1;
     std::vector<std::pair<size_t,size_t>> list;
     for (size_t i = 0; i < n;++i){
-        list.emplace_back(std::pair(i,i));
+        list.emplace_back(std::pair<size_t,size_t>(i,i));
         for (size_t k = 0; k < i;++k)
-        	list.emplace_back(std::pair(k,i));
+        	list.emplace_back(std::pair<size_t,size_t>(k,i));
         for (size_t k = 0; k < i;++k)
-        	list.emplace_back(std::pair(i,k));
+        	list.emplace_back(std::pair<size_t,size_t>(i,k));
     }
     XERUS_LOG(info,list);
 //    for (auto pair : list){
