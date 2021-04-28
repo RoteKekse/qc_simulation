@@ -22,7 +22,7 @@ value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 
 int main(int argc, char* argv[]) {
 	auto test1 = V12f(3,8);
-	auto test2 = V21f(5,8);
+	auto test2 = V21f(4,8);
 
 	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
 	XERUS_LOG(info,test2.dimensions << "\n"  << test2);
