@@ -214,7 +214,7 @@ Tensor V21f(size_t n,size_t d){
             comp[{count+ 2*n1+1,n+countj}] =4; //-getV(V,i,j-1,k,n) // (val, :Arl)
             countj++;
         }
-        comp[count+ 2*n1+1,getsizeV22(n1,d)-1] = 5; //-getV(V,i,n,k,n) //  (val,:AtAl)
+        comp[{count+ 2*n1+1,getsizeV22(n1,d)-1}] = 5; //-getV(V,i,n,k,n) //  (val,:AtAl)
         count++;
     }
 
