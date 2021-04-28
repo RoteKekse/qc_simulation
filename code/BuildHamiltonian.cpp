@@ -178,21 +178,20 @@ Tensor V21f(size_t n,size_t d){
     for (size_t i = d-1; i>n; --i){
         size_t countl = 0;
         for (size_t l = n;l>0; --l){
-            comp[1+counti,countl] =1;//-getV(V,i,n,n,l-1) //  (val, :AtAminus)
+            comp[{1+counti,countl}] =1;//-getV(V,i,n,n,l-1) //  (val, :AtAminus)
             countl++;
 		}
         counti++;
     }
-//    countl = 1
-//    for l = K:-1:n+1
-//        countj = 1
-//        for j = n-1:-1:1
-//            val =  getV(V,n,j,n,l)
-//            comp[countl+n1,n-1+countj] =abs(val) < 0.0 ? (0.0,:Z) :  (val,:AtAplus)
-//            countj+=1
-//        end
-//        countl+=1
-//    end
+    size_t countl = 0;
+    for (size_t l = d-1; l>n;--l){
+        size_t countj = 0;
+        for (size_t j = n; j> 0;--j)
+            comp[countl+n1,n+countj] = 2;// getV(V,n,j-1,n,l) // :  (val,:AtAplus)
+            countj++;
+		}
+        countl++;
+    }
 //    count = 1
 //    list = []
 //    for i = K:-1:n+1
