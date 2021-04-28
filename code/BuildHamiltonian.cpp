@@ -220,31 +220,29 @@ Tensor V21f(size_t n,size_t d){
         count++;
     }
 
-//    count = 1
-//    for j = K-1:-1:n+1
-//        for i = K:-1:j+1
-//            countl = 1
-//            for l = n-1:-1:1
-//                val = -getV(V,i,j,n,l)
-//                comp[count+ 2*n1-1+(n1-1)^2,countl] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:Alm)
-//                countl+=1
-//            end
-//            count+=1
-//        end
-//    end
-//
-//    count = 1
-//    for l = K-1:-1:n+1
-//        for k = K:-1:l+1
-//            countj=1
-//            for j = n-1:-1:1
-//                val = -getV(V,n,j,k,l)
-//                comp[count+ 2*n1-1+(n1-1)^2+binomial(n1-1,2),n-1+countj] = abs(val) < 0.0 ? (0.0,:Z) :  (val,:Almstar)
-//                countj+=1
-//            end
-//            count+=1
-//        end
-//    end
+    size_t count = 0;
+    for (size_t j = d-2; j>n;--j){
+        for (size_t i = d-1;i>j;--i){
+            size_t countl = 0;
+            for (size_t l = n;l>0;--l){
+                comp[{count+ 2*n1+1+n1*n1,countl}] = 6;//-getV(V,i,j,n,l-1)//  (val,:Alm)
+                countl++;
+            }
+            count+;
+        }
+    }
+
+    size_t count = 0;
+    for (size_t l = d-2;l>n;--l){
+        for (size_t k = d-1; k>l;--k){
+            size_t countj=0;
+            for (size_t j = n;j>0;--j){
+                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,n+countj}] = 7; //-getV(V,n,j-1,k,l)//  (val,:Almstar)
+                countj++;
+            }
+            count++;
+        }
+    }
 	Index i1,j1;
 	comp(i1,j1) = comp(j1,i1);
     return comp;
