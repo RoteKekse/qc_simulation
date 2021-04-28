@@ -19,7 +19,7 @@ value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 
 
 int main(int argc, char* argv[]) {
-	auto test1 = V12f(1,8);
+	auto test1 = V12f(2,8);
 
 	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
 
