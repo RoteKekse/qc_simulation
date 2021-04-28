@@ -112,7 +112,7 @@ Tensor V22f(size_t i,size_t d){
 Tensor V12f(size_t n, size_t d){
     //size_t d = 2*V.dimensions[0]
 	XERUS_REQUIRE(n>=1,"n=0 doesent work");
-    Tensor comp(getsizeV11(n-1),getsizeV22(n,d));
+    Tensor comp({getsizeV11(n-1),getsizeV22(n,d)});
 
     for (size_t i = 1; i <= n;++i){
         for (size_t l = n+2; l <= d; ++l)
