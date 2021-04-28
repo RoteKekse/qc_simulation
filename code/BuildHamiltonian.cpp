@@ -122,7 +122,7 @@ Tensor V12f(size_t n, size_t d){
         for (size_t j = n+1; j<d;++j)
             comp[{l+n+1,d-2*(n+1)+j}] = 2;//getV(V,n,j,n,l); //  (val,:AtAminus)
 	}
-    size_t count = 1;
+    size_t count = 0;
     std::vector<std::pair<size_t,size_t>> list;
     for (size_t i = 0; i < n;++i){
         list.emplace_back(std::pair<size_t,size_t>(i,i));
@@ -132,16 +132,16 @@ Tensor V12f(size_t n, size_t d){
         	list.emplace_back(std::pair<size_t,size_t>(i,k));
     }
     XERUS_LOG(info,list);
-//    for (auto pair : list){
-//    	auto i = pair.first;
-//    	auto k = pair.second;
-//        for (size_t l =n+1; l<=d; ++l)
-//            comp[{count+ 2*n-1,l-n}] =3;// -getV(V,i,n,k,l);//  (val,:Alrstar)
-//        for (size_t j = n+1; j<=d;++j)
-//            comp[{count+ 2*n-1,K-n+j-n}] =4;//-getV(V,i,j,k,n);//  (val,:Alr)
+    for (auto pair : list){
+    	auto i = pair.first;
+    	auto k = pair.second;
+        for (size_t l =n+1; l<d; ++l)
+            comp[{count+ 2*n+1,l-(n+1)}] =3;// -getV(V,i,n,k,l);//  (val,:Alrstar)
+        for (size_t j = n+1; j<d;++j)
+            comp[{count+ 2*n+1,d-2*(n+1)+j}] =4;//-getV(V,i,j,k,n);//  (val,:Alr)
 //        comp[{count+ 2*n-1,getsizeV22(n,d)}] =5;//-getV(V,i,n,k,n); // (val,:AtAr)
-//        count+=1
-//    }
+        count+=1
+    }
 //
 //    count = 1
 //    for (size_t j = 1; j < n;++j){
