@@ -272,9 +272,9 @@ Tensor MVf(Tensor T, Tensor V){
     std::vector<std::pair<size_t,size_t>> listl;
     for (size_t i = 0; i< d/2;++i){
     	listl.emplace_back(std::pair<size_t,size_t>(i,i));
-    	for (size_t k = 0; k < i;++i)
+    	for (size_t k = 0; k < i;++k)
     		listl.emplace_back(std::pair<size_t,size_t>(k,i));
-    	for (size_t k = 0; k < i;++i)
+    	for (size_t k = 0; k < i;++k)
     		listl.emplace_back(std::pair<size_t,size_t>(i,k));
     }
     XERUS_LOG(info,listl);
