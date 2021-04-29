@@ -18,7 +18,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V);
 Tensor MVf(Tensor T, Tensor V);
 
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
-
+value_t getT(Tensor T,size_t i, size_t j);
 
 
 int main(int argc, char* argv[]) {
