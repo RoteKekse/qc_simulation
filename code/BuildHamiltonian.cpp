@@ -19,20 +19,15 @@ Tensor MVf(Tensor T, Tensor V);
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 value_t getT(Tensor T,size_t i, size_t j);
 
+TTOperator BuildHamil(Tensor T, Tensor V);
 
 int main(int argc, char* argv[]) {
 
 	Tensor T = Tensor::random({4,4});
 	Tensor V = Tensor::random({4,4,4,4});
-	auto test1 = V12f(3,T,V);
 
-	auto test2 = V21f(4,T,V);
-	auto test3 = MVf(T,V);
-
-	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
-	XERUS_LOG(info,test2.dimensions << "\n"  << test2);
-	XERUS_LOG(info,test3.dimensions << "\n"  << test3);
-
+	auto H = BuildHamil(T,V);
+	XERUS_LOG(info,H.ranks());
 
 
 
@@ -62,6 +57,53 @@ int main(int argc, char* argv[]) {
 //	TTOperator H(std::vector<size_t>(d,2));
 //
 //	return H;
+}
+
+TTOperator BuildHamil(Tensor T, Tensor V){
+    size_t d = 2*V.dimensions[0];
+    TTOperator H(std:vector<size_t>(2*d ,2))
+    XERUS_LOG(H.order());
+    H.set_component(0,V11f(0,d));
+	auto comp1 = V11f(1,d);
+	auto comp2 = V12f(1,T,V);
+	Tensor comp(comp1.dimension[0],2,2,comp1.dimension[3]+comp2.dimension[3]);
+	comp.offset_add(comp1,{0,0,0,0});
+	comp.offset_add(comp2,{0,0,0,comp2.dimension[3]});
+	H.set_component(1,comp);
+	for (size_t i = 2; i < d/2;++i){
+		comp1 = V11f(i,d);
+		comp2 = V12f(i,T,V);
+		auto comp3 = V22f(i,d);
+		Tensor comp(comp1.dimension[0]+comp3.dimension[0],2,2,comp1.dimension[3]+comp3.dimension[3]);
+		comp.offset_add(comp1,{0,0,0,0});
+		comp.offset_add(comp2,{0,0,0,comp3.dimension[3]});
+		comp.offset_add(comp2,{comp3.dimension[0],0,0,comp3.dimension[3]});
+		H.set_component(i,comp);
+	}
+	H.set_component(d-1,V11f(d-1,d));
+	comp1 = V11f(d-2,d);
+	comp2 = V21f(d-2,T,V);
+	Tensor comp(comp1.dimension[0]+comp2.dimension[0],2,2,comp1.dimension[3]);
+	comp.offset_add(comp1,{0,0,0,0});
+	comp.offset_add(comp2,{comp2.dimension[0],0,0,0});
+	H.set_component(d-2,comp);
+	for (size_t i = d-3; i >= d/2;--i){
+		comp1 = V11f(i,d);
+		comp2 = V21f(i,T,V);
+		auto comp3 = V22f(i,d);
+		Tensor comp(comp1.dimension[0]+comp3.dimension[0],2,2,comp1.dimension[3]+comp3.dimension[3]);
+		comp.offset_add(comp1,{0,0,0,0});
+		comp.offset_add(comp2,{comp3.dimension[0],0,0,0});
+		comp.offset_add(comp2,{comp3.dimension[0],0,0,comp3.dimension[3]});
+		H.set_component(i,comp);
+	}
+	M = MVf(T,V);
+	Index i,j,k,l,m;
+	Tensor tmp;
+	tmp(i,j,k,m) = H.get_component(d/2-1)(i,j,k,l)*M(l,m);
+	H.set_component(d/2-1,tmp);
+
+    return H;
 }
 
 Tensor V11f(size_t i,size_t d){
@@ -102,7 +144,6 @@ Tensor V22f(size_t i,size_t d){
 	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV22(i-1,d),2,2,getsizeV22(i,d)});
-	XERUS_LOG(info,comp.dimensions);
 	comp[{0,0,1,getsizeV22(i,d)-1}] = 1;
 	comp[{d-i,1,0,getsizeV22(i,d)-1}] = 1;
 	comp[{getsizeV22(i-1,d)-1,0,0,getsizeV22(i,d)-1}] = 1;comp[{getsizeV22(i-1,d)-1,1,1,getsizeV22(i,d)-1}] = 1;
@@ -121,18 +162,18 @@ Tensor V22f(size_t i,size_t d){
 Tensor V12f(size_t n, Tensor T, Tensor V){
     size_t d = 2*V.dimensions[0];
 	//XERUS_REQUIRE(n>=1,"n=0 doesent work");
-    Tensor comp({getsizeV11(n-1),getsizeV22(n,d)});
+    Tensor comp({getsizeV11(n-1),2,2,getsizeV22(n,d)});
 
-    comp[{0,getsizeV22(n,d)-1}] = getT(T,n,n); // A^*A
+    comp[{0,1,1,getsizeV22(n,d)-1}] = getT(T,n,n); // A^*A
     for (size_t i = 0; i < n;++i){
-    	comp[{1+i,getsizeV22(n,d)-1}] = getT(T,i,n); // A
+    	comp[{1+i,0,1,getsizeV22(n,d)-1}] = getT(T,i,n); // A
         for (size_t l = n+1; l < d; ++l)
-            comp[{1+i,l-(n+1)}] = -getV(V,i,n,n,l); //(val,:AtAplus)
+            comp[{1+i,1,1,l-(n+1)}] = -getV(V,i,n,n,l); //(val,:AtAplus)
     }
 	for (size_t l = 0; l <n;++l){
-    	comp[{l+n+1,getsizeV22(n,d)-1}] = getT(T,n,l); // A^*
+    	comp[{l+n+1,1,0,getsizeV22(n,d)-1}] = getT(T,n,l); // A^*
         for (size_t j = n+1; j<d;++j)
-            comp[{l+n+1,d-2*(n+1)+j}] = getV(V,n,j,n,l); //  (val,:AtAminus)
+            comp[{l+n+1,1,1,d-2*(n+1)+j}] = getV(V,n,j,n,l); //  (val,:AtAminus)
 	}
     size_t count = 0;
     std::vector<std::pair<size_t,size_t>> list;
@@ -143,15 +184,14 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
         for (size_t k = 0; k < i;++k)
         	list.emplace_back(std::pair<size_t,size_t>(i,k));
     }
-    XERUS_LOG(info,list);
     for (auto pair : list){
     	auto i = pair.first;
     	auto k = pair.second;
         for (size_t l =n+1; l<d; ++l)
-            comp[{count+ 2*n+1,l-(n+1)}]  =-getV(V,i,n,k,l);//  (val,:Alrstar)
+            comp[{count+ 2*n+1,1,0,l-(n+1)}]  =-getV(V,i,n,k,l);//  (val,:Alrstar)
         for (size_t j = n+1; j<d;++j)
-            comp[{count+ 2*n+1,d-2*(n+1)+j}] =-getV(V,i,j,k,n);//  (val,:Alr)
-        comp[{count+ 2*n+1,getsizeV22(n,d)-1}]= -getV(V,i,n,k,n); // (val,:AtAr)
+            comp[{count+ 2*n+1,0,1,d-2*(n+1)+j}] =-getV(V,i,j,k,n);//  (val,:Alr)
+        comp[{count+ 2*n+1,1,1,getsizeV22(n,d)-1}]= -getV(V,i,n,k,n); // (val,:AtAr)
         count++;
     }
 
@@ -159,7 +199,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t j = 1; j < n;++j){
         for (size_t i = 0; i < j;++i){
             for (size_t l = n+1; l<d;++l)
-                comp[{count+ 2*n+1+n*n,l-(n+1)}] =-getV(V,i,j,n,l); //  (val, :Arm)
+                comp[{count+ 2*n+1+n*n,0,1,l-(n+1)}] =-getV(V,i,j,n,l); //  (val, :Arm)
             count++;
         }
     }
@@ -168,7 +208,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t l = 1; l<n;++l){
         for (size_t k = 0; k <l;++k){
             for (size_t j = n+1; j < d;++j)
-                comp[{count+ 2*n+1+n*n+n*(n-1)/2,d-2*(n+1)+j}]=-getV(V,n,j,k,l); //  (val, :Armstar)
+                comp[{count+ 2*n+1+n*n+n*(n-1)/2,1,0,d-2*(n+1)+j}]=-getV(V,n,j,k,l); //  (val, :Armstar)
             count++;
         }
     }
@@ -180,15 +220,15 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 
 
     size_t n1 = d - n - 1;
-    Tensor comp({getsizeV11(n1-1),getsizeV22(n1,d)});
+    Tensor comp({getsizeV11(n1-1),2,2,getsizeV22(n1,d)});
 
     size_t counti = 0;
-    comp[{0,getsizeV22(n1,d)-1}] = getT(T,n,n); // A^*A
+    comp[{0,1,1,getsizeV22(n1,d)-1}] = getT(T,n,n); // A^*A
     for (size_t i = d-1; i>n; --i){
         size_t countl = 0;
-        comp[{1+counti,getsizeV22(n1,d)-1}] = getT(T,i,n); // A
+        comp[{1+counti,0,1,getsizeV22(n1,d)-1}] = getT(T,i,n); // A
         for (size_t l = n;l>0; --l){
-            comp[{1+counti,countl}] = -getV(V,i,n,n,l-1) ;//  (val, :AtAminus)
+            comp[{1+counti,1,1,countl}] = -getV(V,i,n,n,l-1) ;//  (val, :AtAminus)
             countl++;
 		}
         counti++;
@@ -196,9 +236,9 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
     size_t countl = 0;
     for (size_t l = d-1; l>n;--l){
         size_t countj = 0;
-        comp[{countl+n1+1,getsizeV22(n1,d)-1}] = getT(T,n,l); // A
+        comp[{countl+n1+1,1,0,getsizeV22(n1,d)-1}] = getT(T,n,l); // A^*
         for (size_t j = n; j> 0;--j){
-            comp[{countl+n1+1,n+countj}] =  getV(V,n,j-1,n,l); // :  (val,:AtAplus)
+            comp[{countl+n1+1,1,1,n+countj}] =  getV(V,n,j-1,n,l); // :  (val,:AtAplus)
             countj++;
 		}
         countl++;
@@ -212,22 +252,21 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
         for (size_t k = d-1; k> i;--k)
             list.emplace_back(std::pair<size_t,size_t>(i,k));
     }
-    XERUS_LOG(info,list);
 
     for (auto pair : list){
 		auto i = pair.first;
 		auto k = pair.second;
         size_t countl = 0;
         for (size_t l = n;l>0;--l){
-            comp[{count+ 2*n1+1,countl}] =  -getV(V,i,n,k,l-1); //  (val,:Arlstar)
+            comp[{count+ 2*n1+1,1,0,countl}] =  -getV(V,i,n,k,l-1); //  (val,:Arlstar)
             countl++;
         }
         size_t countj = 0;
         for (size_t j = n;j>0;--j){
-            comp[{count+ 2*n1+1,n+countj}] =-getV(V,i,j-1,k,n); // (val, :Arl)
+            comp[{count+ 2*n1+1,0,1,n+countj}] =-getV(V,i,j-1,k,n); // (val, :Arl)
             countj++;
         }
-        comp[{count+ 2*n1+1,getsizeV22(n1,d)-1}] = -getV(V,i,n,k,n); //  (val,:AtAl)
+        comp[{count+ 2*n1+1,1,1,getsizeV22(n1,d)-1}] = -getV(V,i,n,k,n); //  (val,:AtAl)
         count++;
     }
 
@@ -236,7 +275,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
         for (size_t i = d-1;i>j;--i){
             size_t countl = 0;
             for (size_t l = n;l>0;--l){
-                comp[{count+ 2*n1+1+n1*n1,countl}] = -getV(V,i,j,n,l-1);//  (val,:Alm)
+                comp[{count+ 2*n1+1+n1*n1,0,1,countl}] = -getV(V,i,j,n,l-1);//  (val,:Alm)
                 countl++;
             }
             count++;
@@ -248,7 +287,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
         for (size_t k = d-1; k>l;--k){
             size_t countj=0;
             for (size_t j = n;j>0;--j){
-                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,n+countj}] = -getV(V,n,j-1,k,l);//  (val,:Almstar)
+                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,1,0,n+countj}] = -getV(V,n,j-1,k,l);//  (val,:Almstar)
                 countj++;
             }
             count++;
@@ -260,7 +299,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 }
 
 Tensor MVf(Tensor T, Tensor V){
-    size_t d   = V.dimensions[0];//2*V.dimensions[0];
+    size_t d   = 2*V.dimensions[0];//2*V.dimensions[0];
     size_t count,countr, countl;
     size_t n = getsizeV11(d/2-1)+getsizeV22(d/2-1,d);
     Tensor MV({n,n});
@@ -298,7 +337,6 @@ Tensor MVf(Tensor T, Tensor V){
     	for (size_t k = 0; k < i;++k)
     		listl.emplace_back(std::pair<size_t,size_t>(i,k));
     }
-    XERUS_LOG(info,listl);
 
     std::vector<std::pair<size_t,size_t>> listr;
     for (size_t i = d-1; i >= d/2;--i){
@@ -308,7 +346,6 @@ Tensor MVf(Tensor T, Tensor V){
         for (size_t k = d-1; k > i;--k)
         	listr.emplace_back(std::pair<size_t,size_t>(i,k));
     }
-    XERUS_LOG(info,listr);
 
     countl = 0;
     for (auto pair1 : listl){
