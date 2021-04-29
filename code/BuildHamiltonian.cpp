@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
 
 TTOperator BuildHamil(Tensor T, Tensor V){
     size_t d = 2*V.dimensions[0];
-    TTOperator H(std:vector<size_t>(2*d ,2))
+    TTOperator H(std::vector<size_t>(2*d ,2))
     XERUS_LOG(H.order());
     H.set_component(0,V11f(0,d));
 	auto comp1 = V11f(1,d);
@@ -97,7 +97,7 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 		comp.offset_add(comp2,{comp3.dimension[0],0,0,comp3.dimension[3]});
 		H.set_component(i,comp);
 	}
-	M = MVf(T,V);
+	auto M = MVf(T,V);
 	Index i,j,k,l,m;
 	Tensor tmp;
 	tmp(i,j,k,m) = H.get_component(d/2-1)(i,j,k,l)*M(l,m);
