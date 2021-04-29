@@ -28,7 +28,8 @@ int main(int argc, char* argv[]) {
 
 	auto H = BuildHamil(T,V);
 	XERUS_LOG(info,H.ranks());
-
+	H.round(0.0);
+	XERUS_LOG(info,H.ranks());
 
 
 //	const auto geom = argv[1];
