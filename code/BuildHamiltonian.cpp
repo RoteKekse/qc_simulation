@@ -285,7 +285,7 @@ Tensor MVf(Tensor T, Tensor V){
      for (size_t i=0; i< d/2;++i){
     	 countr=0;
          for (size_t j=d-1; j>= d/2;--j){
-     		MV[{1+i,1+d/2 +countl}] = getT(T,i,j);
+     		MV[{1+i,1+d/2 +countr}] = getT(T,i,j);
      		countr++;
          }
      }
