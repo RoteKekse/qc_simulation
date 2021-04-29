@@ -65,6 +65,8 @@ TTOperator BuildHamil(Tensor T, Tensor V){
     H.set_component(0,V11f(0,d));
 	auto comp1 = V11f(1,d);
 	auto comp2 = V12f(1,T,V);
+	XERUS_LOG(info,comp1.dimensions);
+	XERUS_LOG(info,comp2.dimensions);
 	Tensor comp({comp1.dimensions[0],2,2,comp1.dimensions[3]+comp2.dimensions[3]});
 	comp.offset_add(comp1,{0,0,0,0});
 	comp.offset_add(comp2,{0,0,0,comp2.dimensions[3]});
