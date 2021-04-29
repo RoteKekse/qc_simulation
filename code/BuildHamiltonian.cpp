@@ -255,7 +255,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 }
 
 Tensor MVf(Tensor T, Tensor V){
-    size_t d   = 2*V.dimensions[0];
+    size_t d   = V.dimensions[0];//2*V.dimensions[0];
 
     size_t n = getsizeV11(d/2-1)+getsizeV22(d/2-1,d);
     Tensor MV({n,n});
