@@ -265,8 +265,8 @@ Tensor MVf(Tensor T, Tensor V){
     for (size_t i=0; i< d/2;++i){
         MV[{1+i,n-i-2}] = 1;
         MV[{1+d/2+i,n-2-i-d/2}] = 2;//1;
-        MV[{n-1-i,1+i}] = 3;//1;
-        MV[{n-1-i-d/2,1+d/2+i}] = 4;//1;
+        MV[{n-2-i,1+i}] = 3;//1;
+        MV[{n-2-i-d/2,1+d/2+i}] = 4;//1;
     }
 
 //    listl = []
