@@ -271,19 +271,19 @@ Tensor MVf(Tensor T, Tensor V){
 
     std::vector<std::pair<size_t,size_t>> listl;
     for (size_t i = 0; i< d/2;++i){
-    	list.emplace_back(std::pair<size_t,size_t>(i,i));
+    	listl.emplace_back(std::pair<size_t,size_t>(i,i));
     	for (size_t k = 0; k < i;++i)
-    		list.emplace_back(std::pair<size_t,size_t>(k,i));
+    		listl.emplace_back(std::pair<size_t,size_t>(k,i));
     	for (size_t k = 0; k < i;++i)
-    	    list.emplace_back(std::pair<size_t,size_t>(i,k));
+    		listl.emplace_back(std::pair<size_t,size_t>(i,k));
     }
     std::vector<std::pair<size_t,size_t>> listr;
     for (size_t i = d-1; i >= d/2;--i){
-    	list.emplace_back(std::pair<size_t,size_t>(i,i));
+    	listr.emplace_back(std::pair<size_t,size_t>(i,i));
         for (size_t k = d-1; k > i;--k)
-        	list.emplace_back(std::pair<size_t,size_t>(k,i));
+        	listr.emplace_back(std::pair<size_t,size_t>(k,i));
         for (size_t k = d-1; k > i;--k)
-            list.emplace_back(std::pair<size_t,size_t>(i,k));
+        	listr.emplace_back(std::pair<size_t,size_t>(i,k));
     }
     size_t countl = 0;
     for (auto pair1 : listl){
@@ -317,9 +317,8 @@ Tensor MVf(Tensor T, Tensor V){
     for (size_t j = d-2;j>=d/2;--j){
         for (size_t i = d-1;i>j;--i){
             size_t countr=0;
-            for (size_T k = 1;k< d/2;++k){
+            for (size_t k = 1;k< d/2;++k){
                 for (size_t l = 0; l<k;++k){
-                    val = -getV(V,i,j,k,l)
                     MV[{countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2,countl+1+d+(d*d)/4}] = -getV(V,i,j,k,l);
                     countr++;
                 }
