@@ -294,8 +294,8 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
             count++;
         }
     }
-	Index i1,j1;
-	comp(i1,j1) = comp(j1,i1);
+	Index i1,i2,j1,j2;
+	comp(i1,i2,j1,j2) = comp(j2,i2,j1,i1);
     return comp;
 }
 
