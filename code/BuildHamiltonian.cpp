@@ -261,7 +261,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 
 Tensor MVf(Tensor T, Tensor V){
     size_t d   = V.dimensions[0];//2*V.dimensions[0];
-
+    size_t count,countr, countl;
     size_t n = getsizeV11(d/2-1)+getsizeV22(d/2-1,d);
     Tensor MV({n,n});
 
@@ -274,20 +274,20 @@ Tensor MVf(Tensor T, Tensor V){
         MV[{n-2-i-d/2,1+d/2+i}] = 1;
     }
 
-    size_t countl = 0;
      for (size_t i=0; i< d/2;++i){
+    	 countr = 0;
          for (size_t j=d-1; j>= d/2;--j){
-     		MV[{1+d/2+i,1+countl}] = getT(T,j,i);
+     		MV[{1+d/2+i,1+countr}] = getT(T,j,i);
+      		countr++;
          }
-  		countl++;
      }
 
-     countl = 0;
      for (size_t i=0; i< d/2;++i){
+    	 countr=0;
          for (size_t j=d-1; j>= d/2;--j){
      		MV[{1+i,1+d/2 +countl}] = getT(T,i,j);
+     		countr++;
          }
-  		countl++;
      }
 
     std::vector<std::pair<size_t,size_t>> listl;
@@ -314,7 +314,7 @@ Tensor MVf(Tensor T, Tensor V){
     for (auto pair1 : listl){
 		auto i = pair1.first;
 		auto k = pair1.second;
-	    size_t countr = 0;
+	    countr = 0;
 	    for (auto pair2 : listr){
 	    	auto j = pair2.first;
 	    	auto l = pair2.second;
@@ -329,7 +329,7 @@ Tensor MVf(Tensor T, Tensor V){
     countl = 0;
     for (size_t j = 1; j < d/2;++j){
         for (size_t i = 0;i < j;++i){
-            size_t countr=0;
+            countr=0;
             for (size_t k = d-2; k >= d/2;--k){
                 for (size_t l = d-1;l>k;--l){
                     MV[{countl+1+d+(d*d)/4,countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2}] = -getV(V,i,j,k,l);
@@ -343,7 +343,7 @@ Tensor MVf(Tensor T, Tensor V){
     countl = 0;
     for (size_t j = d-2;j>=d/2;--j){
         for (size_t i = d-1;i>j;--i){
-            size_t countr=0;
+            countr=0;
             for (size_t k = 1;k< d/2;++k){
                 for (size_t l = 0; l<k;++l){
                     MV[{countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2,countl+1+d+(d*d)/4}] = -getV(V,i,j,k,l);
