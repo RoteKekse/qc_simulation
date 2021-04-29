@@ -15,6 +15,7 @@ size_t getsizeV22(size_t i,size_t d);
 //Tensor V12f(size_t n, Tensor T, Tensor V);
 Tensor V12f(size_t n,size_t d);
 Tensor V21f(size_t n,Tensor T, Tensor V);
+Tensor MVf(Tensor T, Tensor V);
 
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 
@@ -26,9 +27,11 @@ int main(int argc, char* argv[]) {
 	Tensor T = Tensor::random({4,4});
 	Tensor V = Tensor::random({4,4,4,4});
 	auto test2 = V21f(4,T,V);
+	auto test3 = MVf(T,V);
 
 	XERUS_LOG(info,test1.dimensions << "\n"  << test1);
 	XERUS_LOG(info,test2.dimensions << "\n"  << test2);
+	XERUS_LOG(info,test3.dimensions << "\n"  << test3);
 
 
 
@@ -249,6 +252,90 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 	Index i1,j1;
 	comp(i1,j1) = comp(j1,i1);
     return comp;
+}
+
+Tensor MVf(Tensor T, Tensor V){
+    size_t d =  = 2*V.dimensions[0];
+
+    size_t n = getsizeV11(d/2-1)+getsizeV22(d/2-1,d);
+    Tensor MV({n,n});
+
+    MV[n-1,0] = 1
+    MV[0,n-1] = 1
+    for (size_t i=0; i< d/2;++i){
+        MV[{1+i,n-i-2}] = 1;
+        MV[{1+d/2+i,n-2-i-d/2}] = 2;//1;
+        MV[{n-1-i,1+i}] = 3;//1;
+        MV[{n-1-i-d/2,1+d/2+i}] = 4;//1;
+    }
+
+//    listl = []
+//    for i = 1:K÷2
+//        push!(listl,Pair(i,i))
+//        for k = 1:i-1
+//            push!(listl,Pair(k,i))
+//        end
+//        for k = 1:i-1
+//            push!(listl,Pair(i,k))
+//        end
+//    end
+//    listr = []
+//    for i = K:-1:K÷2+1
+//        push!(listr,Pair(i,i))
+//        for k = K:-1:i+1
+//            push!(listr,Pair(k,i))
+//        end
+//        for  k = K:-1:i+1
+//            push!(listr,Pair(i,k))
+//        end
+//    end
+//    countl = 1
+//    for (i,k) ∈ listl
+//        countr = 1
+//        signl = i<=k ? 1.0 : -1.0
+//        for (j,l) ∈ listr
+//            signr = j<=l ? 1.0 : -1.0
+//            val = -getV(V,i,j,k,l)
+//            MV[countl+1+K,countr+1+K] = abs(val) < 0.0 ? 0.0 :  val
+//            countr+=1
+//        end
+//        countl+=1
+//    end
+//
+//    countl = 1
+//    for j = 2:K÷2
+//        for i = 1:j-1
+//            countr=1
+//            for k = K-1:-1:K÷2+1
+//                for l = K:-1:k+1
+//                    val =  -getV(V,i,j,k,l)
+//                    MV[countl+1+K+(K÷2)^2,countr+1+K+(K÷2)^2+binomial(K÷2,2)] = abs(val) < 0.0 ? 0.0 :  val
+//                    countr+=1
+//                end
+//            end
+//            countl+=1
+//        end
+//    end
+//
+//    countl = 1
+//
+//    for j = K-1:-1:K÷2+1
+//        for i = K:-1:j+1
+//            countr=1
+//            for k = 2:K÷2
+//                for l = 1:k-1
+//                    val = -getV(V,i,j,k,l)
+//                    MV[countr+1+K+(K÷2)^2+binomial(K÷2,2),countl+1+K+(K÷2)^2] =  abs(val) < 0.0 ? 0.0 : val
+//                    countr+=1
+//                end
+//            end
+//            countl+=1
+//        end
+//    end
+
+
+
+    return MV;
 }
 
 
