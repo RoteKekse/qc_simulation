@@ -148,10 +148,10 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     	auto i = pair.first;
     	auto k = pair.second;
         for (size_t l =n+1; l<d; ++l)
-            comp[{count+ 2*n+1,l-(n+1)}]  -getV(V,i,n,k,l);//  (val,:Alrstar)
+            comp[{count+ 2*n+1,l-(n+1)}]  =-getV(V,i,n,k,l);//  (val,:Alrstar)
         for (size_t j = n+1; j<d;++j)
-            comp[{count+ 2*n+1,d-2*(n+1)+j}] -getV(V,i,j,k,n);//  (val,:Alr)
-        comp[{count+ 2*n+1,getsizeV22(n,d)-1}] -getV(V,i,n,k,n); // (val,:AtAr)
+            comp[{count+ 2*n+1,d-2*(n+1)+j}] =-getV(V,i,j,k,n);//  (val,:Alr)
+        comp[{count+ 2*n+1,getsizeV22(n,d)-1}]= -getV(V,i,n,k,n); // (val,:AtAr)
         count++;
     }
 
@@ -159,7 +159,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t j = 1; j < n;++j){
         for (size_t i = 0; i < j;++i){
             for (size_t l = n+1; l<d;++l)
-                comp[{count+ 2*n+1+n*n,l-(n+1)}] -getV(V,i,j,n,l); //  (val, :Arm)
+                comp[{count+ 2*n+1+n*n,l-(n+1)}] =-getV(V,i,j,n,l); //  (val, :Arm)
             count++;
         }
     }
@@ -168,7 +168,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t l = 1; l<n;++l){
         for (size_t k = 0; k <l;++k){
             for (size_t j = n+1; j < d;++j)
-                comp[{count+ 2*n+1+n*n+n*(n-1)/2,d-2*(n+1)+j}] -getV(V,n,j,k,l); //  (val, :Armstar)
+                comp[{count+ 2*n+1+n*n+n*(n-1)/2,d-2*(n+1)+j}]=-getV(V,n,j,k,l); //  (val, :Armstar)
             count++;
         }
     }
