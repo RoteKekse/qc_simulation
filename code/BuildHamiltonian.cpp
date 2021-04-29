@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
 
 TTOperator BuildHamil(Tensor T, Tensor V){
     size_t d = 2*V.dimensions[0];
-    TTOperator H(std::vector<size_t>(2*d ,2))
+    TTOperator H(std::vector<size_t>(2*d ,2));
     H.set_component(0,V11f(0,d));
 	auto comp1 = V11f(1,d);
 	auto comp2 = V12f(1,T,V);
