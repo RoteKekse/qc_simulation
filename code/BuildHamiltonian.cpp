@@ -78,7 +78,7 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 		comp = Tensor({comp1.dimensions[0]+comp3.dimensions[0],2,2,comp1.dimensions[3]+comp3.dimensions[3]});
 		comp.offset_add(comp1,{0,0,0,0});
 		comp.offset_add(comp2,{0,0,0,comp1.dimensions[3]});
-		comp.offset_add(comp2,{comp1.dimensions[0],0,0,comp1.dimensions[3]});
+		comp.offset_add(comp3,{comp1.dimensions[0],0,0,comp1.dimensions[3]});
 		H.set_component(i,comp);
 	}
 	H.set_component(d-1,V11f(d-1,d));
@@ -95,7 +95,7 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 		comp = Tensor({comp1.dimensions[0]+comp3.dimensions[0],2,2,comp1.dimensions[3]+comp3.dimensions[3]});
 		comp.offset_add(comp1,{0,0,0,0});
 		comp.offset_add(comp2,{comp1.dimensions[0],0,0,0});
-		comp.offset_add(comp2,{comp1.dimensions[0],0,0,comp1.dimensions[3]});
+		comp.offset_add(comp3,{comp1.dimensions[0],0,0,comp1.dimensions[3]});
 		H.set_component(i,comp);
 	}
 	auto M = MVf(T,V);
