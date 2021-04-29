@@ -21,10 +21,11 @@ value_t getT(Tensor T,size_t i, size_t j);
 
 
 int main(int argc, char* argv[]) {
-	auto test1 = V12f(3,T,V);
 
 	Tensor T = Tensor::random({4,4});
 	Tensor V = Tensor::random({4,4,4,4});
+	auto test1 = V12f(3,T,V);
+
 	auto test2 = V21f(4,T,V);
 	auto test3 = MVf(T,V);
 
