@@ -278,16 +278,16 @@ Tensor MVf(Tensor T, Tensor V){
      for (size_t i=0; i< d/2;++i){
          for (size_t j=d-1; j>= d/2;--j){
      		MV[{1+d/2+i,1+countl}] = getT(T,j,i);
-     		countl++;
          }
+  		countl++;
      }
 
      countl = 0;
      for (size_t i=0; i< d/2;++i){
          for (size_t j=d-1; j>= d/2;--j){
      		MV[{1+i,1+d/2 +countl}] = getT(T,i,j);
-     		countl++;
          }
+  		countl++;
      }
 
     std::vector<std::pair<size_t,size_t>> listl;
