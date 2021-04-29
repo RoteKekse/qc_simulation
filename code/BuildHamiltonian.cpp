@@ -255,13 +255,13 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 }
 
 Tensor MVf(Tensor T, Tensor V){
-    size_t d =  = 2*V.dimensions[0];
+    size_t d   = 2*V.dimensions[0];
 
     size_t n = getsizeV11(d/2-1)+getsizeV22(d/2-1,d);
     Tensor MV({n,n});
 
-    MV[n-1,0] = 1
-    MV[0,n-1] = 1
+    MV[n-1,0] = 1;
+    MV[0,n-1] = 1;
     for (size_t i=0; i< d/2;++i){
         MV[{1+i,n-i-2}] = 1;
         MV[{1+d/2+i,n-2-i-d/2}] = 2;//1;
