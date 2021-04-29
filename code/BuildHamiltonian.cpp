@@ -12,8 +12,7 @@ Tensor V11f(size_t i,size_t d);
 Tensor V22f(size_t i,size_t d);
 size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
-//Tensor V12f(size_t n, Tensor T, Tensor V);
-Tensor V12f(size_t n,size_t d);
+Tensor V12f(size_t n, Tensor T, Tensor V);
 Tensor V21f(size_t n,Tensor T, Tensor V);
 Tensor MVf(Tensor T, Tensor V);
 
@@ -22,7 +21,7 @@ value_t getT(Tensor T,size_t i, size_t j);
 
 
 int main(int argc, char* argv[]) {
-	auto test1 = V12f(3,8);
+	auto test1 = V12f(3,T,V);
 
 	Tensor T = Tensor::random({4,4});
 	Tensor V = Tensor::random({4,4,4,4});
@@ -118,9 +117,8 @@ Tensor V22f(size_t i,size_t d){
 	return comp;
 }
 
-//Tensor V12f(size_t n, Tensor T, Tensor V){
-Tensor V12f(size_t n, size_t d){
-    //size_t d = 2*V.dimensions[0]
+Tensor V12f(size_t n, Tensor T, Tensor V){
+    size_t d = 2*V.dimensions[0]
 	XERUS_REQUIRE(n>=1,"n=0 doesent work");
     Tensor comp({getsizeV11(n-1),getsizeV22(n,d)});
 
