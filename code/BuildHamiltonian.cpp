@@ -65,35 +65,35 @@ TTOperator BuildHamil(Tensor T, Tensor V){
     H.set_component(0,V11f(0,d));
 	auto comp1 = V11f(1,d);
 	auto comp2 = V12f(1,T,V);
-	Tensor comp(comp1.dimension[0],2,2,comp1.dimension[3]+comp2.dimension[3]);
+	Tensor comp(comp1.dimensions[0],2,2,comp1.dimensions[3]+comp2.dimensions[3]);
 	comp.offset_add(comp1,{0,0,0,0});
-	comp.offset_add(comp2,{0,0,0,comp2.dimension[3]});
+	comp.offset_add(comp2,{0,0,0,comp2.dimensions[3]});
 	H.set_component(1,comp);
 	for (size_t i = 2; i < d/2;++i){
 		comp1 = V11f(i,d);
 		comp2 = V12f(i,T,V);
 		auto comp3 = V22f(i,d);
-		Tensor comp(comp1.dimension[0]+comp3.dimension[0],2,2,comp1.dimension[3]+comp3.dimension[3]);
+		Tensor comp(comp1.dimensions[0]+comp3.dimensions[0],2,2,comp1.dimensions[3]+comp3.dimensions[3]);
 		comp.offset_add(comp1,{0,0,0,0});
-		comp.offset_add(comp2,{0,0,0,comp3.dimension[3]});
-		comp.offset_add(comp2,{comp3.dimension[0],0,0,comp3.dimension[3]});
+		comp.offset_add(comp2,{0,0,0,comp3.dimensions[3]});
+		comp.offset_add(comp2,{comp3.dimensions[0],0,0,comp3.dimensions[3]});
 		H.set_component(i,comp);
 	}
 	H.set_component(d-1,V11f(d-1,d));
 	comp1 = V11f(d-2,d);
 	comp2 = V21f(d-2,T,V);
-	Tensor comp(comp1.dimension[0]+comp2.dimension[0],2,2,comp1.dimension[3]);
+	Tensor comp(comp1.dimensions[0]+comp2.dimensions[0],2,2,comp1.dimensions[3]);
 	comp.offset_add(comp1,{0,0,0,0});
-	comp.offset_add(comp2,{comp2.dimension[0],0,0,0});
+	comp.offset_add(comp2,{comp2.dimensions[0],0,0,0});
 	H.set_component(d-2,comp);
 	for (size_t i = d-3; i >= d/2;--i){
 		comp1 = V11f(i,d);
 		comp2 = V21f(i,T,V);
 		auto comp3 = V22f(i,d);
-		Tensor comp(comp1.dimension[0]+comp3.dimension[0],2,2,comp1.dimension[3]+comp3.dimension[3]);
+		Tensor comp(comp1.dimensions[0]+comp3.dimensions[0],2,2,comp1.dimensions[3]+comp3.dimensions[3]);
 		comp.offset_add(comp1,{0,0,0,0});
-		comp.offset_add(comp2,{comp3.dimension[0],0,0,0});
-		comp.offset_add(comp2,{comp3.dimension[0],0,0,comp3.dimension[3]});
+		comp.offset_add(comp2,{comp3.dimensions[0],0,0,0});
+		comp.offset_add(comp2,{comp3.dimensions[0],0,0,comp3.dimensions[3]});
 		H.set_component(i,comp);
 	}
 	auto M = MVf(T,V);
