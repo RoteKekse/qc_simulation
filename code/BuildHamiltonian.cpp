@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 
 	auto H = BuildHamil(T,V);
 	XERUS_LOG(info,H.ranks());
-	H.round(0.0);
+	H.round(1e-14);
 	XERUS_LOG(info,H.ranks());
 
 
