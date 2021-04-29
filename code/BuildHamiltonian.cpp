@@ -277,6 +277,8 @@ Tensor MVf(Tensor T, Tensor V){
     	for (size_t k = 0; k < i;++i)
     		listl.emplace_back(std::pair<size_t,size_t>(i,k));
     }
+    XERUS_LOG(info,listl);
+
     std::vector<std::pair<size_t,size_t>> listr;
     for (size_t i = d-1; i >= d/2;--i){
     	listr.emplace_back(std::pair<size_t,size_t>(i,i));
@@ -285,12 +287,14 @@ Tensor MVf(Tensor T, Tensor V){
         for (size_t k = d-1; k > i;--k)
         	listr.emplace_back(std::pair<size_t,size_t>(i,k));
     }
+    XERUS_LOG(info,listr);
+
     size_t countl = 0;
     for (auto pair1 : listl){
 		auto i = pair1.first;
 		auto k = pair1.second;
 	    size_t countr = 0;
-	    for (auto pair2 : listl){
+	    for (auto pair2 : listr){
 	    	auto j = pair2.first;
 	    	auto l = pair2.second;
             MV[{countl+1+d,countr+1+d}] = -getV(V,i,j,k,l);
@@ -318,7 +322,7 @@ Tensor MVf(Tensor T, Tensor V){
         for (size_t i = d-1;i>j;--i){
             size_t countr=0;
             for (size_t k = 1;k< d/2;++k){
-                for (size_t l = 0; l<k;++k){
+                for (size_t l = 0; l<k;++l){
                     MV[{countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2,countl+1+d+(d*d)/4}] = -getV(V,i,j,k,l);
                     countr++;
                 }
