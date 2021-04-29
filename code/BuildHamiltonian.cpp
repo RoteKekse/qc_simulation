@@ -264,76 +264,69 @@ Tensor MVf(Tensor T, Tensor V){
     MV[{0,n-1}] = 1;
     for (size_t i=0; i< d/2;++i){
         MV[{1+i,n-i-2}] = 1;
-        MV[{1+d/2+i,n-2-i-d/2}] = 2;//1;
-        MV[{n-2-i,1+i}] = 3;//1;
-        MV[{n-2-i-d/2,1+d/2+i}] = 4;//1;
+        MV[{1+d/2+i,n-2-i-d/2}] = 1;
+        MV[{n-2-i,1+i}] = 1;
+        MV[{n-2-i-d/2,1+d/2+i}] = 1;
     }
 
-//    listl = []
-//    for i = 1:K÷2
-//        push!(listl,Pair(i,i))
-//        for k = 1:i-1
-//            push!(listl,Pair(k,i))
-//        end
-//        for k = 1:i-1
-//            push!(listl,Pair(i,k))
-//        end
-//    end
-//    listr = []
-//    for i = K:-1:K÷2+1
-//        push!(listr,Pair(i,i))
-//        for k = K:-1:i+1
-//            push!(listr,Pair(k,i))
-//        end
-//        for  k = K:-1:i+1
-//            push!(listr,Pair(i,k))
-//        end
-//    end
-//    countl = 1
-//    for (i,k) ∈ listl
-//        countr = 1
-//        signl = i<=k ? 1.0 : -1.0
-//        for (j,l) ∈ listr
-//            signr = j<=l ? 1.0 : -1.0
-//            val = -getV(V,i,j,k,l)
-//            MV[countl+1+K,countr+1+K] = abs(val) < 0.0 ? 0.0 :  val
-//            countr+=1
-//        end
-//        countl+=1
-//    end
-//
-//    countl = 1
-//    for j = 2:K÷2
-//        for i = 1:j-1
-//            countr=1
-//            for k = K-1:-1:K÷2+1
-//                for l = K:-1:k+1
-//                    val =  -getV(V,i,j,k,l)
-//                    MV[countl+1+K+(K÷2)^2,countr+1+K+(K÷2)^2+binomial(K÷2,2)] = abs(val) < 0.0 ? 0.0 :  val
-//                    countr+=1
-//                end
-//            end
-//            countl+=1
-//        end
-//    end
-//
-//    countl = 1
-//
-//    for j = K-1:-1:K÷2+1
-//        for i = K:-1:j+1
-//            countr=1
-//            for k = 2:K÷2
-//                for l = 1:k-1
-//                    val = -getV(V,i,j,k,l)
-//                    MV[countr+1+K+(K÷2)^2+binomial(K÷2,2),countl+1+K+(K÷2)^2] =  abs(val) < 0.0 ? 0.0 : val
-//                    countr+=1
-//                end
-//            end
-//            countl+=1
-//        end
-//    end
+    std::vector<std::pair<size_t,size_t>> listl;
+    for (size_t i = 0; i< d/2;++i){
+    	list.emplace_back(std::pair<size_t,size_t>(i,i));
+    	for (size_t k = 0; k < i;++i)
+    		list.emplace_back(std::pair<size_t,size_t>(k,i));
+    	for (size_t k = 0; k < i;++i)
+    	    list.emplace_back(std::pair<size_t,size_t>(i,k));
+    }
+    std::vector<std::pair<size_t,size_t>> listr;
+    for (size_t i = d-1; i >= d/2;--i){
+    	list.emplace_back(std::pair<size_t,size_t>(i,i));
+        for (size_t k = d-1; k > i;--k)
+        	list.emplace_back(std::pair<size_t,size_t>(k,i));
+        for (size_t k = d-1; k > i;--k)
+            list.emplace_back(std::pair<size_t,size_t>(i,k));
+    }
+    size_t countl = 0;
+    for (auto pair1 : listl){
+		auto i = pair1.first;
+		auto k = pair1.second;
+	    size_t countr = 0;
+	    for (auto pair2 : listl){
+	    	auto j = pair2.first;
+	    	auto l = pair2.second;
+            MV[{countl+1+d,countr+1+d}] = -getV(V,i,j,k,l);
+            countr++;
+	    }
+        countl++;
+    }
 
+    countl = 0;
+    for (size_t j = 1; j < d/2;++j){
+        for (size_t i = 0;i < j;++i){
+            size_t countr=0;
+            for (size_t k = d-2; k >= d/2;--k){
+                for (size_t l = d-1;l>k;--l){
+                    MV[{countl+1+d+(d*d)/4,countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2}] = -getV(V,i,j,k,l);
+                    countr++;
+                }
+            }
+            countl++;
+        }
+    }
 
+    countl = 0;
+    for (size_t j = d-2;j>=d/2;--j){
+        for (size_t i = d-1;i>j;--i){
+            size_t countr=0;
+            for (size_T k = 1;k< d/2;++k){
+                for (size_t l = 0; l<k;++k){
+                    val = -getV(V,i,j,k,l)
+                    MV[{countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2,countl+1+d+(d*d)/4}] = -getV(V,i,j,k,l);
+                    countr++;
+                }
+            }
+            countl++;
+        }
+    }
 
     return MV;
 }
