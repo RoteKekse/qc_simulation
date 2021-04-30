@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
 	for (size_t i = 0;i < 48;++i){
 		std::vector<size_t> idx(2*48,0);
 		idx[i] = 1; idx[i+48] = 1;
-		XERUS_LOG(info,H[idx]<< " " H_bench[idx]);
+		XERUS_LOG(info,H[idx]<< " " <<H_bench[idx]);
 	}
 
 
