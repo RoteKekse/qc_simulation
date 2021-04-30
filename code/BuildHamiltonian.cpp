@@ -18,16 +18,20 @@ Tensor MVf(Tensor T, Tensor V);
 
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
 value_t getT(Tensor T,size_t i, size_t j);
-
+xerus::Tensor make_H_CH2(size_t nob);
+xerus::Tensor make_V_CH2(size_t nob);
 TTOperator BuildHamil(Tensor T, Tensor V);
 
 int main(int argc, char* argv[]) {
 
 	Tensor T ,V;
 	TTOperator H_bench;
-	read_from_disc("data/T_H2O_48_bench_single.tensor", T);
-	read_from_disc("data/V_H2O_48_bench_single.tensor", V);
-	read_from_disc("data/hamiltonian_H2O_48_full_benchmark.ttoperator", H_bench);
+	size_t nob = 13;
+	T = make_H_CH2(nob);
+	V = make_H_CH2(nob);
+
+
+	read_from_disc("data/hamiltonian_CH2_26_full.ttoperator", H_bench);
 
 	XERUS_LOG(info, "T dimensions  " << T.dimensions);
 	XERUS_LOG(info, "V dimensions  " << V.dimensions);
@@ -476,3 +480,47 @@ value_t returnVValue(Tensor V, size_t i, size_t k, size_t j, size_t l){
 
 	return 1.0;
 }
+
+xerus::Tensor make_H_CH2(size_t nob){
+	auto H = xerus::Tensor({nob,nob});
+	std::string line;
+	std::ifstream input;
+	input.open ("FCIDUMP.ch2_13");
+	size_t count = 0;
+	while ( std::getline (input,line) )
+	{
+		count++;
+		if (count > 4){
+			std::vector<std::string> l;
+			boost::algorithm::split_regex( l, line, boost::regex( "  " ) ) ;
+			if (std::stoi(l[1]) != 0 && std::stoi(l[3]) == 0){
+				H[{static_cast<size_t>(std::stoi(l[1]))-1,static_cast<size_t>(std::stoi(l[2]))-1}] = stod(l[0]);
+	    }
+		}
+	}
+	input.close();
+	return H;
+}
+
+
+xerus::Tensor make_V_CH2(size_t nob){
+	auto V = xerus::Tensor({nob,nob,nob,nob});
+	std::string line;
+	std::ifstream input;
+	input.open ("FCIDUMP.ch2_13");
+	size_t count = 0;
+	while ( std::getline (input,line) )
+	{
+		count++;
+		if (count > 4){
+			std::vector<std::string> l;
+			boost::algorithm::split_regex( l, line, boost::regex( "  " ) ) ;
+			if (std::stoi(l[1]) != 0 && std::stoi(l[3]) != 0){
+				V[{static_cast<size_t>(std::stoi(l[1]))-1,static_cast<size_t>(std::stoi(l[2]))-1,static_cast<size_t>(std::stoi(l[3]))-1,static_cast<size_t>(std::stoi(l[4]))-1}] = stod(l[0]);
+			}
+		}
+	}
+
+	return V;
+}
+
