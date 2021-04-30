@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
 	H.round(0.0);
 	XERUS_LOG(info, "H ranks       " << H.ranks());
 	XERUS_LOG(info, "H error " << (H-H_bench).frob_norm()/H_bench.frob_norm());
-	for (size_t i = 0;i < 2*nob;++i){
+	for (size_t i = 4;i < 2*nob;++i){
 		for (size_t j = 0; j< 2*nob;++j){
 			for (size_t k = 0; k< 2*nob;++k){
 				for (size_t l = 0; l< 2*nob;++l){
