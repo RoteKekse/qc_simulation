@@ -44,13 +44,17 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info, "H ranks       " << H.ranks());
 	H.round(0.0);
 	XERUS_LOG(info, "H ranks       " << H.ranks());
-
+	XERUS_LOG(info, "H error" << (H-H_bench).frob_norm());
 	for (size_t i = 0;i < 2*nob;++i){
 		for (size_t j = 0; j< 2*nob;++j){
-			std::vector<size_t> idx(4*nob,0);
-			idx[i] = 1; idx[j] = 1; idx[i+2*nob] = 1;idx[j+2*nob] = 1;
-			if (std::abs(H[idx]-H_bench[idx]) > 1e-8)
-				XERUS_LOG(info,idx << "\n" << H[idx]<< " " <<H_bench[idx]);
+			for (size_t k = 0; k< 2*nob;++k){
+				for (size_t l = 0; l< 2*nob;++l){
+					std::vector<size_t> idx(4*nob,0);
+					idx[i] = 1; idx[j] = 1; idx[k+2*nob] = 1;idx[l+2*nob] = 1;
+					if (std::abs(H[idx]-H_bench[idx]) > 1e-8)
+						XERUS_LOG(info,idx << "\n" << H[idx]<< " " <<H_bench[idx]);
+				}
+			}
 		}
 	}
 
