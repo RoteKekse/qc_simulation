@@ -51,8 +51,11 @@ int main(int argc, char* argv[]) {
 				for (size_t l = 0; l< 2*nob;++l){
 					std::vector<size_t> idx(4*nob,0);
 					idx[i] = 1; idx[j] = 1; idx[k+2*nob] = 1;idx[l+2*nob] = 1;
-					if (std::abs(H[idx]-H_bench[idx]) > 1e-8)
-						XERUS_LOG(info,i << " " << j << " " <<k << " " <<l << " " << H[idx]<< " " <<H_bench[idx]);
+					if (std::abs(H[idx]-H_bench[idx]) > 1e-10){
+						value_t correct = getV(i,j,k,l);
+
+						XERUS_LOG(info,i << " " << j << " " <<k << " " <<l << " " << H[idx]<< " " <<H_bench[idx] << " " << correct);
+					}
 				}
 			}
 		}
