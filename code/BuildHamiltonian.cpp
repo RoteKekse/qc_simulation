@@ -432,7 +432,7 @@ size_t getsizeV22(size_t i,size_t d){
 }
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
 	value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
-	bool flip = (i < j && k < l) || (j < i && l < k);
+	bool flip = (i < j && l < k) || (j < i && k < l);
 	//value_t val = 100000+1000*i+100*j+10*k+l;
 	//return Tensor::random({1})[0];
     return flip ?  -0.5*val : 0.5*val;
