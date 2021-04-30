@@ -34,7 +34,8 @@ int main(int argc, char* argv[]) {
 
 	H.round(1e-14);
 	XERUS_LOG(info,H.ranks());
-
+	for (size_t i = 0;i < 8;++i)
+		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
 
 
 //	const auto geom = argv[1];
@@ -410,12 +411,14 @@ size_t getsizeV22(size_t i,size_t d){
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
 	//value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
     value_t val = 100000+1000*i+100*j+10*k+l;
-	return val;
+	return Tensor::random({1})[0];
+    //return val;
 }
 value_t getT(Tensor T,size_t i, size_t j){
 	//value_t val = returnTValue(T, i, j);
 	value_t val = 100000+10*i+j;
-	return val;
+	return Tensor::random({1})[0];
+	//return val;
 }
 
 
