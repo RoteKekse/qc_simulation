@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 	TTOperator H_bench;
 	size_t nob = 13;
 	T = make_H_CH2(nob);
-	V = make_H_CH2(nob);
+	V = make_V_CH2(nob);
 
 
 	read_from_disc("data/hamiltonian_CH2_26_full.ttoperator", H_bench);
