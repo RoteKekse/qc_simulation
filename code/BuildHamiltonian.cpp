@@ -28,7 +28,9 @@ int main(int argc, char* argv[]) {
 
 	auto H = BuildHamil(T,V);
 	XERUS_LOG(info,H.ranks());
-	XERUS_LOG(info,H[{1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0}]);
+	for (size_t i = 0;i < 8;++i)
+		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
+
 
 	H.round(1e-14);
 	XERUS_LOG(info,H.ranks());
