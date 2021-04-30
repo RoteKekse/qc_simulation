@@ -38,12 +38,11 @@ int main(int argc, char* argv[]) {
 
 	XERUS_LOG(info, "T dimensions  " << T.dimensions);
 	XERUS_LOG(info, "V dimensions  " << V.dimensions);
-	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 
 	auto H = BuildHamil(T,V);
+	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 	XERUS_LOG(info, "H ranks       " << H.ranks());
 
-	XERUS_LOG(info,H.ranks());
 	for (size_t i = 0;i < 2*nob;++i){
 		std::vector<size_t> idx(4*nob,0);
 		idx[i] = 1; idx[i+2*nob] = 1;
@@ -93,7 +92,6 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 	H.set_component(0,comp);
 
 	for (size_t i = 1; i < d/2;++i){
-		XERUS_LOG(info,i);
 		comp1 = V11f(i,d);
 		comp2 = V12f(i,T,V);
 		auto comp3 = V22f(i,d);
@@ -111,7 +109,6 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 	comp.use_sparse_representation();
 	H.set_component(d-1,comp);
 	for (size_t i = d-2; i >= d/2;--i){
-		XERUS_LOG(info,i);
 
 		comp1 = V11f(i,d);
 		comp2 = V21f(i,T,V);
