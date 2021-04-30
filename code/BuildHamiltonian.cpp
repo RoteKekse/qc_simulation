@@ -33,16 +33,13 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info, "V dimensions  " << V.dimensions);
 	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 
-//	auto H = BuildHamil(T,V);
-//	XERUS_LOG(info,H.ranks());
-//	for (size_t i = 0;i < 8;++i)
-//		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
-//
-//
-//	H.round(0.0);
-//	XERUS_LOG(info,H.ranks());
-//	for (size_t i = 0;i < 8;++i)
-//		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
+	auto H = BuildHamil(T,V);
+	XERUS_LOG(info,H.ranks());
+	for (size_t i = 0;i < 48;++i){
+		std::vector<size_t> idx(2*48,0);
+		idx[i] = 1; idx[i+48] = 1;
+		XERUS_LOG(info,H[idx]<< " " H_bench[idx]);
+	}
 
 
 //	const auto geom = argv[1];
