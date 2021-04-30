@@ -1,0 +1,8 @@
+*.out
+*.tensor
+*.tttensor
+*.ttoperator
+*.dat
+*.m*
+/Debug/
+.project
