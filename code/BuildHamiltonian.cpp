@@ -72,13 +72,9 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 
     auto comp1 = V11f(0,d);
 	auto comp2 = V12f(0,T,V);
-	XERUS_LOG(info,comp1.is_sparse());
-	XERUS_LOG(info,comp2.is_sparse());
 
 	Tensor comp({comp1.dimensions[0],2,2,comp1.dimensions[3]+comp2.dimensions[3]});
-	XERUS_LOG(info,comp.is_sparse());
 	comp.offset_add(comp1,{0,0,0,0});
-	XERUS_LOG(info,comp.is_sparse());
 	comp.offset_add(comp2,{0,0,0,comp1.dimensions[3]});
 	XERUS_LOG(info,comp.is_sparse());
 
@@ -123,6 +119,8 @@ Tensor V11f(size_t i,size_t d){
 	if (reverse)
 		i = d-1-i;
 	Tensor comp({i == 0 ? 1 : getsizeV11(i-1),2,2,getsizeV11(i)});
+	XERUS_LOG(info,comp.is_sparse());
+
 	comp[{0,0,0,0}] = 1; comp[{0,1,1,0}] = 1;
 	comp[{0,1,0,i+1}] = 1;
 	comp[{0,0,1,2*(i+1)}] = 1;
@@ -135,19 +133,27 @@ Tensor V11f(size_t i,size_t d){
 		comp[{j+i+1,1,0,j+1+i*i+ 3*(i+1)}] = 1;
 		comp[{j+i+1,0,1,j+1+i*i+ 5*(i+1)+i*(i-1)-2}] = 1;
 	}
+	XERUS_LOG(info,comp.is_sparse());
+
 	for(size_t j = 0; j < i*i;++j){
 		comp[{j+1+2*i,0,0,j+1+2*(i+1)}] = 1;comp[{j+1+2*i,1,1,j+1+2*(i+1)}] = 1;
 	}
+	XERUS_LOG(info,comp.is_sparse());
+
 	for(size_t j = 0;  j <i*(i-1)/2; ++j){
 		comp[{j+1+2*i+i*i,0,0,j+i*i+ 4*(i+1)}] = 1; comp[{j+1+2*i+i*i,1,1,j+i*i+ 4*(i+1)}] = -1;
 		comp[{j+1+2*i+i*i+i*(i-1)/2,0,0,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2}] = 1; comp[{j+1+2*i+i*i+i*(i-1)/2,1,1,j+1+i*i+ 5*(i+1)+i*(i-1)/2-2}] = -1;
 	}
+	XERUS_LOG(info,comp.is_sparse());
+
 
 	if (reverse){
 		Index i1,j1,k1,l1;
 		comp(i1,k1,l1,j1) = comp(j1,k1,l1,i1);
 		return comp;
 	}
+	XERUS_LOG(info,comp.is_sparse());
+
 	return comp;
 }
 
