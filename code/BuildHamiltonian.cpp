@@ -42,6 +42,8 @@ int main(int argc, char* argv[]) {
 	auto H = BuildHamil(T,V);
 	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 	XERUS_LOG(info, "H ranks       " << H.ranks());
+	H.round(0.0);
+	XERUS_LOG(info, "H ranks       " << H.ranks());
 
 	for (size_t i = 0;i < 2*nob;++i){
 		std::vector<size_t> idx(4*nob,0);
