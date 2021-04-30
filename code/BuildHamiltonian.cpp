@@ -23,19 +23,26 @@ TTOperator BuildHamil(Tensor T, Tensor V);
 
 int main(int argc, char* argv[]) {
 
-	Tensor T = Tensor::random({4,4});
-	Tensor V = Tensor::random({4,4,4,4});
+	Tensor T ,V;
+	TTOperator H_bench;
+	read_from_disc("data/T_H2O_48_bench_single.tensor", T);
+	read_from_disc("data/V_H2O_48_bench_single.tensor", V);
+	read_from_disc("data/hamiltonian_H2O_48_full_benchmark.ttoperator", H_bench);
 
-	auto H = BuildHamil(T,V);
-	XERUS_LOG(info,H.ranks());
-	for (size_t i = 0;i < 8;++i)
-		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
+	XERUS_LOG(info, "T dimensions  " << T.dimensions);
+	XERUS_LOG(info, "V dimensions  " << V.dimensions);
+	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 
-
-	H.round(0.0);
-	XERUS_LOG(info,H.ranks());
-	for (size_t i = 0;i < 8;++i)
-		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
+//	auto H = BuildHamil(T,V);
+//	XERUS_LOG(info,H.ranks());
+//	for (size_t i = 0;i < 8;++i)
+//		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
+//
+//
+//	H.round(0.0);
+//	XERUS_LOG(info,H.ranks());
+//	for (size_t i = 0;i < 8;++i)
+//		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
 
 
 //	const auto geom = argv[1];
@@ -178,7 +185,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t i = 0; i < n;++i){
     	comp[{1+i,0,1,getsizeV22(n,d)-1}] = getT(T,i,n); // A
         for (size_t l = n+1; l < d; ++l)
-            comp[{1+i,1,1,l-(n+1)}] = -getV(V,i,n,n,l); //(val,:AtAplus)
+            comp[{1+i,1,1,l-(n+1)}] = getV(V,i,n,n,l); //(val,:AtAplus)
     }
 	for (size_t l = 0; l <n;++l){
     	comp[{l+n+1,1,0,getsizeV22(n,d)-1}] = getT(T,n,l); // A^*
@@ -198,10 +205,10 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     	auto i = pair.first;
     	auto k = pair.second;
         for (size_t l =n+1; l<d; ++l)
-            comp[{count+ 2*n+1,1,0,l-(n+1)}]  =-getV(V,i,n,k,l);//  (val,:Alrstar)
+            comp[{count+ 2*n+1,1,0,l-(n+1)}]  =getV(V,i,n,k,l);//  (val,:Alrstar)
         for (size_t j = n+1; j<d;++j)
-            comp[{count+ 2*n+1,0,1,d-2*(n+1)+j}] =-getV(V,i,j,k,n);//  (val,:Alr)
-        comp[{count+ 2*n+1,1,1,getsizeV22(n,d)-1}]= -getV(V,i,n,k,n); // (val,:AtAr)
+            comp[{count+ 2*n+1,0,1,d-2*(n+1)+j}] =getV(V,i,j,k,n);//  (val,:Alr)
+        comp[{count+ 2*n+1,1,1,getsizeV22(n,d)-1}]= getV(V,i,n,k,n); // (val,:AtAr)
         count++;
     }
 
@@ -209,7 +216,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t j = 1; j < n;++j){
         for (size_t i = 0; i < j;++i){
             for (size_t l = n+1; l<d;++l)
-                comp[{count+ 2*n+1+n*n,0,1,l-(n+1)}] =-getV(V,i,j,n,l); //  (val, :Arm)
+                comp[{count+ 2*n+1+n*n,0,1,l-(n+1)}] =getV(V,i,j,n,l); //  (val, :Arm)
             count++;
         }
     }
@@ -218,7 +225,7 @@ Tensor V12f(size_t n, Tensor T, Tensor V){
     for (size_t l = 1; l<n;++l){
         for (size_t k = 0; k <l;++k){
             for (size_t j = n+1; j < d;++j)
-                comp[{count+ 2*n+1+n*n+n*(n-1)/2,1,0,d-2*(n+1)+j}]=-getV(V,n,j,k,l); //  (val, :Armstar)
+                comp[{count+ 2*n+1+n*n+n*(n-1)/2,1,0,d-2*(n+1)+j}]=getV(V,n,j,k,l); //  (val, :Armstar)
             count++;
         }
     }
@@ -238,7 +245,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
         size_t countl = 0;
         comp[{1+counti,0,1,getsizeV22(n1,d)-1}] = getT(T,i,n); // A
         for (size_t l = n;l>0; --l){
-            comp[{1+counti,1,1,countl}] = -getV(V,i,n,n,l-1) ;//  (val, :AtAminus)
+            comp[{1+counti,1,1,countl}] = getV(V,i,n,n,l-1) ;//  (val, :AtAminus)
             countl++;
 		}
         counti++;
@@ -268,15 +275,15 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
 		auto k = pair.second;
         size_t countl = 0;
         for (size_t l = n;l>0;--l){
-            comp[{count+ 2*n1+1,1,0,countl}] =  -getV(V,i,n,k,l-1); //  (val,:Arlstar)
+            comp[{count+ 2*n1+1,1,0,countl}] =  getV(V,i,n,k,l-1); //  (val,:Arlstar)
             countl++;
         }
         size_t countj = 0;
         for (size_t j = n;j>0;--j){
-            comp[{count+ 2*n1+1,0,1,n+countj}] =-getV(V,i,j-1,k,n); // (val, :Arl)
+            comp[{count+ 2*n1+1,0,1,n+countj}] =getV(V,i,j-1,k,n); // (val, :Arl)
             countj++;
         }
-        comp[{count+ 2*n1+1,1,1,getsizeV22(n1,d)-1}] = -getV(V,i,n,k,n); //  (val,:AtAl)
+        comp[{count+ 2*n1+1,1,1,getsizeV22(n1,d)-1}] = getV(V,i,n,k,n); //  (val,:AtAl)
         count++;
     }
 
@@ -285,7 +292,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
         for (size_t i = d-1;i>j;--i){
             size_t countl = 0;
             for (size_t l = n;l>0;--l){
-                comp[{count+ 2*n1+1+n1*n1,0,1,countl}] = -getV(V,i,j,n,l-1);//  (val,:Alm)
+                comp[{count+ 2*n1+1+n1*n1,0,1,countl}] = getV(V,i,j,n,l-1);//  (val,:Alm)
                 countl++;
             }
             count++;
@@ -297,7 +304,7 @@ Tensor V21f(size_t n,Tensor T, Tensor V){
         for (size_t k = d-1; k>l;--k){
             size_t countj=0;
             for (size_t j = n;j>0;--j){
-                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,1,0,n+countj}] = -getV(V,n,j-1,k,l);//  (val,:Almstar)
+                comp[{count+ 2*n1+1+n1*n1+n1*(n1-1)/2,1,0,n+countj}] = getV(V,n,j-1,k,l);//  (val,:Almstar)
                 countj++;
             }
             count++;
@@ -365,7 +372,7 @@ Tensor MVf(Tensor T, Tensor V){
 	    for (auto pair2 : listr){
 	    	auto j = pair2.first;
 	    	auto l = pair2.second;
-            MV[{countl+1+d,countr+1+d}] = -getV(V,i,j,k,l);
+            MV[{countl+1+d,countr+1+d}] = getV(V,i,j,k,l);
             countr++;
 	    }
         countl++;
@@ -379,7 +386,7 @@ Tensor MVf(Tensor T, Tensor V){
             countr=0;
             for (size_t k = d-2; k >= d/2;--k){
                 for (size_t l = d-1;l>k;--l){
-                    MV[{countl+1+d+(d*d)/4,countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2}] = -getV(V,i,j,k,l);
+                    MV[{countl+1+d+(d*d)/4,countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2}] = getV(V,i,j,k,l);
                     countr++;
                 }
             }
@@ -393,7 +400,7 @@ Tensor MVf(Tensor T, Tensor V){
             countr=0;
             for (size_t k = 1;k< d/2;++k){
                 for (size_t l = 0; l<k;++l){
-                    MV[{countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2,countl+1+d+(d*d)/4}] = -getV(V,i,j,k,l);
+                    MV[{countr+1+d+(d*d)/4+((d/2)*(d/2-1))/2,countl+1+d+(d*d)/4}] = getV(V,i,j,k,l);
                     countr++;
                 }
             }
@@ -413,16 +420,17 @@ size_t getsizeV22(size_t i,size_t d){
     return 1+2*(d-i-1);
 }
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
-	//value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
-    value_t val = 100000+1000*i+100*j+10*k+l;
-	return Tensor::random({1})[0];
-    //return val;
+	value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
+	bool flip = (i < j && k < l) || (j < i && l < k);
+	//value_t val = 100000+1000*i+100*j+10*k+l;
+	//return Tensor::random({1})[0];
+    return flip ?  -0.5*val : 0.5*val;
 }
 value_t getT(Tensor T,size_t i, size_t j){
-	//value_t val = returnTValue(T, i, j);
-	value_t val = 100000+10*i+j;
-	return Tensor::random({1})[0];
-	//return val;
+	value_t val = returnTValue(T, i, j);
+	//value_t val = 100000+10*i+j;
+	//return Tensor::random({1})[0];
+	return val;
 }
 
 
