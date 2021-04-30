@@ -41,10 +41,12 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 
 	auto H = BuildHamil(T,V);
+	XERUS_LOG(info, "H ranks       " << H.ranks());
+
 	XERUS_LOG(info,H.ranks());
-	for (size_t i = 0;i < 48;++i){
-		std::vector<size_t> idx(2*48,0);
-		idx[i] = 1; idx[i+48] = 1;
+	for (size_t i = 0;i < 2*nob;++i){
+		std::vector<size_t> idx(4*nob,0);
+		idx[i] = 1; idx[i+2*nob] = 1;
 		XERUS_LOG(info,H[idx]<< " " <<H_bench[idx]);
 	}
 
