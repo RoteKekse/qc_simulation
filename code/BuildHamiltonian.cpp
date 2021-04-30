@@ -2,6 +2,9 @@
 #include <classes/helpers.cpp>
 #include <classes/loading_tensors.cpp>
 
+#include <boost/regex.hpp>
+#include <boost/algorithm/string_regex.hpp>
+
 using namespace xerus;
 using xerus::misc::operator<<;
 
