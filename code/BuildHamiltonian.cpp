@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 	for (size_t i = 0;i < 2*nob;++i){
 		for (size_t j = 0; j< 2*nob;++j){
 			std::vector<size_t> idx(4*nob,0);
-			idx[i] = 1; idx[j+2*nob] = 1;
+			idx[i] = 1; idx[j] = 1; idx[i+2*nob] = 1;idx[j+2*nob] = 1;
 			if (std::abs(H[idx]-H_bench[idx]) > 1e-8)
 				XERUS_LOG(info,idx << "\n" << H[idx]<< " " <<H_bench[idx]);
 		}
@@ -441,8 +441,8 @@ value_t getT(Tensor T,size_t i, size_t j){
 	value_t val = returnTValue(T, i, j);
 	//value_t val = 100000+10*i+j;
 	//return Tensor::random({1})[0];
-	return 0;
-	//return val;
+	//return 0;
+	return val;
 }
 
 
