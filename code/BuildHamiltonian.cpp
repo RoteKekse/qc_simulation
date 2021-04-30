@@ -441,7 +441,8 @@ value_t getT(Tensor T,size_t i, size_t j){
 	value_t val = returnTValue(T, i, j);
 	//value_t val = 100000+10*i+j;
 	//return Tensor::random({1})[0];
-	return val;
+	return 0;
+	//return val;
 }
 
 
