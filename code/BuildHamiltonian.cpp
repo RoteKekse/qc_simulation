@@ -54,6 +54,15 @@ int main(int argc, char* argv[]) {
 					if (std::abs(H[idx]-H_bench[idx]) > 1e-10){
 						value_t correct = getV(V,i,j,k,l);
 
+						if (i ==k)
+							correct += getT(T,j,l);
+						if (i ==l)
+							correct += getT(T,j,k);
+						if (j ==k)
+							correct += getT(T,i,l);
+						if (j ==l)
+							correct += getT(T,i,k);
+
 						XERUS_LOG(info,i << " " << j << " " <<k << " " <<l << " " << H[idx]<< " " <<H_bench[idx] << " " << correct);
 					}
 				}
