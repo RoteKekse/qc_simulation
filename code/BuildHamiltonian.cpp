@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
 		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
 
 
-	H.round(1e-14);
+	H.round(0.0);
 	XERUS_LOG(info,H.ranks());
 	for (size_t i = 0;i < 8;++i)
 		XERUS_LOG(info,"Sparse? " << i << " " << H.get_component(i).is_sparse());
