@@ -407,12 +407,12 @@ size_t getsizeV22(size_t i,size_t d){
 }
 value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
 	//value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
-    value_t val = 1000000+1000*i+100*j+10*k+l;
+    value_t val = 100000+1000*i+100*j+10*k+l;
 	return val;
 }
 value_t getT(Tensor T,size_t i, size_t j){
 	//value_t val = returnTValue(T, i, j);
-	value_t val = 1000000+10*i+j;
+	value_t val = 100000+10*i+j;
 	return val;
 }
 
