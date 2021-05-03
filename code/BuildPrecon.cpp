@@ -222,7 +222,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 			aa[{0,1,1,0}] = fac*fac2;
 			tmp.set_component(i,aa);
 		}
-		XERUS_LOG(info,tmp.ranks());
+		XERUS_LOG(info,j << " " << tmp.ranks());
 		result += tmp;
 	}
 	return result;
