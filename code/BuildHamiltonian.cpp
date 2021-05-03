@@ -29,17 +29,21 @@ int main(int argc, char* argv[]) {
 
 	Tensor T ,V;
 	TTOperator H_bench;
-	size_t nob = 13;
-	T = make_H_CH2(nob);
-	V = make_V_CH2(nob);
+	size_t nob = 24;
+//	T = make_H_CH2(nob);
+//	V = make_V_CH2(nob);
+//
 
-
-	read_from_disc("data/hamiltonian_CH2_26_full.ttoperator", H_bench);
+	read_from_disc("data/T_H2O_48_bench_single.tensor", T);
+	read_from_disc("data/V_H2O_48_bench_single.tensor", V);
+	read_from_disc("data/hamiltonian_H2O_48_full_benchmark.ttoperator", H_bench);
 
 	XERUS_LOG(info, "T dimensions  " << T.dimensions);
 	XERUS_LOG(info, "V dimensions  " << V.dimensions);
 
 	auto H = BuildHamil(T,V);
+
+	write_to_disc("data/hamiltonian_H2O_48_full_new.ttoperator", H);
 	XERUS_LOG(info, "H_bench ranks " << H_bench.ranks());
 	XERUS_LOG(info, "H ranks       " << H.ranks());
 	H.round(0.0);
@@ -113,6 +117,7 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 	H.set_component(0,comp);
 
 	for (size_t i = 1; i < d/2;++i){
+		XERUS_LOG(info,i);
 		comp1 = V11f(i,d);
 		comp2 = V12f(i,T,V);
 		auto comp3 = V22f(i,d);
@@ -130,6 +135,7 @@ TTOperator BuildHamil(Tensor T, Tensor V){
 	comp.use_sparse_representation();
 	H.set_component(d-1,comp);
 	for (size_t i = d-2; i >= d/2;--i){
+		XERUS_LOG(info,i);
 
 		comp1 = V11f(i,d);
 		comp2 = V21f(i,T,V);
