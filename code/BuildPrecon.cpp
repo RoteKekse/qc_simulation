@@ -227,6 +227,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 		}
 	}
 	XERUS_LOG(info,"sum = " << sum);
+	XERUS_LOG(info,"shift = " << shift_vec);
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		beta = get_beta(j);
