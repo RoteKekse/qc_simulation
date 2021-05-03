@@ -209,16 +209,33 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 	int k_int = static_cast<int>(k);
 	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim);
 
-
+	std::vector<value_t> shift_vec(dim,0.0);
+	value_t sum;
+	size_t count = 0;
+	for (size:t i = 0 ; i < dim; ++i){
+		if (coeffs[i] < 0){
+			shift_vec[i] = -coeffs[i];
+			sum -= coeffs[i];
+			count++;
+		}
+	}
+	value_t rest_shift = (shift - sum)/ static_cast<value_t>(dim-count);
+	for (size:t i = 0 ; i < dim; ++i){
+		if (coeffs[i] >= 0){
+			shift_vec[i] = rest_shift;
+			sum+=rest_shift;
+		}
+	}
+	XERUS_LOG(info,"sum = " << sum);
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		beta = get_beta(j);
 		fac =  get_gamma(j,dim);
 		XERUS_LOG(info,"j = " << j << " " << tmp.frob_norm() << " " << fac << " " << beta);
 		for (size_t i = 0; i < dim; ++i){
-			fac2 = std::exp(-beta*(coeffs[i]+shift/dim_v));
-			fac3 = std::exp(-beta*shift/dim_v);
-			XERUS_LOG(info,i << " " << fac2 << " "<< coeffs[i]<< " " << coeffs[i]+shift/dim_v <<" " << fac3);
+			fac2 = std::exp(-beta*(coeffs[i]+shift_vec[i]));
+			fac3 = std::exp(-beta*shift_vec[i]/dim_v);
+			XERUS_LOG(info,i << " " << fac2 << " "<< coeffs[i]<< " " << coeffs[i]+shift_vec[i]/dim_v <<" " << fac3);
 
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,0,0,0}] = fac*fac3;
