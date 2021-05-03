@@ -6,5 +6,7 @@ g++ -std=c++14 -g -o  build/get_2elec_int.out code/Create2ParticleOperator.cc  -
 g++ -std=c++14 -g -o  build/basistransform.out code/BasisTransform.cpp  -lint2 -lpthread -lxerus -lxerus_misc
 g++ -std=c++14 -g -o  build/builhamil.out code/BuildHamiltonian.cpp   -lxerus -lxerus_misc
 
+g++ -g -std=c++11 -fext-numeric-literals -DARPACK_LIBRARIES -o build/buildprecon.out BuildPrecon.cpp   -lxerus -lxerus_misc -lboost_regex -fopenmp
+
 
 
