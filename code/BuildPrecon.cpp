@@ -1,5 +1,5 @@
 #include <xerus.h>
-//#include <Eigen/Dense>
+#include <Eigen/Dense>
 #include <vector>
 #include <fstream>
 #include <ctime>
