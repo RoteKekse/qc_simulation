@@ -25,6 +25,7 @@ template<typename M>
 M load_csv (const std::string & path);
 
 TTOperator build_Fock_op_inv(std::vector<value_t>coeffs, size_t k, double shift);
+TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
 
 
@@ -33,6 +34,10 @@ value_t get_tj(int j, size_t k);
 value_t get_wj(int j, size_t k);
 value_t minimal_ev(std::vector<value_t> coeffs);
 value_t maximal_ev(std::vector<value_t> coeffs);
+
+value_t get_gamma(int k);
+value_t get_beta(int k);
+
 
 
 int main(int argc, char* argv[]) {
@@ -73,10 +78,64 @@ int main(int argc, char* argv[]) {
 	Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
 
-	XERUS_LOG(info,Fock_inv.ranks());
+
+	TTOperator Fock_inv2 = build_Fock_op_inv(HFev, k, shift);
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
+	Fock_inv.round(0.0);
+	write_to_disc(name,Fock_inv2);
+	XERUS_LOG(info,Fock_inv2.ranks());
+
+
+	xerus::Index ii,jj,kk,ll,i1,i2,i3,i4,j1,j2,j3,j4,k1,k2,k3,k4;
+	TTOperator test, Fock = build_Fock_op(HFev);
+	Fock += shift*TTOperator::identity(std::vector<size_t>(4*nob,2));
+
+	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
+	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test.move_core(0);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+
+
+	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
+	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test.move_core(0);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
 	return 0;
+}
+
+
+TTOperator build_Fock_op(std::vector<value_t> coeffs){
+	size_t dim = coeffs.size();
+
+	TTOperator result(std::vector<size_t>(2*dim,2));
+	size_t comp = 0;
+	auto id = xerus::Tensor::identity({2,2});
+	id.reinterpret_dimensions({1,2,2,1});
+	auto aa = xerus::Tensor({1,2,2,1});
+	aa[{0,1,1,0}] = 1.0;
+	for (size_t comp = 0; comp < dim; ++comp){
+		value_t coeff = coeffs[comp];
+		if (comp == 0){
+				Tensor tmp = Tensor({1,2,2,2});
+				tmp.offset_add(id,{0,0,0,0});
+				tmp.offset_add(coeff*aa,{0,0,0,1});
+				result.set_component(comp,tmp);
+		} else if (comp == dim - 1){
+			Tensor tmp = Tensor({2,2,2,1});
+			tmp.offset_add(coeff*aa,{0,0,0,0});
+			tmp.offset_add(id,{1,0,0,0});
+			result.set_component(comp,tmp);
+		} else {
+			Tensor tmp = Tensor({2,2,2,2});
+			tmp.offset_add(id,{0,0,0,0});
+			tmp.offset_add(coeff*aa,{0,0,0,1});
+			tmp.offset_add(id,{1,0,0,1});
+			result.set_component(comp,tmp);
+		}
+	}
+	return result;
 }
 
 
@@ -139,6 +198,41 @@ value_t maximal_ev(std::vector<value_t> coeffs){
 		lambda += (coeff < 0 ? 0 : coeff);
 	}
 	return lambda;
+}
+
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift){
+	xerus::Index ii,jj,kk,ll;
+	size_t dim = coeffs.size();
+	TTOperator result(std::vector<size_t>(2*dim,2));
+	int k_int = static_cast<int>(k);
+	value_t fac,fac2,beta,gamma,dim_v = static_cast<value_t>(dim);
+
+
+	for ( int j = -k_int; j <=k_int; ++j){
+		TTOperator tmp(std::vector<size_t>(2*dim,2));
+		beta = get_beta(j);
+		gamma = get_gamma(j);
+		fac = std::exp(-beta*shift/dim_v)*std::pow(gamma, 1.0/dim_v);
+		for (size_t i = 0; i < dim; ++i){
+			fac2 = std::exp(-beta*coeff[i]);
+			auto aa = xerus::Tensor({1,2,2,1});
+			aa[{0,0,0,0}] = fac;
+			aa[{0,1,1,0}] = fac*fac2;
+			tmp.set_component(i,aa);
+		}
+		result += tmp;
+	}
+	return result;
+}
+
+
+value_t get_gamma(int k){
+	value_t h = 0.5;
+	return std::exp(static_cast<value_t>(k)*h);
+}
+value_t get_beta(int k){
+	value_t h = 0.5;
+	return h*std::exp(static_cast<value_t>(k)*h);
 }
 
 template<typename M>
