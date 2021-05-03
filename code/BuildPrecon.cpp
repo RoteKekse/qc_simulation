@@ -78,6 +78,7 @@ int main(int argc, char* argv[]) {
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
+	XERUS_LOG(info,Fock_inv.ranks());
 
 
 	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, shift);
