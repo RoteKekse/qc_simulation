@@ -212,7 +212,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 	std::vector<value_t> shift_vec(dim,0.0);
 	value_t sum;
 	size_t count = 0;
-	for (size:t i = 0 ; i < dim; ++i){
+	for (size_t i = 0 ; i < dim; ++i){
 		if (coeffs[i] < 0){
 			shift_vec[i] = -coeffs[i];
 			sum -= coeffs[i];
@@ -220,7 +220,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 		}
 	}
 	value_t rest_shift = (shift - sum)/ static_cast<value_t>(dim-count);
-	for (size:t i = 0 ; i < dim; ++i){
+	for (size_t i = 0 ; i < dim; ++i){
 		if (coeffs[i] >= 0){
 			shift_vec[i] = rest_shift;
 			sum+=rest_shift;
