@@ -16,10 +16,9 @@ using namespace xerus;
 using namespace Eigen;
 using xerus::misc::operator<<;
 
-typedefs
 typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
     Mat;  // import dense, dynamically sized Matrix type from Eigen;
-              this is a matrix with row-major storage
+//              this is a matrix with row-major storage
 
 
 template<typename M>
