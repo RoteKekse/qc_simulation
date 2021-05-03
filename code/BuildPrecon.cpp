@@ -233,7 +233,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 		fac =  get_gamma(j,dim);
 		for (size_t i = 0; i < dim; ++i){
 			fac2 = std::exp(-beta*(coeffs[i]+shift_vec[i]));
-			fac3 = std::exp(-beta*shift_vec[i]/dim_v);
+			fac3 = std::exp(-beta*shift_vec[i]);
 			//XERUS_LOG(info,i << " " << fac2 << " "<< coeffs[i]<< " " << coeffs[i]+shift_vec[i]/dim_v <<" " << fac3);
 
 			auto aa = xerus::Tensor({1,2,2,1});
