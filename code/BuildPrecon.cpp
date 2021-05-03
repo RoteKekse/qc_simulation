@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
 
 
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, double shift){
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
