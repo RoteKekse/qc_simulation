@@ -25,6 +25,7 @@ template<typename M>
 M load_csv (const std::string & path);
 
 TTOperator build_Fock_op_inv(std::vector<value_t>coeffs, size_t k, double shift);
+TTOperator build_Fock_op_inv2(std::vector<value_t>coeffs, size_t k, double shift);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
 
@@ -79,9 +80,9 @@ int main(int argc, char* argv[]) {
 	write_to_disc(name,Fock_inv);
 
 
-	TTOperator Fock_inv2 = build_Fock_op_inv(HFev, k, shift);
+	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, shift);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
-	Fock_inv.round(0.0);
+	Fock_inv2.round(0.0);
 	write_to_disc(name,Fock_inv2);
 	XERUS_LOG(info,Fock_inv2.ranks());
 
@@ -200,7 +201,7 @@ value_t maximal_ev(std::vector<value_t> coeffs){
 	return lambda;
 }
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift){
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value_t shift){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
@@ -214,7 +215,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		gamma = get_gamma(j);
 		fac = std::exp(-beta*shift/dim_v)*std::pow(gamma, 1.0/dim_v);
 		for (size_t i = 0; i < dim; ++i){
-			fac2 = std::exp(-beta*coeff[i]);
+			fac2 = std::exp(-beta*coeffs[i]);
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,0,0,0}] = fac;
 			aa[{0,1,1,0}] = fac*fac2;
