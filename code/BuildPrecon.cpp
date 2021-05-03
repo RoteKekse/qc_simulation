@@ -44,8 +44,8 @@ int main(int argc, char* argv[]) {
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 
-	size_t nob = matrix.rows();
-
+	size_t nob = HFev_tmp.rows();
+	XERUS_LOG(info, nob);
 	size_t k = 700;
 
 
