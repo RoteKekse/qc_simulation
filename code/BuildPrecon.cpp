@@ -240,7 +240,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 	XERUS_LOG(info,"shift = " << shift_vec);
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
-		j_v =  static_cast<value_t>(j)
+		j_v =  static_cast<value_t>(j);
 
 		for (size_t i = 0; i < dim; ++i){
 			fac2 = std::exp(-beta*(coeffs[i]+shift_vec[i]));
