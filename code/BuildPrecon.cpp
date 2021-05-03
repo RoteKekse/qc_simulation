@@ -224,8 +224,8 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 	size_t count = 0;
 	for (size_t i = 0 ; i < dim; ++i){
 		if (coeffs[i] < 0){
-			shift_vec[i] = -coeffs[i];
-			sum -= coeffs[i];
+			shift_vec[i] = -coeffs[i]+0.01;
+			sum -= coeffs[i]+0.01;
 			count++;
 		}
 	}
@@ -243,8 +243,6 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 		j_v =  static_cast<value_t>(j);
 
 		for (size_t i = 0; i < dim; ++i){
-			fac2 = std::exp(-beta*(coeffs[i]+shift_vec[i]));
-			fac3 = std::exp(-beta*shift_vec[i]);
 			//XERUS_LOG(info,i << " " << fac2 << " "<< coeffs[i]<< " " << coeffs[i]+shift_vec[i]/dim_v <<" " << fac3);
 
 			auto aa = xerus::Tensor({1,2,2,1});
