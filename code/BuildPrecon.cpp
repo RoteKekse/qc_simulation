@@ -13,7 +13,7 @@
 #define build_operator 0
 
 using namespace xerus;
-//using namespace Eigen;
+using namespace Eigen;
 using xerus::misc::operator<<;
 
 typedefs
