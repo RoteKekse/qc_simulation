@@ -249,8 +249,9 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,0,0,0}] = std::exp(j_v*h-std::exp(h*j_v)*shift_vec[i]);
-			XERUS_LOG(info, aa[{0,0,0,0}] << " " << aa[{0,1,1,0}]);
 			aa[{0,1,1,0}] = std::exp(j_v*h-std::exp(h*j_v)*(coeffs[i]+shift_vec[i]));
+			XERUS_LOG(info, aa[{0,0,0,0}] << " " << aa[{0,1,1,0}]);
+
 			tmp.set_component(i,aa);
 		}
 		XERUS_LOG(info,"j = " << j << " " << tmp.frob_norm());
