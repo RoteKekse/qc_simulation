@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
 //	}
 
 	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift);
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.tensor";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
 
