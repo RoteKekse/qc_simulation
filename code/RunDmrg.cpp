@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,H );
 
 	Tensor nuc;
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.ttoperator";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
 	read_from_disc(name,nuc );
 
 	XERUS_LOG(info, "nuc " << nuc );
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
 	//Calculate initial energy
 	Tensor E;
 	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"Initial Energy " << E[0]-nuc[0]);
+	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]);
 
 
 
@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info, "The ranks of phi are " << phi.ranks() );
 	XERUS_LOG(info, "Size of Solution " << phi.datasize() );
 
-	XERUS_LOG(info, "Final Energy =  " << std::setprecision(16) << lambda 	-nuc[0]);
+	XERUS_LOG(info, "Final Energy =  " << std::setprecision(16) << lambda 	+nuc[0]);
 
 
 	return 0;
