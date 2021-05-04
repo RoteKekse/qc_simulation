@@ -213,7 +213,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"D " << E[0]);
 	G() = xrand(ii&0)*phi(ii&0);
 
-	XERUS_LOG(info,"xrand " << E[0]);
+	XERUS_LOG(info,"xrand " << G[0]);
 	XERUS_LOG(info,"prod " << E[0]*G[0]);
 
 
