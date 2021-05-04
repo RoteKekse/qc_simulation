@@ -36,14 +36,13 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name, V);
 
 	auto H = BuildHamil(T,V);
-	size_t d = H.order()/2;
-	std::vector<size_t> hf = {0};
+	size_t d = H.order()/;
+	std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
 	std::vector<size_t> idx(2*d,0);
 	for (auto  i : hf){
 		idx[i] = 1;
 		idx[i+d] = 1;
 	}
-	XERUS_LOG(info, d);
 	XERUS_LOG(info, H[idx]);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
