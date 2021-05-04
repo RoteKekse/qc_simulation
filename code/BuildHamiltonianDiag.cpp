@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 
 	auto H = BuildHamilDiag(T,V);
 
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
 	write_to_disc(name, H);
 }
 

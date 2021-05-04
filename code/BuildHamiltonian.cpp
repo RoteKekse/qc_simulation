@@ -20,8 +20,6 @@ Tensor MVf(Tensor &T, Tensor &V);
 
 value_t getV(Tensor &V,size_t i, size_t j, size_t k, size_t l);
 value_t getT(Tensor &T,size_t i, size_t j);
-xerus::Tensor make_H_CH2(size_t nob);
-xerus::Tensor make_V_CH2(size_t nob);
 TTOperator BuildHamil(Tensor &T, Tensor &V);
 
 int main(int argc, char* argv[]) {
