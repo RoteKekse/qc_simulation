@@ -127,6 +127,12 @@ int main(int argc, char* argv[]) {
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
+
+	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
+	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
+	XERUS_LOG(info,"Norm Fock inv 2" << Fock_inv2.frob_norm());
+
+
 	Fock_inv.round(1);
 	Fock_inv2.round(1);
 
