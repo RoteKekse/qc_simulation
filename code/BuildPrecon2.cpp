@@ -153,6 +153,7 @@ int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
+	xerus::Index ii,jj;
 
 	TTOperator D,F1,F2;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
@@ -191,7 +192,6 @@ int main(int argc, char* argv[]) {
 
 
 	TTTensor test,test1,test2,b = TTTensor::ones(std::vector<size_t>(d,2)),xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
-	xerus::Index ii,jj;
 	auto x1 = makeTT(F1,d);
 	x1 *= -1.0;
 	auto x2 = makeTT(F2,d);
