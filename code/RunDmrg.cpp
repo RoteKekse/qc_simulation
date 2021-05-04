@@ -300,25 +300,6 @@ public:
 			}
 			stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
 
-			if (false/*itr % 5 == 0 and itr != 0*/){
-
-				TTTensor res = TTTensor::random(std::vector<size_t>(d, 2), {maxRank});
-				getRes(A,x,lambda,res);
-				XERUS_LOG(simpleALS, "Iteration: " << itr  << " Res " << res.frob_norm() <<   " Eigenvalue " << std::setprecision(10) <<  lambda +nuc<<  " EVerr " << lambda -52.4190597253 +76.25663396);// << " Residual = " << calc_residual_norm());
-				XERUS_LOG(info,"x = " << x.ranks());
-			} else {
-				XERUS_LOG(simpleALS, "Iteration: " << itr  <<  " Eigenvalue " << std::setprecision(10) <<  lambda +nuc <<  " EVerr " << lambda +nuc - ref);// << " Residual = " << calc_residual_norm());
-				XERUS_LOG(simpleALS, "Iteration: " << itr  <<  " Eigenvalue " << std::setprecision(10) <<  lambda);// << " Residual = " << calc_residual_norm());
-				XERUS_LOG(info,"x = " << x.ranks());
-				outfile.open(out_name,std::ios::app);
-				outfile <<  (value_t) (clock()-global_time)/ CLOCKS_PER_SEC << "," <<std::setprecision(12) << lambda +nuc <<"," << stack_time <<"," << solving_time  <<  std::endl;
-				outfile.close();
-				result.emplace_back(lambda +nuc);
-				XERUS_LOG(info,std::setprecision(10) <<result);
-
-			}
-
-
 		}
 		return lambda;
 	}
