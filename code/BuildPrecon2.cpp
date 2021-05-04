@@ -138,7 +138,7 @@ TTTensor makeTT(TTOperator F,size_t d){
 }
 
 TTOperator makeTTO(TTTensor F,size_t d){
-	TTTensor res = TTOperator(std::vector<size_t>(2*d,2));
+	TTOperator res = TTOperator(std::vector<size_t>(2*d,2));
 	for (size_t i = 0; i < d; ++i){
 		Tensor tmp({1,2,2,1});
 		tmp[{0,0,0,0}] = F.get_component(i)[{0,0,0}];
