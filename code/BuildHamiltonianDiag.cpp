@@ -36,6 +36,7 @@ int main(int argc, char* argv[]) {
 
 	read_from_disc("data/T_H2O_48_bench_single.tensor", T);
 	read_from_disc("data/V_H2O_48_bench_single.tensor", V);
+	read_from_disc("data/hamiltonian_H2O_48_full_benchmark.ttoperator", H_bench);
 
 	XERUS_LOG(info, "T dimensions  " << T.dimensions);
 	XERUS_LOG(info, "V dimensions  " << V.dimensions);
@@ -47,7 +48,17 @@ int main(int argc, char* argv[]) {
 	H.round(0.0);
 	XERUS_LOG(info, "H ranks       " << H.ranks());
 
+	for (size_t i = 0;i < 2*nob;++i){
+			for (size_t j = 0; j< 2*nob;++j){
+				std::vector<size_t> idx(4*nob,0);
+				idx[i] = 1; idx[j] = 1; idx[i+2*nob] = 1;idx[j+2*nob] = 1;
+				if (std::abs(H[idx]-H_bench[idx]) > 1e-10){
+					value_t correct = getV(V,i,j,i,j) + getT(T,i,i) + getT(T,j,j);
+					XERUS_LOG(info,i << " " << j <<  " " << H[idx]<< " " <<H_bench[idx] << " " << correct);
 
+				}
+			}
+		}
 
 
 //	const auto geom = argv[1];
