@@ -44,10 +44,8 @@ int main(int argc, char* argv[]) {
 	value_t eps = 1e-4;
 
 	//Load Intial Value
-	std::vector<size_t> hf(d,0);
-	for (size_t i =0; i < p; ++i)
-		hf[i] = 1;
-	TTTensor phi = TTTensor::dirac(hf);
+	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	TTTensor phi = makeUnitVector(hf,  d);
 
 	//Calculate initial energy
 	Tensor E;
@@ -90,7 +88,6 @@ class InternalSolver2 {
 	size_t maxRank;
 	std::vector<Tensor> leftAStack;
 	std::vector<Tensor> rightAStack;
-	value_t nuc = -52.4190597253,ref = -76.25663396;
 	TTTensor& x;
 	const TTOperator& A;
 	TTOperator P;
