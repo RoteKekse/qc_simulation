@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name, V);
 
 	auto H = BuildHamil(T,V);
-	size_t d = H.order();
+	size_t d = H.order()/2;
 	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
 	std::vector<size_t> idx(2*d,0);
 	for (auto  i : hf){
