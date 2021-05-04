@@ -167,6 +167,9 @@ int main(int argc, char* argv[]) {
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
 	read_from_disc(name,F2 );
 
+	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	TTTensor phi = makeUnitVector(hf,  d);
+
 	Tensor E,G;
 	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
 	XERUS_LOG(info,"D " << E[0]);
@@ -218,8 +221,6 @@ int main(int argc, char* argv[]) {
 
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
-	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
-	TTTensor phi = makeUnitVector(hf,  d);
 
 	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
 	XERUS_LOG(info,"D " << E[0]);
