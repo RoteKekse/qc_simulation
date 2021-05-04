@@ -27,66 +27,20 @@ TTOperator BuildHamil(Tensor &T, Tensor &V);
 
 int main(int argc, char* argv[]) {
 
+	const auto geom = argv[1];
+	const auto basisname = argv[2];
+
 	Tensor T ,V;
 	TTOperator H_bench;
-	size_t nob = 24;
-//	T = make_H_CH2(nob);
-//	V = make_V_CH2(nob);
-//
-
-	read_from_disc("data/T_H2O_48_bench_single.tensor", T);
-	read_from_disc("data/V_H2O_48_bench_single.tensor", V);
-	read_from_disc("data/hamiltonian_H2O_48_full_benchmark.ttoperator", H_bench);
-
-	XERUS_LOG(info, "T dimensions  " << T.dimensions);
-	XERUS_LOG(info, "V dimensions  " << V.dimensions);
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
+	read_from_disc(name, T);
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
+	read_from_disc(name, V);
 
 	auto H = BuildHamilDiag(T,V);
 
-	write_to_disc("data/hamiltonian_diag_H2O_48_full_new.ttoperator", H);
-	XERUS_LOG(info, "H ranks       " << H.ranks());
-	H.round(0.0);
-	XERUS_LOG(info, "H ranks       " << H.ranks());
-
-	for (size_t i = 0;i < 2*nob;++i){
-			for (size_t j = 0; j< 2*nob;++j){
-				std::vector<size_t> idx(4*nob,0);
-				idx[i] = 1; idx[j] = 1; idx[i+2*nob] = 1;idx[j+2*nob] = 1;
-				if (std::abs(H[idx]-H_bench[idx]) > 1e-8){
-					value_t correct = getV(V,i,j,i,j) + getT(T,i,i) + getT(T,j,j);
-					XERUS_LOG(info,i << " " << j <<  " " << H[idx]<< " " <<H_bench[idx] << " " << correct <<  " " << std::abs(H[idx]-H_bench[idx]) );
-
-				}
-			}
-		}
-
-
-//	const auto geom = argv[1];
-//	// Set basis functions
-//	const auto basisname = argv[2];
-//
-//	auto T = xerus::Tensor();
-//	auto V = xerus::Tensor();
-//
-//	std::string name;
-//	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
-//	read_from_disc(name,T);
-//	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
-//	read_from_disc(name,V);
-//
-//
-//
-//	H = buildHamil(T,V);
-//	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
-//	write_to_disc(name,V);
-//
-//	return 0;
-//}
-//TTOperator buildHamil(Tensor &T, Tensor &V){
-//	size d = 2*T.dimensions[0];
-//	TTOperator H(std::vector<size_t>(d,2));
-//
-//	return H;
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
+	write_to_disc(name, H);
 }
 
 TTOperator BuildHamilDiag(Tensor &T, Tensor &V){
