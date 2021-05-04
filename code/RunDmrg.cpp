@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 	std::vector<size_t> hf(d,0);
 	for (size_t i =0; i < p; ++i)
 		hf[i] = 1;
-	TTTensor phi == TTTensor::dirac(hf);
+	TTTensor phi = TTTensor::dirac(hf);
 
 	//Calculate initial energy
 	Tensor E;
