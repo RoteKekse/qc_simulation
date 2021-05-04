@@ -172,7 +172,7 @@ Tensor V12f(size_t n, Tensor &T, Tensor &V){
 
     comp[{0,1,1,0}] = getT(T,n,n); // A^*A
 
-    for (size_t i = 0; i <= n; ++i){
+    for (size_t i = 0; i < n; ++i){
         comp[{i+1,1,1,0}]= getV(V,i,n,i,n); // (val,:AtAr)
     }
     return comp;
@@ -189,7 +189,7 @@ Tensor V21f(size_t n,Tensor &T, Tensor &V){
     comp[{0,1,1,0}] = getT(T,n,n); // A^*A
 
 
-    for (size_t i = d-1; i >=n;--i){
+    for (size_t i = d-1; i >n;--i){
         comp[{d-i,1,1,0}] = getV(V,i,n,i,n); //  (val,:AtAl)
     }
 	Index i1,i2,j1,j2;
