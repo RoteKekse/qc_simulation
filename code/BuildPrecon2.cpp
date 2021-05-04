@@ -181,6 +181,9 @@ int main(int argc, char* argv[]) {
 	test(ii^d) = D(ii^d,jj^d) * x2(jj^d);
 	test -=b;
 
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv3.ttoperator";
+	write_to_disc(name,x2);
+
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
