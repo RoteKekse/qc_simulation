@@ -126,15 +126,20 @@ int main(int argc, char* argv[]) {
 	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
-//	Tensor F1 = Tensor(Fock);
-//	Tensor F2 = Tensor(Fock_inv);
-//	Tensor F3 = Tensor(Fock_inv2);
-//	F1.reinterpret_dimensions({4,4});
-//	F2.reinterpret_dimensions({4,4});
-//	F3.reinterpret_dimensions({4,4});
-//	XERUS_LOG(info,F1);
-//	XERUS_LOG(info,F2);
-//	XERUS_LOG(info,F3);
+
+	Fock_inv.round(1);
+	Fock_inv2.round(1);
+
+	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
+	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test.move_core(0);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+
+
+	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
+	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test.move_core(0);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	return 0;
 }
@@ -242,23 +247,15 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 	int k_int = static_cast<int>(k);
 	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v;
 
-
-	XERUS_LOG(info,"shift = " << shift_vec);
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		j_v =  static_cast<value_t>(j);
-
 		for (size_t i = 0; i < dim; ++i){
-			//XERUS_LOG(info,i << " " << fac2 << " "<< coeffs[i]<< " " << coeffs[i]+shift_vec[i]/dim_v <<" " << fac3);
-
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,0,0,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*shift_vec[i]);//shift/dim_v );
 			aa[{0,1,1,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*(coeffs[i]+shift_vec[i]));//shift/dim_v ));
-//			XERUS_LOG(info, aa[{0,0,0,0}] << " " << aa[{0,1,1,0}]);
-
 			tmp.set_component(i,aa);
 		}
-		//XERUS_LOG(info,"j = " << j << " " << tmp.frob_norm());
 
 		result += h*tmp;
 	}
