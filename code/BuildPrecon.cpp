@@ -25,7 +25,7 @@ template<typename M>
 M load_csv (const std::string & path);
 
 TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec);
-TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec);
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
 
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
 	size_t k = std::atof(argv[4]);
-
+	value_t h = 0.25
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,Fock_inv.ranks());
 
 
-	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, shift, shift_vec);
+	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, h, shift, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
 	Fock_inv2.round(0.0);
 	write_to_disc(name,Fock_inv2);
@@ -235,12 +235,12 @@ value_t maximal_ev(std::vector<value_t> coeffs){
 	return lambda;
 }
 
-TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_t h, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
-	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v, h = 0.5;
+	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v;
 
 
 	XERUS_LOG(info,"shift = " << shift_vec);
@@ -258,7 +258,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 
 			tmp.set_component(i,aa);
 		}
-		XERUS_LOG(info,"j = " << j << " " << tmp.frob_norm());
+		//XERUS_LOG(info,"j = " << j << " " << tmp.frob_norm());
 
 		result += h*tmp;
 	}
