@@ -17,7 +17,7 @@ using xerus::misc::operator<<;
 
 
 class InternalSolver2;
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc);
 /*
  * Main!!
  */
@@ -196,7 +196,6 @@ public:
 				XERUS_LOG(info, residuals_ev[residuals_ev.size()-10]);
 				XERUS_LOG(info, residuals_ev.back());
 				XERUS_LOG(info, eps);
-				XERUS_LOG(simpleMALS, "Done! Residual decreased to residual "  << std::scientific  << " in " << itr << " iterations.");
 				return lambda; // We are done!
 			}
 
