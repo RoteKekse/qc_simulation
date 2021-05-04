@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 				idx[i] = 1; idx[j] = 1; idx[i+2*nob] = 1;idx[j+2*nob] = 1;
 				if (std::abs(H[idx]-H_bench[idx]) > 1e-10){
 					value_t correct = getV(V,i,j,i,j) + getT(T,i,i) + getT(T,j,j);
-					XERUS_LOG(info,i << " " << j <<  " " << H[idx]<< " " <<H_bench[idx] << " " << correct);
+					XERUS_LOG(info,i << " " << j <<  " " << H[idx]<< " " <<H_bench[idx] << " " << correct << std::abs(H[idx]-H_bench[idx]) );
 
 				}
 			}
