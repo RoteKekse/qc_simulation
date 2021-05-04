@@ -146,7 +146,9 @@ int main(int argc, char* argv[]) {
 	TTOperator D,F1,F2;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
 	read_from_disc(name,D );
-	D +=  shift*TTOperator::identity(std::vector<size_t>(4*nob,2));
+	size_t d = D.order()/2;
+
+	D +=  shift*TTOperator::identity(std::vector<size_t>(2*d,2));
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	read_from_disc(name,F1 );
@@ -157,7 +159,6 @@ int main(int argc, char* argv[]) {
 	F1.round(1);
 	F2.round(1);
 
-	size_t d = D.order()/2;
 	XERUS_LOG(info, d);
 	XERUS_LOG(info,"Norm D " << D.frob_norm());
 
