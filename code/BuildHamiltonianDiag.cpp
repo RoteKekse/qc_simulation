@@ -8,22 +8,22 @@
 using namespace xerus;
 using xerus::misc::operator<<;
 
-value_t returnTValue(Tensor T, size_t p, size_t q);
-value_t returnVValue(Tensor V, size_t i, size_t k, size_t j, size_t l);
+value_t returnTValue(Tensor &T, size_t p, size_t q);
+value_t returnVValue(Tensor &V, size_t i, size_t k, size_t j, size_t l);
 TTOperator BuildHamilDiag(Tensor &T, Tensor &V);
 Tensor V11f(size_t i,size_t d);
 Tensor V22f(size_t i,size_t d);
 size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
-Tensor V12f(size_t n, Tensor T, Tensor V);
-Tensor V21f(size_t n,Tensor T, Tensor V);
-Tensor MVf(Tensor T, Tensor V);
+Tensor V12f(size_t n, Tensor &T, Tensor &V);
+Tensor V21f(size_t n,Tensor &T, Tensor &V);
+Tensor MVf(Tensor &T, Tensor &V);
 
-value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l);
-value_t getT(Tensor T,size_t i, size_t j);
+value_t getV(Tensor &V,size_t i, size_t j, size_t k, size_t l);
+value_t getT(Tensor &T,size_t i, size_t j);
 xerus::Tensor make_H_CH2(size_t nob);
 xerus::Tensor make_V_CH2(size_t nob);
-TTOperator BuildHamil(Tensor T, Tensor V);
+TTOperator BuildHamil(Tensor &T, Tensor &V);
 
 int main(int argc, char* argv[]) {
 
