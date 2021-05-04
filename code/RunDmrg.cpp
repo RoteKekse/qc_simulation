@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
 
 
 	//Perfrom ALS/DMRG
-	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps);
+	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]);
 //	double lambda = simpleALS(op, phi,P, number_of_sweeps);
 	phi.round(10e-14);
 
@@ -88,14 +88,15 @@ class InternalSolver2 {
 	size_t maxRank;
 	std::vector<Tensor> leftAStack;
 	std::vector<Tensor> rightAStack;
+	value_t nuc;
 	TTTensor& x;
 	const TTOperator& A;
 	TTOperator P;
 public:
 	size_t maxIterations;
 
-	InternalSolver2(const TTOperator& _A, TTTensor& _x,  double _eps, size_t _maxRank, size_t _nosw)
-		: d(_x.order()), x(_x), A(_A), maxIterations(_nosw), lambda(1.0), eps(_eps), maxRank(_maxRank)
+	InternalSolver2(const TTOperator& _A, TTTensor& _x,  double _eps, size_t _maxRank, size_t _nosw, value_t _nuc)
+		: d(_x.order()), x(_x), A(_A), maxIterations(_nosw), lambda(1.0), eps(_eps), maxRank(_maxRank),nuc(_nuc)
 	{
 		leftAStack.emplace_back(Tensor::ones({1,1,1}));
 		rightAStack.emplace_back(Tensor::ones({1,1,1}));
@@ -257,7 +258,7 @@ public:
 				x/=x.frob_norm();
 
 				pn() = P(i1/2,j1/2)*x(i1&0)*x(j1&0);
-				XERUS_LOG(info,"Particle Number step " << corePosition << " " << std::setprecision(16)<< pn[0] << " Eigenvalue = " << lambda-52.4190597253);
+				XERUS_LOG(info,"Particle Number step " << corePosition << " " << std::setprecision(16)<< pn[0] << " Eigenvalue = " << lambda+nuc);
 
 
 				//XERUS_LOG(info, "After kick " << x.ranks());
@@ -336,8 +337,8 @@ public:
 
 };
 
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw)  {
-	InternalSolver2 solver(_A, _x, _eps, _maxRank,_nosw);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc)  {
+	InternalSolver2 solver(_A, _x, _eps, _maxRank,_nosw, _nuc);
 	return solver.solve();
 }
 
