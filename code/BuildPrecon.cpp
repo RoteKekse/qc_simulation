@@ -112,7 +112,12 @@ int main(int argc, char* argv[]) {
 	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
-
+	Fock.reinterpret_dimensions({4,4});
+	Fock_inv.reinterpret_dimensions({4,4});
+	Fock_inv2.reinterpret_dimensions({4,4});
+	XERUS_LOG(info,Fock);
+	XERUS_LOG(info,Fock_inv);
+	XERUS_LOG(info,Fock_inv2);
 
 	return 0;
 }
