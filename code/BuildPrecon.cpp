@@ -65,18 +65,18 @@ int main(int argc, char* argv[]) {
 		HFev.emplace_back(val);
 	}
 
-	std::vector<value_t> shift_vec(dim,0.0);
+	std::vector<value_t> shift_vec(2*nob,0.0);
 	value_t sum;
 	size_t count = 0;
-	for (size_t i = 0 ; i < dim; ++i){
+	for (size_t i = 0 ; i < 2*nob; ++i){
 		if (HFev[i] < 0){
 			shift_vec[i] = -HFev[i]+0.01;
 			sum -= HFev[i]+0.01;
 			count++;
 		}
 	}
-	value_t rest_shift = (shift - sum)/ static_cast<value_t>(dim-count);
-	for (size_t i = 0 ; i < dim; ++i){
+	value_t rest_shift = (shift - sum)/ static_cast<value_t>(2*nob-count);
+	for (size_t i = 0 ; i < 2*nob; ++i){
 		if (HFev[i] >= 0){
 			shift_vec[i] = rest_shift;
 			sum+=rest_shift;
