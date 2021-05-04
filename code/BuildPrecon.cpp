@@ -262,7 +262,8 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 			aa[{0,1,1,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*(coeffs[i]+shift_vec[i]));//shift/dim_v ));
 			tmp.set_component(i,aa);
 		}
-
+		if (j == -k_int || j == k_int)
+			XERUS_LOG(info, "j = " << j << " " << tmp.frob_norm());
 		result += h*tmp;
 	}
 	return result;
