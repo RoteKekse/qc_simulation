@@ -79,6 +79,8 @@ int main(int argc, char* argv[]) {
 	std::cout << "S_test norm " << S_test.frob_norm() << std::endl;
 
 
+	Index i1,i2,i3,i4;
+	V_MO(i1,i2,i3,i4) = V_MO(i1,i3,i2,i4);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 	std::ofstream write(name.c_str());
