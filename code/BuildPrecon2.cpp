@@ -1,6 +1,6 @@
-
-
 #include <xerus.h>
+#include <classes/helpers.cpp>
+#include <classes/loading_tensors.cpp>
 
 using namespace xerus;
 
@@ -21,7 +21,7 @@ public:
 	size_t maxIterations;
 
 	InternalSolver(const TTOperator& _A, TTTensor& _x, const TTTensor& _b)
-		: d(_x.degree()), x(_x), A(_A), b(_b), solutionsNorm(frob_norm(_b)), maxIterations(1000)
+		: d(_x.order()), x(_x), A(_A), b(_b), solutionsNorm(frob_norm(_b)), maxIterations(1000)
 	{
 		leftAStack.emplace_back(Tensor::ones({1,1,1}));
 		rightAStack.emplace_back(Tensor::ones({1,1,1}));
@@ -177,6 +177,7 @@ int main(int argc, char* argv[]) {
 
 	test(ii^d) = D(ii^d,jj^d) * x1(jj^d);
 	test -=b;
+
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
