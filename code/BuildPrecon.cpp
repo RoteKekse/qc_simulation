@@ -57,20 +57,13 @@ int main(int argc, char* argv[]) {
 
 
 	std::vector<value_t> HFev;
-	HFev.emplace_back(1.0);
-	HFev.emplace_back(2.0);
-	HFev.emplace_back(3.0);
-	HFev.emplace_back(4.0);
-	HFev.emplace_back(5.0);
-	HFev.emplace_back(6.0);
-	HFev.emplace_back(7.0);
-	HFev.emplace_back(8.0);
 
-//	for(size_t j = 0; j < nob; ++j){
-//		auto val = HFev_tmp(j,0);
-//		HFev.emplace_back(val);
-//		HFev.emplace_back(val);
-//	}
+
+	for(size_t j = 0; j < nob; ++j){
+		auto val = HFev_tmp(j,0);
+		HFev.emplace_back(val);
+		HFev.emplace_back(val);
+	}
 //  Tensor T,V;
 //	read_from_disc("../data/T_H2O_48_bench.tensor",T);
 //	read_from_disc("../data/V_H2O_48_bench.tensor",V);
