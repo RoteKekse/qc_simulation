@@ -24,8 +24,8 @@ typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
 template<typename M>
 M load_csv (const std::string & path);
 
-TTOperator build_Fock_op_inv(std::vector<value_t>coeffs, size_t k, double shift);
-TTOperator build_Fock_op_inv2(std::vector<value_t>coeffs, size_t k, double shift);
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec);
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
 
@@ -64,6 +64,24 @@ int main(int argc, char* argv[]) {
 		HFev.emplace_back(val);
 		HFev.emplace_back(val);
 	}
+
+	std::vector<value_t> shift_vec(dim,0.0);
+	value_t sum;
+	size_t count = 0;
+	for (size_t i = 0 ; i < dim; ++i){
+		if (HFev[i] < 0){
+			shift_vec[i] = -HFev[i]+0.01;
+			sum -= HFev[i]+0.01;
+			count++;
+		}
+	}
+	value_t rest_shift = (shift - sum)/ static_cast<value_t>(dim-count);
+	for (size_t i = 0 ; i < dim; ++i){
+		if (HFev[i] >= 0){
+			shift_vec[i] = rest_shift;
+			sum+=rest_shift;
+		}
+	}
 //  Tensor T,V;
 //	read_from_disc("../data/T_H2O_48_bench.tensor",T);
 //	read_from_disc("../data/V_H2O_48_bench.tensor",V);
@@ -77,14 +95,14 @@ int main(int argc, char* argv[]) {
 //		HFev.emplace_back(val);
 //	}
 
-	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift);
+	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
 	XERUS_LOG(info,Fock_inv.ranks());
 
 
-	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, shift);
+	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
 	Fock_inv2.round(0.0);
 	write_to_disc(name,Fock_inv2);
@@ -154,7 +172,7 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift){
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
@@ -168,10 +186,10 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		for (size_t i = 0; i < dim; ++i){
-			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift/dim));
+			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift_vec[i]));
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,1,1,0}] =  coeff1 ;
-			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift/dim))  ;
+			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift_vec[i]))  ;
 			tmp.set_component(i,aa);
 		}
 		value_t coeff2 = 2*get_wj(j,k)/lambda_min;
@@ -213,30 +231,14 @@ value_t maximal_ev(std::vector<value_t> coeffs){
 	return lambda;
 }
 
-TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value_t shift){
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
 	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v, h = 0.5;
 
-	std::vector<value_t> shift_vec(dim,0.0);
-	value_t sum;
-	size_t count = 0;
-	for (size_t i = 0 ; i < dim; ++i){
-		if (coeffs[i] < 0){
-			shift_vec[i] = -coeffs[i]+0.01;
-			sum -= coeffs[i]+0.01;
-			count++;
-		}
-	}
-	value_t rest_shift = (shift - sum)/ static_cast<value_t>(dim-count);
-	for (size_t i = 0 ; i < dim; ++i){
-		if (coeffs[i] >= 0){
-			shift_vec[i] = rest_shift;
-			sum+=rest_shift;
-		}
-	}
+
 	XERUS_LOG(info,"sum = " << sum);
 	XERUS_LOG(info,"shift = " << shift_vec);
 	for ( int j = -k_int; j <=k_int; ++j){
