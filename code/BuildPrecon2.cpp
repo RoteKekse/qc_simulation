@@ -126,15 +126,59 @@ void simpleALS(const TTOperator& _A, TTTensor& _x, const TTTensor& _b)  {
 	return solver.solve();
 }
 
+TTTensor makeTT(TTOperator F,size_t d){
+	TTTensor res = TTTensor(std::vector<size_t>(d,2));
+	for (size_t i = 0; i < d; ++i){
+		Tensor tmp({1,2,1});
+		tmp[{0,0,0}] = F.get_component(i)[{0,0,0,0}];
+		tmp[{0,1,0}] = F.get_component(i)[{0,1,1,0}];
+		res.set_component(i,tmp);
+	}
+	return res;
+}
+
 
 int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
 
-	TTOperator D;
+	TTOperator D,F1,F2;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
 	read_from_disc(name,D );
-	simpleALS(A, x, b);
+
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
+	read_from_disc(name,F1 );
+
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
+	read_from_disc(name,F2 );
+
+	F1.round(1);
+	F2.round(1);
+
+	size_t d = D.order()/2
+	XERUS_LOG(info, d);
+	XERUS_LOG(info,"Norm D " << D.frob_norm());
+
+
+	TTTensor test,test1,test2,b = TTensor::ones(std::vector<size_t>(d,2));
+	xerus::Index ii,jj;
+	auto x1 = makeTT(F1,d);
+	x1 *= -1.0;
+	auto x2 = makeTT(F2,d);
+	test1(ii^d) = D(ii^d,jj^d) * x1(jj^d);
+	test1 -=b;
+	test2(ii^d) = D(ii^d,jj^d) * x2(jj^d);
+	test2 -=b;
+
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test1.frob_norm());
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test2.frob_norm());
+
+	simpleALS(D, x1, b);
+
+	test(ii^d) = D(ii^d,jj^d) * x1(jj^d);
+	test -=b;
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+
 
 }
 
