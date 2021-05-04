@@ -225,7 +225,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
-	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v, h = 1.0;
+	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v, h = 0.5;
 
 	std::vector<value_t> shift_vec(dim,0.0);
 	value_t sum;
