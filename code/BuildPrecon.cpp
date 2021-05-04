@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 	Mat HFev_tmp = load_csv<Mat>(name);
 
 	//size_t nob = HFev_tmp.rows();
-	size_t nob = 40;
+	size_t nob = 60;
 	XERUS_LOG(info, nob);
 
 
