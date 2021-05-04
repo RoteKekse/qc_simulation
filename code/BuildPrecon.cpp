@@ -83,6 +83,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	XERUS_LOG(info,"sum = " << sum);
+	XERUS_LOG(info,"rest_shift = " << rest_shift);
 
 //  Tensor T,V;
 //	read_from_disc("../data/T_H2O_48_bench.tensor",T);
