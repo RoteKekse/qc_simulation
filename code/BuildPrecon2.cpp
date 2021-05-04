@@ -230,5 +230,25 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"prod " << E[0]*G[0]);
 
 
+	hf = {0,1,2,3,4,5,6,7,8,9,10,11,13,14};
+	phi = makeUnitVector(hf,  d);
+
+	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"D " << E[0]);
+	G() = xrand(ii&0)*phi(ii&0);
+
+	XERUS_LOG(info,"xrand " << G[0]);
+	XERUS_LOG(info,"prod " << E[0]*G[0]);
+
+	hf = {0,1,2,3,4,5,6,7,8,9,10,13,14,15};
+	phi = makeUnitVector(hf,  d);
+
+	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"D " << E[0]);
+	G() = xrand(ii&0)*phi(ii&0);
+
+	XERUS_LOG(info,"xrand " << G[0]);
+	XERUS_LOG(info,"prod " << E[0]*G[0]);
+
 }
 
