@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
 
 	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
 	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
-	XERUS_LOG(info,"Norm Fock inv 2" << Fock_inv2.frob_norm());
+	XERUS_LOG(info,"Norm Fock inv2 " << Fock_inv2.frob_norm());
 
 
 	Fock_inv.round(1);
