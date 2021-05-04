@@ -190,10 +190,10 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		for (size_t i = 0; i < dim; ++i){
-			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift/dim_v));
+			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift_vec[i]));
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,1,1,0}] =  coeff1 ;
-			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift/dim_v))  ;
+			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift_vec[i]))  ;
 			tmp.set_component(i,aa);
 		}
 		value_t coeff2 = 2*get_wj(j,k)/lambda_min;
