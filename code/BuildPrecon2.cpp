@@ -141,10 +141,12 @@ TTTensor makeTT(TTOperator F,size_t d){
 int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
+	value_t shift = std::atof(argv[3]);
 
 	TTOperator D,F1,F2;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
 	read_from_disc(name,D );
+	D +=  shift*TTOperator::identity(std::vector<size_t>(4*nob,2));
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	read_from_disc(name,F1 );
