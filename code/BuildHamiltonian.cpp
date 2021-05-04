@@ -29,9 +29,10 @@ int main(int argc, char* argv[]) {
 
 	Tensor T ,V;
 	TTOperator H_bench;
-	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
+	//std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
+	std::string name = "data/T_H2O_48_bench_single.tensor";
 	read_from_disc(name, T);
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
+	name = "data/V_H2O_48_bench_single.tensor";
 	read_from_disc(name, V);
 
 	auto H = BuildHamil(T,V);
