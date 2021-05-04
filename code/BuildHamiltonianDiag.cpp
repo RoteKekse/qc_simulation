@@ -103,7 +103,6 @@ TTOperator BuildHamilDiag(Tensor &T, Tensor &V){
 	H.set_component(0,comp);
 
 	for (size_t i = 1; i < d/2;++i){
-		XERUS_LOG(info,i);
 		comp1 = V11f(i,d);
 		comp2 = V12f(i,T,V);
 		auto comp3 = V22f(i,d);
@@ -121,7 +120,6 @@ TTOperator BuildHamilDiag(Tensor &T, Tensor &V){
 	comp.use_sparse_representation();
 	H.set_component(d-1,comp);
 	for (size_t i = d-2; i >= d/2;--i){
-		XERUS_LOG(info,i);
 
 		comp1 = V11f(i,d);
 		comp2 = V21f(i,T,V);
