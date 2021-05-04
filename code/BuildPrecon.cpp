@@ -70,8 +70,8 @@ int main(int argc, char* argv[]) {
 	size_t count = 0;
 	for (size_t i = 0 ; i < 2*nob; ++i){
 		if (HFev[i] < 0){
-			shift_vec[i] = -HFev[i]+0.01;
-			sum -= HFev[i]+0.01;
+			shift_vec[i] = -HFev[i]+1;
+			sum -= HFev[i]+1;
 			count++;
 		}
 	}
