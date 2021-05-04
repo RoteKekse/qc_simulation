@@ -33,8 +33,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name, T);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 	read_from_disc(name, V);
-	Index i1,i2,i3,i4;
-	V(i1,i2,i3,i4) = V(i1,i3,i2,i4);
+
 	auto H = BuildHamil(T,V);
 	size_t d = H.order()/2;
 	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};

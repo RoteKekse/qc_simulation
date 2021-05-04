@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	size_t start_rank = 1;
 	size_t max_rank = 20;
 	size_t number_of_sweeps = 20;
-	value_t eps = 1e-4;
+	value_t eps = 1e-8;
 
 	//Load Intial Value
 	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
