@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 	for (size_t i = 0 ; i < 2*nob; ++i){
 		if (HFev[i] < 0){
 			shift_vec[i] = -HFev[i]+1;
-			sum -= HFev[i]+1;
+			sum = sum - HFev[i]+1;
 			count++;
 		}
 	}
