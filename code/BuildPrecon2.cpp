@@ -137,6 +137,17 @@ TTTensor makeTT(TTOperator F,size_t d){
 	return res;
 }
 
+TTOperator makeTTO(TTTensor F,size_t d){
+	TTTensor res = TTOperator(std::vector<size_t>(2*d,2));
+	for (size_t i = 0; i < d; ++i){
+		Tensor tmp({1,2,2,1});
+		tmp[{0,0,0,0}] = F.get_component(i)[{0,0,0}];
+		tmp[{0,1,1,0}] = F.get_component(i)[{0,1,0}];
+		res.set_component(i,tmp);
+	}
+	return res;
+}
+
 
 int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
@@ -193,6 +204,16 @@ int main(int argc, char* argv[]) {
 	test -=b;
 
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+
+	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	TTTensor phi = makeUnitVector(hf,  d);
+
+	Tensor E;
+	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"D " << E[0]);
+	E() = xrand(ii&0)*phi(ii&0);
+
+	XERUS_LOG(info,"xrand " << E[0]);
 
 
 }
