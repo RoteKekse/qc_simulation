@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,H );
 
 	Tensor nuc;
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor 	";
 	read_from_disc(name,nuc );
 
 	XERUS_LOG(info, "nuc " << nuc );
@@ -250,14 +250,12 @@ public:
 //				xright_kicked.offset_add(xright,{0,0,0});
 
 				//XERUS_LOG(info, "U " << U.dimensions << " Vt " << xright.dimensions);
-				if (corePosition == 24)
-					write_to_disc("../data/test_hamiltoninan_instability_pos23.tttensor",x);
+
 				x.set_component(corePosition, xleft);
 				x.set_component(corePosition+1, xright);
 
 				x/=x.frob_norm();
-				if (corePosition == 24)
-					write_to_disc("../data/test_hamiltoninan_instability_pos24.tttensor",x);
+
 				pn() = P(i1/2,j1/2)*x(i1&0)*x(j1&0);
 				XERUS_LOG(info,"Particle Number step " << corePosition << " " << std::setprecision(16)<< pn[0] << " Eigenvalue = " << lambda-52.4190597253);
 
