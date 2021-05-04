@@ -160,7 +160,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Norm D " << D.frob_norm());
 
 
-	TTTensor test,test1,test2,b = TTensor::ones(std::vector<size_t>(d,2));
+	TTTensor test,test1,test2,b = TTTensor::ones(std::vector<size_t>(d,2));
 	xerus::Index ii,jj;
 	auto x1 = makeTT(F1,d);
 	x1 *= -1.0;
