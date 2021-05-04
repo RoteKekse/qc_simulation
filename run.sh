@@ -9,6 +9,6 @@ build/get_1elec_int.out $PATH $FILE $BASIS
 build/get_2elec_int.out $PATH $FILE $BASIS
 build/basistransform.out $FILE $BASIS
 
-build/buildHamil.out $FILE $BASIS
-build/buildHamilDiag.out $FILE $BASIS
+build/buildhamil.out $FILE $BASIS
+build/buildhamildiag.out $FILE $BASIS
 build/buildprecon.out $FILE $BASIS $SHIFT $K
