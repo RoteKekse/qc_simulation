@@ -47,14 +47,13 @@ int main(int argc, char* argv[]) {
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
 	size_t k = std::atof(argv[4]);
-	value_t h = 0.125;
+	value_t h =std::atof(argv[5]);
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 
 	//size_t nob = HFev_tmp.rows();
 	size_t nob = 40;
 	XERUS_LOG(info, nob);
-	XERUS_LOG(info, HFev_tmp);
 
 
 	std::vector<value_t> HFev;
