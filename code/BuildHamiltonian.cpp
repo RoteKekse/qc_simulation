@@ -34,12 +34,12 @@ int main(int argc, char* argv[]) {
 	TTOperator H_bench;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
 	read_from_disc(name, T);
-	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 	read_from_disc(name, V);
 
 	auto H = BuildHamil(T,V);
 
-	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
 	write_to_disc(name, H);
 
 }
