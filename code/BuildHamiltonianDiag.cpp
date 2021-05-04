@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 //	return H;
 }
 
-TTOperator BuildHamilDiag(Tensor T, Tensor V){
+TTOperator BuildHamilDiag(Tensor &T, Tensor &V){
     size_t d = 2*V.dimensions[0];
     TTOperator H(std::vector<size_t>(2*d ,2));
 
@@ -221,14 +221,14 @@ size_t getsizeV11(size_t i){
 size_t getsizeV22(size_t i,size_t d){
     return 1;
 }
-value_t getV(Tensor V,size_t i, size_t j, size_t k, size_t l){
+value_t getV(Tensor &V,size_t i, size_t j, size_t k, size_t l){
 	value_t val = returnVValue(V,i,j,k,l)+returnVValue(V,j,i,l,k)-returnVValue(V,j,i,k,l)-returnVValue(V,i,j,l,k);
 	bool flip = (i < j && l < k) || (j < i && k < l);
 	//value_t val = 100000+1000*i+100*j+10*k+l;
 	//return Tensor::random({1})[0];
     return flip ?  -0.5*val : 0.5*val;
 }
-value_t getT(Tensor T,size_t i, size_t j){
+value_t getT(Tensor &T,size_t i, size_t j){
 	value_t val = returnTValue(T, i, j);
 	//value_t val = 100000+10*i+j;
 	//return Tensor::random({1})[0];
@@ -237,7 +237,7 @@ value_t getT(Tensor T,size_t i, size_t j){
 }
 
 
-value_t returnTValue(Tensor T, size_t i, size_t j)
+value_t returnTValue(Tensor &T, size_t i, size_t j)
 {
 	if (i%2 != j%2)
 		return 0;
@@ -248,7 +248,7 @@ value_t returnTValue(Tensor T, size_t i, size_t j)
 }
 
 
-value_t returnVValue(Tensor V, size_t i, size_t k, size_t j, size_t l){
+value_t returnVValue(Tensor &V, size_t i, size_t k, size_t j, size_t l){
 	if ((i%2 != j%2) || (k%2!=l%2))
 		return 0;
 	i /=2;k /=2;j /=2;l /=2;
