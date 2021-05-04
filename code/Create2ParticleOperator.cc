@@ -471,14 +471,14 @@ xerus::Tensor compute_2body_fock(const BasisSet& obs,
 
                   //const auto value_scal_by_deg = value; // * s1234_deg;
 //
-              		G[{bf1,bf3,bf2,bf4}] = value;
-              		G[{bf2,bf3,bf1,bf4}] = value;
-              		G[{bf1,bf4,bf2,bf3}] = value;
-              		G[{bf2,bf4,bf1,bf3}] = value;
-              		G[{bf3,bf1,bf4,bf2}] = value;
-              		G[{bf4,bf1,bf3,bf2}] = value;
-              		G[{bf3,bf2,bf4,bf1}] = value;
-              		G[{bf4,bf2,bf3,bf1}] = value;
+              		G[{bf1,bf2,bf3,bf4}] = value;
+              		G[{bf2,bf1,bf3,bf4}] = value;
+              		G[{bf1,bf2,bf4,bf3}] = value;
+              		G[{bf2,bf1,bf4,bf3}] = value;
+              		G[{bf3,bf4,bf1,bf2}] = value;
+              		G[{bf4,bf3,bf1,bf2}] = value;
+              		G[{bf3,bf4,bf2,bf1}] = value;
+              		G[{bf4,bf3,bf2,bf1}] = value;
 
 //                    g(bf1, bf2) += D(bf3, bf4) * value_scal_by_deg;
 //                    g(bf3, bf4) += D(bf1, bf2) * value_scal_by_deg;
