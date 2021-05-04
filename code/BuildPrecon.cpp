@@ -82,6 +82,8 @@ int main(int argc, char* argv[]) {
 			sum+=rest_shift;
 		}
 	}
+	XERUS_LOG(info,"sum = " << sum);
+
 //  Tensor T,V;
 //	read_from_disc("../data/T_H2O_48_bench.tensor",T);
 //	read_from_disc("../data/V_H2O_48_bench.tensor",V);
@@ -239,7 +241,6 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, std::
 	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v, h = 0.5;
 
 
-	XERUS_LOG(info,"sum = " << sum);
 	XERUS_LOG(info,"shift = " << shift_vec);
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
