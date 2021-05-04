@@ -52,25 +52,16 @@ int main(int argc, char* argv[]) {
 	Mat HFev_tmp = load_csv<Mat>(name);
 
 	//size_t nob = HFev_tmp.rows();
-	size_t nob = 4;
+	size_t nob = 10;
 	XERUS_LOG(info, nob);
 
 
 	std::vector<value_t> HFev;
-	HFev.emplace_back(1.0);
-	HFev.emplace_back(2.0);
-	HFev.emplace_back(3.0);
-	HFev.emplace_back(4.0);
-	HFev.emplace_back(5.0);
-	HFev.emplace_back(6.0);
-	HFev.emplace_back(7.0);
-	HFev.emplace_back(8.0);
-
-//	for(size_t j = 0; j < nob; ++j){
-//		auto val = HFev_tmp(j,0);
-//		HFev.emplace_back(val);
-//		HFev.emplace_back(val);
-//	}
+	for(size_t j = 0; j < nob; ++j){
+		auto val = HFev_tmp(j,0);
+		HFev.emplace_back(val);
+		HFev.emplace_back(val);
+	}
 //  Tensor T,V;
 //	read_from_disc("../data/T_H2O_48_bench.tensor",T);
 //	read_from_disc("../data/V_H2O_48_bench.tensor",V);
@@ -256,7 +247,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k, value
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,0,0,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*shift/dim_v);
 			aa[{0,1,1,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*(coeffs[i]+shift/dim_v));
-			XERUS_LOG(info, aa[{0,0,0,0}] << " " << aa[{0,1,1,0}]);
+			//XERUS_LOG(info, aa[{0,0,0,0}] << " " << aa[{0,1,1,0}]);
 
 			tmp.set_component(i,aa);
 		}
