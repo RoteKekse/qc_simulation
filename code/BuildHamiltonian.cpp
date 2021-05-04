@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
 	auto H = BuildHamil(T,V);
 	size_t d = H.order();
-	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
 	std::vector<size_t> idx(2*d,0);
 	for (auto  i : hf){
 		idx[i] = 1;
