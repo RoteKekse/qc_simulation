@@ -54,6 +54,7 @@ int main(int argc, char* argv[]) {
 	//size_t nob = HFev_tmp.rows();
 	size_t nob = 40;
 	XERUS_LOG(info, nob);
+	XERUS_LOG(info, HFev_tmp);
 
 
 	std::vector<value_t> HFev;
