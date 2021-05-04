@@ -206,7 +206,7 @@ Tensor MVf(Tensor &T, Tensor &V){
     MV[{0,n-1}] = 1;
 
     for (size_t i = 0; i < d/2;++i){
-	    for (size_t j = d-1; j >= d/2;++j){
+	    for (size_t j = d-1; j >= d/2;--j){
             MV[{i+1,d-j}] = getV(V,i,j,i,j);
 	    }
     }
