@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
 		idx[i] = 1;
 		idx[i+d] = 1;
 	}
+	XERUS_LOG(info, d);
 	XERUS_LOG(info, H[idx]);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
