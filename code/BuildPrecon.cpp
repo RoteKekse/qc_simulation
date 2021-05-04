@@ -112,15 +112,15 @@ int main(int argc, char* argv[]) {
 	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
-	Tensor F1 = Tensor(Fock);
-	Tensor F2 = Tensor(Fock_inv);
-	Tensor F3 = Tensor(Fock_inv2);
-	F1.reinterpret_dimensions({4,4});
-	F2.reinterpret_dimensions({4,4});
-	F3.reinterpret_dimensions({4,4});
-	XERUS_LOG(info,F1);
-	XERUS_LOG(info,F2);
-	XERUS_LOG(info,F3);
+//	Tensor F1 = Tensor(Fock);
+//	Tensor F2 = Tensor(Fock_inv);
+//	Tensor F3 = Tensor(Fock_inv2);
+//	F1.reinterpret_dimensions({4,4});
+//	F2.reinterpret_dimensions({4,4});
+//	F3.reinterpret_dimensions({4,4});
+//	XERUS_LOG(info,F1);
+//	XERUS_LOG(info,F2);
+//	XERUS_LOG(info,F3);
 
 	return 0;
 }
