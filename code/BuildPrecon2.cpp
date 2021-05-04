@@ -155,7 +155,7 @@ int main(int argc, char* argv[]) {
 	F1.round(1);
 	F2.round(1);
 
-	size_t d = D.order()/2
+	size_t d = D.order()/2;
 	XERUS_LOG(info, d);
 	XERUS_LOG(info,"Norm D " << D.frob_norm());
 
