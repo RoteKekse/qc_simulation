@@ -16,7 +16,7 @@ using namespace xerus;
 using namespace Eigen;
 using xerus::misc::operator<<;
 
-typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
+typedef Eigen::Matrix<value_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
     Mat;  // import dense, dynamically sized Matrix type from Eigen;
 //              this is a matrix with row-major storage
 
@@ -284,7 +284,7 @@ M load_csv (const std::string & path) {
     std::ifstream indata;
     indata.open(path);
     std::string line;
-    std::vector<double> values;
+    std::vector<value_t> values;
     uint rows = 0;
     while (std::getline(indata, line)) {
         std::stringstream lineStream(line);

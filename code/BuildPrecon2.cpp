@@ -160,7 +160,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Norm D " << D.frob_norm());
 
 
-	TTTensor test,test1,test2,b = TTTensor::ones(std::vector<size_t>(d,2));
+	TTTensor test,test1,test2,b = TTTensor::ones(std::vector<size_t>(d,2)),xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
 	xerus::Index ii,jj;
 	auto x1 = makeTT(F1,d);
 	x1 *= -1.0;
@@ -173,9 +173,17 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test1.frob_norm());
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test2.frob_norm());
 
-	simpleALS(D, x1, b);
+	simpleALS(D, x2, b);
 
-	test(ii^d) = D(ii^d,jj^d) * x1(jj^d);
+	test(ii^d) = D(ii^d,jj^d) * x2(jj^d);
+	test -=b;
+
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+
+
+	simpleALS(D, xrand, b);
+
+	test(ii^d) = D(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
 
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
