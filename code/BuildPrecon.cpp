@@ -177,6 +177,7 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
+	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
 	value_t coeff1;
@@ -188,10 +189,10 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		for (size_t i = 0; i < dim; ++i){
-			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift_vec[i]));
+			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift/dim_v));
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,1,1,0}] =  coeff1 ;
-			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift_vec[i]))  ;
+			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift/dim_v))  ;
 			tmp.set_component(i,aa);
 		}
 		value_t coeff2 = 2*get_wj(j,k)/lambda_min;
