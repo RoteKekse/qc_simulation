@@ -208,12 +208,13 @@ int main(int argc, char* argv[]) {
 	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
 	TTTensor phi = makeUnitVector(hf,  d);
 
-	Tensor E;
+	Tensor E,G;
 	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
 	XERUS_LOG(info,"D " << E[0]);
-	E() = xrand(ii&0)*phi(ii&0);
+	G() = xrand(ii&0)*phi(ii&0);
 
 	XERUS_LOG(info,"xrand " << E[0]);
+	XERUS_LOG(info,"prod " << E[0]*G[0]);
 
 
 }
