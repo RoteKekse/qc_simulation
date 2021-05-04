@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
 	size_t k = std::atof(argv[4]);
-	value_t h = 0.25
+	value_t h = 0.25;
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 
