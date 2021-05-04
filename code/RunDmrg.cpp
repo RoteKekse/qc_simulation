@@ -29,8 +29,6 @@ int main(int argc, char* argv[]) {
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
 	read_from_disc(name,H );
 	XERUS_LOG(info, "The ranks of H are " << H.ranks() );
-	H.round(0.0);
-	XERUS_LOG(info, "The ranks of H are " << H.ranks() );
 
 	Tensor nuc;
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
