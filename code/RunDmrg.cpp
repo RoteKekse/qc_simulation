@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,H );
 
 	Tensor nuc;
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor 	";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
 	read_from_disc(name,nuc );
 
 	XERUS_LOG(info, "nuc " << nuc );
