@@ -226,7 +226,9 @@ public:
 				stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
 
 				begin_time = clock();
+				XERUS_LOG(info,sol);
 				lambda = xerus::get_eigenpair_iterative(sol,op, true,false, 100000, eps);
+				XERUS_LOG(info,sol);
 
 				auto xnew = split1(sol,maxRank,1e-6);
 				solving_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
