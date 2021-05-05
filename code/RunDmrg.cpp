@@ -71,6 +71,10 @@ int main(int argc, char* argv[]) {
 
 	XERUS_LOG(info, "Final Energy =  " << std::setprecision(16) << lambda 	+nuc[0]);
 
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"phi_"+static_cast<std::string>(max_rank)+".ttoperator";
+	write_to_disc(name,phi);
+
+
 
 	return 0;
 }
