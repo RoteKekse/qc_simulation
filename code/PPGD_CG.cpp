@@ -117,7 +117,7 @@
 				rr = contract_TT(id,res,res);
 				alpha = get_stepsize(xHx,rHr,rHx,xx,rr,rx);
 			}
-			phi = phi - alpha* res;
+			phi = phi - (alpha/res.frob_norm())* res;
 			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
 			xx = phi.frob_norm();
 			phi /= xx;
