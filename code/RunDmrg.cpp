@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	//Set Parameters
 	size_t d = H.order()/2;
 	size_t p = 14;
-	size_t max_rank = 4;
+	size_t max_rank = 2;
 	size_t number_of_sweeps = 10;
 	value_t eps = 1e-8;
 
@@ -244,8 +244,7 @@ public:
 				xright = xnew.second;
 				xleft  = xnew.first;
 
-				xright.use_sparse_representation(1e-12);
-				xleft.use_sparse_representation(1e-12);
+
 
 				x.set_component(corePosition, xleft);
 				x.set_component(corePosition+1, xright);
