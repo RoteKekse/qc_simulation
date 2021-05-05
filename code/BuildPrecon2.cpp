@@ -217,73 +217,17 @@ int main(int argc, char* argv[]) {
 	simpleALS(D, xrand, b);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv3.ttoperator";
-	write_to_disc(name,makeTTO(xrand, d));
+	auto xrandTTO = makeTTO(xrand, d)
+	write_to_disc(name,xrandTTO);
+	load_from_disc(name,xrandTTO);
 
 	test(ii^d) = D(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
-
+	XERUS_LOG(info, d);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
-	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"D " << E[0]);
-	G() = xrand(ii&0)*phi(ii&0);
 
-	XERUS_LOG(info,"xrand " << G[0]);
-	XERUS_LOG(info,"prod " << E[0]*G[0]);
-
-
-	hf = {0,1,2,3,4,5,6,7,8,9,10,11,13,14};
-	phi = makeUnitVector(hf,  d);
-
-	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"D " << E[0]);
-	G() = xrand(ii&0)*phi(ii&0);
-
-	XERUS_LOG(info,"xrand " << G[0]);
-	XERUS_LOG(info,"prod " << E[0]*G[0]);
-
-	hf = {0,1,2,3,4,5,6,7,8,9,10,13,14,15};
-	phi = makeUnitVector(hf,  d);
-
-	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"D " << E[0]);
-	G() = xrand(ii&0)*phi(ii&0);
-
-	XERUS_LOG(info,"xrand " << G[0]);
-	XERUS_LOG(info,"prod " << E[0]*G[0]);
-
-	hf = {40,42,44,46,50,52,54,81,83,85,91,93,95,97};
-	phi = makeUnitVector(hf,  d);
-
-	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"D " << E[0]);
-	G() = xrand(ii&0)*phi(ii&0);
-
-	XERUS_LOG(info,"xrand " << G[0]);
-	XERUS_LOG(info,"prod " << E[0]*G[0]);
-
-
-	hf = {80,42,44,46,50,52,56,43,83,85,91,93,95,99};
-	phi = makeUnitVector(hf,  d);
-
-	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"D " << E[0]);
-	G() = xrand(ii&0)*phi(ii&0);
-
-	XERUS_LOG(info,"xrand " << G[0]);
-	XERUS_LOG(info,"prod " << E[0]*G[0]);
-
-
-	hf = {100,42,102,46,50,52,54,81,37,33,27,21,95,97};
-	phi = makeUnitVector(hf,  d);
-
-	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"D " << E[0]);
-	G() = xrand(ii&0)*phi(ii&0);
-
-	XERUS_LOG(info,"xrand " << G[0]);
-	XERUS_LOG(info,"prod " << E[0]*G[0]);
 
 }
 
