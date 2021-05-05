@@ -217,7 +217,7 @@ int main(int argc, char* argv[]) {
 	simpleALS(D, xrand, b);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv3.ttoperator";
-	auto xrandTTO = makeTTO(xrand, d)
+	auto xrandTTO = makeTTO(xrand, d);
 	write_to_disc(name,xrandTTO);
 	read_from_disc(name,xrandTTO);
 
