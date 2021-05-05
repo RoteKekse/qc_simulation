@@ -36,7 +36,7 @@
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
-		value_t alpha_start = 0.1; bool optimal = false;
+		value_t alpha_start = 0.1; bool optimal = true;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
@@ -103,13 +103,8 @@
 			}
 
 			residual = res.frob_norm();
-
-			XERUS_LOG(info,residual);
 			XERUS_LOG(info,"Norm res " << res.frob_norm());
 
-
-
-			//XERUS_LOG(info,"Particle Number res (after projection) " << std::setprecision(13) << getParticleNumber(res));
 			XERUS_LOG(info,"\n" << res.ranks());
 			//Calculate optimal stepsize
 			res /= res.frob_norm();
@@ -120,12 +115,10 @@
 				rr = contract_TT(id,res,res);
 				alpha = get_stepsize(xHx,rHr,rHx,xx,rr,rx);
 			}
-			XERUS_LOG(info,"\n" << phi.ranks());
+			XERUS_LOG(info,"alpha = " << alpha);
 
 			phi = phi - alpha* res;
-			XERUS_LOG(info,"\n" << phi.ranks());
 			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
-			XERUS_LOG(info,"\n" << phi.ranks());
 
 			xx = phi.frob_norm();
 			phi /= xx;
