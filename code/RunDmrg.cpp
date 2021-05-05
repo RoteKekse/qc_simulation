@@ -244,6 +244,9 @@ public:
 				xright = xnew.second;
 				xleft  = xnew.first;
 
+				xright.use_sparse_representation(1e-12);
+				xleft.use_sparse_representation(1e-12);
+
 				x.set_component(corePosition, xleft);
 				x.set_component(corePosition+1, xright);
 
