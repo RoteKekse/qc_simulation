@@ -75,7 +75,7 @@
 		xx = phi.frob_norm();
 		phi /= xx; //normalize
 		xHx = contract_TT(H,phi,phi);
-		result.emplace_back(xHx  + nuc);
+		result.emplace_back(xHx  + nuc[{0}]);
 		for (size_t iter = 0; iter < max_iter; ++iter){
 			//update phi
 			XERUS_LOG(info, "------ Iteration = " << iter);
@@ -127,7 +127,7 @@
 
 			res_last = res;
 
-			result.emplace_back(xHx  + nuc);
+			result.emplace_back(xHx  + nuc[{0}]);
 			XERUS_LOG(info,std::setprecision(8) <<result);
 			XERUS_LOG(info, phi.ranks());
 
