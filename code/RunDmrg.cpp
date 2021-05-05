@@ -200,8 +200,8 @@ public:
 			XERUS_LOG(simpleMALS, "Ranks: " << x.ranks());
 			for (size_t corePosition = 0; corePosition < d-1; ++corePosition) {
 				Tensor  rhs,pn;
-				TensorNetwork op;
-				//Tensor op;
+				//TensorNetwork op;
+				Tensor op;
 
 				const Tensor &Ai = A.get_component(corePosition);
 				const Tensor &Ai1 = A.get_component(corePosition+1);
