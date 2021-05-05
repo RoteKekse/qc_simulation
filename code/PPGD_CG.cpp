@@ -42,7 +42,8 @@
 		// Load operators
 		XERUS_LOG(info, "--- Loading operators ---");
 		XERUS_LOG(info, "Loading inverse of Fock Operator");
-		TTOperator id,Finv;
+		TTOperator id=TTOperator::identity(std::vector<size_t>(4*nob,2)),Finv;
+
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv3.ttoperator";
 		read_from_disc(name,Finv);
 		XERUS_LOG(info,Finv.ranks());
