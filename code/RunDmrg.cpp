@@ -27,7 +27,8 @@ int main(int argc, char* argv[]) {
 
 	TTOperator H;
 	//std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
-	std::string name = "data/H_H2O_48_bench_single.ttoperator";
+	//std::string name = "data/H_H2O_48_bench_single.ttoperator";
+	std::string name = "data/hamiltonian_H2O_48_full_benchmark.ttoperator";
 	read_from_disc(name,H );
 	XERUS_LOG(info, "The ranks of H are " << H.ranks() );
 
