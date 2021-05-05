@@ -46,6 +46,7 @@ int main(int argc, char* argv[]) {
 	//Load Intial Value
 	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
 	TTTensor phi = makeUnitVector(hf,  d);
+	phi += 0.01*TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1))
 
 	//Calculate initial energy
 	Tensor E;
@@ -227,7 +228,7 @@ public:
 
 				begin_time = clock();
 				lambda = xerus::get_eigenpair_iterative(sol,op, true,false, 100000, eps);
-				XERUS_LOG(info,lambda << "\n" << op);
+				//XERUS_LOG(info,lambda << "\n" << op);
 
 				auto xnew = split1(sol,maxRank,1e-6);
 				solving_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
