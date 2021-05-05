@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 	std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
 	TTTensor phi = makeUnitVector(hf,  d);
 	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
-	//phi += 0.1*noise/noise.frob_norm();
+	phi += 0.1*noise/noise.frob_norm();
 
 	//Calculate initial energy
 	Tensor E;
