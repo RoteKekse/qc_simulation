@@ -196,7 +196,7 @@ public:
 			}
 
 			// Sweep Left -> Right
-			XERUS_LOG(simpleMALS, "Iteration: " << itr  << " Eigenvalue " << std::setprecision(16) <<  lambda+nuc);
+			XERUS_LOG(simpleMALS, "Iteration: " << itr  << " Eigenvalue " << lambda " " << std::setprecision(16) <<  lambda+nuc);
 			XERUS_LOG(simpleMALS, "Ranks: " << x.ranks());
 			for (size_t corePosition = 0; corePosition < d-1; ++corePosition) {
 				Tensor  rhs,pn;
@@ -226,9 +226,8 @@ public:
 				stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
 
 				begin_time = clock();
-				XERUS_LOG(info,op);
 				lambda = xerus::get_eigenpair_iterative(sol,op, true,false, 100000, eps);
-				XERUS_LOG(info,op);
+				XERUS_LOG(info,lambda << "\n" << op);
 
 				auto xnew = split1(sol,maxRank,1e-6);
 				solving_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
