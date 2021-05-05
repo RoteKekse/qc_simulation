@@ -61,7 +61,7 @@
 
 		XERUS_LOG(info,"--- starting gradient descent ---");
 		value_t rHx,rHr,rx,rr,xx,xHx;
-		double alpha,beta,residual;
+		double alpha=alpha_start,beta,residual;
 
 
 		TTTensor res, res2, res_last;
@@ -122,8 +122,7 @@
 			}
 			XERUS_LOG(info,"\n" << phi.ranks());
 
-			auto tmp = phi - alpha* res;
-			phi = tmp;
+			phi = phi - alpha* res;
 			XERUS_LOG(info,"\n" << phi.ranks());
 			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
 			XERUS_LOG(info,"\n" << phi.ranks());
