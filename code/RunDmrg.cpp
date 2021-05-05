@@ -51,15 +51,10 @@ int main(int argc, char* argv[]) {
 	Tensor E;
 	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
 	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]);
-	XERUS_LOG(info,"Initial Energy " << E[0]-nuc[0]);
-
-
-
 
 
 	//Perfrom ALS/DMRG
 	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]);
-//	double lambda = simpleALS(op, phi,P, number_of_sweeps);
 	phi.round(10e-14);
 
 
@@ -201,11 +196,12 @@ public:
 			}
 
 			// Sweep Left -> Right
+			XERUS_LOG(simpleMALS, "Iteration: " << itr  << " Eigenvalue " << std::setprecision(16) <<  lambda+nuc);
+			XERUS_LOG(simpleMALS, "Ranks: " << phi.ranks());
 			for (size_t corePosition = 0; corePosition < d-1; ++corePosition) {
 				Tensor  rhs,pn;
 				TensorNetwork op;
 				//Tensor op;
-				//XERUS_LOG(simpleMALS, "Iteration: " << itr  << " core: " << corePosition  << " Eigenvalue " << std::setprecision(16) <<  lambda);
 
 				const Tensor &Ai = A.get_component(corePosition);
 				const Tensor &Ai1 = A.get_component(corePosition+1);
@@ -228,48 +224,21 @@ public:
 				begin_time = clock();
 				op(i1, i2, i3, i4, j1, j2, j3, j4) = leftAStack.back()(i1, k1, j1)*Ai(k1, i2, j2, k2) * Ai1(k2,i3,j3,k3)*rightAStack.back()(i4, k3, j4);
 				stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
-//				XERUS_LOG(info,op.dimensions);
 
 				begin_time = clock();
 				lambda = xerus::get_eigenpair_iterative(sol,op, true,false, 100000, eps);
 
 				auto xnew = split1(sol,maxRank,1e-6);
 				solving_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
-				//auto xnew = split2(op,sol,maxRank,eps);
 
 
 				xright = xnew.second;
 				xleft  = xnew.first;
 
-//				auto x_rank2 = xleft.dimensions[2];
-//				//adding random kicks
-//				auto xleft_kicked = xerus::Tensor({xleft.dimensions[0],xleft.dimensions[1],xleft.dimensions[2] + 1});
-//				auto random_kick = xerus::Tensor::random({xleft.dimensions[0],xleft.dimensions[1],1});
-//				xleft_kicked.offset_add(xleft,{0,0,0});
-//				xleft_kicked.offset_add(random_kick,{0,0,xleft.dimensions[2]});
-//				auto xright_kicked = xerus::Tensor({xright.dimensions[0] + 1,xright.dimensions[1],xright.dimensions[2]});
-//				xright_kicked.offset_add(xright,{0,0,0});
-
-				//XERUS_LOG(info, "U " << U.dimensions << " Vt " << xright.dimensions);
-
 				x.set_component(corePosition, xleft);
 				x.set_component(corePosition+1, xright);
 
 				x/=x.frob_norm();
-
-				pn() = P(i1/2,j1/2)*x(i1&0)*x(j1&0);
-				XERUS_LOG(info,"Particle Number step " << corePosition << " " << std::setprecision(16)<< pn[0] << " Eigenvalue = " << lambda+nuc);
-
-
-				//XERUS_LOG(info, "After kick " << x.ranks());
-
-//				if (x_rank < x_rank2){
-//					leftAStack.clear();
-//					leftAStack.emplace_back(Tensor::ones({1,1,1}));
-//					for (size_t pos = 0; pos < corePosition; ++pos ){
-//						push_left_stack(pos);
-//					}
-//				}
 
 
 				begin_time = clock();
@@ -284,10 +253,6 @@ public:
 			}
 			// Sweep Right -> Left : only move core and update stacks
 			begin_time = clock();
-//			project(x,8,d);
-//			x.round(1e-8);
-//			x.round(maxRank);
-//			x/= x.frob_norm();
 			x.move_core(0, true);
 
 			for (size_t corePosition = d-1; corePosition > 1; --corePosition) {
