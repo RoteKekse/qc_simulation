@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
 	const auto basisname = argv[2];
 
 	TTOperator H;
-	//std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
-	std::string name = "data/H_H2O_48_bench_single.ttoperator";
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
+	//std::string name = "data/H_H2O_48_bench_single.ttoperator";
 	//std::string name = "data/hamiltonian_H2O_48_full_benchmark.ttoperator";
 	read_from_disc(name,H );
 	XERUS_LOG(info, "The ranks of H are " << H.ranks() );
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 	Tensor nuc;
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
 	read_from_disc(name,nuc );
-	nuc[{0}] = 	-52.4190597253;
+	//nuc[{0}] = 	-52.4190597253;
 
 	XERUS_LOG(info, "nuc " << nuc );
 	Index ii,jj;
@@ -47,16 +47,18 @@ int main(int argc, char* argv[]) {
 	value_t eps = 1e-8;
 
 	//Load Intial Value
-	//std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
-	std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
+	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	//std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
 	TTTensor phi = makeUnitVector(hf,  d);
+	Tensor E;
+	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]);
+
 	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
 	phi = noise/noise.frob_norm();
 
 	//Calculate initial energy
-	Tensor E;
-	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]);
+
 
 
 	//Perfrom ALS/DMRG
