@@ -30,7 +30,7 @@
 		read_from_disc(name,nuc );
 		//nuc[{0}] = 	-52.4190597253;
 
-		size_t nob = H.order()/2;
+		size_t nob = H.order()/4;
 		size_t num_elec = 14;
 		size_t max_iter = 10;
 		size_t max_rank = 20;
