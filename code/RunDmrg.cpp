@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	size_t d = H.order()/2;
 	size_t p = 14;
 	size_t max_rank = 20;
-	size_t number_of_sweeps = 1;
+	size_t number_of_sweeps = 5;
 	value_t eps = 1e-8;
 
 	//Load Intial Value
