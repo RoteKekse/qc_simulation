@@ -250,5 +250,37 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"xrand " << G[0]);
 	XERUS_LOG(info,"prod " << E[0]*G[0]);
 
+	hf = {40,42,44,46,50,52,54,81,83,85,91,93,95,97};
+	phi = makeUnitVector(hf,  d);
+
+	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"D " << E[0]);
+	G() = xrand(ii&0)*phi(ii&0);
+
+	XERUS_LOG(info,"xrand " << G[0]);
+	XERUS_LOG(info,"prod " << E[0]*G[0]);
+
+
+	hf = {80,42,44,46,50,52,56,43,83,85,91,93,95,99};
+	phi = makeUnitVector(hf,  d);
+
+	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"D " << E[0]);
+	G() = xrand(ii&0)*phi(ii&0);
+
+	XERUS_LOG(info,"xrand " << G[0]);
+	XERUS_LOG(info,"prod " << E[0]*G[0]);
+
+
+	hf = {100,42,102,46,50,52,54,81,37,33,27,21,95,97};
+	phi = makeUnitVector(hf,  d);
+
+	E() = D(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+	XERUS_LOG(info,"D " << E[0]);
+	G() = xrand(ii&0)*phi(ii&0);
+
+	XERUS_LOG(info,"xrand " << G[0]);
+	XERUS_LOG(info,"prod " << E[0]*G[0]);
+
 }
 
