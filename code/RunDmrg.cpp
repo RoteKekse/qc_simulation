@@ -26,13 +26,15 @@ int main(int argc, char* argv[]) {
 	const auto basisname = argv[2];
 
 	TTOperator H;
-	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
+	//std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
+	std::string name = "data/H_H2O_48_bench_single.ttoperator";
 	read_from_disc(name,H );
 	XERUS_LOG(info, "The ranks of H are " << H.ranks() );
 
 	Tensor nuc;
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
 	read_from_disc(name,nuc );
+	nuc[{0}] = 	-52.4190597253;
 
 	XERUS_LOG(info, "nuc " << nuc );
 	Index ii,jj;
@@ -44,10 +46,11 @@ int main(int argc, char* argv[]) {
 	value_t eps = 1e-8;
 
 	//Load Intial Value
-	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	//std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+	std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
 	TTTensor phi = makeUnitVector(hf,  d);
 	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
-	phi += 0.1*noise/noise.frob_norm();
+	//phi += 0.1*noise/noise.frob_norm();
 
 	//Calculate initial energy
 	Tensor E;
