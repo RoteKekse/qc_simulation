@@ -35,7 +35,7 @@
 		size_t max_iter = 10;
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
-		value_t eps = 10e-6;
+		value_t eps = 10e-8;
 		value_t alpha_start = 0.1; bool optimal = false;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
@@ -92,6 +92,7 @@
 			if (iter == 0){
 				res = Top.builtTTTensor(res_tangential);
 			} else {
+				XERUS_LOG(info, res.order());
 				res_last_tangential = Top.localProduct(res,id);
 				XERUS_LOG(info,"Particle Number res " << std::setprecision(13) << getParticleNumber(Top.builtTTTensor(res_last_tangential)));
 				beta = frob_norm(res_tangential)/frob_norm(res_last_tangential); //Fletcher Reeves update
