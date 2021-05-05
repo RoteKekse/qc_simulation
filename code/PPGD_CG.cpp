@@ -120,6 +120,7 @@
 				rr = contract_TT(id,res,res);
 				alpha = get_stepsize(xHx,rHr,rHx,xx,rr,rx);
 			}
+			XERUS_LOG(info,"\n" << phi.ranks());
 			phi = phi - alpha* res;
 			XERUS_LOG(info,"\n" << phi.ranks());
 			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
