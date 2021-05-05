@@ -197,7 +197,7 @@ public:
 
 			// Sweep Left -> Right
 			XERUS_LOG(simpleMALS, "Iteration: " << itr  << " Eigenvalue " << std::setprecision(16) <<  lambda+nuc);
-			XERUS_LOG(simpleMALS, "Ranks: " << phi.ranks());
+			XERUS_LOG(simpleMALS, "Ranks: " << x.ranks());
 			for (size_t corePosition = 0; corePosition < d-1; ++corePosition) {
 				Tensor  rhs,pn;
 				TensorNetwork op;
