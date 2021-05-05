@@ -3,23 +3,16 @@
 	#include "classes/GradientMethods/ALSres.cpp"
 	#include "classes/GradientMethods/basic.cpp"
 
-
 	#include "classes/loading_tensors.cpp"
 	#include "classes/helpers.cpp"
 
 	using namespace xerus;
 	using xerus::misc::operator<<;
-	#define build_operator 0
 
 	double get_stepsize(double xHx, double rHr, double rHx, double xFx, double rFr, double rFx);
-	void project(std::vector<Tensor>& x,std::vector<Tensor>& y,const std::vector<Tensor>& Q);
 	value_t getParticleNumber(const TTTensor& x);
 	value_t getParticleNumberUp(const TTTensor& x);
 	value_t getParticleNumberDown(const TTTensor& x);
-	std::vector<Tensor> setZero(std::vector<Tensor> tang, value_t eps);
-	TTTensor setZero(TTTensor TT, value_t eps);
-
-
 
 	int main(int argc, char* argv[]) {
 		const auto geom = argv[1];
@@ -43,9 +36,8 @@
 		size_t max_rank = 5;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-6;
-		value_t roh = 0.75, c1 = 10e-4, round_val = 0.9;
 		value_t alpha_start = 0.1; bool optimal = false;
-		std::string out_name = "/homes/numerik/goette/Documents/jupyter_examples/Paper/Preconditioning/data/PreconProjectedCG_rank_" + std::to_string(max_rank) +"_cpu_bench_new.csv";
+		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
 		XERUS_LOG(info, "--- Loading operators ---");
@@ -61,7 +53,7 @@
 		XERUS_LOG(info, "--- Initializing Start Vector ---");
 		XERUS_LOG(info, "Setting Startvector");
 		xerus::TTTensor phi,phi_tmp,phi2;
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_2.tttensor";
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_5.tttensor";
 		read_from_disc(name,phi);
 		//project(phi,num_elec,2*nob);
 		XERUS_LOG(info,phi.ranks());
@@ -136,7 +128,7 @@
 			res_last = res;
 
 			result.emplace_back(xHx  + nuc);
-			XERUS_LOG(info,std::setprecision(10) <<result);
+			XERUS_LOG(info,std::setprecision(8) <<result);
 			XERUS_LOG(info, phi.ranks());
 
 			//Write to file
@@ -159,15 +151,7 @@
 	}
 
 
-	void project(std::vector<Tensor>& x, std::vector<Tensor>& y, const std::vector<Tensor>& Q){
-		size_t d=x.size();
-		for (size_t pos=0; pos<d;pos++){
-			Index i;
-			Tensor tmp;
-			tmp()=x[pos](i&0)*Q[pos](i&0);
-			x[pos]-=tmp[0]*y[pos];
-		}
-	}
+
 
 
 	value_t getParticleNumber(const TTTensor& x){
@@ -203,27 +187,6 @@
 			return pn[0]/nn[0];
 		}
 
-	std::vector<Tensor>  setZero(std::vector<Tensor> tang, value_t eps){
-		std::vector<Tensor> res;
-		for (Tensor t : tang){
-			for (size_t j = 0; j < t.dimensions[0]*t.dimensions[1]*t.dimensions[2]; ++j)
-				if (std::abs(t[j]) < eps)
-					t[j] = 0;
-			res.emplace_back(t);
-		}
-		return res;
-	}
 
-	TTTensor setZero(TTTensor TT, value_t eps){
-		TTTensor res(TT.dimensions);
-		for (size_t i = 0 ; i < TT.order();++i){
-			Tensor t = TT.component(i);
-			for (size_t j = 0; j < t.dimensions[0]*t.dimensions[1]*t.dimensions[2]; ++j)
-				if (std::abs(t[j]) < eps)
-					t[j] = 0;
-			res.set_component(i,t);
-		}
-		return res;
-	}
 
 
