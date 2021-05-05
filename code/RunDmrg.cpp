@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 	size_t d = H.order()/2;
 	size_t p = 14;
 	size_t max_rank = 20;
-	size_t number_of_sweeps = 5;
+	size_t number_of_sweeps = 1;
 	value_t eps = 1e-8;
 
 	//Load Intial Value
@@ -233,7 +233,7 @@ public:
 
 				begin_time = clock();
 				lambda = xerus::get_eigenpair_iterative(sol,op, true,false, 100000, eps);
-				//XERUS_LOG(info,lambda << "\n" << op);
+				XERUS_LOG(info,lambda << "\n" << op);
 
 				auto xnew = split1(sol,maxRank,1e-6);
 				solving_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
