@@ -233,7 +233,7 @@ public:
 
 				begin_time = clock();
 				lambda = xerus::get_eigenpair_iterative(sol,op, true,false, 100000, eps);
-				XERUS_LOG(info,lambda << "\n" << op);
+				XERUS_LOG(info,corePosition << " " <<lambda << "\n" << op);
 
 				auto xnew = split1(sol,maxRank,1e-6);
 				solving_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
