@@ -112,6 +112,7 @@
 			//XERUS_LOG(info,"Particle Number res (after projection) " << std::setprecision(13) << getParticleNumber(res));
 			XERUS_LOG(info,"\n" << res.ranks());
 			//Calculate optimal stepsize
+			res /= res.frob_norm();
 			if (optimal){
 				rHx = contract_TT(H,res,phi);
 				rHr = contract_TT(H,res,res);
@@ -119,8 +120,11 @@
 				rr = contract_TT(id,res,res);
 				alpha = get_stepsize(xHx,rHr,rHx,xx,rr,rx);
 			}
-			phi = phi - (alpha/res.frob_norm())* res;
+			phi = phi - alpha* res;
+			XERUS_LOG(info,"\n" << phi.ranks());
 			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
+			XERUS_LOG(info,"\n" << phi.ranks());
+
 			xx = phi.frob_norm();
 			phi /= xx;
 			xHx = contract_TT(H,phi,phi);
