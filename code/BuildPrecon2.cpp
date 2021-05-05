@@ -216,6 +216,9 @@ int main(int argc, char* argv[]) {
 
 	simpleALS(D, xrand, b);
 
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv3.ttoperator";
+	write_to_disc(name,makeTTO(xrand, d));
+
 	test(ii^d) = D(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
 
