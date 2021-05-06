@@ -51,8 +51,8 @@ int main(int argc, char* argv[]) {
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 
-	//size_t nob = HFev_tmp.rows();
-	size_t nob = 60;
+	size_t nob = HFev_tmp.rows();
+	//size_t nob = 60;
 	XERUS_LOG(info, nob);
 
 
@@ -255,15 +255,19 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
+		XERUS_LOG(info, "j = " << j);
 		j_v =  static_cast<value_t>(j);
 		for (size_t i = 0; i < dim; ++i){
 			auto aa = xerus::Tensor({1,2,2,1});
 			aa[{0,0,0,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*shift_vec[i]);//shift/dim_v );
 			aa[{0,1,1,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*(coeffs[i]+shift_vec[i]));//shift/dim_v ));
 			tmp.set_component(i,aa);
+			XERUS_LOG(info, "aa[{0,0,0,0}] = "  << aa[{0,0,0,0} << " aa[{0,1,1,0}] = "  << aa[{0,1,1,0}]]);
 		}
-		if (j == -k_int || j == k_int)
-			XERUS_LOG(info, "j = " << j << " " << tmp.frob_norm());
+		if (tmp.frob_norm() < 1e-8 && j  > 0)
+			return result;
+		//if (j == -k_int || j == k_int)
+		XERUS_LOG(info, "tmp norm = "  << tmp.frob_norm());
 		result += h*tmp;
 	}
 	return result;
