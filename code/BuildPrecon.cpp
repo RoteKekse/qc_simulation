@@ -252,10 +252,9 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 	TTOperator result(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
 	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v;
-
+	bool s =false;
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
-		bool s =false;
 		XERUS_LOG(info, "j = " << j);
 		j_v =  static_cast<value_t>(j);
 		for (size_t i = 0; i < dim; ++i){
