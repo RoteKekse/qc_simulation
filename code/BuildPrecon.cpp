@@ -270,7 +270,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 		if (tmp.frob_norm() < 10 && s)
 			return result;
 		//if (j == -k_int || j == k_int)
-		XERUS_LOG(info, "tmp norm = "  << tmp.frob_norm() << " " << s);
+		XERUS_LOG(info, "tmp norm = "  << tmp.frob_norm() << " " << s << (tmp.frob_norm() < 10));
 		if (s)
 			result += h*tmp;
 	}
