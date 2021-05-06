@@ -100,14 +100,14 @@ int main(int argc, char* argv[]) {
 
 	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
-	Fock_inv.round(0.0);
+	//Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
 	XERUS_LOG(info,Fock_inv.ranks());
 
 
 	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, h, shift, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
-	Fock_inv2.round(0.0);
+	//Fock_inv2.round(0.0);
 	write_to_disc(name,Fock_inv2);
 	XERUS_LOG(info,Fock_inv2.ranks());
 
@@ -255,6 +255,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
+		bool s ;
 		XERUS_LOG(info, "j = " << j);
 		j_v =  static_cast<value_t>(j);
 		for (size_t i = 0; i < dim; ++i){
@@ -262,13 +263,16 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 			aa[{0,0,0,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*shift_vec[i]);//shift/dim_v );
 			aa[{0,1,1,0}] = std::exp(j_v/dim_v*h-std::exp(h*j_v)*(coeffs[i]+shift_vec[i]));//shift/dim_v ));
 			tmp.set_component(i,aa);
-			XERUS_LOG(info, "aa[{0,0,0,0}] = "  << aa[{0,0,0,0}] << " aa[{0,1,1,0}] = "  << aa[{0,1,1,0}]);
+			//XERUS_LOG(info, "aa[{0,0,0,0}] = "  << aa[{0,0,0,0}] << " aa[{0,1,1,0}] = "  << aa[{0,1,1,0}]);
 		}
-		if (tmp.frob_norm() < 1e-8 && j  > 0)
+		if (tmp.frob_norm() > 1)
+			s = true;
+		if (tmp.frob_norm() < 1 && s)
 			return result;
 		//if (j == -k_int || j == k_int)
 		XERUS_LOG(info, "tmp norm = "  << tmp.frob_norm());
-		result += h*tmp;
+		if (s)
+			result += h*tmp;
 	}
 	return result;
 }
