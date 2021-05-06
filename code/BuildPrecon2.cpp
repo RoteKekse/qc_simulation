@@ -243,7 +243,7 @@ int main(int argc, char* argv[]) {
 	phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},d);
 	test1() =  phi(ii^(d))*F(ii^(d),jj^(d)) * phi(jj^(d));
 	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(d))*xrandTTO(ii^(d),jj^(d)) * phi(jj^(d));
+	test2() =  phi(ii^(d))*xrand(ii^(d)));
 	XERUS_LOG(info,"Fock inv= " <<test2[0]);
 	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
@@ -260,7 +260,7 @@ int main(int argc, char* argv[]) {
 	phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},d);
 	test1() =  phi(ii^(d))*F(ii^(d),jj^(d)) * phi(jj^(d));
 	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(d))*xrandTTO(ii^(d),jj^(d)) * phi(jj^(d));
+	test2() =  phi(ii^(d))*xrand(ii^(d)));
 	XERUS_LOG(info,"Fock inv= " <<test2[0]);
 	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
@@ -277,7 +277,7 @@ int main(int argc, char* argv[]) {
 	phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},d);
 	test1() =  phi(ii^(d))*F(ii^(d),jj^(d)) * phi(jj^(d));
 	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(d))*xrandTTO(ii^(d),jj^(d)) * phi(jj^(d));
+	test2() =  phi(ii^(d))*xrand(ii^(d)));
 	XERUS_LOG(info,"Fock inv= " <<test2[0]);
 	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
