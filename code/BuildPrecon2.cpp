@@ -139,10 +139,13 @@ TTTensor makeTT(TTOperator F,size_t d){
 
 TTOperator makeTTO(TTTensor F,size_t d){
 	TTOperator res = TTOperator(std::vector<size_t>(2*d,2));
+	Tensor trans({2,2,2});
+	trans[{0,0,0}] = 1;
+	trans[{1,1,1}] = 1;
+	Index ii,jj,kk,ll,mm;
 	for (size_t i = 0; i < d; ++i){
-		Tensor tmp({1,2,2,1});
-		tmp[{0,0,0,0}] = F.get_component(i)[{0,0,0}];
-		tmp[{0,1,1,0}] = F.get_component(i)[{0,1,0}];
+		Tensor tmp, comp = F.get_component(i);
+		tmp(ii,jj,kk,ll) = trans(jj,kk,mm)*comp(ii,mm,ll)
 		res.set_component(i,tmp);
 	}
 	return res;
