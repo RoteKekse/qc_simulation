@@ -116,7 +116,8 @@ int main(int argc, char* argv[]) {
 	xerus::Index ii,jj,kk,ll,i1,i2,i3,i4,j1,j2,j3,j4;
 	TTOperator test, Fock = build_Fock_op(HFev);
 	Fock += shift*TTOperator::identity(std::vector<size_t>(4*nob,2));
-
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Fock.ttoperator";
+	write_to_disc(name,Fock);
 //	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
 //	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
 //	test.move_core(0);
@@ -129,12 +130,12 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	Tensor test1,test2;
-	auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
-	test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(2*nob))*Fock_inv2(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-	XERUS_LOG(info,"Fock inv= " <<test2[0]);
-	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
+		auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
+		test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+		XERUS_LOG(info,"Fock = " <<test1[0]);
+		test2() =  phi(ii^(2*nob))*Fock_inv2(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+		XERUS_LOG(info,"Fock inv= " <<test2[0]);
+		XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
 	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
 //	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());

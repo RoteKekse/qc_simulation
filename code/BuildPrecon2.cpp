@@ -155,7 +155,7 @@ int main(int argc, char* argv[]) {
 	value_t shift = std::atof(argv[3]);
 	xerus::Index ii,jj;
 
-	TTOperator D,F1,F2;
+	TTOperator D,F,F1,F2;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
 	read_from_disc(name,D );
 	size_t d = D.order()/2;
@@ -167,6 +167,9 @@ int main(int argc, char* argv[]) {
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
 	read_from_disc(name,F2 );
+
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Fock.ttoperator";
+	read_from_disc(name,F );
 
 	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
 	TTTensor phi = makeUnitVector(hf,  d);
@@ -222,6 +225,18 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,xrandTTO);
 
 	test(ii^d) = D(ii^d,jj^d) * xrand(jj^d);
+	test -=b;
+	XERUS_LOG(info, d);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+
+
+	simpleALS(F, xrand, b);
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv4.ttoperator";
+	xrandTTO = makeTTO(xrand, d);
+	write_to_disc(name,xrandTTO);
+	read_from_disc(name,xrandTTO);
+
+	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
 	XERUS_LOG(info, d);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
