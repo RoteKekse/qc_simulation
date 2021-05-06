@@ -146,6 +146,7 @@ TTOperator makeTTO(TTTensor F,size_t d){
 	for (size_t i = 0; i < d; ++i){
 		Tensor tmp, comp = F.get_component(i);
 		tmp(ii,jj,kk,ll) = trans(jj,kk,mm)*comp(ii,mm,ll);
+		tmp.use_sparse_representation(1e-8);
 		res.set_component(i,tmp);
 	}
 	return res;
@@ -232,7 +233,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	simpleALS(F, xrand, b);
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv4.ttoperator";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_1.ttoperator";
 	xrandTTO = makeTTO(xrand, d);
 	write_to_disc(name,xrandTTO);
 
@@ -251,7 +252,7 @@ int main(int argc, char* argv[]) {
 	xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,2));
 	xrand /= xrand.frob_norm();
 	simpleALS(F, xrand, b);
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv5.ttoperator";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_2.ttoperator";
 	xrandTTO = makeTTO(xrand, d);
 	write_to_disc(name,xrandTTO);
 
@@ -270,7 +271,9 @@ int main(int argc, char* argv[]) {
 	xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,4));
 	xrand /= xrand.frob_norm();
 	simpleALS(F, xrand, b);
-
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_4.ttoperator";
+		xrandTTO = makeTTO(xrand, d);
+		write_to_disc(name,xrandTTO);
 	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
 	XERUS_LOG(info, d);
@@ -286,7 +289,9 @@ int main(int argc, char* argv[]) {
 	xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,8));
 	xrand /= xrand.frob_norm();
 	simpleALS(F, xrand, b);
-
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_8.ttoperator";
+		xrandTTO = makeTTO(xrand, d);
+		write_to_disc(name,xrandTTO);
 	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
 	XERUS_LOG(info, d);

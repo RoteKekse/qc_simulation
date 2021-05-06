@@ -17,6 +17,7 @@
 	int main(int argc, char* argv[]) {
 		const auto geom = argv[1];
 		const auto basisname = argv[2];
+		size_t finvrank = std::atof(argv[3]);
 
 		TTOperator H;
 		std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
@@ -44,7 +45,7 @@
 		XERUS_LOG(info, "Loading inverse of Fock Operator");
 		TTOperator id=TTOperator::identity(std::vector<size_t>(4*nob,2)),Finv;
 
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv5.ttoperator";
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_" +std::to_string(finvrank)+.ttoperator";
 		read_from_disc(name,Finv);
 		XERUS_LOG(info,Finv.ranks());
 		//Finv = id;
