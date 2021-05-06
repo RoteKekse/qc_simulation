@@ -233,7 +233,6 @@ int main(int argc, char* argv[]) {
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv4.ttoperator";
 	xrandTTO = makeTTO(xrand, d);
 	write_to_disc(name,xrandTTO);
-	read_from_disc(name,xrandTTO);
 
 	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
@@ -250,6 +249,9 @@ int main(int argc, char* argv[]) {
 	xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,2));
 	xrand /= xrand.frob_norm();
 	simpleALS(F, xrand, b);
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv5.ttoperator";
+	xrandTTO = makeTTO(xrand, d);
+	write_to_disc(name,xrandTTO);
 
 	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
