@@ -241,6 +241,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,2));
+	xrand /= xrand.frob_norm();
 	simpleALS(F, xrand, b);
 
 	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
@@ -249,6 +250,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	xrand = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,4));
+	xrand /= xrand.frob_norm();
 	simpleALS(F, xrand, b);
 
 	test(ii^d) = F(ii^d,jj^d) * xrand(jj^d);
