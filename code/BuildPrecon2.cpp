@@ -145,7 +145,7 @@ TTOperator makeTTO(TTTensor F,size_t d){
 	Index ii,jj,kk,ll,mm;
 	for (size_t i = 0; i < d; ++i){
 		Tensor tmp, comp = F.get_component(i);
-		tmp(ii,jj,kk,ll) = trans(jj,kk,mm)*comp(ii,mm,ll)
+		tmp(ii,jj,kk,ll) = trans(jj,kk,mm)*comp(ii,mm,ll);
 		res.set_component(i,tmp);
 	}
 	return res;
@@ -225,7 +225,6 @@ int main(int argc, char* argv[]) {
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv3.ttoperator";
 	auto xrandTTO = makeTTO(xrand, d);
 	write_to_disc(name,xrandTTO);
-	read_from_disc(name,xrandTTO);
 
 	test(ii^d) = D(ii^d,jj^d) * xrand(jj^d);
 	test -=b;
@@ -245,7 +244,7 @@ int main(int argc, char* argv[]) {
 	phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},d);
 	test1() =  phi(ii^(d))*F(ii^(d),jj^(d)) * phi(jj^(d));
 	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(d))*xrand(ii^(d));
+	test2() =  phi(ii^(d))*xrandTTO(ii^(d),jj^(d)) * phi(jj^(d));
 	XERUS_LOG(info,"Fock inv= " <<test2[0]);
 	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
