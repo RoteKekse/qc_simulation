@@ -24,7 +24,7 @@ typedef Eigen::Matrix<value_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
 template<typename M>
 M load_csv (const std::string & path);
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k1,size_t k2, value_t shift, std::vector<value_t> shift_vec);
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k1, size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
 //		HFev.emplace_back(val);
 //	}
 
-//	TTOperator Fock_inv = build_Fock_op_inv(HFev, k1,k2 shift, shift_vec);
+//	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift, shift_vec);
 //	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 //	//Fock_inv.round(0.0);
 //	write_to_disc(name,Fock_inv);
@@ -187,20 +187,19 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k1,const size_t k2, value_t shift, std::vector<value_t> shift_vec){
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2));
-	int k_int1 = static_cast<int>(k1);
-	int k_int2 = static_cast<int>(k2);
+	int k_int = static_cast<int>(k);
 	value_t coeff1;
 
 	XERUS_LOG(info, "minimal = " << minimal_ev(coeffs));
 	XERUS_LOG(info, "maximal = " << maximal_ev(coeffs));
 	value_t lambda_min = maximal_ev(coeffs) + shift;
 
-	for ( int j = -k_int1; j <=k_int2; ++j){
+	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		for (size_t i = 0; i < dim; ++i){
 			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift_vec[i]));
@@ -209,7 +208,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k1,const 
 			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift_vec[i]))  ;
 			tmp.set_component(i,aa);
 		}
-		value_t coeff2 = 2*get_wj(j,k1)/lambda_min;
+		value_t coeff2 = 2*get_wj(j,k)/lambda_min;
 		result -= coeff2 * tmp;
 		//result.round(0.0);
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
