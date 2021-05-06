@@ -255,7 +255,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 
 	for ( int j = -k_int; j <=k_int; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
-		bool s ;
+		bool s =false;
 		XERUS_LOG(info, "j = " << j);
 		j_v =  static_cast<value_t>(j);
 		for (size_t i = 0; i < dim; ++i){
@@ -265,9 +265,9 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 			tmp.set_component(i,aa);
 			//XERUS_LOG(info, "aa[{0,0,0,0}] = "  << aa[{0,0,0,0}] << " aa[{0,1,1,0}] = "  << aa[{0,1,1,0}]);
 		}
-		if (tmp.frob_norm() > 1)
+		if (tmp.frob_norm() > 1e2)
 			s = true;
-		if (tmp.frob_norm() < 1 && s)
+		if (tmp.frob_norm() < 1e1 && s)
 			return result;
 		//if (j == -k_int || j == k_int)
 		XERUS_LOG(info, "tmp norm = "  << tmp.frob_norm());
