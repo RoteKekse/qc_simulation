@@ -266,6 +266,7 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k1,const
 			//XERUS_LOG(info, "aa[{0,0,0,0}] = "  << aa[{0,0,0,0}] << " aa[{0,1,1,0}] = "  << aa[{0,1,1,0}]);
 		}
 		result += h*tmp;
+		XERUS_LOG(info, result.ranks());
 
 	}
 	return result;
