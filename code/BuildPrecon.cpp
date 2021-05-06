@@ -148,6 +148,14 @@ int main(int argc, char* argv[]) {
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
+	Tensor test1,test2;
+	auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob)
+	test1() =  phi(jj^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+	XERUS_LOG(info,"Fock = " <<test);
+	test2() =  phi(jj^(2*nob))*Fock_inv(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+	XERUS_LOG(info,"Fock inv= " <<test);
+	XERUS_LOG(info,"prod= " <<test1[0]*2test[0]);
+
 	return 0;
 }
 
