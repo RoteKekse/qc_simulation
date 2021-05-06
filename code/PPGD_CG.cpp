@@ -36,7 +36,7 @@
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
-		value_t alpha_start = 0.1; bool optimal = true;
+		value_t alpha_start = 0.01; bool optimal = false;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
