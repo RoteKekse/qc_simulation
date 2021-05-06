@@ -6,8 +6,8 @@
 #include <queue>
 #include <math.h>
 
-#include <classes/loading_tensors.cpp>
-
+#include "classes/loading_tensors.cpp"
+#include "classes/helpers.cpp"
 
 
 #define build_operator 0
