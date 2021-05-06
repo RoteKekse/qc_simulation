@@ -44,7 +44,7 @@
 		XERUS_LOG(info, "Loading inverse of Fock Operator");
 		TTOperator id=TTOperator::identity(std::vector<size_t>(4*nob,2)),Finv;
 
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv5.ttoperator";
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv4.ttoperator";
 		read_from_disc(name,Finv);
 		XERUS_LOG(info,Finv.ranks());
 		//Finv = id;
@@ -54,7 +54,7 @@
 		XERUS_LOG(info, "--- Initializing Start Vector ---");
 		XERUS_LOG(info, "Setting Startvector");
 		xerus::TTTensor phi,phi_tmp,phi2;
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_4.tttensor";
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_5.tttensor";
 		read_from_disc(name,phi);
 		//project(phi,num_elec,2*nob);
 		XERUS_LOG(info,phi.ranks());
