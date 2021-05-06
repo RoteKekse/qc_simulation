@@ -36,7 +36,7 @@
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
-		value_t alpha_start = 0.025; bool optimal = false;
+		value_t alpha_start = 0.025; bool optimal = true;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
@@ -44,7 +44,7 @@
 		XERUS_LOG(info, "Loading inverse of Fock Operator");
 		TTOperator id=TTOperator::identity(std::vector<size_t>(4*nob,2)),Finv;
 
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv4.ttoperator";
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv5.ttoperator";
 		read_from_disc(name,Finv);
 		XERUS_LOG(info,Finv.ranks());
 		//Finv = id;
