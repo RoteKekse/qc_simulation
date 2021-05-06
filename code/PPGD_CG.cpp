@@ -105,7 +105,7 @@
 			XERUS_LOG(info,"\n" << res.ranks());
 			//Calculate optimal stepsize
 			res /= residual;
-			if (optimal){
+			if (optimal || iter < 2){
 				rHx = contract_TT(H,res,phi);
 				rHr = contract_TT(H,res,res);
 				rx = contract_TT(id,res,phi);
@@ -115,6 +115,7 @@
 			XERUS_LOG(info,"alpha = " << alpha);
 
 			phi = phi - alpha* res;
+			alpha = alpha_start;
 			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
 
 			xx = phi.frob_norm();
