@@ -32,7 +32,7 @@
 
 		size_t nob = H.order()/4;
 		size_t num_elec = 14;
-		size_t max_iter = 20;
+		size_t max_iter = 30;
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
@@ -54,7 +54,7 @@
 		XERUS_LOG(info, "--- Initializing Start Vector ---");
 		XERUS_LOG(info, "Setting Startvector");
 		xerus::TTTensor phi,phi_tmp,phi2;
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_5.tttensor";
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_4.tttensor";
 		read_from_disc(name,phi);
 		//project(phi,num_elec,2*nob);
 		XERUS_LOG(info,phi.ranks());
