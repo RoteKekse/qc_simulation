@@ -24,8 +24,8 @@ typedef Eigen::Matrix<value_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
 template<typename M>
 M load_csv (const std::string & path);
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec);
-TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k,value_t h, value_t shift, std::vector<value_t> shift_vec);
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k1,size_t k2, value_t shift, std::vector<value_t> shift_vec);
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k1, size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
 
@@ -46,8 +46,9 @@ int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
-	size_t k = std::atof(argv[4]);
-	value_t h =std::atof(argv[5]);
+	size_t k1 = std::atof(argv[4]);
+	size_t k2 = std::atof(argv[5]);
+	value_t h =std::atof(argv[6]);
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 
@@ -98,14 +99,14 @@ int main(int argc, char* argv[]) {
 //		HFev.emplace_back(val);
 //	}
 
-	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift, shift_vec);
+	TTOperator Fock_inv = build_Fock_op_inv(HFev, k1,k2 shift, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	//Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
 	XERUS_LOG(info,Fock_inv.ranks());
 
 
-	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k, h, shift, shift_vec);
+	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k1,k2, h, shift, shift_vec);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
 	//Fock_inv2.round(0.0);
 	write_to_disc(name,Fock_inv2);
@@ -186,19 +187,20 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k1,const size_t k2, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2));
-	int k_int = static_cast<int>(k);
+	int k_int1 = static_cast<int>(k1);
+	int k_int2 = static_cast<int>(k2);
 	value_t coeff1;
 
 	XERUS_LOG(info, "minimal = " << minimal_ev(coeffs));
 	XERUS_LOG(info, "maximal = " << maximal_ev(coeffs));
 	value_t lambda_min = maximal_ev(coeffs) + shift;
 
-	for ( int j = -k_int; j <=k_int; ++j){
+	for ( int j = -k_int1; j <=k_int2; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
 		for (size_t i = 0; i < dim; ++i){
 			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift_vec[i]));
@@ -246,16 +248,16 @@ value_t maximal_ev(std::vector<value_t> coeffs){
 	return lambda;
 }
 
-TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_t h, value_t shift, std::vector<value_t> shift_vec){
+TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k1,const size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	TTOperator result(std::vector<size_t>(2*dim,2));
-	int k_int = static_cast<int>(k);
+	int k_int1 = static_cast<int>(k1);
+	int k_int2 = static_cast<int>(k2);
 	value_t fac,fac2,fac3,beta,gamma,dim_v = static_cast<value_t>(dim),j_v;
 	bool s =false;
-	for ( int j = -k_int; j <=k_int; ++j){
+	for ( int j = -k_int1; j <=k_int2; ++j){
 		TTOperator tmp(std::vector<size_t>(2*dim,2));
-		XERUS_LOG(info, "j = " << j);
 		j_v =  static_cast<value_t>(j);
 		for (size_t i = 0; i < dim; ++i){
 			auto aa = xerus::Tensor({1,2,2,1});
@@ -264,14 +266,8 @@ TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, const size_t k,value_
 			tmp.set_component(i,aa);
 			//XERUS_LOG(info, "aa[{0,0,0,0}] = "  << aa[{0,0,0,0}] << " aa[{0,1,1,0}] = "  << aa[{0,1,1,0}]);
 		}
-		if (tmp.frob_norm() > 100)
-			s = true;
-		if (tmp.frob_norm() < 10 && s)
-			return result;
-		//if (j == -k_int || j == k_int)
-		XERUS_LOG(info, "tmp norm = "  << tmp.frob_norm() << " " << s << (tmp.frob_norm() < 10));
-		if (s)
-			result += h*tmp;
+		result += h*tmp;
+
 	}
 	return result;
 }
