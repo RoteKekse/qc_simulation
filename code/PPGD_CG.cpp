@@ -81,9 +81,6 @@
 			//update phi
 			XERUS_LOG(info, "------ Iteration = " << iter);
 			XERUS_LOG(info,"Projected Gradient step with PC (non symmetric)");
-			XERUS_LOG(info,"Particle Number Up   phi " <<  getParticleNumberUp(phi));
-			XERUS_LOG(info,"Particle Number Down phi " <<  getParticleNumberDown(phi));
-			XERUS_LOG(info,"Particle Number      phi " << getParticleNumber(phi));
 
 			res_tangential.clear();
 			res_tangential = Top.localProduct(H,Finv,xHx,true);
@@ -103,11 +100,11 @@
 			}
 
 			residual = res.frob_norm();
-			XERUS_LOG(info,"Norm res " << res.frob_norm());
+			XERUS_LOG(info,"Norm res " << residual);
 
 			XERUS_LOG(info,"\n" << res.ranks());
 			//Calculate optimal stepsize
-			res /= res.frob_norm();
+			res /= residual;
 			if (optimal){
 				rHx = contract_TT(H,res,phi);
 				rHr = contract_TT(H,res,res);
