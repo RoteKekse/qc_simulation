@@ -224,7 +224,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	value_t a_v1,b_v1,a_v2,b_v2;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
-	TTOperator result(std::vector<size_t>(2*dim,2)),tmp;
+	TTOperator result(std::vector<size_t>(2*dim,2)),tmp(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
 	value_t coeff1,coeff2,a=0.0,b=0.0,R;
 
@@ -263,7 +263,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		auto aa = xerus::Tensor({1,2,2,1});
 		aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
 		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
-		result.set_component(i,aa);
+		tmp.set_component(i,aa);
 	}
 	result += a_v2*tmp;
 		//result.round(0.0);
