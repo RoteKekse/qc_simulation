@@ -89,14 +89,12 @@
 			res_tangential.clear();
 			res_tangential = Top.localProduct(H,Finv,xHx,true);
 
-			XERUS_LOG(info,"Particle Number res " <<  getParticleNumber(Top.builtTTTensor(res_tangential)));
 
 			if (iter == 0){
 				res = Top.builtTTTensor(res_tangential);
 			} else {
 				XERUS_LOG(info, res.order());
 				res_last_tangential = Top.localProduct(res,id);
-				XERUS_LOG(info,"Particle Number res " << std::setprecision(13) << getParticleNumber(Top.builtTTTensor(res_last_tangential)));
 				beta = frob_norm(res_tangential)/frob_norm(res_last_tangential); //Fletcher Reeves update
 				XERUS_LOG(info,"Beta = " << beta);
 				add(res_tangential,res_last_tangential, beta);
@@ -125,6 +123,7 @@
 			xx = phi.frob_norm();
 			phi /= xx;
 			xHx = contract_TT(H,phi,phi);
+			XERUS_LOG(info,"Particle Number res " <<  getParticleNumber(phi);
 
 			Top.update(phi);
 
