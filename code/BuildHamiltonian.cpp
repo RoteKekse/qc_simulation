@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
 
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
-	value_t shift = argv[3];
+	value_t shift = std::atof(argv[3]);
 
 	Tensor T ,V;
 	TTOperator H_bench;
