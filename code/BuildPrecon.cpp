@@ -28,6 +28,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shif
 TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k1, size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
+std::pair<value_t,value_t> get_a_b(value_t R);
 
 
 value_t get_hst(size_t k);
@@ -224,8 +225,9 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		}
 	}
 	R = b/a;
-	a_v /= a;
-	b_v /= a;
+	auto ab = get_a_b(R);
+	a_v = ab.first/a;
+	b_v /= ab.second/a;
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
 
 	for (size_t i = 0; i < dim; ++i){
@@ -243,29 +245,25 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	return result;
 }
 
-//std::pair<value_t,value_t> get_a_b(value_t R){
-//	if (R < 1.5e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//	if (R < 1e0)
-//		return std::pair<value_t,value_t>();
-//
-//}
+std::pair<value_t,value_t> get_a_b(value_t R){
+	if (R < 2e0)
+		return std::pair<value_t,value_t>(2.00094589050897,0.715129187969905);
+	if (R < 3e0)
+		return std::pair<value_t,value_t>(1.7376357425821,0.597083366966729);
+	if (R < 4e0)
+		return std::pair<value_t,value_t>(1.60150307236392,0.5323920576674);
+	if (R < 5e0)
+		return std::pair<value_t,value_t>(1.52162963033521,0.493163066904056);
+	if (R < 6e0)
+		return std::pair<value_t,value_t>(1.47309216505896,0.468847474995074);
+	if (R < 7e0)
+		return std::pair<value_t,value_t>(1.44488691232593,0.454549612297251);
+	if (R < 8e0)
+		return std::pair<value_t,value_t>(1.43145353412515,0.447696316846526);
+	if (R < 9e0)
+		return std::pair<value_t,value_t>(1.42909978697927,0.446492606298809);
+	return std::pair<value_t,value_t>(1.42909978698058,0.446492606299478);
+}
 
 
 value_t get_hst(size_t k){
