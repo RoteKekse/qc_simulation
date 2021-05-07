@@ -117,7 +117,7 @@
 			auto xHx_tmp = xHx;
 			size_t count = 0;
 			while(xHx_tmp>= xHx){
-				XERUS_LOG(info,"count = " << count);
+				XERUS_LOG(info,"count = " << count  << " " << xHx_tmp<< " " << xHx);
 
 				if (count >=1){
 					alpha_start *= 0.8;
