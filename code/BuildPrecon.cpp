@@ -215,11 +215,11 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	for(size_t i = 0; i < dim;++i){
 		if (shift_vec[i] < coeffs[i]+shift_vec[i]){
 			a += shift_vec[i];
-			b +=  coeffs[i]+shift_vec[i]
+			b +=  coeffs[i]+shift_vec[i];
 		}
 		else {
 			b += shift_vec[i];
-			a +=  coeffs[i]+shift_vec[i]
+			a +=  coeffs[i]+shift_vec[i];
 		}
 	}
 	R = b/a;
