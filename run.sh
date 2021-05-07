@@ -1,7 +1,7 @@
 PATH=geometry/N2/
 FILE=n2
 BASIS=cc-pvtz
-SHIFT=110
+SHIFT=135
 K1=200
 K=50
 H=1.0
