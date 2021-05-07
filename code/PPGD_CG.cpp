@@ -18,6 +18,7 @@
 		const auto geom = argv[1];
 		const auto basisname = argv[2];
 		size_t finvrank = std::atof(argv[3]);
+		value_t shift = std::atof(argv[4]);
 
 		TTOperator H;
 		std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
@@ -29,6 +30,7 @@
 		Tensor nuc;
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
 		read_from_disc(name,nuc );
+		nuc[0] = nuc[0] - shift;
 		//nuc[{0}] = 	-52.4190597253;
 
 		size_t nob = H.order()/4;

@@ -3,8 +3,8 @@ FILE=n2
 BASIS=cc-pvtz
 SHIFT=135
 K1=200
-K=50
-H=1.0
+K2=50
+H=1.25
 
 build/hf.out $PATH $FILE $BASIS
 build/get_1elec_int.out $PATH $FILE $BASIS

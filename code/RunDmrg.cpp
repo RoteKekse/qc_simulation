@@ -24,6 +24,7 @@ double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRa
 int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
+	value_t shift = std::atof(argv[3]);
 
 	TTOperator H;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
@@ -37,7 +38,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,nuc );
 	//nuc[{0}] = 	-52.4190597253;
 
-	XERUS_LOG(info, "nuc " << nuc );
+	XERUS_LOG(info, "nuc " << nuc-shift );
 	Index ii,jj;
 	//Set Parameters
 	size_t d = H.order()/2;
@@ -52,7 +53,7 @@ int main(int argc, char* argv[]) {
 	TTTensor phi = makeUnitVector(hf,  d);
 	Tensor E;
 	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]);
+	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]-shift);
 
 	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
 	phi = noise/noise.frob_norm();
@@ -62,14 +63,14 @@ int main(int argc, char* argv[]) {
 
 
 	//Perfrom ALS/DMRG
-	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]);
+	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]-shift);
 	phi.round(10e-14);
 
 
 	XERUS_LOG(info, "The ranks of phi are " << phi.ranks() );
 	XERUS_LOG(info, "Size of Solution " << phi.datasize() );
 
-	XERUS_LOG(info, "Final Energy =  " << std::setprecision(16) << lambda 	+nuc[0]);
+	XERUS_LOG(info, "Final Energy =  " << std::setprecision(16) << lambda 	+nuc[0]-shift);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_"+std::to_string(max_rank)+".tttensor";
 	write_to_disc(name,phi);
