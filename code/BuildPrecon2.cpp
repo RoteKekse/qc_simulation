@@ -174,7 +174,6 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,D );
 	size_t d = D.order()/2;
 
-	D +=  shift*TTOperator::identity(std::vector<size_t>(2*d,2));
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 	read_from_disc(name,F1 );
