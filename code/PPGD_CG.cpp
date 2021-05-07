@@ -35,7 +35,7 @@
 
 		size_t nob = H.order()/4;
 		size_t num_elec = 14;
-		size_t max_iter = 30;
+		size_t max_iter = 50;
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
