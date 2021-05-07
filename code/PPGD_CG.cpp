@@ -104,7 +104,8 @@
 			residual = res.frob_norm();
 			XERUS_LOG(info,"Norm res " << residual);
 
-			XERUS_LOG(info, "Max rank Res  = " << std::max( res.ranks()));
+			auto Rr = res.ranks();
+			XERUS_LOG(info, "Max rank Res = " << std::max_element(std::begin(Rr), std::end(Rr)));
 			//Calculate optimal stepsize
 			res /= residual;
 			if (optimal || iter < 2){
@@ -131,7 +132,8 @@
 
 			result.emplace_back(xHx  + nuc[{0}]);
 			XERUS_LOG(info,std::setprecision(8) <<result);
-			XERUS_LOG(info, "Max rank Phi = " << std::max( phi.ranks()));
+			auto Pr = phi.ranks();
+			XERUS_LOG(info, "Max rank Phi = " << std::max_element(std::begin(Pr), std::end(Pr)));
 
 			//Write to file
 			outfile.open(out_name,std::ios::app);
