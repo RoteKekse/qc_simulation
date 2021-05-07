@@ -99,11 +99,11 @@ int main(int argc, char* argv[]) {
 //		HFev.emplace_back(val);
 //	}
 
-//	TTOperator Fock_inv = build_Fock_op_inv(HFev, k, shift, shift_vec);
-//	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
-//	//Fock_inv.round(0.0);
-//	write_to_disc(name,Fock_inv);
-//	XERUS_LOG(info,Fock_inv.ranks());
+	TTOperator Fock_inv = build_Fock_op_inv(HFev, k1, shift, shift_vec);
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
+	//Fock_inv.round(0.0);
+	write_to_disc(name,Fock_inv);
+	XERUS_LOG(info,Fock_inv.ranks());
 
 
 	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k1,k2, h, shift, shift_vec);
@@ -118,10 +118,10 @@ int main(int argc, char* argv[]) {
 	Fock += shift*TTOperator::identity(std::vector<size_t>(4*nob,2));
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Fock.ttoperator";
 	write_to_disc(name,Fock);
-//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
-//	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
-//	test.move_core(0);
-//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
+	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test.move_core(0);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
 	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
@@ -138,7 +138,7 @@ int main(int argc, char* argv[]) {
 		XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
 	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
-//	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
+	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
 	XERUS_LOG(info,"Norm Fock inv2 " << Fock_inv2.frob_norm());
 
 
@@ -146,10 +146,10 @@ int main(int argc, char* argv[]) {
 //	Fock_inv.round(1);
 	Fock_inv2.round(1);
 
-//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
-//	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
-//	test.move_core(0);
-//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
+	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test.move_core(0);
+	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
 	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
