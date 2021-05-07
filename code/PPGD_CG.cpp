@@ -123,7 +123,7 @@
 			xx = phi.frob_norm();
 			phi /= xx;
 			xHx = contract_TT(H,phi,phi);
-			XERUS_LOG(info,"Particle Number res " <<  getParticleNumber(phi);
+			XERUS_LOG(info,"Particle Number res " <<  getParticleNumber(phi));
 
 			Top.update(phi);
 
