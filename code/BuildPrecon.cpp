@@ -130,12 +130,12 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	Tensor test1,test2;
-		auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
-		test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-		XERUS_LOG(info,"Fock = " <<test1[0]);
-		test2() =  phi(ii^(2*nob))*Fock_inv2(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-		XERUS_LOG(info,"Fock inv= " <<test2[0]);
-		XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
+	auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
+	test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+	XERUS_LOG(info,"Fock = " <<test1[0]);
+	test2() =  phi(ii^(2*nob))*Fock_inv(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+	XERUS_LOG(info,"Fock inv= " <<test2[0]);
+	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
 	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
 	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
@@ -160,7 +160,7 @@ int main(int argc, char* argv[]) {
 	phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
 	test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
 	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(2*nob))*Fock_inv2(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+	test2() =  phi(ii^(2*nob))*Fock_inv(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
 	XERUS_LOG(info,"Fock inv= " <<test2[0]);
 	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
 
