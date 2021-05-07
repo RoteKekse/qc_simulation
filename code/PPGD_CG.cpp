@@ -131,7 +131,7 @@
 
 			result.emplace_back(xHx  + nuc[{0}]);
 			XERUS_LOG(info,std::setprecision(8) <<result);
-			XERUS_LOG(info, "Max rank Res = " << phi.ranks()[nob]);
+			XERUS_LOG(info, "Max rank Phi = " << phi.ranks()[nob]);
 
 			//Write to file
 			outfile.open(out_name,std::ios::app);
