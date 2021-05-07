@@ -172,10 +172,8 @@ void printError(TTOperator F, TTOperator Fi, std::vector<size_t> idx, size_t nob
 	Tensor test1,test2;
 	auto phi =makeUnitVector(idx,2*nob);
 	test1() =  phi(ii^(2*nob))*F(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-	XERUS_LOG(info,"Fock = " <<test1[0]);
 	test2() =  phi(ii^(2*nob))*Fi(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-	XERUS_LOG(info,"Fock inv= " <<test2[0]);
-	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
+	XERUS_LOG(info,"Fock = " <<test1[0] << " Fock inv= " <<test2[0] << " prod= " <<test1[0]*test2[0]);
 }
 
 TTOperator build_Fock_op(std::vector<value_t> coeffs){
