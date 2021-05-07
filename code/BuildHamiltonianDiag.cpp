@@ -15,16 +15,17 @@ size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
 Tensor V12f(size_t n, Tensor &T, Tensor &V);
 Tensor V21f(size_t n,Tensor &T, Tensor &V);
-Tensor MVf(Tensor &T, Tensor &V);
+Tensor MVf(Tensor &T, Tensor &V,value_t shift);
 
 value_t getV(Tensor &V,size_t i, size_t j, size_t k, size_t l);
 value_t getT(Tensor &T,size_t i, size_t j);
-TTOperator BuildHamil(Tensor &T, Tensor &V);
+TTOperator BuildHamil(Tensor &T, Tensor &V,value_t shift);
 
 int main(int argc, char* argv[]) {
 
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
+	value_t shift = argv[3];
 
 	Tensor T ,V;
 	TTOperator H_bench;
@@ -33,13 +34,13 @@ int main(int argc, char* argv[]) {
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 	read_from_disc(name, V);
 
-	auto H = BuildHamilDiag(T,V);
+	auto H = BuildHamilDiag(T,V,shift);
 
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H_diag.ttoperator";
 	write_to_disc(name, H);
 }
 
-TTOperator BuildHamilDiag(Tensor &T, Tensor &V){
+TTOperator BuildHamilDiag(Tensor &T, Tensor &V,value_t shift){
     size_t d = 2*V.dimensions[0];
     TTOperator H(std::vector<size_t>(2*d ,2));
 
@@ -80,7 +81,7 @@ TTOperator BuildHamilDiag(Tensor &T, Tensor &V){
 		comp.offset_add(comp3,{comp1.dimensions[0],0,0,comp1.dimensions[3]});
 		H.set_component(i,comp);
 	}
-	auto M = MVf(T,V);
+	auto M = MVf(T,V,shift);
 	Index i,j,k,l,m;
 	Tensor tmp;
 	tmp(i,j,k,m) = H.get_component(d/2-1)(i,j,k,l)*M(l,m);
@@ -156,11 +157,12 @@ Tensor V21f(size_t n,Tensor &T, Tensor &V){
     return comp;
 }
 
-Tensor MVf(Tensor &T, Tensor &V){
+Tensor MVf(Tensor &T, Tensor &V,value_t shift){
     size_t d   = 2*V.dimensions[0];//2*V.dimensions[0];
     size_t n = getsizeV11(d/2-1)+getsizeV22(d/2-1,d);
     Tensor MV({n,n});
 
+    MV[{0,0}] = shift;
     MV[{n-1,0}] = 1;
     MV[{0,n-1}] = 1;
 

@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
 	Mat HFev_tmp = load_csv<Mat>(name);
 
 	size_t nob = HFev_tmp.rows();
-	nob = std::atof(argv[7]);
+	//nob = std::atof(argv[7]);
 	XERUS_LOG(info, nob);
 
 
