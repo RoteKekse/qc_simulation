@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
 	read_from_disc(name,nuc );
 	//nuc[{0}] = 	-52.4190597253;
 
-	XERUS_LOG(info, "nuc " << nuc-shift );
+	XERUS_LOG(info, "nuc " << nuc );
 	Index ii,jj;
 	//Set Parameters
 	size_t d = H.order()/2;
