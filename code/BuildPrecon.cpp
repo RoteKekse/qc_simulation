@@ -168,7 +168,7 @@ int main(int argc, char* argv[]) {
 }
 
 void printError(TTOperator F, TTOperator Fi, std::vector<size_t> idx, size_t nob){
-	Index ii,jj;
+	xerus::Index ii,jj;
 	Tensor test1,test2;
 	auto phi =makeUnitVector(idx,2*nob);
 	test1() =  phi(ii^(2*nob))*F(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
