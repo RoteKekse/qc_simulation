@@ -239,7 +239,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		}
 	}
 	R = b/a;
-	auto ab = get_a_b(3.9);
+	auto ab = get_a_b(4.9);
 	a_v = ab.first/a;
 	b_v = ab.second/a;
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R << " ab = "<< ab );
