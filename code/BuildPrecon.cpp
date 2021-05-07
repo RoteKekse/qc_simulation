@@ -121,7 +121,7 @@ int main(int argc, char* argv[]) {
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Fock.ttoperator";
 	write_to_disc(name,Fock);
 	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
-	test += TTOperator::identity(std::vector<size_t>(4*nob,2));
+	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
