@@ -89,7 +89,7 @@ value_t contract_TT(const TTOperator& A, const TTTensor& x, const TTTensor& y){
 
 		stack(i1,i2,i3) = stack(j1,j2,j3) * xi(j1,k1,i1) * Ai(j2,k1,k2,i2) * yi(j3,k2,i3);
 	}
-	return stack[0,0,0];
+	return stack[{0,0,0}];
 }
 
 
@@ -106,7 +106,7 @@ value_t contract_TT2(const TTOperator& A,const TTOperator& B, const TTTensor& x,
 
 		stack(i1,i2,i3,i4) = stack(j1,j2,j3,j4) * xi(j1,k1,i1) * Ai(j2,k1,k2,i2) * Bi(j3,k2,k3,i3) * yi(j4,k3,i4);
 	}
-	return stack[0,0,0,0];
+	return stack[{0,0,0,0}];
 }
 
 TTTensor makeUnitVector(std::vector<size_t> sample, size_t d){

@@ -205,32 +205,45 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
+	value_t a_v = 1.42909978698058, b_v = 0.446492606299478;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2));
 	int k_int = static_cast<int>(k);
-	value_t coeff1;
+	value_t coeff1,coeff2,a=0.0,b=0.0,R;
 
-	XERUS_LOG(info, "minimal = " << minimal_ev(coeffs));
-	XERUS_LOG(info, "maximal = " << maximal_ev(coeffs));
-	value_t lambda_min = maximal_ev(coeffs) + shift;
-
-	for ( int j = -k_int; j <=k_int; ++j){
-		TTOperator tmp(std::vector<size_t>(2*dim,2));
-		for (size_t i = 0; i < dim; ++i){
-			coeff1 = std::exp(2*get_tj(j,k)/lambda_min*(-coeffs[i]-shift_vec[i]));
-			auto aa = xerus::Tensor({1,2,2,1});
-			aa[{0,1,1,0}] =  coeff1 ;
-			aa[{0,0,0,0}] =  std::exp(2*get_tj(j,k)/lambda_min*(-shift_vec[i]))  ;
-			tmp.set_component(i,aa);
+	for(sizet i = 0; i < dim;++i){
+		if (shift_vec[i] < coeffs[i]+shift_vec[i]){
+			a += shift_vec[i];
+			b +=  coeffs[i]+shift_vec[i]
 		}
-		value_t coeff2 = 2*get_wj(j,k)/lambda_min;
-		result -= coeff2 * tmp;
+		else {
+			b += shift_vec[i];
+			a +=  coeffs[i]+shift_vec[i]
+		}
+	}
+	R = b/a;
+	a_v /= a;
+	b_v /= a;
+	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
+
+	for (size_t i = 0; i < dim; ++i){
+		coeff1 = vshift_vec[i];
+		coeff2 = coeffs[i]+shift_vec[i];
+		auto aa = xerus::Tensor({1,2,2,1});
+		aa[{0,0,0,0}] =  std::exp(-b_v*coeff1)  ;
+		aa[{0,1,1,0}] =  std::exp(-b_v*coeff2) ;
+		result.set_component(i,aa);
+	}
+	result *= a_v;
 		//result.round(0.0);
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
-	}
+
 	return result;
 }
+
+
+
 value_t get_hst(size_t k){
 	return M_PI * M_PI / std::sqrt(static_cast<value_t>(k));
 }
