@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 	}
 	XERUS_LOG(info, H[idx]);
 
-	name = "data/H_H2O_48_bench_single.ttoperator";
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.tensor";
 	write_to_disc(name, H);
 
 }
