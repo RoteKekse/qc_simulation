@@ -39,7 +39,7 @@
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
-		value_t alpha_start = 0.02; bool optimal = false;
+		value_t alpha_start = 0.1; bool optimal = false;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
@@ -114,15 +114,29 @@
 				rr = contract_TT(id,res,res);
 				alpha = get_stepsize(xHx,rHr,rHx,xx,rr,rx);
 			}
+			auto xHx_tmp = xHx;
+			size_t count = 0;
+			while(xHx_tmp>= xHx){
+				XERUS_LOG(info,"count = " << count);
+
+				if (count >=1){
+					alpha_start *= 0.8;
+					alpha = alpha_start;
+				}
+				phi_tmp = phi - alpha* res;
+				alpha = alpha_start;
+
+				phi_tmp.round(std::vector<size_t>(2*nob-1,max_rank),eps);
+
+				xx = phi_tmp.frob_norm();
+				phi_tmp /= xx;
+				xHx_tmp = contract_TT(H,phi,phi);
+				count++;
+			}
+			phi = phi_tmp;
+			xHx = xHx_tmp;
 			XERUS_LOG(info,"alpha = " << alpha);
 
-			phi = phi - alpha* res;
-			alpha = alpha_start;
-			phi.round(std::vector<size_t>(2*nob-1,max_rank),eps);
-
-			xx = phi.frob_norm();
-			phi /= xx;
-			xHx = contract_TT(H,phi,phi);
 			XERUS_LOG(info,"Particle Number Phi " <<  getParticleNumber(phi));
 
 			Top.update(phi);
