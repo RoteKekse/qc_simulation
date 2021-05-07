@@ -212,7 +212,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	int k_int = static_cast<int>(k);
 	value_t coeff1,coeff2,a=0.0,b=0.0,R;
 
-	for(sizet i = 0; i < dim;++i){
+	for(size_t i = 0; i < dim;++i){
 		if (shift_vec[i] < coeffs[i]+shift_vec[i]){
 			a += shift_vec[i];
 			b +=  coeffs[i]+shift_vec[i]
@@ -228,7 +228,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
 
 	for (size_t i = 0; i < dim; ++i){
-		coeff1 = vshift_vec[i];
+		coeff1 = shift_vec[i];
 		coeff2 = coeffs[i]+shift_vec[i];
 		auto aa = xerus::Tensor({1,2,2,1});
 		aa[{0,0,0,0}] =  std::exp(-b_v*coeff1)  ;
