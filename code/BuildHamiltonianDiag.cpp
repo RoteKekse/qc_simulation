@@ -8,7 +8,6 @@ using xerus::misc::operator<<;
 
 value_t returnTValue(Tensor &T, size_t p, size_t q);
 value_t returnVValue(Tensor &V, size_t i, size_t k, size_t j, size_t l);
-TTOperator BuildHamilDiag(Tensor &T, Tensor &V);
 Tensor V11f(size_t i,size_t d);
 Tensor V22f(size_t i,size_t d);
 size_t getsizeV11(size_t i);
@@ -19,7 +18,7 @@ Tensor MVf(Tensor &T, Tensor &V,value_t shift);
 
 value_t getV(Tensor &V,size_t i, size_t j, size_t k, size_t l);
 value_t getT(Tensor &T,size_t i, size_t j);
-TTOperator BuildHamil(Tensor &T, Tensor &V,value_t shift);
+TTOperator BuildHamilDiag(Tensor &T, Tensor &V,value_t shift);
 
 int main(int argc, char* argv[]) {
 
