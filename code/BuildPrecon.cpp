@@ -205,7 +205,8 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
-	value_t a_v = 1.42909978698058, b_v = 0.446492606299478;
+	//value_t a_v = 1.42909978698058, b_v = 0.446492606299478;
+	value_t a_v = 2.00094589050897, b_v = 0.715129187969905;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2));
@@ -242,6 +243,29 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	return result;
 }
 
+//std::pair<value_t,value_t> get_a_b(value_t R){
+//	if (R < 1.5e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//	if (R < 1e0)
+//		return std::pair<value_t,value_t>();
+//
+//}
 
 
 value_t get_hst(size_t k){
