@@ -6,7 +6,7 @@ K1=200
 K2=50
 H=1.25
 
-rm data/$File_$BASIS*
+#rm data/$File_$BASIS*
 
 build/hf.out $PATH $FILE $BASIS
 build/get_1elec_int.out $PATH $FILE $BASIS
