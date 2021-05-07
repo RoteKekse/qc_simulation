@@ -228,7 +228,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	auto ab = get_a_b(R);
 	a_v = ab.first/a;
 	b_v /= ab.second/a;
-	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
+	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R << " ab = "<< ab );
 
 	for (size_t i = 0; i < dim; ++i){
 		coeff1 = shift_vec[i];
