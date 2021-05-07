@@ -159,11 +159,19 @@ int main(int argc, char* argv[]) {
 	test.move_core(0);
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
+	XERUS_LOG(info, "Test Inv 1");
 	printError(Fock, Fock_inv, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
-	printError(Fock, Fock_inv, {0,1,2,3,4,5,6,7,8,9,10,11,12,15}, nob);
+	printError(Fock, Fock_inv, {22,45,33,66,77,88,99,73,42,32,12,21,63,2}, nob);
 	printError(Fock, Fock_inv, {0,1,2,3,4,5,6,7,8,9,10,11,12,17}, nob);
 	printError(Fock, Fock_inv, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
 	printError(Fock, Fock_inv, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
+
+	XERUS_LOG(info, "Test Inv 2");
+	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
+	printError(Fock, Fock_inv2, {22,45,33,66,77,88,99,73,42,32,12,21,63,2}, nob);
+	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,17}, nob);
+	printError(Fock, Fock_inv2, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
+	printError(Fock, Fock_inv2, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
 	return 0;
 }
 
