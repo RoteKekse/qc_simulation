@@ -117,7 +117,7 @@
 			auto xHx_tmp = xHx;
 			size_t count = 0;
 			while(xHx_tmp>= xHx){
-				XERUS_LOG(info,"count = " << count  << " " << xHx_tmp<< " " << xHx);
+				XERUS_LOG(info,"count = " << count  << " " << xHx_tmp<< " " << xHx );
 
 				if (count >=1){
 					alpha_start *= 0.8;
@@ -130,7 +130,7 @@
 
 				xx = phi_tmp.frob_norm();
 				phi_tmp /= xx;
-				xHx_tmp = contract_TT(H,phi,phi);
+				xHx_tmp = contract_TT(H,phi_tmp,phi_tmp);
 				count++;
 			}
 			phi = phi_tmp;
