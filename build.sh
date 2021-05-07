@@ -15,6 +15,8 @@ echo "Build Diag"
 g++ -std=c++14 -g -o  build/buildhamildiag.out code/BuildHamiltonianDiag.cpp   -lxerus -lxerus_misc
 echo "Build Precon"
 g++ -g -std=c++14  -o build/buildprecon.out code/BuildPrecon.cpp   -lxerus -lxerus_misc 
+echo "Build Precon"
+g++ -g -std=c++14  -o build/buildprecon2.out code/BuildPrecon2.cpp   -lxerus -lxerus_misc 
 
 
 
