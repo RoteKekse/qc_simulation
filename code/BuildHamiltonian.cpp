@@ -16,7 +16,7 @@ size_t getsizeV11(size_t i);
 size_t getsizeV22(size_t i,size_t d);
 Tensor V12f(size_t n, Tensor &T, Tensor &V);
 Tensor V21f(size_t n,Tensor &T, Tensor &V);
-Tensor MVf(Tensor &T, Tensor &V,vaue_t shift);
+Tensor MVf(Tensor &T, Tensor &V,value_t shift);
 
 value_t getV(Tensor &V,size_t i, size_t j, size_t k, size_t l);
 value_t getT(Tensor &T,size_t i, size_t j);
