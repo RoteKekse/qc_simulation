@@ -120,7 +120,7 @@
 				XERUS_LOG(info,"count = " << count  << " " << xHx_tmp<< " " << xHx );
 
 				if (count >=1){
-					alpha_start *= 0.8;
+					alpha_start *= 0.5;
 					alpha = alpha_start;
 				}
 				phi_tmp = phi - alpha* res;
