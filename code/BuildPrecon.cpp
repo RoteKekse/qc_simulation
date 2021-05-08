@@ -221,7 +221,7 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
 	xerus::Index ii,jj,kk,ll;
-	value_t a_v1,b_v1,a_v2,b_v2;
+	value_t a_v1,b_v1,a_v2,b_v2,a_v3,b_v3;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2)),tmp(std::vector<size_t>(2*dim,2));
@@ -240,11 +240,14 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	}
 	R = b/a;
 	//auto ab = get_a_b(R);
-	a_v1 = 0.512344165699713/a;
-	b_v1 = 0.183443209989993/a;
+	a_v1 = 0.326884916411528/a;
+	b_v1 = 0.123022177451201/a;
 
-	a_v2 =2.29531084041227/a;
-	b_v2 = 1.39888652942634/a;
+	a_v2 =1.04402770744113/a;
+	b_v2 = 0.76173209876179/a;
+
+	a_v3 =2.94374564939135/a;
+	b_v3 = 2.57995075168948/a;
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R  );
 
 	for (size_t i = 0; i < dim; ++i){
@@ -266,6 +269,17 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		tmp.set_component(i,aa);
 	}
 	result += a_v2*tmp;
+
+	tmp = TTOperator(std::vector<size_t>(2*dim,2));
+	for (size_t i = 0; i < dim; ++i){
+		coeff1 = shift_vec[i];
+		coeff2 = coeffs[i]+shift_vec[i];
+		auto aa = xerus::Tensor({1,2,2,1});
+		aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
+		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
+		tmp.set_component(i,aa);
+	}
+	result += a_v3*tmp;
 		//result.round(0.0);
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
 
