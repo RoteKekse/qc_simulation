@@ -108,11 +108,11 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,Fock_inv.ranks());
 
 
-	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k1,k2, h, shift, shift_vec);
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
-	//Fock_inv2.round(0.0);
-	write_to_disc(name,Fock_inv2);
-	XERUS_LOG(info,Fock_inv2.ranks());
+//	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k1,k2, h, shift, shift_vec);
+//	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
+//	//Fock_inv2.round(0.0);
+//	write_to_disc(name,Fock_inv2);
+//	XERUS_LOG(info,Fock_inv2.ranks());
 
 
 	xerus::Index ii,jj,kk,ll,i1,i2,i3,i4,j1,j2,j3,j4;
@@ -126,38 +126,38 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
-	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
-	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
-	test.move_core(0);
-	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
+//	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
+//	test.move_core(0);
+//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	Tensor test1,test2;
 	auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
-	test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-	XERUS_LOG(info,"Fock = " <<test1[0]);
-	test2() =  phi(ii^(2*nob))*Fock_inv(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-	XERUS_LOG(info,"Fock inv= " <<test2[0]);
-	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
+//	test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+//	XERUS_LOG(info,"Fock = " <<test1[0]);
+//	test2() =  phi(ii^(2*nob))*Fock_inv(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
+//	XERUS_LOG(info,"Fock inv= " <<test2[0]);
+//	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
+//
+//	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
+//	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
+//	XERUS_LOG(info,"Norm Fock inv2 " << Fock_inv2.frob_norm());
+//
+//
+//
+////	Fock_inv.round(1);
+//	Fock_inv2.round(1);
+//
+//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
+//	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
+//	test.move_core(0);
+//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
-	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
-	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
-	XERUS_LOG(info,"Norm Fock inv2 " << Fock_inv2.frob_norm());
 
-
-
-//	Fock_inv.round(1);
-	Fock_inv2.round(1);
-
-	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
-	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
-	test.move_core(0);
-	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
-
-
-	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
-	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
-	test.move_core(0);
-	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
+//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
+//	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
+//	test.move_core(0);
+//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	XERUS_LOG(info, "Test Inv 1");
 	printError(Fock, Fock_inv, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
@@ -166,12 +166,12 @@ int main(int argc, char* argv[]) {
 	printError(Fock, Fock_inv, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
 	printError(Fock, Fock_inv, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
 
-	XERUS_LOG(info, "Test Inv 2");
-	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
-	printError(Fock, Fock_inv2, {22,45,33,66,77,88,99,73,42,32,12,21,63,2}, nob);
-	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,17}, nob);
-	printError(Fock, Fock_inv2, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
-	printError(Fock, Fock_inv2, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
+//	XERUS_LOG(info, "Test Inv 2");
+//	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
+//	printError(Fock, Fock_inv2, {22,45,33,66,77,88,99,73,42,32,12,21,63,2}, nob);
+//	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,17}, nob);
+//	printError(Fock, Fock_inv2, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
+//	printError(Fock, Fock_inv2, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
 	return 0;
 }
 
