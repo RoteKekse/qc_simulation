@@ -39,7 +39,7 @@
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
-		value_t alpha_start = 3.0; bool optimal = false;
+		value_t alpha_start = 5.0; bool optimal = false;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
@@ -125,7 +125,7 @@
 				XERUS_LOG(info,"count = " << count  << " " << xHx_tmp<< " " << xHx );
 
 				if (count >=1){
-					alpha_start *= 0.5;
+					alpha_start *= 0.8;
 					alpha = alpha_start;
 				}
 				XERUS_LOG(info,"alpha = " << alpha);
