@@ -39,7 +39,7 @@
 		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
 		value_t eps = 10e-8;
-		value_t alpha_start = 0.1; bool optimal = true;
+		value_t alpha_start = 3.0; bool optimal = false;
 		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
 
 		// Load operators
@@ -106,7 +106,7 @@
 
 			XERUS_LOG(info, "Max rank Res = " << res.ranks()[nob]);
 			//Calculate optimal stepsize
-			res /= residual;
+			//res /= residual;
 			if (optimal || iter < 2){
 				rHx = contract_TT(H,res,phi);
 				rHr = contract_TT(H,res,res);
@@ -123,6 +123,7 @@
 					alpha_start *= 0.5;
 					alpha = alpha_start;
 				}
+				XERUS_LOG(info,"alpha = " << alpha);
 				phi_tmp = phi - alpha* res;
 				alpha = alpha_start;
 
@@ -135,7 +136,6 @@
 			}
 			phi = phi_tmp;
 			xHx = xHx_tmp;
-			XERUS_LOG(info,"alpha = " << alpha);
 
 			XERUS_LOG(info,"Particle Number Phi " <<  getParticleNumber(phi));
 

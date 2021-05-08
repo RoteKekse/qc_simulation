@@ -239,15 +239,17 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		}
 	}
 	R = b/a;
-	//auto ab = get_a_b(R);
-	a_v1 = 0.326884916411528/a;
-	b_v1 = 0.123022177451201/a;
-
-	a_v2 =1.04402770744113/a;
-	b_v2 = 0.76173209876179/a;
-
-	a_v3 =2.94374564939135/a;
-	b_v3 = 2.57995075168948/a;
+	auto ab = get_a_b(R);
+	a_v1 = ab.first/a;
+	b_v1 = ab.second/a;
+//	a_v1 = 0.326884916411528/a;
+//	b_v1 = 0.123022177451201/a;
+//
+//	a_v2 =1.04402770744113/a;
+//	b_v2 = 0.76173209876179/a;
+//
+//	a_v3 =2.94374564939135/a;
+//	b_v3 = 2.57995075168948/a;
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R  );
 
 	for (size_t i = 0; i < dim; ++i){
@@ -260,26 +262,26 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	}
 	result *= a_v1;
 
-	for (size_t i = 0; i < dim; ++i){
-		coeff1 = shift_vec[i];
-		coeff2 = coeffs[i]+shift_vec[i];
-		auto aa = xerus::Tensor({1,2,2,1});
-		aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
-		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
-		tmp.set_component(i,aa);
-	}
-	result += a_v2*tmp;
-
-	tmp = TTOperator(std::vector<size_t>(2*dim,2));
-	for (size_t i = 0; i < dim; ++i){
-		coeff1 = shift_vec[i];
-		coeff2 = coeffs[i]+shift_vec[i];
-		auto aa = xerus::Tensor({1,2,2,1});
-		aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
-		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
-		tmp.set_component(i,aa);
-	}
-	result += a_v3*tmp;
+//	for (size_t i = 0; i < dim; ++i){
+//		coeff1 = shift_vec[i];
+//		coeff2 = coeffs[i]+shift_vec[i];
+//		auto aa = xerus::Tensor({1,2,2,1});
+//		aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
+//		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
+//		tmp.set_component(i,aa);
+//	}
+//	result += a_v2*tmp;
+//
+//	tmp = TTOperator(std::vector<size_t>(2*dim,2));
+//	for (size_t i = 0; i < dim; ++i){
+//		coeff1 = shift_vec[i];
+//		coeff2 = coeffs[i]+shift_vec[i];
+//		auto aa = xerus::Tensor({1,2,2,1});
+//		aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
+//		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
+//		tmp.set_component(i,aa);
+//	}
+//	result += a_v3*tmp;
 		//result.round(0.0);
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
 
