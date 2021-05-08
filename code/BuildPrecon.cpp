@@ -78,6 +78,7 @@ int main(int argc, char* argv[]) {
 			count++;
 		}
 	}
+	XERUS_LOG(info,sum);
 	value_t rest_shift = (shift - sum)/ static_cast<value_t>(2*nob-count);
 	for (size_t i = 0 ; i < 2*nob; ++i){
 		if (HFev[i] >= 0){
