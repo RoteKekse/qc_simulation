@@ -87,17 +87,22 @@
 			XERUS_LOG(info,"Projected Gradient step with PC (non symmetric)");
 
 			res_tangential.clear();
+			XERUS_LOG(info,"Project Gradient");
+
 			res_tangential = Top.localProduct(H,Finv,xHx,true);
 
+			XERUS_LOG(info,"Calc update direction");
 
 			if (iter == 0){
 				res = Top.builtTTTensor(res_tangential);
 			} else {
-				XERUS_LOG(info, res.order());
+				XERUS_LOG(info,"Project last update");
 				res_last_tangential = Top.localProduct(res,id);
 				beta = frob_norm(res_tangential)/frob_norm(res_last_tangential); //Fletcher Reeves update
 				XERUS_LOG(info,"Beta = " << beta);
 				add(res_tangential,res_last_tangential, beta);
+				XERUS_LOG(info,"Assemble update");
+
 				res = Top.builtTTTensor(res_tangential);
 			}
 
@@ -131,6 +136,7 @@
 
 				xx = phi_tmp.frob_norm();
 				phi_tmp /= xx;
+				XERUS_LOG(info,"Calculate new eigenvalue");
 				xHx_tmp = contract_TT(H,phi_tmp,phi_tmp);
 				count++;
 			}
