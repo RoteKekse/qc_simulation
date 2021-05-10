@@ -69,7 +69,7 @@
 
 
 		TTTensor res, res2, res_last;
-		std::vector<value_t> result;
+		clock_t begin_time,global_time = clock();
 		std::vector<Tensor> res_tangential, res_last_tangential;
 		TangentialOperation Top(phi);
 		std::ofstream outfile;
@@ -81,7 +81,6 @@
 		xx = phi.frob_norm();
 		phi /= xx; //normalize
 		xHx = contract_TT(H,phi,phi);
-		result.emplace_back(xHx  + nuc[{0}]);
 		for (size_t iter = 0; iter < max_iter; ++iter){
 			//update phi
 			XERUS_LOG(info, "------ Iteration = " << iter);
@@ -150,13 +149,12 @@
 
 			res_last = res;
 
-			result.emplace_back(xHx  + nuc[{0}]);
-			XERUS_LOG(info,std::setprecision(8) <<result);
+			XERUS_LOG(info,std::setprecision(8) <<xHx  + nuc[{0}]-shift);
 			XERUS_LOG(info, "Max rank Phi = " << phi.ranks()[nob]);
 
 			//Write to file
 			outfile.open(out_name,std::ios::app);
-			outfile <<  (value_t) (clock()-global_time)/ CLOCKS_PER_SEC << "," <<std::setprecision(12) << xHx  - shift +nuc << "," << residual <<"," << projection_time <<"," << stepsize_time <<"," << eigenvalue_time <<  std::endl;
+			outfile <<  iter << "," << std::setprecision(12) <<  xHx+nuc-shift<<","<<residual << ","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
 			outfile.close();
 
 		}
