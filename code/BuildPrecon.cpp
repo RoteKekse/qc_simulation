@@ -179,7 +179,7 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> shift_vec,size_t rank){
 	xerus::Index ii,jj,kk,ll;
-	value_t a_v1,b_v1,a_v2,b_v2,a_v3,b_v3;
+	value_t a_v1,b_v1,a_v2,b_v2,a_v3,b_v3,av,bv;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2)),tmp(std::vector<size_t>(2*dim,2));
