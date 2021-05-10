@@ -216,8 +216,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs,  value_t shift, std::v
 			aa[{0,1,1,0}] =  std::exp(-b_v*coeff2) ;
 			tmp.set_component(i,aa);
 		}
-		tmp *= a_v;
-		result+= tmp;
+		result+= a_v*tmp;
 	}
 
 	//	a_v1 = 0.326884916411528/a;
