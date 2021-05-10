@@ -17,7 +17,7 @@ using xerus::misc::operator<<;
 
 
 class InternalSolver2;
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc, std:string _out_file);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc, std::string _out_file);
 /*
  * Main!!
  */
