@@ -196,7 +196,9 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 		}
 	}
 	R = b/a;
-	//auto ab = get_a_b(R);
+	auto ab = get_a_b(R,rank);
+	auto a_v = ab.first;
+	auto b_v = ab.second;
 	a_v1 = 0.326884916411528/a;
 	b_v1 = 0.123022177451201/a;
 
@@ -206,6 +208,12 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 	a_v3 =2.94374564939135/a;
 	b_v3 = 2.57995075168948/a;
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R  );
+	XERUS_LOG(info,"a = " << a_v1 <<" b = " << b_v1 );
+	XERUS_LOG(info,"a = " << a_v2 <<" b = " << b_v2 );
+	XERUS_LOG(info,"a = " << a_v3 <<" b = " << b_v3 );
+	XERUS_LOG(info,"a = " << a_v[0]/a <<" b = " << b_v[0]/a );
+	XERUS_LOG(info,"a = " << a_v[1]/a <<" b = " << b_v[1]/a );
+	XERUS_LOG(info,"a = " << a_v[2]/a <<" b = " << b_v[2]/a );
 
 	for (size_t i = 0; i < dim; ++i){
 		coeff1 = shift_vec[i];
@@ -267,62 +275,21 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 //
 //	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
 //	XERUS_LOG(info,"a_v = " << a_v <<" b_v = " << b_v);
-////	for (size_t j = 0; j < rank; j++){
-////		tmp = TTOperator(std::vector<size_t>(2*dim,2));
-////		av = a_v[j]/a;
-////		bv = b_v[j]/a;
-////		XERUS_LOG(info,av<< " " << bv);
-////		for (size_t i = 0; i < dim; ++i){
-////			coeff1 = shift_vec[i];
-////			coeff2 = coeffs[i]+shift_vec[i];
-////			auto aa = xerus::Tensor({1,2,2,1});
-////			aa[{0,0,0,0}] =  std::exp(-bv*coeff1)  ;
-////			aa[{0,1,1,0}] =  std::exp(-bv*coeff2) ;
-////			tmp.set_component(i,aa);
-////		}
-////		result+= av*tmp;
-////	}
-//
-//		value_t a_v1 = 0.326884916411528/a;
-//		value_t b_v1 = 0.123022177451201/a;
-//
-//		value_t a_v2 =1.04402770744113/a;
-//		value_t b_v2 = 0.76173209876179/a;
-//
-//		value_t a_v3 =2.94374564939135/a;
-//		value_t b_v3 = 2.57995075168948/a;
-//
+//	for (size_t j = 0; j < rank; j++){
+//		tmp = TTOperator(std::vector<size_t>(2*dim,2));
+//		av = a_v[j]/a;
+//		bv = b_v[j]/a;
+//		XERUS_LOG(info,av<< " " << bv);
 //		for (size_t i = 0; i < dim; ++i){
 //			coeff1 = shift_vec[i];
 //			coeff2 = coeffs[i]+shift_vec[i];
 //			auto aa = xerus::Tensor({1,2,2,1});
 //			aa[{0,0,0,0}] =  std::exp(-bv*coeff1)  ;
 //			aa[{0,1,1,0}] =  std::exp(-bv*coeff2) ;
-//			result.set_component(i,aa);
-//		}
-//		result*= a_v1;
-//
-//
-//		for (size_t i = 0; i < dim; ++i){
-//			coeff1 = shift_vec[i];
-//			coeff2 = coeffs[i]+shift_vec[i];
-//			auto aa = xerus::Tensor({1,2,2,1});
-//			aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
-//			aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
 //			tmp.set_component(i,aa);
 //		}
-//		result += a_v2*tmp;
-//
-//		tmp = TTOperator(std::vector<size_t>(2*dim,2));
-//		for (size_t i = 0; i < dim; ++i){
-//			coeff1 = shift_vec[i];
-//			coeff2 = coeffs[i]+shift_vec[i];
-//			auto aa = xerus::Tensor({1,2,2,1});
-//			aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
-//			aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
-//			tmp.set_component(i,aa);
-//		}
-//		result += a_v3*tmp;
+//		result+= av*tmp;
+//	}
 //
 //	return result;
 //}
