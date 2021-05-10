@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
-	size_t rank = std::atof(argv[4])
+	size_t rank = std::atof(argv[4]);
 
 
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
