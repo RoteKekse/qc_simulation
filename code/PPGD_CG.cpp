@@ -154,7 +154,7 @@
 
 			//Write to file
 			outfile.open(out_name,std::ios::app);
-			outfile <<  iter << "," << std::setprecision(12) <<  xHx+nuc-shift<<","<<residual << ","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
+			outfile <<  iter << "," << std::setprecision(12) <<  xHx+nuc[0]-shift<<","<<residual << ","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
 			outfile.close();
 
 		}
