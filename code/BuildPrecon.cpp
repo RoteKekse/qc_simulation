@@ -202,6 +202,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs,  value_t shift, std::v
 	auto b_v = ab.second;
 
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
+	XERUS_LOG(info,"av = " << a_v <<" b_v = " << b_v);
 	for (size_t j = 0; j < rank; j++){
 		tmp = TTOperator(std::vector<size_t>(2*dim,2));
 		for (size_t i = 0; i < dim; ++i){
