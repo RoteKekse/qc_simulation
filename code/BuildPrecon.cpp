@@ -24,11 +24,11 @@ typedef Eigen::Matrix<value_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
 template<typename M>
 M load_csv (const std::string & path);
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec);
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shift, std::vector<value_t> shift_vec, size_t rank);
 TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k1, size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
-std::pair<value_t,value_t> get_a_b(value_t R);
+std::pair<value_t,value_t> get_a_b(value_t R,size_t rank);
 
 
 value_t get_hst(size_t k);
@@ -48,9 +48,9 @@ int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
-	size_t k1 = std::atof(argv[4]);
-	size_t k2 = std::atof(argv[5]);
-	value_t h =std::atof(argv[6]);
+	size_t rank = std::atof(argv[4])
+
+
     std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
 	Mat HFev_tmp = load_csv<Mat>(name);
 	size_t nob = HFev_tmp.rows();
@@ -102,18 +102,12 @@ int main(int argc, char* argv[]) {
 //		HFev.emplace_back(val);
 //	}
 
-	TTOperator Fock_inv = build_Fock_op_inv(HFev, k1, shift, shift_vec);
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
+	TTOperator Fock_inv = build_Fock_op_inv(HFev, k1, shift, shift_vec,rank);
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_r"+std::to_string(rank)+".ttoperator";
 	//Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
 	XERUS_LOG(info,Fock_inv.ranks());
 
-
-//	TTOperator Fock_inv2 = build_Fock_op_inv2(HFev, k1,k2, h, shift, shift_vec);
-//	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv2.ttoperator";
-//	//Fock_inv2.round(0.0);
-//	write_to_disc(name,Fock_inv2);
-//	XERUS_LOG(info,Fock_inv2.ranks());
 
 
 	xerus::Index ii,jj,kk,ll,i1,i2,i3,i4,j1,j2,j3,j4;
@@ -127,38 +121,8 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 
-//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
-//	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
-//	test.move_core(0);
-//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
-
 	Tensor test1,test2;
 	auto phi =makeUnitVector({0,1,2,3,4,5,6,7,8,9,10,11,12,13},2*nob);
-//	test1() =  phi(ii^(2*nob))*Fock(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-//	XERUS_LOG(info,"Fock = " <<test1[0]);
-//	test2() =  phi(ii^(2*nob))*Fock_inv(ii^(2*nob),jj^(2*nob)) * phi(jj^(2*nob));
-//	XERUS_LOG(info,"Fock inv= " <<test2[0]);
-//	XERUS_LOG(info,"prod= " <<test1[0]*test2[0]);
-//
-//	XERUS_LOG(info,"Norm Fock " << Fock.frob_norm());
-//	XERUS_LOG(info,"Norm Fock inv " << Fock_inv.frob_norm());
-//	XERUS_LOG(info,"Norm Fock inv2 " << Fock_inv2.frob_norm());
-//
-//
-//
-////	Fock_inv.round(1);
-//	Fock_inv2.round(1);
-//
-//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv(kk^(2*nob),jj^(2*nob));
-//	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
-//	test.move_core(0);
-//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
-
-
-//	test(ii^(2*nob),jj^(2*nob)) = Fock(ii^(2*nob),kk^(2*nob)) * Fock_inv2(kk^(2*nob),jj^(2*nob));
-//	test -= TTOperator::identity(std::vector<size_t>(4*nob,2));
-//	test.move_core(0);
-//	XERUS_LOG(info,"Approximation error = " <<std::setprecision(12) <<test.frob_norm());
 
 	XERUS_LOG(info, "Test Inv 1");
 	printError(Fock, Fock_inv, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
@@ -167,12 +131,7 @@ int main(int argc, char* argv[]) {
 	printError(Fock, Fock_inv, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
 	printError(Fock, Fock_inv, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
 
-//	XERUS_LOG(info, "Test Inv 2");
-//	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, nob);
-//	printError(Fock, Fock_inv2, {22,45,33,66,77,88,99,73,42,32,12,21,63,2}, nob);
-//	printError(Fock, Fock_inv2, {0,1,2,3,4,5,6,7,8,9,10,11,12,17}, nob);
-//	printError(Fock, Fock_inv2, {24,25,26,27,28,29,30,31,32,33,34,35,36,37}, nob);
-//	printError(Fock, Fock_inv2, {90,91,92,93,94,95,96,97,98,99,100,102,103,104}, nob);
+
 	return 0;
 }
 
@@ -220,9 +179,8 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec){
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_t shift, std::vector<value_t> shift_vec, size_t rank){
 	xerus::Index ii,jj,kk,ll;
-	value_t a_v1,b_v1,a_v2,b_v2,a_v3,b_v3;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2)),tmp(std::vector<size_t>(2*dim,2));
@@ -240,73 +198,55 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 		}
 	}
 	R = b/a;
-	auto ab = get_a_b(R);
-	a_v1 = ab.first/a;
-	b_v1 = ab.second/a;
-//	a_v1 = 0.326884916411528/a;
-//	b_v1 = 0.123022177451201/a;
-//
-//	a_v2 =1.04402770744113/a;
-//	b_v2 = 0.76173209876179/a;
-//
-//	a_v3 =2.94374564939135/a;
-//	b_v3 = 2.57995075168948/a;
-	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R  );
+	auto ab = get_a_b(R,rank);
+	auto a_v = ab.first/a;
+	auto b_v = ab.second/a;
 
-	for (size_t i = 0; i < dim; ++i){
-		coeff1 = shift_vec[i];
-		coeff2 = coeffs[i]+shift_vec[i];
-		auto aa = xerus::Tensor({1,2,2,1});
-		aa[{0,0,0,0}] =  std::exp(-b_v1*coeff1)  ;
-		aa[{0,1,1,0}] =  std::exp(-b_v1*coeff2) ;
-		result.set_component(i,aa);
+	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
+	for (size_t j = 0; j < rank; j++){
+		tmp = TTOperator(std::vector<size_t>(2*dim,2));
+		for (size_t i = 0; i < dim; ++i){
+			coeff1 = shift_vec[i];
+			coeff2 = coeffs[i]+shift_vec[i];
+			auto aa = xerus::Tensor({1,2,2,1});
+			aa[{0,0,0,0}] =  std::exp(-b_v[j]*coeff1)  ;
+			aa[{0,1,1,0}] =  std::exp(-b_v[j]*coeff2) ;
+			tmp.set_component(i,aa);
+		}
+		tmp *= a_v[j];
+		result+= tmp;
 	}
-	result *= a_v1;
-
-//	for (size_t i = 0; i < dim; ++i){
-//		coeff1 = shift_vec[i];
-//		coeff2 = coeffs[i]+shift_vec[i];
-//		auto aa = xerus::Tensor({1,2,2,1});
-//		aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
-//		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
-//		tmp.set_component(i,aa);
-//	}
-//	result += a_v2*tmp;
-//
-//	tmp = TTOperator(std::vector<size_t>(2*dim,2));
-//	for (size_t i = 0; i < dim; ++i){
-//		coeff1 = shift_vec[i];
-//		coeff2 = coeffs[i]+shift_vec[i];
-//		auto aa = xerus::Tensor({1,2,2,1});
-//		aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
-//		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
-//		tmp.set_component(i,aa);
-//	}
-//	result += a_v3*tmp;
-		//result.round(0.0);
-		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
 
 	return result;
 }
 
-std::pair<value_t,value_t> get_a_b(value_t R){
+std::pair<std::vector<value_t>,std::vector<value_t>> get_a_b(value_t R,size_t rank){
+	if (rank == 2){
+		return std::pair<value_t,value_t>({0.512344165699713,2.29531084041227},{0.183443209989993,1.39888652942634});
+	}
+	if (rank == 3){
+		return std::pair<value_t,value_t>({ 0.326884916411528,1.04402770744113,2.94374564939135},{0.123022177451201,0.76173209876179,2.57995075168948});
+	}
+
+	//if (rank == 1){
 	if (R < 2e0)
-		return std::pair<value_t,value_t>(2.00094589050897,0.715129187969905);
+		return std::pair<value_t,value_t>({2.00094589050897},{0.715129187969905});
 	if (R < 3e0)
-		return std::pair<value_t,value_t>(1.7376357425821,0.597083366966729);
+		return std::pair<value_t,value_t>({1.7376357425821},{0.597083366966729});
 	if (R < 4e0)
-		return std::pair<value_t,value_t>(1.60150307236392,0.5323920576674);
+		return std::pair<value_t,value_t>({1.60150307236392},{0.5323920576674});
 	if (R < 5e0)
-		return std::pair<value_t,value_t>(1.52162963033521,0.493163066904056);
+		return std::pair<value_t,value_t>({1.52162963033521},{0.493163066904056});
 	if (R < 6e0)
-		return std::pair<value_t,value_t>(1.47309216505896,0.468847474995074);
+		return std::pair<value_t,value_t>({1.47309216505896},{0.468847474995074});
 	if (R < 7e0)
-		return std::pair<value_t,value_t>(1.44488691232593,0.454549612297251);
+		return std::pair<value_t,value_t>({1.44488691232593},{0.454549612297251});
 	if (R < 8e0)
-		return std::pair<value_t,value_t>(1.43145353412515,0.447696316846526);
+		return std::pair<value_t,value_t>({1.43145353412515},{0.447696316846526});
 	if (R < 9e0)
-		return std::pair<value_t,value_t>(1.42909978697927,0.446492606298809);
-	return std::pair<value_t,value_t>(1.42909978698058,0.446492606299478);
+		return std::pair<value_t,value_t>({1.42909978697927},{0.446492606298809});
+	return std::pair<value_t,value_t>({1.42909978698058},{0.446492606299478});
+	//}
 }
 
 
