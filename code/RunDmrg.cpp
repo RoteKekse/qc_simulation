@@ -278,7 +278,7 @@ public:
 			}
 			stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
 			outfile.open(out_name,std::ios::app);
-			outfile <<  itr << "," << std::setprecision(12) <<  lambda<<","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
+			outfile <<  itr << "," << std::setprecision(12) <<  lambda+nuc-shift<<","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
 			outfile.close();
 
 		}
