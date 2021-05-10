@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 //	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]-shift);
 
 	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
-	phi = noise/noise.frob_norm();
+	auto phi = noise/noise.frob_norm();
 
 	//Calculate initial energy
 
