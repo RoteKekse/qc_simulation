@@ -222,30 +222,30 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 
 std::pair<std::vector<value_t>,std::vector<value_t>> get_a_b(value_t R,size_t rank){
 	if (rank == 2){
-		return std::pair<value_t,value_t>({0.512344165699713,2.29531084041227},{0.183443209989993,1.39888652942634});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({0.512344165699713,2.29531084041227},{0.183443209989993,1.39888652942634});
 	}
 	if (rank == 3){
-		return std::pair<value_t,value_t>({ 0.326884916411528,1.04402770744113,2.94374564939135},{0.123022177451201,0.76173209876179,2.57995075168948});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({ 0.326884916411528,1.04402770744113,2.94374564939135},{0.123022177451201,0.76173209876179,2.57995075168948});
 	}
 
 	//if (rank == 1){
 	if (R < 2e0)
-		return std::pair<value_t,value_t>({2.00094589050897},{0.715129187969905});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({2.00094589050897},{0.715129187969905});
 	if (R < 3e0)
-		return std::pair<value_t,value_t>({1.7376357425821},{0.597083366966729});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.7376357425821},{0.597083366966729});
 	if (R < 4e0)
-		return std::pair<value_t,value_t>({1.60150307236392},{0.5323920576674});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.60150307236392},{0.5323920576674});
 	if (R < 5e0)
-		return std::pair<value_t,value_t>({1.52162963033521},{0.493163066904056});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.52162963033521},{0.493163066904056});
 	if (R < 6e0)
-		return std::pair<value_t,value_t>({1.47309216505896},{0.468847474995074});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.47309216505896},{0.468847474995074});
 	if (R < 7e0)
-		return std::pair<value_t,value_t>({1.44488691232593},{0.454549612297251});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.44488691232593},{0.454549612297251});
 	if (R < 8e0)
-		return std::pair<value_t,value_t>({1.43145353412515},{0.447696316846526});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.43145353412515},{0.447696316846526});
 	if (R < 9e0)
-		return std::pair<value_t,value_t>({1.42909978697927},{0.446492606298809});
-	return std::pair<value_t,value_t>({1.42909978698058},{0.446492606299478});
+		return std::pair<std::vector<value_t>,std::vector<value_t>>({1.42909978697927},{0.446492606298809});
+	return std::pair<std::vector<value_t>,std::vector<value_t>>({1.42909978698058},{0.446492606299478});
 	//}
 }
 
