@@ -196,7 +196,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 			a +=  coeffs[i]+shift_vec[i];
 		}
 	}
-	R = b/a;
+	R = b;
 	auto ab = get_a_b(R,rank);
 	auto a_v = ab.first;
 	auto b_v = ab.second;
@@ -205,8 +205,8 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 	XERUS_LOG(info,"a_v = " << a_v <<" b_v = " << b_v);
 	for (size_t j = 0; j < rank; j++){
 		tmp = TTOperator(std::vector<size_t>(2*dim,2));
-		av = a_v[j]/a;
-		bv = b_v[j]/a;
+		av = a_v[j];
+		bv = b_v[j];
 		XERUS_LOG(info,av<< " " << bv);
 		for (size_t i = 0; i < dim; ++i){
 			coeff1 = shift_vec[i];
