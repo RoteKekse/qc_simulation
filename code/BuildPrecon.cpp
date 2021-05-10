@@ -183,6 +183,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim);
 	TTOperator result(std::vector<size_t>(2*dim,2)),tmp(std::vector<size_t>(2*dim,2));
+	TTOperator result1(std::vector<size_t>(2*dim,2)),tmp1(std::vector<size_t>(2*dim,2));
 	value_t coeff1,coeff2,a=0.0,b=0.0,R;
 
 	for(size_t i = 0; i < dim;++i){
@@ -230,38 +231,43 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 			tmp.set_component(i,aa);
 		}
 		result+= av*tmp;
+		XERUS_LOG(info, result.frob_norm());
 	}
 
-//	for (size_t i = 0; i < dim; ++i){
-//		coeff1 = shift_vec[i];
-//		coeff2 = coeffs[i]+shift_vec[i];
-//		auto aa = xerus::Tensor({1,2,2,1});
-//		aa[{0,0,0,0}] =  std::exp(-b_v1*coeff1)  ;
-//		aa[{0,1,1,0}] =  std::exp(-b_v1*coeff2) ;
-//		result.set_component(i,aa);
-//	}
-//	result *= a_v1;
-//
-//	for (size_t i = 0; i < dim; ++i){
-//		coeff1 = shift_vec[i];
-//		coeff2 = coeffs[i]+shift_vec[i];
-//		auto aa = xerus::Tensor({1,2,2,1});
-//		aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
-//		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
-//		tmp.set_component(i,aa);
-//	}
-//	result += a_v2*tmp;
-//
-//	tmp = TTOperator(std::vector<size_t>(2*dim,2));
-//	for (size_t i = 0; i < dim; ++i){
-//		coeff1 = shift_vec[i];
-//		coeff2 = coeffs[i]+shift_vec[i];
-//		auto aa = xerus::Tensor({1,2,2,1});
-//		aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
-//		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
-//		tmp.set_component(i,aa);
-//	}
-//	result += a_v3*tmp;
+	for (size_t i = 0; i < dim; ++i){
+		coeff1 = shift_vec[i];
+		coeff2 = coeffs[i]+shift_vec[i];
+		auto aa = xerus::Tensor({1,2,2,1});
+		aa[{0,0,0,0}] =  std::exp(-b_v1*coeff1)  ;
+		aa[{0,1,1,0}] =  std::exp(-b_v1*coeff2) ;
+		result1.set_component(i,aa);
+	}
+	result1 *= a_v1;
+	XERUS_LOG(info, result1.frob_norm());
+
+	for (size_t i = 0; i < dim; ++i){
+		coeff1 = shift_vec[i];
+		coeff2 = coeffs[i]+shift_vec[i];
+		auto aa = xerus::Tensor({1,2,2,1});
+		aa[{0,0,0,0}] =  std::exp(-b_v2*coeff1)  ;
+		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
+		tmp1.set_component(i,aa);
+	}
+	result1 += a_v2*tmp1;
+	XERUS_LOG(info, result1.frob_norm());
+
+	tmp1 = TTOperator(std::vector<size_t>(2*dim,2));
+	for (size_t i = 0; i < dim; ++i){
+		coeff1 = shift_vec[i];
+		coeff2 = coeffs[i]+shift_vec[i];
+		auto aa = xerus::Tensor({1,2,2,1});
+		aa[{0,0,0,0}] =  std::exp(-b_v3*coeff1)  ;
+		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
+		tmp1.set_component(i,aa);
+	}
+	result1 += a_v3*tmp1;
+	XERUS_LOG(info, result1.frob_norm());
+
 		//result.round(0.0);
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
 
