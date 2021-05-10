@@ -208,6 +208,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 	a_v3 =2.94374564939135/a;
 	b_v3 = 2.57995075168948/a;
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R  );
+	XERUS_LOG(info,"a_v = " << a_v <<" b_v = " << b_v);
 	XERUS_LOG(info,"a = " << a_v1 <<" b = " << b_v1 );
 	XERUS_LOG(info,"a = " << a_v2 <<" b = " << b_v2 );
 	XERUS_LOG(info,"a = " << a_v3 <<" b = " << b_v3 );
