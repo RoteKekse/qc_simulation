@@ -17,7 +17,7 @@ using xerus::misc::operator<<;
 
 
 class InternalSolver2;
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc, std::	string _out_file);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, value_t shift, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc, std::	string _out_file);
 /*
  * Main!!
  */
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 
 
 	//Perfrom ALS/DMRG
-	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]-shift,out_name);
+	double lambda = simpleMALS(H, phi,shift, eps, max_rank,number_of_sweeps, nuc[0]-shift,out_name);
 	phi.round(10e-14);
 
 
@@ -95,6 +95,7 @@ class InternalSolver2 {
 	double lambda;
 	double eps;
 	size_t maxRank;
+	value_t shift;
 	std::vector<Tensor> leftAStack;
 	std::vector<Tensor> rightAStack;
 	value_t nuc;
@@ -105,8 +106,8 @@ class InternalSolver2 {
 public:
 	size_t maxIterations;
 
-	InternalSolver2(const TTOperator& _A, TTTensor& _x,  double _eps, size_t _maxRank, size_t _nosw, value_t _nuc,std::string _out_name)
-		: d(_x.order()), x(_x), A(_A), maxIterations(_nosw), lambda(1.0), eps(_eps), maxRank(_maxRank),nuc(_nuc),out_name(_out_name)
+	InternalSolver2(const TTOperator& _A, TTTensor& _x, value_t _shift, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc,std::string _out_name)
+		: d(_x.order()), x(_x), A(_A), shift(_shift), maxIterations(_nosw), lambda(1.0), eps(_eps), maxRank(_maxRank),nuc(_nuc),out_name(_out_name)
 	{
 		leftAStack.emplace_back(Tensor::ones({1,1,1}));
 		rightAStack.emplace_back(Tensor::ones({1,1,1}));
@@ -322,8 +323,8 @@ public:
 
 };
 
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc,std::string _out_name)  {
-	InternalSolver2 solver(_A, _x, _eps, _maxRank,_nosw, _nuc,_out_name);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, value_t _shift, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc,std::string _out_name)  {
+	InternalSolver2 solver(_A, _x, _shift,_eps, _maxRank,_nosw, _nuc,_out_name);
 	return solver.solve();
 }
 
