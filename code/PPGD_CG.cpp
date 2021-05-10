@@ -19,6 +19,11 @@
 		const auto basisname = argv[2];
 		size_t finvrank = std::atof(argv[3]);
 		value_t shift = std::atof(argv[4]);
+		size_t max_rank = std::atof(argv[5]);
+		size_t max_iter = std::atof(argv[6]);
+		value_t eps  = std::atof(argv[7]);
+		size_t  opti  = std::atof(argv[8]);
+		value_t alpha_start  = std::atof(argv[9]);
 
 		TTOperator H;
 		std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
@@ -34,13 +39,9 @@
 		//nuc[{0}] = 	-52.4190597253;
 
 		size_t nob = H.order()/4;
-		size_t num_elec = 14;
-		size_t max_iter = 50;
-		size_t max_rank = 20;
 		Index ii,jj,kk,ll,mm;
-		value_t eps = 10e-8;
-		value_t alpha_start = 4.0; bool optimal = false;
-		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_"+ std::to_string(max_rank) +"_results.csv";
+		bool optimal = (opti == 0 ? false : true);
+		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +std::to_string(finvrank)+"_i"+std::to_string(max_iter) +"_results.csv";
 
 		// Load operators
 		XERUS_LOG(info, "--- Loading operators ---");
@@ -48,7 +49,7 @@
 		TTOperator id=TTOperator::identity(std::vector<size_t>(4*nob,2)),Finv;
 
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_" +std::to_string(finvrank)+".ttoperator";
-		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
+		//name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv.ttoperator";
 		read_from_disc(name,Finv);
 		XERUS_LOG(info,Finv.ranks());
 		//Finv = id;
@@ -60,7 +61,6 @@
 		xerus::TTTensor phi,phi_tmp,phi2;
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_3.tttensor";
 		read_from_disc(name,phi);
-		//project(phi,num_elec,2*nob);
 		XERUS_LOG(info,phi.ranks());
 
 		XERUS_LOG(info,"--- starting gradient descent ---");
@@ -75,6 +75,7 @@
 		std::ofstream outfile;
 
 		outfile.open(out_name);
+		outfile <<  "Iteration ,Eigenvalue, Projected Residual,Calculation Time" <<  std::endl;
 		outfile.close();
 
 		xx = phi.frob_norm();
@@ -155,6 +156,7 @@
 
 			//Write to file
 			outfile.open(out_name,std::ios::app);
+			outfile <<  (value_t) (clock()-global_time)/ CLOCKS_PER_SEC << "," <<std::setprecision(12) << xHx  - shift +nuc << "," << residual <<"," << projection_time <<"," << stepsize_time <<"," << eigenvalue_time <<  std::endl;
 			outfile.close();
 
 		}

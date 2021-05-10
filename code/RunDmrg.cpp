@@ -25,6 +25,10 @@ int main(int argc, char* argv[]) {
 	const auto geom = argv[1];
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
+	size_t max_rank = std::atof(argv[4]);
+	size_t number_of_sweeps = std::atof(argv[5]);
+	value_t eps  = std::atof(argv[7]);
+	std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +"_i"+std::to_string(number_of_sweeps) +"_results.csv";
 
 	TTOperator H;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
@@ -42,18 +46,14 @@ int main(int argc, char* argv[]) {
 	Index ii,jj;
 	//Set Parameters
 	size_t d = H.order()/2;
-	size_t p = 14;
-	size_t max_rank = 20;
-	size_t number_of_sweeps = 15;
-	value_t eps = 1e-8;
 
-	//Load Intial Value
-	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
-	//std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
-	TTTensor phi = makeUnitVector(hf,  d);
-	Tensor E;
-	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
-	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]-shift);
+//	//Load Intial Value
+//	std::vector<size_t> hf = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
+//	//std::vector<size_t> hf = {0,1,2,3,22,23,30,31};
+//	TTTensor phi = makeUnitVector(hf,  d);
+//	Tensor E;
+//	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
+//	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]-shift);
 
 	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
 	phi = noise/noise.frob_norm();
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 
 
 	//Perfrom ALS/DMRG
-	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]-shift);
+	double lambda = simpleMALS(H, phi, eps, max_rank,number_of_sweeps, nuc[0]-shift,out_name);
 	phi.round(10e-14);
 
 
@@ -101,11 +101,12 @@ class InternalSolver2 {
 	TTTensor& x;
 	const TTOperator& A;
 	TTOperator P;
+	std::string out_name;
 public:
 	size_t maxIterations;
 
-	InternalSolver2(const TTOperator& _A, TTTensor& _x,  double _eps, size_t _maxRank, size_t _nosw, value_t _nuc)
-		: d(_x.order()), x(_x), A(_A), maxIterations(_nosw), lambda(1.0), eps(_eps), maxRank(_maxRank),nuc(_nuc)
+	InternalSolver2(const TTOperator& _A, TTTensor& _x,  double _eps, size_t _maxRank, size_t _nosw, value_t _nuc,std::string _out_name)
+		: d(_x.order()), x(_x), A(_A), maxIterations(_nosw), lambda(1.0), eps(_eps), maxRank(_maxRank),nuc(_nuc),out_name(_out_name)
 	{
 		leftAStack.emplace_back(Tensor::ones({1,1,1}));
 		rightAStack.emplace_back(Tensor::ones({1,1,1}));
@@ -179,9 +180,9 @@ public:
 		}
 
 	  std::ofstream outfile;
-		std::string out_name = "/homes/numerik/goette/Documents/jupyter_examples/Paper/Preconditioning/data/DMRG_rank_" + std::to_string(maxRank) +"_cpu_benchmark.csv";
-		outfile.open(out_name);
-		outfile.close();
+	  outfile.open(out_name);
+	  outfile <<  "Iteration ,Eigenvalue, Calculation Time" <<  std::endl;
+	  outfile.close();
 	  clock_t begin_time,global_time = clock();
 	  value_t stack_time = 0,solving_time = 0;
 
@@ -276,6 +277,9 @@ public:
 				leftAStack.pop_back();
 			}
 			stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
+			outfile.open(out_name,std::ios::app);
+			outfile <<  std::to_string(itr) << "," << std::to_string(lambda)<<","<(value_t) (clock() - global_time) / CLOCKS_PER_SEC; <<  std::endl;
+			outfile.close();
 
 		}
 		return lambda;
@@ -318,8 +322,8 @@ public:
 
 };
 
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc)  {
-	InternalSolver2 solver(_A, _x, _eps, _maxRank,_nosw, _nuc);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc,std::string _out_name)  {
+	InternalSolver2 solver(_A, _x, _eps, _maxRank,_nosw, _nuc,_out_name);
 	return solver.solve();
 }
 
