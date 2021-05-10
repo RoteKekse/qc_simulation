@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 	size_t max_rank = std::atof(argv[4]);
 	size_t number_of_sweeps = std::atof(argv[5]);
 	value_t eps  = std::atof(argv[6]);
-	std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +"_i"+std::to_string(number_of_sweeps) +"_results.csv";
+	std::string out_name = "results/DMRG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +"_i"+std::to_string(number_of_sweeps) +"_results.csv";
 
 	TTOperator H;
 	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_H.ttoperator";
