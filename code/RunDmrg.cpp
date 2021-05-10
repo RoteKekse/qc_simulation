@@ -278,7 +278,7 @@ public:
 			}
 			stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
 			outfile.open(out_name,std::ios::app);
-			outfile <<  std::to_string(itr) << "," << std::to_string(lambda)<<","<(value_t) (clock() - global_time) / CLOCKS_PER_SEC; <<  std::endl;
+			outfile <<  std::to_string(itr) << "," << std::to_string(lambda)<<","<(value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
 			outfile.close();
 
 		}
