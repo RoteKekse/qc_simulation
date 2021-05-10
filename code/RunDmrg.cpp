@@ -211,8 +211,6 @@ public:
 			}
 
 			// Sweep Left -> Right
-			XERUS_LOG(simpleMALS, "Iteration: " << itr  << " Eigenvalue " << lambda <<" " << std::setprecision(16) <<  lambda+nuc);
-			XERUS_LOG(simpleMALS, "Ranks: " << x.ranks());
 			for (size_t corePosition = 0; corePosition < d-1; ++corePosition) {
 				Tensor  rhs,pn;
 				//TensorNetwork op;
@@ -278,6 +276,9 @@ public:
 				leftAStack.pop_back();
 			}
 			stack_time += (value_t) (clock() - begin_time) / CLOCKS_PER_SEC;
+			XERUS_LOG(simpleMALS, "Iteration: " << itr  << " Eigenvalue " << lambda <<" " << std::setprecision(16) <<  lambda+nuc);
+			XERUS_LOG(simpleMALS, "Ranks: " << x.ranks());
+
 			outfile.open(out_name,std::ios::app);
 			outfile <<  itr << "," << std::setprecision(12) <<  lambda+nuc-shift<<","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
 			outfile.close();
