@@ -230,6 +230,8 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 			aa[{0,1,1,0}] =  std::exp(-bv*coeff2) ;
 			tmp.set_component(i,aa);
 		}
+		XERUS_LOG(info, tmp.frob_norm());
+
 		result+= av*tmp;
 		XERUS_LOG(info, result.frob_norm());
 	}
@@ -242,6 +244,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 		aa[{0,1,1,0}] =  std::exp(-b_v1*coeff2) ;
 		result1.set_component(i,aa);
 	}
+	XERUS_LOG(info, result1.frob_norm());
 	result1 *= a_v1;
 	XERUS_LOG(info, result1.frob_norm());
 
@@ -253,6 +256,8 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 		aa[{0,1,1,0}] =  std::exp(-b_v2*coeff2) ;
 		tmp1.set_component(i,aa);
 	}
+	XERUS_LOG(info, tmp1.frob_norm());
+
 	result1 += a_v2*tmp1;
 	XERUS_LOG(info, result1.frob_norm());
 
@@ -265,6 +270,8 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 		aa[{0,1,1,0}] =  std::exp(-b_v3*coeff2) ;
 		tmp1.set_component(i,aa);
 	}
+	XERUS_LOG(info, tmp1.frob_norm());
+
 	result1 += a_v3*tmp1;
 	XERUS_LOG(info, result1.frob_norm());
 
