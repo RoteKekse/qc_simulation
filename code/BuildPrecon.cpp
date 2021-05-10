@@ -28,7 +28,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, size_t k, value_t shif
 TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k1, size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
-std::pair<value_t,value_t> get_a_b(value_t R,size_t rank);
+std::pair<std::vector<value_t>,std::vector<value_t>> get_a_b(value_t R,size_t rank);
 
 
 value_t get_hst(size_t k);
