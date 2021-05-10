@@ -274,7 +274,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
 	XERUS_LOG(info, (result-result1).frob_norm());
 
-	return result;
+	return result1;
 }
 
 //TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> shift_vec, size_t rank){
