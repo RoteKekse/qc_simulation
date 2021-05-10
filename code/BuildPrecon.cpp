@@ -24,7 +24,7 @@ typedef Eigen::Matrix<value_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
 template<typename M>
 M load_csv (const std::string & path);
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs,  value_t shift, std::vector<value_t> shift_vec, size_t rank);
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> shift_vec, size_t rank);
 TTOperator build_Fock_op_inv2(std::vector<value_t> coeffs, size_t k1, size_t k2,value_t h, value_t shift, std::vector<value_t> shift_vec);
 TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
@@ -102,7 +102,7 @@ int main(int argc, char* argv[]) {
 //		HFev.emplace_back(val);
 //	}
 
-	TTOperator Fock_inv = build_Fock_op_inv(HFev,  shift, shift_vec,rank);
+	TTOperator Fock_inv = build_Fock_op_inv(HFev, shift_vec,rank);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_r"+std::to_string(rank)+".ttoperator";
 	//Fock_inv.round(0.0);
 	write_to_disc(name,Fock_inv);
@@ -179,7 +179,7 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs){
 
 
 
-TTOperator build_Fock_op_inv(std::vector<value_t> coeffs,  value_t shift, std::vector<value_t> shift_vec, size_t rank){
+TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> shift_vec, size_t rank){
 	xerus::Index ii,jj,kk,ll;
 	size_t dim = coeffs.size();
 	value_t dim_v = static_cast<value_t>(dim),av,bv;
