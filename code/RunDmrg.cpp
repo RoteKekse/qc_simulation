@@ -28,6 +28,9 @@ int main(int argc, char* argv[]) {
 	size_t max_rank = std::atof(argv[4]);
 	size_t number_of_sweeps = std::atof(argv[5]);
 	value_t eps  = std::atof(argv[6]);
+	size_t ini  = std::atof(argv[7]);
+	bool initial = (ini == 0 ? false : true);
+
 	std::string out_name = "results/DMRG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +"_i"+std::to_string(number_of_sweeps) +"_results.csv";
 
 	TTOperator H;
@@ -54,10 +57,14 @@ int main(int argc, char* argv[]) {
 //	Tensor E;
 //	E() = H(ii/2,jj/2)*phi(ii&0)*phi(jj&0);
 //	XERUS_LOG(info,"Initial Energy " << E[0]+nuc[0]-shift);
-
-	auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
-	auto phi = noise/noise.frob_norm();
-
+	TTTensor phi;
+	if (!initial){
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_ini.tttensor";
+		read_from_disc(name,phi);
+	} else {
+		auto noise = TTTensor::random(std::vector<size_t>(d,2),std::vector<size_t>(d-1,1));
+		phi = noise/noise.frob_norm();
+	}
 	//Calculate initial energy
 
 
@@ -72,9 +79,10 @@ int main(int argc, char* argv[]) {
 
 	XERUS_LOG(info, "Final Energy =  " << std::setprecision(16) << lambda 	+nuc[0]-shift);
 
-	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_"+std::to_string(max_rank)+".tttensor";
-	write_to_disc(name,phi);
-
+	if (initial){
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_ini.tttensor";
+		write_to_disc(name,phi);
+	}
 
 
 	return 0;
@@ -282,6 +290,7 @@ public:
 			outfile.open(out_name,std::ios::app);
 			outfile <<  itr << "," << std::setprecision(12) <<  lambda+nuc-shift<<","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
 			outfile.close();
+
 
 		}
 		return lambda;
