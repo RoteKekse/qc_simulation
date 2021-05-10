@@ -270,6 +270,7 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, std::vector<value_t> s
 	result1 += a_v[2]/a*tmp1;
 	XERUS_LOG(info, result1.frob_norm());
 
+	XERUS_LOG(info, (result-result1).frob_norm());
 		//result.round(0.0);
 		//XERUS_LOG(info,"j = " << j << " coeff2 " << coeff2 << " norm " << tmp.frob_norm()<< std::endl << result.ranks());
 
