@@ -17,7 +17,7 @@ using xerus::misc::operator<<;
 
 
 class InternalSolver2;
-double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc, std::string _out_file);
+double simpleMALS(const TTOperator& _A, TTTensor& _x, double _eps, size_t _maxRank, size_t _nosw, value_t _nuc, std::	string _out_file);
 /*
  * Main!!
  */
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 	value_t shift = std::atof(argv[3]);
 	size_t max_rank = std::atof(argv[4]);
 	size_t number_of_sweeps = std::atof(argv[5]);
-	value_t eps  = std::atof(argv[7]);
+	value_t eps  = std::atof(argv[6]);
 	std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +"_i"+std::to_string(number_of_sweeps) +"_results.csv";
 
 	TTOperator H;
