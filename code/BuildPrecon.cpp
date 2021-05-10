@@ -199,8 +199,8 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 	}
 	R = b/a;
 	auto ab = get_a_b(R,rank);
-	auto a_v = ab.first/a;
-	auto b_v = ab.second/a;
+	auto a_v = ab.first;
+	auto b_v = ab.second;
 
 	XERUS_LOG(info,"a = " << a <<" b = " << b << " R = "<< R);
 	for (size_t j = 0; j < rank; j++){
@@ -209,11 +209,11 @@ TTOperator build_Fock_op_inv(std::vector<value_t> coeffs, const size_t k, value_
 			coeff1 = shift_vec[i];
 			coeff2 = coeffs[i]+shift_vec[i];
 			auto aa = xerus::Tensor({1,2,2,1});
-			aa[{0,0,0,0}] =  std::exp(-b_v[j]*coeff1)  ;
-			aa[{0,1,1,0}] =  std::exp(-b_v[j]*coeff2) ;
+			aa[{0,0,0,0}] =  std::exp(-(b_v[j]/a)*coeff1)  ;
+			aa[{0,1,1,0}] =  std::exp(-(b_v[j]/a)*coeff2) ;
 			tmp.set_component(i,aa);
 		}
-		tmp *= a_v[j];
+		tmp *= (a_v[j]/a);
 		result+= tmp;
 	}
 
