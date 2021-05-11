@@ -1,7 +1,7 @@
 GEOM=geometry/N2/
 BASIS=cc-pvtz
 SHIFT=150
-rank=50
+rank=16
 eps=1e-6
 
 DMRG_ITER=25
