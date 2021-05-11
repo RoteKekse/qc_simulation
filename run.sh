@@ -1,6 +1,6 @@
 GEOM=geometry/N2/
 BASIS=cc-pvtz
-SHIFT=0
+SHIFT=150
 rank=50
 eps=1e-6
 
