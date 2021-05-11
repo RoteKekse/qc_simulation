@@ -11,7 +11,7 @@ PPGD_OPT=0
 PPGD_STEP=3.0
 PPGD_PRE_RANK=1
 
-mkdir -p results/$PATH
+#mkdir -p results/$PATH
 
 for FILE in ${GEOM}*; do 
     if [ -f "$FILE" ]; then 
