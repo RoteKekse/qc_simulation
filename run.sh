@@ -18,7 +18,6 @@ for FILE in ${GEOM}*; do
     	rm data/*
     	FILE=${FILE%.xyz}
     	FILE=${FILE#$GEOM};
-    	FILE=${FILE//./};
     	echo $FILE
 	build/hf.out $GEOM $FILE $BASIS
 	build/get_1elec_int.out $GEOM $FILE $BASIS
