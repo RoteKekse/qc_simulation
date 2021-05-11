@@ -15,9 +15,12 @@ echo "Build Diag"
 g++ -std=c++14 -g -o  build/buildhamildiag.out code/BuildHamiltonianDiag.cpp   -lxerus -lxerus_misc
 echo "Build Precon"
 g++ -g -std=c++14  -o build/buildprecon.out code/BuildPrecon.cpp   -lxerus -lxerus_misc 
-echo "Build Precon"
-g++ -g -std=c++14  -o build/buildprecon2.out code/BuildPrecon2.cpp   -lxerus -lxerus_misc 
 
+echo "Build DMRG"
+g++ -g -std=c++14 -fext-numeric-literals -DARPACK_LIBRARIES -o build/dmrg.out code/RunDmrg.cpp   -lxerus -lxerus_misc -lboost_regex -fopenmp
+
+echo "Build PPGD"
+g++ -g -std=c++14 -o build/ppgd.out code/PPGD_CG.cpp   -lxerus -lxerus_misc  -fopenmp
 
 
 
