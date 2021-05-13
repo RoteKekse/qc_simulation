@@ -64,7 +64,7 @@
 		XERUS_LOG(info,phi.ranks());
 
 		XERUS_LOG(info,"--- starting gradient descent ---");
-		value_t rHx,rHr,rx,rr,xx,xHx;
+		value_t rHx,rHr,rx,rr,xx,xHx,alpha_last;
 		double alpha=alpha_start,beta,residual;
 
 
@@ -75,7 +75,7 @@
 		std::ofstream outfile;
 
 		outfile.open(out_name);
-		outfile <<  "Iteration ,Eigenvalue, Projected Residual,Calculation Time" <<  std::endl;
+		outfile <<  "Iteration ,Eigenvalue, Projected Residual,Calculation Time,Step Size" <<  std::endl;
 		outfile.close();
 
 		xx = phi.frob_norm();
@@ -130,6 +130,7 @@
 				}
 				XERUS_LOG(info,"alpha = " << alpha);
 				phi_tmp = phi - alpha* res;
+				alpha_last = alpha;
 				alpha = alpha_start;
 
 				phi_tmp.round(std::vector<size_t>(2*nob-1,max_rank),eps);
@@ -154,7 +155,7 @@
 
 			//Write to file
 			outfile.open(out_name,std::ios::app);
-			outfile <<  iter << "," << std::setprecision(12) <<  xHx+nuc[0]-shift<<","<<residual << ","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC <<  std::endl;
+			outfile <<  iter << "," << std::setprecision(12) <<  xHx+nuc[0]-shift<<","<<residual << ","<< (value_t) (clock() - global_time) / CLOCKS_PER_SEC << "," << alpha_last << std::endl;
 			outfile.close();
 
 		}
