@@ -4,7 +4,7 @@ SHIFT=150
 rank=32
 eps=1e-6
 
-DMRG_ITER=15
+DMRG_ITER=30
 
 PPGD_ITER=50
 PPGD_OPT=1
@@ -39,6 +39,6 @@ build/ppgd.out $FILE $BASIS 2 0 $rank $PPGD_ITER $eps $PPGD_OPT $PPGD_STEP
 
 build/ppgd.out $FILE $BASIS 3 0 $rank $PPGD_ITER $eps $PPGD_OPT $PPGD_STEP
 
-
+build/dmrg.out $FILE $BASIS 0 $rank $DMRG_ITER $eps 0
 
 
