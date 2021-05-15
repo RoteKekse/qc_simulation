@@ -40,7 +40,7 @@ int main(){
 		for (size_t j = 0; j < d; j++){
 			for (size_t k = 0; k < d; k++){
 				for (size_t l = 0; l < d; l++){
-					std::vector<size_t> idx(2*d,0):
+					std::vector<size_t> idx(2*d,0);
 					idx[i,j,d+k,d+l] = 1;
 					value_t val1 = H1[idx];
 					value_t val2 = H2[idx];
