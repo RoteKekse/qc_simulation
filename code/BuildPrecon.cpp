@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
 		for(size_t j = 0; j < 2*nob; ++j){
 			value_t val = 0;
 			val +=returnTValue(T,j,j);
-			for (size_t k : {0,1,2,3,22,23,30,31}){
+			for (size_t k : {0,1,2,3,4,5,6,7,8,9,10,11,12,13}){
 				val +=(returnVValue(V,j,k,j,k)-returnVValue(V,j,k,k,j));
 			}
 			HFev.emplace_back(val);
