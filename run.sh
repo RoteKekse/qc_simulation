@@ -1,14 +1,14 @@
 GEOM=geometry/H2O/
 BASIS=double
 SHIFT=25
-rank=32
+rank=150
 NOB=24
 eps=1e-6
 DATA=FCIDUMP.h2o_24
 
-DMRG_ITER=2
+DMRG_ITER=25
 
-PPGD_ITER=2
+PPGD_ITER=50
 PPGD_OPT=1
 PPGD_STEP=3.0
 PPGD_PRE_RANK=1
@@ -31,7 +31,7 @@ build/buildprecon.out $FILE $BASIS $SHIFT 2 1
 build/buildprecon.out $FILE $BASIS $SHIFT 3 1
 
 
-build/dmrg.out $FILE $BASIS 0 5 5 $eps 1
+build/dmrg.out $FILE $BASIS 0 3 3 $eps 1
 
 build/ppgd.out $FILE $BASIS 0 0 $rank $PPGD_ITER $eps $PPGD_OPT $PPGD_STEP
 

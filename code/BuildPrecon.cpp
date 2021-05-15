@@ -80,7 +80,6 @@ int main(int argc, char* argv[]) {
 			for (size_t k : {0,1,2,3,22,23,30,31}){
 				val +=(returnVValue(V,j,k,j,k)-returnVValue(V,j,k,k,j));
 			}
-			XERUS_LOG(info,j << " value = " <<val);
 			HFev.emplace_back(val);
 		}
 	}
