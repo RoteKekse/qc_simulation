@@ -28,7 +28,7 @@ int main(){
 	XERUS_LOG(info,phi.order());
 
 	Tensor nuc;
-	name1 = "data/h2o_48_double_nuc.tensor_nuc.tensor";
+	name1 = "data/h2o_48_double_nuc.tensor";
 	read_from_disc(name1,nuc );
 
 
