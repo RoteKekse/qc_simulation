@@ -17,7 +17,10 @@ int main(){
 
 	read_from_disc(name1,H1);
 	read_from_disc(name2,H2);
-
+	H1.move_core(0);
+	H2.move_core(0);
+	XERUS_LOG(info,(H1).frob_norm());
+	XERUS_LOG(info,(H2).frob_norm());
 	XERUS_LOG(info,(H1-H2).frob_norm());
 
 
