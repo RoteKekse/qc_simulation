@@ -9,6 +9,10 @@ echo "2 elec"
 g++ -std=c++14 -g -o  build/get_2elec_int.out code/Create2ParticleOperator.cc  -lint2 -lpthread -lxerus -lxerus_misc
 echo "Transform Basis"
 g++ -std=c++14 -g -o  build/basistransform.out code/BasisTransform.cpp  -lint2 -lpthread -lxerus -lxerus_misc
+
+echo "Load electron ints from file"
+g++ -std=c++14 -g -o  build/read_FCIdump.out code/read_FCIdump.cpp   -lxerus -lxerus_misc -lboost_regex
+
 echo "Build Hamil"
 g++ -std=c++14 -g -o  build/buildhamil.out code/BuildHamiltonian.cpp   -lxerus -lxerus_misc
 echo "Build Diag"

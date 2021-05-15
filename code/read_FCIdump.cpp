@@ -146,24 +146,52 @@ xerus::Tensor load_2e_int_single(size_t d, std::string path){
 	return V;
 }
 
+xerus::Tensor load_nuc(std::string path){
+	auto nuc = xerus::Tensor({1});
+	std::string line;
+	std::ifstream input;
+	input.open (path);
+	size_t count = 0;
+	while ( std::getline (input,line) )
+	{
+		count++;
+		if (count > 4){
+			std::vector<std::string> l;
+			boost::algorithm::split_regex( l, line, boost::regex( "  " ) ) ;
+			if (std::stoi(l[1]) == 0 && std::stoi(l[3]) == 0 && std::stoi(l[2]) == 0 && std::stoi(l[4]) == 0){
+				nuc[0] = stod(l[0]);
+			}
+		}
+	}
+	input.close();
+	return nuc;
+}
 
-int main(){
+int main(int argc, char* argv[]){
+	const auto geom = argv[1];
+	const auto basisname = argv[2];
+	std::string path = static_cast<std::string>(argv[3]);
+	size_t nob = std::atof(argv[4]);
 
-	size_t d = 48;
-	std::string path = "../FCIDUMP.h2o_24";
-	Tensor T  = load_1e_int_single(d,path),V=load_2e_int_single(d,path);
+	Tensor T  = load_1e_int_single(2*nob,path),V=load_2e_int_single(2*nob,path), nuc = load_nuc(path) ;
 
 	if ( T.is_sparse())
 		XERUS_LOG(info, "Sparse");
 
 	if ( V.is_sparse())
 		XERUS_LOG(info, "Sparse");
-	std::string name = "../data/T_H2O_48_bench_single.tensor";
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
 	write_to_disc(name,T);
 
 
-	name = "../data/V_H2O_48_bench_single.tensor";
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 	write_to_disc(name,V);
+
+	std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
+	write_to_disc(name,nuc);
+
+
+
 
 	return 0;
 }

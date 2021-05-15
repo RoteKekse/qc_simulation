@@ -30,6 +30,8 @@ TTOperator build_Fock_op(std::vector<value_t> coeffs);
 
 std::pair<std::vector<value_t>,std::vector<value_t>> get_a_b(value_t R,size_t rank);
 
+value_t returnTValue(Tensor &T, size_t p, size_t q);
+value_t returnVValue(Tensor &V, size_t i, size_t k, size_t j, size_t l);
 
 value_t get_hst(size_t k);
 value_t get_tj(int j, size_t k);
@@ -49,24 +51,42 @@ int main(int argc, char* argv[]) {
 	const auto basisname = argv[2];
 	value_t shift = std::atof(argv[3]);
 	size_t rank = std::atof(argv[4]);
-
-
-    std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
-	Mat HFev_tmp = load_csv<Mat>(name);
-	size_t nob = HFev_tmp.rows();
-	//nob = std::atof(argv[7]);
-	XERUS_LOG(info, nob);
-
+	size_t method = std::atof(argv[5]);
+	size_t nob;
+	std::string name;
 
 	std::vector<value_t> HFev;
+	if (method == 0){
+		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
+		Mat HFev_tmp = load_csv<Mat>(name);
+		size_t nob = HFev_tmp.rows();
+		//nob = std::atof(argv[7]);
 
-
-	for(size_t j = 0; j < nob; ++j){
-		auto val = HFev_tmp(j,0);
-		HFev.emplace_back(val);
-		HFev.emplace_back(val);
+		for(size_t j = 0; j < nob; ++j){
+			auto val = HFev_tmp(j,0);
+			HFev.emplace_back(val);
+			HFev.emplace_back(val);
+		}
+	} else {
+		Tensor T,V;
+		std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
+		read_from_disc(name,T);
+		std::string name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
+		read_from_disc(name,V);
+		nob = T.order()/2;
+		for(size_t j = 0; j < 2*nob; ++j){
+			value_t val = 0;
+			val +=returnTValue(T,j,j);
+			for (size_t k : {0,1,2,3,22,23,30,31}){
+				val +=(returnVValue(V,j,k,j,k)-returnVValue(V,j,k,k,j));
+			}
+			XERUS_LOG(info,j << " value = " <<val);
+			HFev.emplace_back(val);
+		}
 	}
+	XERUS_LOG(info, nob);
 	XERUS_LOG(info,HFev);
+
 
 	std::vector<value_t> shift_vec(2*nob,0.0);
 	value_t sum;
@@ -89,18 +109,7 @@ int main(int argc, char* argv[]) {
 	XERUS_LOG(info,"sum = " << sum);
 	XERUS_LOG(info,"rest_shift = " << rest_shift);
 
-//  Tensor T,V;
-//	read_from_disc("../data/T_H2O_48_bench.tensor",T);
-//	read_from_disc("../data/V_H2O_48_bench.tensor",V);
-//	for(size_t j = 0; j < 2*nob; ++j){
-//		value_t val = 0;
-//		val +=T[{j,j}];
-//		for (size_t k : {0,1,2,3,22,23,30,31}){
-//			val +=(V[{j,k,j,k}]-V[{j,k,k,j}]);
-//		}
-//		XERUS_LOG(info,j << " value = " <<val);
-//		HFev.emplace_back(val);
-//	}
+
 
 	TTOperator Fock_inv = build_Fock_op_inv(HFev, shift_vec,rank);
 	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_Finv_r"+std::to_string(rank)+".ttoperator";
@@ -402,5 +411,46 @@ M load_csv (const std::string & path) {
     return Map<const Matrix<typename M::Scalar, M::RowsAtCompileTime, M::ColsAtCompileTime, RowMajor>>(values.data(), rows, values.size()/rows);
 }
 
+value_t returnTValue(Tensor &T, size_t i, size_t j)
+{
+	if (i%2 != j%2)
+		return 0;
+	i /=2;j /=2;
+	if (i > j)
+		return T[{i , j }];
+	return T[{j , i }];
+}
 
+
+value_t returnVValue(Tensor &V, size_t i, size_t k, size_t j, size_t l){
+	if ((i%2 != j%2) || (k%2!=l%2))
+		return 0;
+	i /=2;k /=2;j /=2;l /=2;
+
+	//XERUS_LOG(info, i<<j<<k<<l );
+	if (j <= i){
+		if (k<= i && l <= (i==k ? j : k))
+			return V[{i,j,k ,l}];
+		if (l<= i && k <= (i==l ? j : l))
+			return V[{i,j,l ,k}];
+	} else if (i <= j){
+		if (k<= j && l <= (j==k ? i : k))
+			return V[{j,i,k,l}];
+		if (l<= j && k <= (j==l ? i : l))
+			return V[{j,i,l,k}];
+	}
+	if (l <= k){
+		if (i<= k && j <= (k==i ? l : i))
+			return V[{k,l,i ,j}];
+		if (j<= k && i <= (k==j ? l : j))
+			return V[{k,l,j ,i}];
+	} else if (k <= l) {
+		if (i<= l && j <= (l==i ? k : i))
+			return V[{l,k,i ,j}];
+		if (j<= l && i <= (l==j ? k : j))
+			return V[{l,k,j ,i}];
+	}
+
+	return 1.0;
+}
 
