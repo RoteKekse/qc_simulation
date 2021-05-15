@@ -23,6 +23,9 @@ int main(){
 	Tensor res;
 	Index ii,jj,kk;
 	XERUS_LOG(info,phi.frob_norm());
+	XERUS_LOG(info,H1.order());
+	XERUS_LOG(info,H2.order());
+	XERUS_LOG(info,phi.order());
 
 	res() = phi(ii&0)*H1(ii/2,jj/2)*phi(jj/2);
 
