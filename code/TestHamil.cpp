@@ -27,10 +27,14 @@ int main(){
 	XERUS_LOG(info,H2.order());
 	XERUS_LOG(info,phi.order());
 
+	Tensor nuc;
+	name1 = "data/h2o_48_double_nuc.tensor_nuc.tensor";
+	read_from_disc(name,nuc );
 
-	XERUS_LOG(info,contract_TT(H1,phi,phi));
 
-	XERUS_LOG(info,contract_TT(H2,phi,phi));
+	XERUS_LOG(info,contract_TT(H1,phi,phi)+nuc[0]);
+
+	XERUS_LOG(info,contract_TT(H2,phi,phi)+nuc[0]);
 
 
 
