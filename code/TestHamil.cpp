@@ -27,12 +27,10 @@ int main(){
 	XERUS_LOG(info,H2.order());
 	XERUS_LOG(info,phi.order());
 
-	res() = phi(ii&0)*H1(ii/2,jj/2)*phi(jj&0);
 
-	XERUS_LOG(info,res);
-	res() = phi(ii&0)*H2(ii/2,jj/2)*phi(jj&0);
+	XERUS_LOG(info,contract_TT(H1,phi,phi));
 
-	XERUS_LOG(info,res);
+	XERUS_LOG(info,contract_TT(H2,phi,phi));
 
 
 
