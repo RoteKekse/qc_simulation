@@ -82,7 +82,11 @@ int main(int argc, char* argv[]) {
 	if (initial){
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_phi_ini.tttensor";
 		write_to_disc(name,phi);
+	} else {
+		name = "results/DMRG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +"_i"+std::to_string(number_of_sweeps) +"_phi_results.tttensor";
+		write_to_disc(name,phi);
 	}
+
 
 
 	return 0;
