@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
 		read_from_disc(name,T);
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
 		read_from_disc(name,V);
-		nob = T.dimensions()[0];
+		nob = T.dimensions[0];
 		for(size_t j = 0; j < 2*nob; ++j){
 			value_t val = 0;
 			val +=returnTValue(T,j,j);
