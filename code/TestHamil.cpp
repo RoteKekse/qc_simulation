@@ -5,7 +5,6 @@
 
 
 using namespace xerus;
-using namespace Eigen;
 using xerus::misc::operator<<;
 
 
