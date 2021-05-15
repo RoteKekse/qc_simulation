@@ -29,7 +29,7 @@ int main(){
 
 	Tensor nuc;
 	name1 = "data/h2o_48_double_nuc.tensor_nuc.tensor";
-	read_from_disc(name,nuc );
+	read_from_disc(name1,nuc );
 
 
 	XERUS_LOG(info,contract_TT(H1,phi,phi)+nuc[0]);
