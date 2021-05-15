@@ -1,6 +1,6 @@
 #include <xerus.h>
 
-#include "../../classes/loading_tensors.cpp"
+#include "classes/loading_tensors.cpp"
 
 #include <queue>
 
