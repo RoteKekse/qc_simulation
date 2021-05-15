@@ -48,7 +48,7 @@ int main(){
 					value_t val1 = H1[idx];
 					value_t val2 = H2[idx];
 					if (val1 != val2){
-						XERUS_LOG(info,val1 << " " << val2 << "\n" << idx );
+						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<<"\n" << idx );
 					}
 				}
 			}
