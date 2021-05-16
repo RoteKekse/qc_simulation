@@ -479,7 +479,26 @@ int main(){
 	XERUS_LOG(info,H1.dimensions);
 	XERUS_LOG(info,H2.frob_norm());
 	XERUS_LOG(info,H2.dimensions);
-
+	for (size_t i = 0; i < d; i=i+1){
+		XERUS_LOG(info,i);
+		for (size_t j = 0; j <= i; j=j+1){
+			for (size_t k = 0; k < d; k=k+9){
+				for (size_t l = 0; l <= k; l=l+1){
+					std::vector<size_t> idx(2*d,0);
+					idx[i] = 1;
+					idx[j] = 1;
+					idx[d+k] = 1;
+					idx[d+l] = 1;
+					value_t val1 = H1[idx];
+					value_t val2 = H2[idx];
+					if (std::abs(val1-val2) > 1e-9){
+						XERUS_LOG(info,i << " " << j<< " " << k<< " " << l );
+						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<<"\n" << idx );
+					}
+				}
+			}
+		}
+	}
 
 
 
