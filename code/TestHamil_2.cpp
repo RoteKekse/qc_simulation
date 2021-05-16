@@ -479,11 +479,14 @@ int main(){
 	XERUS_LOG(info,H1.dimensions);
 	XERUS_LOG(info,H2.frob_norm());
 	XERUS_LOG(info,H2.dimensions);
+	size_t count = 0;
+	size_t count2 = 0;
 	for (size_t i = 0; i < d; i=i+1){
 		XERUS_LOG(info,i);
 		for (size_t j = 0; j <= i; j=j+1){
 			for (size_t k = 0; k < d; k=k+9){
 				for (size_t l = 0; l <= k; l=l+1){
+					count++;
 					std::vector<size_t> idx(2*d,0);
 					idx[i] = 1;
 					idx[j] = 1;
@@ -494,12 +497,14 @@ int main(){
 					if (std::abs(val1-val2) > 1e-9){
 						XERUS_LOG(info,i << " " << j<< " " << k<< " " << l );
 						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<<"\n" );
+						count2++;
 					}
 				}
 			}
 		}
 	}
-
+	XERUS_LOG(info,count);
+	XERUS_LOG(info,count2);
 
 
 	return 0;
