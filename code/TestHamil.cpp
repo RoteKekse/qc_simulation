@@ -48,6 +48,7 @@ int main(){
 					value_t val1 = H1[idx];
 					value_t val2 = H2[idx];
 					if (std::abs(val1-val2) > 1e-9){
+						XERUS_LOG(info,i << " " << j<< " " << k<< " " << l );
 						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<<"\n" << idx );
 					}
 				}
