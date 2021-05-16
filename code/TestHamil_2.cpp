@@ -494,9 +494,9 @@ int main(){
 			if (std::abs(H1T[{i,j}]-H2T[{i,j}])>1e-10){
 				std::vector<size_t> idx(2*d,0);
 				size_t i_tmp = i, j_tmp = j;
-				for (size_t k = 0; k < d; ++k){
-					idx[k] = i_tmp % 2;
-					idx[k+d] = j_tmp % 2;
+				for (size_t k = d; k> 0; --k){
+					idx[k-1] = i_tmp % 2;
+					idx[k-1+d] = j_tmp % 2;
 					i_tmp /=2;
 					j_tmp/=2;
 				}
