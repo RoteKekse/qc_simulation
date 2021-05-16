@@ -414,7 +414,7 @@ class BuildingOperatorL2R{
 int main(){
 	XERUS_LOG(info, "---- Start building operator left to right! ----");
 
-	size_t d = 8;
+	size_t d = 6;
 	size_t nob = d/2;
 	Tensor T1 = Tensor::random({d/2,d/2});
 	Tensor T2({d,d});
