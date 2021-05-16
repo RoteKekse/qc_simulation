@@ -414,7 +414,7 @@ class BuildingOperatorL2R{
 int main(){
 	XERUS_LOG(info, "---- Start building operator left to right! ----");
 
-	size_t d = 16;
+	size_t d = 24;
 	size_t nob = d/2;
 	Tensor T1 = Tensor::random({d/2,d/2});
 	Tensor T2({d,d});
@@ -483,33 +483,33 @@ int main(){
 	XERUS_LOG(info,H2.frob_norm());
 	XERUS_LOG(info,(H1-H2).frob_norm());
 
-	auto H1T = Tensor(H1);
-	auto H2T = Tensor(H2);
-	H1T.reinterpret_dimensions({64,64});
-	H2T.reinterpret_dimensions({64,64});
-
-	for (size_t i =0; i < 64; ++i){
-		for (size_t j =0; j < 64; ++j){
-
-			if (std::abs(H1T[{i,j}]-H2T[{i,j}])>1e-10){
-				std::vector<size_t> idx;
-				size_t i_tmp = i, j_tmp = j;
-				for (size_t k = d; k> 0; --k){
-					if (i_tmp % 2 == 1)
-						idx.emplace_back(k-1);
-					i_tmp /=2;
-				}
-				for (size_t k = d; k> 0; --k){
-					if (j_tmp % 2 == 1)
-						idx.emplace_back(k-1);
-					j_tmp/=2;
-				}
-				XERUS_LOG(info,i << " " << j << " " << H1T[{i,j}] <<  " " << H2T[{i,j}]<< "\n" << idx);
-				//XERUS_LOG(info,H1[idx] <<  " " << H2[idx]);
-			}
-		}
-
-	}
+//	auto H1T = Tensor(H1);
+//	auto H2T = Tensor(H2);
+//	H1T.reinterpret_dimensions({64,64});
+//	H2T.reinterpret_dimensions({64,64});
+//
+//	for (size_t i =0; i < 64; ++i){
+//		for (size_t j =0; j < 64; ++j){
+//
+//			if (std::abs(H1T[{i,j}]-H2T[{i,j}])>1e-10){
+//				std::vector<size_t> idx;
+//				size_t i_tmp = i, j_tmp = j;
+//				for (size_t k = d; k> 0; --k){
+//					if (i_tmp % 2 == 1)
+//						idx.emplace_back(k-1);
+//					i_tmp /=2;
+//				}
+//				for (size_t k = d; k> 0; --k){
+//					if (j_tmp % 2 == 1)
+//						idx.emplace_back(k-1);
+//					j_tmp/=2;
+//				}
+//				XERUS_LOG(info,i << " " << j << " " << H1T[{i,j}] <<  " " << H2T[{i,j}]<< "\n" << idx);
+//				//XERUS_LOG(info,H1[idx] <<  " " << H2[idx]);
+//			}
+//		}
+//
+//	}
 
 //	size_t count = 0;
 //	size_t count2 = 0;
