@@ -465,7 +465,7 @@ int main(){
 
 
 
-	BuildingOperatorL2R builder(d,T2,-V2);
+	BuildingOperatorL2R builder(d,T2,(-1)*V2);
 
 
 
