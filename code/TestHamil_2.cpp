@@ -483,6 +483,11 @@ int main(){
 	XERUS_LOG(info,H2.frob_norm());
 	XERUS_LOG(info,(H1-H2).frob_norm());
 
+	auto H1T = Tensor(H1);
+	auto H2T = Tensor(H2);
+	XERUS_LOG(info,"\n" << H1T);
+	XERUS_LOG(info,"\n" << H2T);
+
 //	size_t count = 0;
 //	size_t count2 = 0;
 //	for (size_t i = 0; i < d; i=i+1){
