@@ -483,7 +483,7 @@ int main(){
 	size_t count2 = 0;
 	for (size_t i = 0; i < d; i=i+1){
 		for (size_t j = 0; j <= i; j=j+1){
-			for (size_t k = 0; k < d; k=k+9){
+			for (size_t k = 0; k < d; k=k+1){
 				for (size_t l = 0; l <= k; l=l+1){
 					count++;
 					std::vector<size_t> idx(2*d,0);
