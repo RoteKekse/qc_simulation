@@ -21,6 +21,8 @@ int main(){
 	read_from_disc(name2,H2);
 	read_from_disc(name3,phi);
 
+	XERUS_LOG(info,(H1).frob_norm());
+	XERUS_LOG(info,(H2).frob_norm());
 	XERUS_LOG(info,(H1-H2).frob_norm());
 //	Tensor res;
 //	Index ii,jj,kk;
