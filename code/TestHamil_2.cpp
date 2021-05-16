@@ -429,13 +429,14 @@ int main(){
 			T2[{2*j+1,2*i+1}] = val;
 		}
 	}
-	Tensor V1 = Tensor::random({d/2,d/2,d/2,d/2});
+	Tensor Vres = Tensor::random({nob,nob,nob,nob});
+	Tensor V1({nob,nob,nob,nob});
 	Tensor V2({d,d,d,d});
 	for (size_t i = 0; i < nob; i++){
 		for (size_t j = 0; j <= i; j++){
 			for (size_t k = 0; k<= i; k++){
 				for (size_t l = 0; l <= (i==k ? j : k); l++){
-					auto value = V1[{i,j,k,l}];
+					auto value = Vres[{i,j,k,l}];
 					V1[{i,k,j,l}] = value;
 					V1[{j,k,i,l}] = value;
 					V1[{i,l,j,k}] = value;
