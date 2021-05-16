@@ -36,10 +36,10 @@ int main(){
 
 	XERUS_LOG(info,contract_TT(H2,phi,phi)+nuc[0]);
 	size_t d = 48;
-	for (size_t i = 0; i < d; i++){
-		for (size_t j = 0; j < d; j++){
-			for (size_t k = 0; k < d; k++){
-				for (size_t l = 0; l < d; l++){
+	for (size_t i = 0; i < d; i=i+6){
+		for (size_t j = 0; j < i; j=j+8){
+			for (size_t k = 0; k < d; k=k+6){
+				for (size_t l = 0; l < k; l=l+8){
 					std::vector<size_t> idx(2*d,0);
 					idx[i] = 1;
 					idx[j] = 1;
@@ -47,7 +47,7 @@ int main(){
 					idx[d+l] = 1;
 					value_t val1 = H1[idx];
 					value_t val2 = H2[idx];
-					if (std::abs(val1-val2) > 1e-11){
+					if (std::abs(val1-val2) > 1e-9){
 						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<<"\n" << idx );
 					}
 				}
