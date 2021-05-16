@@ -38,9 +38,9 @@ int main(){
 	size_t d = 48;
 	for (size_t i = 0; i < d; i=i+4){
 		XERUS_LOG(info,i);
-		for (size_t j = 0; j < i; j=j+1){
+		for (size_t j = 0; j <= i; j=j+1){
 			for (size_t k = 0; k < d; k=k+4){
-				for (size_t l = 0; l < k; l=l+1){
+				for (size_t l = 0; l <= k; l=l+1){
 					std::vector<size_t> idx(2*d,0);
 					idx[i] = 1;
 					idx[j] = 1;
