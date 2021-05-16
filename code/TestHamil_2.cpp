@@ -1,4 +1,5 @@
 #include <xerus.h>
+#include <classes/hamiltonian.cpp>
 
 #include <queue>
 
@@ -419,13 +420,13 @@ int main(){
 	Tensor T2({d,d});
 	for (size_t i = 0; i < nob; i++){
 		for (size_t j = 0; j < nob; j++){
-			auto val = T_1[{i,j}];
-			T_1[{j,i}] = val;
-			T_1[{i,j}] = val;
-			T_2[{2*i,2*j}] = val;
-			T_2[{2*j,2*i}] = val;
-			T_2[{2*i+1,2*j+1}] = val;
-			T_2[{2*j+1,2*i+1}] = val;
+			auto val = T1[{i,j}];
+			T1[{j,i}] = val;
+			T1[{i,j}] = val;
+			T2[{2*i,2*j}] = val;
+			T2[{2*j,2*i}] = val;
+			T2[{2*i+1,2*j+1}] = val;
+			T2[{2*j+1,2*i+1}] = val;
 		}
 	}
 	Tensor V1 = Tensor::random({d/2,d/2,d/2,d/2});
