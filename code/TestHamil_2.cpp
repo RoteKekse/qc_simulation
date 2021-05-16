@@ -482,7 +482,6 @@ int main(){
 	size_t count = 0;
 	size_t count2 = 0;
 	for (size_t i = 0; i < d; i=i+1){
-		XERUS_LOG(info,i);
 		for (size_t j = 0; j <= i; j=j+1){
 			for (size_t k = 0; k < d; k=k+9){
 				for (size_t l = 0; l <= k; l=l+1){
