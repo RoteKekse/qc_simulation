@@ -489,6 +489,14 @@ int main(){
 	H2T.reinterpret_dimensions({64,64});
 	XERUS_LOG(info,"\n" << H1T);
 	XERUS_LOG(info,"\n" << H2T);
+	for (size_t i =0; i < 64; ++i){
+		for (size_t j =0; j < 64; ++j){
+			if (std::abs(H1T[{i,j}]-H1T[{i,j}])>1e-14){
+				XERUS_LOG(info,i << " " << j);
+			}
+		}
+
+	}
 
 //	size_t count = 0;
 //	size_t count2 = 0;
