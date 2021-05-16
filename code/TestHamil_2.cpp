@@ -476,7 +476,9 @@ int main(){
 	auto H2 = BuildHamil(T1,V1,0.0);
 
 	XERUS_LOG(info,H1.frob_norm());
+	XERUS_LOG(info,H1.dimensions);
 	XERUS_LOG(info,H2.frob_norm());
+	XERUS_LOG(info,H2.dimensions);
 
 
 
