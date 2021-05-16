@@ -496,7 +496,7 @@ int main(){
 					value_t val2 = H2[idx];
 					if (std::abs(val1-val2) > 1e-9){
 						XERUS_LOG(info,i << " " << j<< " " << k<< " " << l );
-						val = V2[{i,j,k,l}]+V2[{j,i,l,k}]V2[{j,i,k,l}]-V2[{i,j,l,k}];
+						val = V2[{i,j,k,l}]+V2[{j,i,l,k}]-V2[{j,i,k,l}]-V2[{i,j,l,k}];
 						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<< " " << getV(V1,i, j, k, l)<< " " << val   <<  "\n" );
 						count2++;
 					}
