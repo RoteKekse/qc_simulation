@@ -480,35 +480,35 @@ int main(){
 	auto H2 = BuildHamil(T1,V1,0.0);
 
 	XERUS_LOG(info,H1.frob_norm());
-	XERUS_LOG(info,H1.dimensions);
 	XERUS_LOG(info,H2.frob_norm());
-	XERUS_LOG(info,H2.dimensions);
-	size_t count = 0;
-	size_t count2 = 0;
-	for (size_t i = 0; i < d; i=i+1){
-		for (size_t j = 0; j <= i; j=j+1){
-			for (size_t k = 0; k < d; k=k+1){
-				for (size_t l = 0; l <= k; l=l+1){
-					count++;
-					std::vector<size_t> idx(2*d,0);
-					idx[i] = 1;
-					idx[j] = 1;
-					idx[d+k] = 1;
-					idx[d+l] = 1;
-					value_t val1 = H1[idx];
-					value_t val2 = H2[idx];
-					if (std::abs(val1-val2) > 1e-9){
-						XERUS_LOG(info,i << " " << j<< " " << k<< " " << l );
-						value_t val = 0.5*(V2[{i,j,k,l}]+V2[{j,i,l,k}]-V2[{j,i,k,l}]-V2[{i,j,l,k}]);
-						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<< " " << getV(V1,i, j, k, l)<< " " << val   <<  "\n" );
-						count2++;
-					}
-				}
-			}
-		}
-	}
-	XERUS_LOG(info,count);
-	XERUS_LOG(info,count2);
+	XERUS_LOG(info,(H1-H2).frob_norm());
+
+//	size_t count = 0;
+//	size_t count2 = 0;
+//	for (size_t i = 0; i < d; i=i+1){
+//		for (size_t j = 0; j <= i; j=j+1){
+//			for (size_t k = 0; k < d; k=k+1){
+//				for (size_t l = 0; l <= k; l=l+1){
+//					count++;
+//					std::vector<size_t> idx(2*d,0);
+//					idx[i] = 1;
+//					idx[j] = 1;
+//					idx[d+k] = 1;
+//					idx[d+l] = 1;
+//					value_t val1 = H1[idx];
+//					value_t val2 = H2[idx];
+//					if (std::abs(val1-val2) > 1e-9){
+//						XERUS_LOG(info,i << " " << j<< " " << k<< " " << l );
+//						value_t val = 0.5*(V2[{i,j,k,l}]+V2[{j,i,l,k}]-V2[{j,i,k,l}]-V2[{i,j,l,k}]);
+//						XERUS_LOG(info,val1 << " " << val2 <<" "  << std::abs(val1-val2)<< " " << getV(V1,i, j, k, l)<< " " << val   <<  "\n" );
+//						count2++;
+//					}
+//				}
+//			}
+//		}
+//	}
+//	XERUS_LOG(info,count);
+//	XERUS_LOG(info,count2);
 
 
 	return 0;
