@@ -492,12 +492,16 @@ int main(){
 		for (size_t j =0; j < 64; ++j){
 
 			if (std::abs(H1T[{i,j}]-H2T[{i,j}])>1e-10){
-				std::vector<size_t> idx(2*d,0);
+				std::vector<size_t> idx;
 				size_t i_tmp = i, j_tmp = j;
 				for (size_t k = d; k> 0; --k){
-					idx[k-1] = i_tmp % 2;
-					idx[k-1+d] = j_tmp % 2;
+					if (i_tmp % 2 == 1)
+						idx.emplace_back(k-1);
 					i_tmp /=2;
+				}
+				for (size_t k = d; k> 0; --k){
+					if (j_tmp % 2 == 1)
+						idx.emplace_back(k-1);
 					j_tmp/=2;
 				}
 				XERUS_LOG(info,i << " " << j << " " << H1T[{i,j}] <<  " " << H2T[{i,j}]<< "\n" << idx);
