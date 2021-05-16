@@ -495,8 +495,8 @@ int main(){
 				std::vector<size_t> idx(2*d,0);
 				size_t i_tmp = i, j_tmp = j;
 				for (size_t k = 0; k < d; ++k){
-					idx[k] = i_tmp & 2;
-					idx[k+d] = j_tmp & 2;
+					idx[k] = i_tmp % 2;
+					idx[k+d] = j_tmp % 2;
 					i_tmp /=2;
 					j_tmp/=2;
 				}
