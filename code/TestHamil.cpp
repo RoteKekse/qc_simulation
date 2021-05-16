@@ -37,6 +37,7 @@ int main(){
 	XERUS_LOG(info,contract_TT(H2,phi,phi)+nuc[0]);
 	size_t d = 48;
 	for (size_t i = 0; i < d; i=i+6){
+		XERUS_LOG(info,i);
 		for (size_t j = 0; j < i; j=j+8){
 			for (size_t k = 0; k < d; k=k+6){
 				for (size_t l = 0; l < k; l=l+8){
