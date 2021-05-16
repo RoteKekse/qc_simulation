@@ -43,8 +43,8 @@ int main(){
 
 		std::vector<size_t> idx(2*d,0);
 		for (size_t j = 0; j < p; ++j){
-			r1 = rand() % d;
-			r2 = rand() % d;
+			size_t r1 = rand() % d;
+			size_t r2 = rand() % d;
 			idx[r1] = 1;
 			idx[d+r2] = 1;
 		}
