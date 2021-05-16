@@ -501,7 +501,7 @@ int main(){
 					j_tmp/=2;
 				}
 				XERUS_LOG(info,i << " " << j << " " << H1T[{i,j}] <<  " " << H2T[{i,j}]<< "\n" << idx);
-				XERUS_LOG(info,H1[idx] <<  " " << H2[idx]);
+				//XERUS_LOG(info,H1[idx] <<  " " << H2[idx]);
 			}
 		}
 
