@@ -463,9 +463,12 @@ int main(){
 		}
 	}
 
+	Index i1,i2,i3,i4;
+	V1(i1,i2,i3,i4) = V1(i1,i3,i2,i4);
 
 
-	BuildingOperatorL2R builder(d,T2,(-1)*V2);
+
+	BuildingOperatorL2R builder(d,T2,V2);
 
 
 
