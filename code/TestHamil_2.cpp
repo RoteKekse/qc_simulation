@@ -490,7 +490,7 @@ int main(){
 
 	for (size_t i =0; i < 64; ++i){
 		for (size_t j =0; j < 64; ++j){
-			if (std::abs(H1T[{i,j}]-H2T[{i,j}])>1e-14){
+			if (std::abs(H1T[{i,j}]-H2T[{i,j}])>1e-10){
 				XERUS_LOG(info,i << " " << j << " " << H1T[{i,j}] <<  " " << H2T[{i,j}]);
 			}
 		}
