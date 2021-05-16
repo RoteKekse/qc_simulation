@@ -36,7 +36,7 @@ int main(){
 
 	XERUS_LOG(info,contract_TT(H2,phi,phi)+nuc[0]);
 	size_t d = 48,p=8;
-	size_t iter = 100000
+	size_t iter = 100000;
 	for (size_t i = 0; i < iter; ++i){
 		if (i%200 == 0)
 			XERUS_LOG(info,i);
