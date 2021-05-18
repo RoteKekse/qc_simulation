@@ -1,4 +1,4 @@
-#include <xerus.h>
+ls#include <xerus.h>
 #include <Eigen/Dense>
 #include <vector>
 #include <fstream>
@@ -55,6 +55,11 @@ int main(int argc, char* argv[]) {
 	size_t nob;
 	std::string name;
 
+	Tensor nuc;
+	name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_nuc.tensor";
+	read_from_disc(name,nuc);
+	shift += nuc[0];
+	XERUS_LOG(info, "shift = " << shift);
 	std::vector<value_t> HFev;
 	if (method == 0){
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_eps.csv";
