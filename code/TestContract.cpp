@@ -60,9 +60,12 @@ int main(){
 	tmp(ii,jj,kk) = ones(nn)* c1(nn,ii,jj,kk);
 	tmp(ii,jj,ll,mm^2) = tmp(ii,jj,kk)*c2(kk,ll,mm^2);
 	XERUS_LOG(info,  (value_t) (clock() - begin_time) / CLOCKS_PER_SEC);
+	begin_time = clock();
 
 	c1 = Tensor::random(dim1);
 	c2 = Tensor::random(dim2);
+	XERUS_LOG(info,  (value_t) (clock() - begin_time) / CLOCKS_PER_SEC);
+
 	begin_time = clock();
 	tmp(ii,jj,kk) = ones(nn)* c1(nn,ii,jj,kk);
 	tmp(ii,jj,ll,mm^2) = tmp(ii,jj,kk)*c2(kk,ll,mm^2);
