@@ -43,9 +43,9 @@ int main(){
 
 	c1 = H.get_component(55);
 	c2 = H.get_component(56);
-	 ones = Tensor::ones({dim1[0]});
 	dim1 = c1.dimensions;
 	dim2 = c2.dimensions;
+	ones = Tensor::ones({dim1[0]});
 	XERUS_LOG(info,c1.dimensions);
 	XERUS_LOG(info,c2.dimensions);
 
