@@ -11,8 +11,8 @@ int main(){
 	Index ii,jj,kk,ll,mm;
 	TTOperator H;
 	Tensor tmp;
-	std::string name = "data/n2_1.05_cc-pvtz_H.ttoperator"
-	read_from_disc(name,H)
+	std::string name = "data/n2_1.05_cc-pvtz_H.ttoperator";
+	read_from_disc(name,H);
 
 	auto c1 = H.get_component(60);
 	auto c2 = H.get_component(61);
