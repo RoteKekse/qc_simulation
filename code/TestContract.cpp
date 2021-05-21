@@ -16,8 +16,8 @@ int main(){
 
 	auto c1 = H.get_component(60);
 	auto c2 = H.get_component(61);
-	auto dim1 = c1.dimensions
-	auto dim1 = c2.dimensions
+	auto dim1 = c1.dimensions;
+	auto dim2 = c2.dimensions;
 	XERUS_LOG(info,c1.dimensions);
 	XERUS_LOG(info,c2.dimensions);
 
@@ -39,8 +39,8 @@ int main(){
 
 	c1 = H.get_component(55);
 	c2 = H.get_component(56);
-	dim1 = c1.dimensions
-	dim1 = c2.dimensions
+	dim1 = c1.dimensions;
+	dim2 = c2.dimensions;
 	XERUS_LOG(info,c1.dimensions);
 	XERUS_LOG(info,c2.dimensions);
 
