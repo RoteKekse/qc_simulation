@@ -35,7 +35,7 @@ int main(){
 	XERUS_LOG(info,  (value_t) (clock() - begin_time) / CLOCKS_PER_SEC);
 
 	c1 = Tensor::random(dim1);
-	c1 = Tensor::random(dim2);
+	c2 	 = Tensor::random(dim2);
 	begin_time = clock();
 	tmp(ii,jj,kk) = ones(nn)* c1(nn,ii,jj,kk);
 	tmp(ii,jj,ll,mm^2) = tmp(ii,jj,kk)*c2(kk,ll,mm^2);
@@ -62,7 +62,7 @@ int main(){
 	XERUS_LOG(info,  (value_t) (clock() - begin_time) / CLOCKS_PER_SEC);
 
 	c1 = Tensor::random(dim1);
-	c1 = Tensor::random(dim2);
+	c2 = Tensor::random(dim2);
 	begin_time = clock();
 	tmp(ii,jj,kk) = ones(nn)* c1(nn,ii,jj,kk);
 	tmp(ii,jj,ll,mm^2) = tmp(ii,jj,kk)*c2(kk,ll,mm^2);
