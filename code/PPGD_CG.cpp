@@ -137,8 +137,7 @@
 				phi_tmp = phi - alpha* res;
 				alpha_last = alpha;
 				alpha = alpha_start;
-				if (optimal)
-					break;
+
 
 				phi_tmp.round(std::vector<size_t>(2*nob-1,max_rank),eps);
 
@@ -147,6 +146,8 @@
 				XERUS_LOG(info,"Calculate new eigenvalue");
 				xHx_tmp = contract_TT3(H,phi_tmp);
 				count++;
+				if (optimal)
+					break;
 
 			}
 			phi = phi_tmp;
