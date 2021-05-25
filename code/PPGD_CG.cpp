@@ -41,7 +41,7 @@
 		size_t nob = H.order()/4;
 		Index ii,jj,kk,ll,mm;
 		bool optimal = (opti == 0 ? false : true);
-		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +std::to_string(finvrank)+"_i"+std::to_string(max_iter) +"_results.csv";
+		std::string out_name = "results/PPGD_CG_" +static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+ "_r"+ std::to_string(max_rank)+ "_f" +std::to_string(finvrank)+"_i"+std::to_string(max_iter)+"_opt"+std::to_string(opti) +"_results.csv";
 
 		// Load operators
 		XERUS_LOG(info, "--- Loading operators ---");
