@@ -138,7 +138,7 @@
 				alpha_last = alpha;
 				alpha = alpha_start;
 				if (optimal)
-					continue;
+					break;
 
 				phi_tmp.round(std::vector<size_t>(2*nob-1,max_rank),eps);
 
