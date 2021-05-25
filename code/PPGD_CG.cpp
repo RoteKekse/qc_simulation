@@ -131,11 +131,14 @@
 					alpha = alpha_start;
 				}
 				XERUS_LOG(info,"alpha = " << alpha);
+
 				if (alpha < 1e-7)
 					return 0;
 				phi_tmp = phi - alpha* res;
 				alpha_last = alpha;
 				alpha = alpha_start;
+				if (optimal)
+					continue;
 
 				phi_tmp.round(std::vector<size_t>(2*nob-1,max_rank),eps);
 
