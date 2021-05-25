@@ -140,7 +140,7 @@
 				xx = phi_tmp.frob_norm();
 				phi_tmp /= xx;
 				XERUS_LOG(info,"Calculate new eigenvalue");
-				xHx_tmp = contract_TT(H,phi_tmp,phi_tmp);
+				xHx_tmp = contract_TT3(H,phi_tmp);
 				count++;
 			}
 			phi = phi_tmp;

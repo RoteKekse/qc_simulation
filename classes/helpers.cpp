@@ -109,6 +109,20 @@ value_t contract_TT2(const TTOperator& A,const TTOperator& B, const TTTensor& x,
 	return stack[{0,0,0,0}];
 }
 
+value_t contract_TT3(const TTOperator& A, const TTTensor& x){
+	Tensor stack = Tensor::ones({1,1,1});
+	size_t d = A.order()/2;
+	Index i1,i2,i3,j1,j2,j3,k1,k2;
+	for (size_t i = 0; i < d; ++i){
+		auto Ai = A.get_component(i);
+		auto xi = x.get_component(i);
+
+		stack(i1,i2,i3) = stack(j1,j2,j3) * xi(j1,k1,i1) * Ai(j2,k1,k2,i2) * xi(j3,k2,i3);
+	}
+	return stack[{0,0,0}];
+}
+
+
 TTTensor makeUnitVector(std::vector<size_t> sample, size_t d){
 	std::vector<size_t> index(d, 0);
 	for (size_t i : sample)
