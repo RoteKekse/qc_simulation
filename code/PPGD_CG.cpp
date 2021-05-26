@@ -119,7 +119,7 @@
 				rHr = contract_TT(H,res,res);
 				rx = contract_TT(id,res,phi);
 				rr = contract_TT(id,res,res);
-				alpha = get_stepsize(xHx,rHr,rHx,xx,rr,rx);
+				alpha = get_stepsize(xHx,rHr,rHx,1.0,rr,rx);
 			}
 			auto xHx_tmp = xHx;
 			size_t count = 0;
