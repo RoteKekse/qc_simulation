@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
 			HFev.emplace_back(val);
 			HFev.emplace_back(val);
 		}
-	} else {
+	} else if (method == 1) {
 		Tensor T,V;
 		name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
 		read_from_disc(name,T);
@@ -87,7 +87,18 @@ int main(int argc, char* argv[]) {
 			}
 			HFev.emplace_back(val);
 		}
-	}
+	} else {
+			Tensor T,V;
+			name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
+			read_from_disc(name,T);
+			name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
+			read_from_disc(name,V);
+			nob = T.dimensions[0];
+			for(size_t j = 0; j < 2*nob; ++j){
+				HFev.emplace_back(returnTValue(T,j,j));
+			}
+		}
+
 	XERUS_LOG(info, nob);
 	XERUS_LOG(info,HFev);
 
