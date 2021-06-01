@@ -87,6 +87,21 @@ int main(int argc, char* argv[]) {
 			}
 			HFev.emplace_back(val);
 		}
+	} else if (method == 2) {
+			Tensor T,V;
+			name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
+			read_from_disc(name,T);
+			name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_V.tensor";
+			read_from_disc(name,V);
+			nob = T.dimensions[0];
+			for(size_t j = 0; j < 2*nob; ++j){
+				value_t val = 0;
+				val +=returnTValue(T,j,j);
+				for (size_t k : {0,1,2,3,22,23,30,31}){
+					val +=(returnVValue(V,j,k,j,k)-returnVValue(V,j,k,k,j));
+				}
+				HFev.emplace_back(val);
+			}
 	} else {
 			Tensor T,V;
 			name = "data/"+static_cast<std::string>(geom)+"_"+static_cast<std::string>(basisname)+"_T.tensor";
