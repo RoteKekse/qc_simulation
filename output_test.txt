@@ -1,0 +1,12 @@
++00:00:00,222 TestHamil.cpp            :  25 : info           : 1
++00:00:00,223 TestHamil.cpp            :  26 : info           : 96
++00:00:00,223 TestHamil.cpp            :  27 : info           : 96
++00:00:00,223 TestHamil.cpp            :  28 : info           : 48
++00:00:10,058 TestHamil.cpp            :  35 : info           : -76.2557
++00:00:15,855 TestHamil.cpp            :  37 : info           : -76.1996
++00:00:15,855 TestHamil.cpp            :  40 : info           : 0
++00:00:31,093 TestHamil.cpp            :  40 : info           : 9
++00:03:04,644 TestHamil.cpp            :  40 : info           : 18
++00:08:02,031 TestHamil.cpp            :  40 : info           : 27
++00:15:19,404 TestHamil.cpp            :  40 : info           : 36
++00:25:12,725 TestHamil.cpp            :  40 : info           : 45

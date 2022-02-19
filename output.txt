@@ -1,0 +1,1502 @@
+h2o_48
++00:00:00,283 read_FCIdump.cpp         : 179 : info           : Sparse
++00:00:00,283 read_FCIdump.cpp         : 182 : info           : Sparse
++00:00:01,213 BuildHamiltonian.cpp     :  37 : info           : -7.45456
++00:00:00,159 RunDmrg.cpp              :  41 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,159 RunDmrg.cpp              :  48 : info           : nuc -52.419060 
+
++00:00:00,193 RunDmrg.cpp              : 206 : info           : A = { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,704 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 0 Eigenvalue -12.6899 -65.10896501123376
++00:00:00,704 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,  }
++00:00:01,262 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 1 Eigenvalue -22.09 -74.50907148194798
++00:00:01,262 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2,  }
++00:00:01,831 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 2 Eigenvalue -23.3233 -75.74233271128836
++00:00:01,831 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2,  }
++00:00:02,379 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 3 Eigenvalue -23.646 -76.06505886101586
++00:00:02,379 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 2,  }
++00:00:02,935 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 4 Eigenvalue -23.6508 -76.06981284849377
++00:00:02,936 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 2,  }
++00:00:02,942 RunDmrg.cpp              :  77 : info           : The ranks of phi are { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 2,  }
++00:00:02,942 RunDmrg.cpp              :  78 : info           : Size of Solution 802
++00:00:02,943 RunDmrg.cpp              :  80 : info           : Final Energy =  -76.06981284849377
++00:00:00,000 BuildPrecon.cpp          :  61 : info           : shift = 77
++00:00:00,000 BuildPrecon.cpp          :  63 : info           : shift = 24.5809
++00:00:00,004 BuildPrecon.cpp          : 118 : info           : 24
++00:00:00,004 BuildPrecon.cpp          : 119 : info           : { -1.32481, -1.32481, -0.567189, -0.567189, 0.217852, 0.217852, 0.862217, 0.862217, 1.0803, 1.0803, 1.48633, 1.48633, 1.75369, 1.75369, 2.51002, 2.51002, 3.47608, 3.47608, 3.79242, 3.79242, 43.3538, 43.3538, -0.499397, -0.499397, 0.868776, 0.868776, 1.78253, 1.78253, 3.27498, 3.27498, -0.6882, -0.6882, 0.303646, 0.303646, 0.907071, 0.907071, 1.11991, 1.11991, 1.99214, 1.99214, 2.4899, 2.4899, 4.07867, 4.07867, 1.58348, 1.58348, 3.33662, 3.33662,  }
++00:00:00,004 BuildPrecon.cpp          : 132 : info           : 14.1592
++00:00:00,004 BuildPrecon.cpp          : 140 : info           : sum = 24.5809
++00:00:00,004 BuildPrecon.cpp          : 141 : info           : rest_shift = 0.260544
++00:00:00,004 BuildPrecon.cpp          : 251 : info           : a = 18.4218 b = 185.122 R = 10.0491
++00:00:00,004 BuildPrecon.cpp          : 252 : info           : a_v = { 1.4291,  } b_v = { 0.446493,  }
++00:00:00,004 BuildPrecon.cpp          : 253 : info           : a = 0.0177445 b = 0.00667809
++00:00:00,004 BuildPrecon.cpp          : 254 : info           : a = 0.0566736 b = 0.0413496
++00:00:00,004 BuildPrecon.cpp          : 255 : info           : a = 0.159797 b = 0.140049
++00:00:00,004 BuildPrecon.cpp          : 256 : info           : a = 0.0775767 b = 0.0242372
++00:00:00,004 BuildPrecon.cpp          : 257 : info           : a = 6.19679e-312 b = 6.19679e-312
++00:00:00,005 BuildPrecon.cpp          : 258 : info           : a = 0 b = 0
++00:00:00,005 BuildPrecon.cpp          : 264 : info           : 0.0775767 0.0242372
++00:00:00,005 BuildPrecon.cpp          : 149 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,006 BuildPrecon.cpp          : 161 : info           : Approximation error = 6909381.03834
++00:00:00,006 BuildPrecon.cpp          : 167 : info           : Test Inv 1
++00:00:00,038 BuildPrecon.cpp          : 184 : info           : Fock = 31.5977 Fock inv= 0.0360687 prod= 1.13969
++00:00:00,071 BuildPrecon.cpp          : 184 : info           : Fock = 74.8913 Fock inv= 0.0126304 prod= 0.945909
++00:00:00,103 BuildPrecon.cpp          : 184 : info           : Fock = 33.3201 Fock inv= 0.034594 prod= 1.15268
++00:00:00,136 BuildPrecon.cpp          : 184 : info           : Fock = 39.7184 Fock inv= 0.0296246 prod= 1.17664
++00:00:00,168 BuildPrecon.cpp          : 184 : info           : Fock = 24.5809 Fock inv= 0.0427553 prod= 1.05097
++00:00:00,159 PPGD_CG.cpp              :  33 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,159 PPGD_CG.cpp              :  47 : info           : --- Loading operators ---
++00:00:00,159 PPGD_CG.cpp              :  48 : info           : Loading inverse of Fock Operator
++00:00:00,159 PPGD_CG.cpp              :  57 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,159 PPGD_CG.cpp              :  59 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,159 PPGD_CG.cpp              :  61 : info           : --- Initializing Start Vector ---
++00:00:00,159 PPGD_CG.cpp              :  62 : info           : Setting Startvector
++00:00:00,160 PPGD_CG.cpp              :  66 : info           : { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 2,  }
++00:00:00,160 PPGD_CG.cpp              :  68 : info           : --- starting gradient descent ---
++00:00:00,213 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 0
++00:00:00,213 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:00,213 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:00,397 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:00,402 PPGD_CG.cpp              : 112 : info           : Norm res 0.00333159
++00:00:00,402 PPGD_CG.cpp              : 114 : info           : Max rank Res = 6
++00:00:00,661 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6508 -23.6508 1
++00:00:00,661 PPGD_CG.cpp              : 133 : info           : alpha = 7.84193
++00:00:00,663 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:00,770 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99998
++00:00:00,770 PPGD_CG.cpp              : 162 : info           : -76.071678
++00:00:00,770 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 6
++00:00:00,777 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 1
++00:00:00,777 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:00,777 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:01,122 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:01,123 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:01,128 PPGD_CG.cpp              : 104 : info           : Beta = 2.20725
++00:00:01,128 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:01,148 PPGD_CG.cpp              : 112 : info           : Norm res 0.0104098
++00:00:01,148 PPGD_CG.cpp              : 114 : info           : Max rank Res = 12
++00:00:01,654 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6526 -23.6526 1.00034
++00:00:01,654 PPGD_CG.cpp              : 133 : info           : alpha = 3.33632
++00:00:01,659 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:02,014 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00115
++00:00:02,015 PPGD_CG.cpp              : 162 : info           : -76.075778
++00:00:02,015 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 12
++00:00:02,017 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 2
++00:00:02,017 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:02,017 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:02,921 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:02,921 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:02,927 PPGD_CG.cpp              : 104 : info           : Beta = 1.24099
++00:00:02,928 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:02,948 PPGD_CG.cpp              : 112 : info           : Norm res 0.0182472
++00:00:02,948 PPGD_CG.cpp              : 114 : info           : Max rank Res = 24
++00:00:02,948 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6567 -23.6567 1.00124
++00:00:02,948 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:02,961 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:04,089 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00282
++00:00:04,091 PPGD_CG.cpp              : 162 : info           : -76.088029
++00:00:04,091 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 24
++00:00:04,093 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 3
++00:00:04,093 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:04,093 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:07,174 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:07,174 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:07,184 PPGD_CG.cpp              : 104 : info           : Beta = 0.797347
++00:00:07,184 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:07,207 PPGD_CG.cpp              : 112 : info           : Norm res 0.0213034
++00:00:07,207 PPGD_CG.cpp              : 114 : info           : Max rank Res = 48
++00:00:07,207 PPGD_CG.cpp              : 127 : info           : count = 0 -23.669 -23.669 1.00356
++00:00:07,207 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:07,253 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:09,589 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00221
++00:00:09,594 PPGD_CG.cpp              : 162 : info           : -76.10466
++00:00:09,594 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:09,596 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 4
++00:00:09,596 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:09,596 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:16,796 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:16,796 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:16,811 PPGD_CG.cpp              : 104 : info           : Beta = 0.880795
++00:00:16,811 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:16,838 PPGD_CG.cpp              : 112 : info           : Norm res 0.0273585
++00:00:16,838 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:00:16,838 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6856 -23.6856 1.00614
++00:00:16,839 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:16,934 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:19,275 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.0011
++00:00:19,280 PPGD_CG.cpp              : 162 : info           : -76.130881
++00:00:19,280 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:19,282 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 5
++00:00:19,282 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:19,282 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:26,606 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:26,606 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:26,625 PPGD_CG.cpp              : 104 : info           : Beta = 0.670501
++00:00:26,625 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:26,652 PPGD_CG.cpp              : 112 : info           : Norm res 0.0262626
++00:00:26,652 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:00:26,652 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7118 -23.7118 1.01067
++00:00:26,652 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:26,754 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:29,129 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00063
++00:00:29,134 PPGD_CG.cpp              : 162 : info           : -76.154754
++00:00:29,134 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:29,136 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 6
++00:00:29,136 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:29,136 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:36,544 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:36,544 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:36,564 PPGD_CG.cpp              : 104 : info           : Beta = 0.65238
++00:00:36,564 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:36,593 PPGD_CG.cpp              : 112 : info           : Norm res 0.024104
++00:00:36,593 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:00:36,593 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7357 -23.7357 1.01267
++00:00:36,593 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:36,696 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:38,993 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00061
++00:00:38,998 PPGD_CG.cpp              : 162 : info           : -76.174907
++00:00:38,998 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:38,999 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 7
++00:00:39,000 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:39,001 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:46,335 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:46,335 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:46,355 PPGD_CG.cpp              : 104 : info           : Beta = 0.668793
++00:00:46,355 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:46,382 PPGD_CG.cpp              : 112 : info           : Norm res 0.022634
++00:00:46,382 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:00:46,382 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7558 -23.7558 1.01314
++00:00:46,382 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:46,485 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:48,854 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00045
++00:00:48,859 PPGD_CG.cpp              : 162 : info           : -76.192754
++00:00:48,859 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:48,863 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 8
++00:00:48,863 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:48,863 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:56,259 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:56,259 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:56,279 PPGD_CG.cpp              : 104 : info           : Beta = 0.610262
++00:00:56,279 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:56,313 PPGD_CG.cpp              : 112 : info           : Norm res 0.0193897
++00:00:56,313 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:00:56,313 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7737 -23.7737 1.01312
++00:00:56,313 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:56,415 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:58,784 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00013
++00:00:58,789 PPGD_CG.cpp              : 162 : info           : -76.205497
++00:00:58,789 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:58,791 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 9
++00:00:58,791 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:58,791 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:06,188 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:06,188 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:06,208 PPGD_CG.cpp              : 104 : info           : Beta = 0.589789
++00:01:06,208 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:06,235 PPGD_CG.cpp              : 112 : info           : Norm res 0.0158574
++00:01:06,235 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:01:06,235 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7864 -23.7864 1.01136
++00:01:06,235 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:06,336 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:08,658 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99997
++00:01:08,663 PPGD_CG.cpp              : 162 : info           : -76.214034
++00:01:08,663 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:01:08,665 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 10
++00:01:08,665 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:08,666 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:16,098 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:16,098 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:16,117 PPGD_CG.cpp              : 104 : info           : Beta = 0.612171
++00:01:16,118 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:16,145 PPGD_CG.cpp              : 112 : info           : Norm res 0.0134075
++00:01:16,145 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:01:16,145 PPGD_CG.cpp              : 127 : info           : count = 0 -23.795 -23.795 1.00902
++00:01:16,145 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:16,248 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:18,616 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99998
++00:01:18,621 PPGD_CG.cpp              : 162 : info           : -76.220277
++00:01:18,621 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:01:18,625 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 11
++00:01:18,625 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:18,625 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:26,071 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:26,071 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:26,090 PPGD_CG.cpp              : 104 : info           : Beta = 0.613153
++00:01:26,090 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:26,118 PPGD_CG.cpp              : 112 : info           : Norm res 0.0114043
++00:01:26,118 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:01:26,118 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8012 -23.8012 1.00713
++00:01:26,118 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:26,219 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:28,573 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99998
++00:01:28,578 PPGD_CG.cpp              : 162 : info           : -76.225049
++00:01:28,578 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:01:28,580 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 12
++00:01:28,580 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:28,580 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:35,967 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:35,967 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:35,986 PPGD_CG.cpp              : 104 : info           : Beta = 0.617276
++00:01:35,986 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:36,014 PPGD_CG.cpp              : 112 : info           : Norm res 0.0100178
++00:01:36,014 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:01:36,014 PPGD_CG.cpp              : 127 : info           : count = 0 -23.806 -23.806 1.00548
++00:01:36,014 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:36,128 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:38,482 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99994
++00:01:38,487 PPGD_CG.cpp              : 162 : info           : -76.229013
++00:01:38,487 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:01:38,490 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 13
++00:01:38,490 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:38,490 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:45,859 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:45,859 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:45,879 PPGD_CG.cpp              : 104 : info           : Beta = 0.592213
++00:01:45,879 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:45,906 PPGD_CG.cpp              : 112 : info           : Norm res 0.00873748
++00:01:45,906 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:01:45,906 PPGD_CG.cpp              : 127 : info           : count = 0 -23.81 -23.81 1.00418
++00:01:45,906 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:46,008 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:48,391 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99992
++00:01:48,396 PPGD_CG.cpp              : 162 : info           : -76.232117
++00:01:48,396 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:01:48,399 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 14
++00:01:48,399 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:48,399 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:55,767 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:55,767 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:55,786 PPGD_CG.cpp              : 104 : info           : Beta = 0.552307
++00:01:55,786 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:55,814 PPGD_CG.cpp              : 112 : info           : Norm res 0.00723462
++00:01:55,814 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:01:55,814 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8131 -23.8131 1.00306
++00:01:55,814 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:55,915 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:58,265 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99995
++00:01:58,270 PPGD_CG.cpp              : 162 : info           : -76.234254
++00:01:58,270 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:01:58,275 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 15
++00:01:58,275 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:58,275 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:05,710 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:05,710 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:05,729 PPGD_CG.cpp              : 104 : info           : Beta = 0.531811
++00:02:05,729 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:05,757 PPGD_CG.cpp              : 112 : info           : Norm res 0.00578436
++00:02:05,757 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:02:05,757 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8152 -23.8152 1.0021
++00:02:05,757 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:05,859 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:08,211 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99998
++00:02:08,216 PPGD_CG.cpp              : 162 : info           : -76.235638
++00:02:08,216 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:02:08,221 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 16
++00:02:08,221 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:08,221 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:15,604 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:15,604 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:15,623 PPGD_CG.cpp              : 104 : info           : Beta = 0.513877
++00:02:15,624 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:15,654 PPGD_CG.cpp              : 112 : info           : Norm res 0.00450719
++00:02:15,654 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:02:15,654 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8166 -23.8166 1.00141
++00:02:15,654 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:15,770 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:18,119 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99999
++00:02:18,124 PPGD_CG.cpp              : 162 : info           : -76.236498
++00:02:18,124 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:02:18,126 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 17
++00:02:18,126 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:18,126 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:25,505 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:25,505 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:25,526 PPGD_CG.cpp              : 104 : info           : Beta = 0.510754
++00:02:25,526 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:25,553 PPGD_CG.cpp              : 112 : info           : Norm res 0.00352697
++00:02:25,553 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:02:25,553 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8174 -23.8174 1.00093
++00:02:25,553 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:25,658 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:27,999 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:02:28,004 PPGD_CG.cpp              : 162 : info           : -76.237039
++00:02:28,004 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:02:28,008 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 18
++00:02:28,008 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:28,008 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:35,405 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:35,405 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:35,425 PPGD_CG.cpp              : 104 : info           : Beta = 0.538649
++00:02:35,425 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:35,452 PPGD_CG.cpp              : 112 : info           : Norm res 0.00293113
++00:02:35,452 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:02:35,452 PPGD_CG.cpp              : 127 : info           : count = 0 -23.818 -23.818 1.00061
++00:02:35,453 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:35,556 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:37,924 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:02:37,929 PPGD_CG.cpp              : 162 : info           : -76.237433
++00:02:37,929 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:02:37,930 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 19
++00:02:37,930 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:37,930 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:45,362 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:45,362 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:45,381 PPGD_CG.cpp              : 104 : info           : Beta = 0.555752
++00:02:45,381 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:45,409 PPGD_CG.cpp              : 112 : info           : Norm res 0.00253411
++00:02:45,409 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:02:45,409 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8184 -23.8184 1.00041
++00:02:45,409 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:45,512 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:47,886 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:02:47,891 PPGD_CG.cpp              : 162 : info           : -76.237719
++00:02:47,891 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:02:47,895 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 20
++00:02:47,895 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:47,895 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:55,277 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:55,277 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:55,296 PPGD_CG.cpp              : 104 : info           : Beta = 0.517714
++00:02:55,296 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:55,323 PPGD_CG.cpp              : 112 : info           : Norm res 0.00205579
++00:02:55,323 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:02:55,324 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8187 -23.8187 1.00028
++00:02:55,324 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:55,425 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:57,787 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00002
++00:02:57,792 PPGD_CG.cpp              : 162 : info           : -76.237908
++00:02:57,792 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:02:57,794 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 21
++00:02:57,794 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:57,794 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:05,161 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:05,161 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:05,180 PPGD_CG.cpp              : 104 : info           : Beta = 0.486576
++00:03:05,180 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:05,207 PPGD_CG.cpp              : 112 : info           : Norm res 0.00159163
++00:03:05,207 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:03:05,207 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8188 -23.8188 1.00018
++00:03:05,207 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:05,308 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:07,659 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00002
++00:03:07,664 PPGD_CG.cpp              : 162 : info           : -76.238026
++00:03:07,664 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:03:07,670 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 22
++00:03:07,670 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:07,670 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:15,128 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:15,128 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:15,148 PPGD_CG.cpp              : 104 : info           : Beta = 0.492787
++00:03:15,148 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:15,175 PPGD_CG.cpp              : 112 : info           : Norm res 0.00128189
++00:03:15,175 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:03:15,176 PPGD_CG.cpp              : 127 : info           : count = 0 -23.819 -23.819 1.00011
++00:03:15,176 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:15,276 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:17,648 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:03:17,652 PPGD_CG.cpp              : 162 : info           : -76.238107
++00:03:17,653 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:03:17,654 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 23
++00:03:17,654 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:17,654 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:25,081 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:25,081 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:25,100 PPGD_CG.cpp              : 104 : info           : Beta = 0.515505
++00:03:25,100 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:25,127 PPGD_CG.cpp              : 112 : info           : Norm res 0.00110708
++00:03:25,127 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:03:25,127 PPGD_CG.cpp              : 127 : info           : count = 0 -23.819 -23.819 1.00007
++00:03:25,127 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:25,268 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:27,642 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:03:27,647 PPGD_CG.cpp              : 162 : info           : -76.238173
++00:03:27,647 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:03:27,651 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 24
++00:03:27,651 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:27,651 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:35,034 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:35,034 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:35,053 PPGD_CG.cpp              : 104 : info           : Beta = 0.51682
++00:03:35,054 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:35,081 PPGD_CG.cpp              : 112 : info           : Norm res 0.000989
++00:03:35,081 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:03:35,081 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8191 -23.8191 1.00004
++00:03:35,081 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:35,183 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:37,533 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:03:37,538 PPGD_CG.cpp              : 162 : info           : -76.238227
++00:03:37,538 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:03:37,542 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 25
++00:03:37,542 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:37,542 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:44,949 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:44,949 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:44,968 PPGD_CG.cpp              : 104 : info           : Beta = 0.489256
++00:03:44,968 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:44,995 PPGD_CG.cpp              : 112 : info           : Norm res 0.000851393
++00:03:44,995 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:03:44,995 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8192 -23.8192 1.00003
++00:03:44,995 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:45,097 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:47,438 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:03:47,443 PPGD_CG.cpp              : 162 : info           : -76.238266
++00:03:47,443 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:03:47,449 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 26
++00:03:47,449 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:47,449 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:54,770 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:54,770 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:54,790 PPGD_CG.cpp              : 104 : info           : Beta = 0.442233
++00:03:54,790 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:54,817 PPGD_CG.cpp              : 112 : info           : Norm res 0.000670352
++00:03:54,817 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:03:54,817 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8192 -23.8192 1.00002
++00:03:54,817 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:54,917 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:57,289 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:03:57,293 PPGD_CG.cpp              : 162 : info           : -76.238291
++00:03:57,293 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:03:57,295 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 27
++00:03:57,295 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:57,295 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:04:04,667 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:04:04,667 PPGD_CG.cpp              : 101 : info           : Project last update
++00:04:04,686 PPGD_CG.cpp              : 104 : info           : Beta = 0.433911
++00:04:04,686 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:04:04,714 PPGD_CG.cpp              : 112 : info           : Norm res 0.00052425
++00:04:04,714 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:04:04,714 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8192 -23.8192 1.00001
++00:04:04,714 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:04:04,823 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:04:07,183 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:04:07,188 PPGD_CG.cpp              : 162 : info           : -76.238307
++00:04:07,188 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:04:07,193 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 28
++00:04:07,193 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:04:07,193 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:04:14,516 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:04:14,516 PPGD_CG.cpp              : 101 : info           : Project last update
++00:04:14,535 PPGD_CG.cpp              : 104 : info           : Beta = 0.440647
++00:04:14,536 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:04:14,563 PPGD_CG.cpp              : 112 : info           : Norm res 0.000419731
++00:04:14,563 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:04:14,563 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8192 -23.8192 1.00001
++00:04:14,563 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:04:14,665 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:04:17,008 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:04:17,013 PPGD_CG.cpp              : 162 : info           : -76.238317
++00:04:17,013 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:04:17,019 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 29
++00:04:17,019 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:04:17,019 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:04:24,402 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:04:24,403 PPGD_CG.cpp              : 101 : info           : Project last update
++00:04:24,422 PPGD_CG.cpp              : 104 : info           : Beta = 0.481337
++00:04:24,422 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:04:24,449 PPGD_CG.cpp              : 112 : info           : Norm res 0.000366112
++00:04:24,449 PPGD_CG.cpp              : 114 : info           : Max rank Res = 64
++00:04:24,449 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8193 -23.8193 1.00001
++00:04:24,449 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:04:24,559 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:04:26,938 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:04:26,943 PPGD_CG.cpp              : 162 : info           : -76.238325
++00:04:26,943 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 32
++00:00:00,160 RunDmrg.cpp              :  41 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,160 RunDmrg.cpp              :  48 : info           : nuc -52.419060 
+
++00:00:00,381 RunDmrg.cpp              : 206 : info           : A = { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,956 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 0 Eigenvalue -23.6824 -76.1015041714184
++00:00:00,956 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 4, 3, 5, 6, 6, 6, 5, 5, 5, 4, 6, 6, 6, 6, 5, 5, 6, 6, 6, 5, 5, 4, 3, 2, 3, 4, 2,  }
++00:00:02,379 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 1 Eigenvalue -23.7026 -76.12164882420034
++00:00:02,380 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 10, 9, 8, 6, 6, 10, 12, 12, 10, 10, 10, 8, 9, 12, 12, 12, 10, 10, 12, 12, 11, 10, 9, 8, 6, 4, 4, 7, 4, 2,  }
++00:00:05,968 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 2 Eigenvalue -23.7357 -76.15476695109922
++00:00:05,968 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 20, 18, 15, 12, 11, 13, 22, 24, 20, 20, 20, 16, 18, 23, 24, 24, 20, 20, 24, 24, 22, 19, 18, 15, 12, 8, 8, 9, 8, 4, 2,  }
++00:00:17,700 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 3 Eigenvalue -23.7744 -76.19348181709435
++00:00:17,701 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 30, 24, 21, 23, 27, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 28, 24, 16, 16, 15, 12, 8, 4, 2,  }
++00:00:37,287 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 4 Eigenvalue -23.7929 -76.21191270217075
++00:00:37,287 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 28, 27, 24, 20, 12, 8, 4, 2,  }
++00:00:57,721 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 5 Eigenvalue -23.8019 -76.22092679351387
++00:00:57,721 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 29, 21, 13, 8, 4, 2,  }
++00:01:17,786 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 6 Eigenvalue -23.8082 -76.22730704294922
++00:01:17,786 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 29, 22, 13, 8, 4, 2,  }
++00:01:38,419 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 7 Eigenvalue -23.8125 -76.23151426540392
++00:01:38,419 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 30, 23, 14, 8, 4, 2,  }
++00:01:56,938 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 8 Eigenvalue -23.8133 -76.23238670384382
++00:01:56,938 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 24, 15, 8, 4, 2,  }
++00:02:16,141 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 9 Eigenvalue -23.8158 -76.23481431726535
++00:02:16,141 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 24, 16, 8, 4, 2,  }
++00:02:34,786 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 10 Eigenvalue -23.8167 -76.23571495806407
++00:02:34,786 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 27, 21, 13, 8, 4, 2,  }
++00:02:52,873 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 11 Eigenvalue -23.8174 -76.23641717215531
++00:02:52,873 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 26, 21, 13, 8, 4, 2,  }
++00:03:10,070 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 12 Eigenvalue -23.8176 -76.23665942639875
++00:03:10,070 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 25, 20, 12, 8, 4, 2,  }
++00:03:26,943 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 13 Eigenvalue -23.8177 -76.23676536361663
++00:03:26,943 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 25, 20, 12, 8, 4, 2,  }
++00:03:43,742 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 14 Eigenvalue -23.8178 -76.23683466728443
++00:03:43,742 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 25, 20, 13, 8, 4, 2,  }
++00:03:43,772 RunDmrg.cpp              :  77 : info           : The ranks of phi are { 2, 4, 8, 16, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 31, 25, 20, 13, 8, 4, 2,  }
++00:03:43,772 RunDmrg.cpp              :  78 : info           : Size of Solution 78264
++00:03:43,772 RunDmrg.cpp              :  80 : info           : Final Energy =  -76.23683466728443
++00:00:00,158 PPGD_CG.cpp              :  33 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,158 PPGD_CG.cpp              :  47 : info           : --- Loading operators ---
++00:00:00,158 PPGD_CG.cpp              :  48 : info           : Loading inverse of Fock Operator
++00:00:00,158 PPGD_CG.cpp              :  57 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,158 PPGD_CG.cpp              :  59 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,158 PPGD_CG.cpp              :  61 : info           : --- Initializing Start Vector ---
++00:00:00,158 PPGD_CG.cpp              :  62 : info           : Setting Startvector
++00:00:00,158 PPGD_CG.cpp              :  66 : info           : { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 2,  }
++00:00:00,158 PPGD_CG.cpp              :  68 : info           : --- starting gradient descent ---
++00:00:00,210 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 0
++00:00:00,210 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:00,210 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:00,400 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:00,404 PPGD_CG.cpp              : 112 : info           : Norm res 0.00333159
++00:00:00,404 PPGD_CG.cpp              : 114 : info           : Max rank Res = 6
++00:00:00,663 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6508 -23.6508 1
++00:00:00,663 PPGD_CG.cpp              : 133 : info           : alpha = 7.84193
++00:00:00,666 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:00,770 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99998
++00:00:00,771 PPGD_CG.cpp              : 162 : info           : -76.071678
++00:00:00,771 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 6
++00:00:00,777 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 1
++00:00:00,777 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:00,777 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:01,106 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:01,106 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:01,112 PPGD_CG.cpp              : 104 : info           : Beta = 2.20725
++00:00:01,112 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:01,132 PPGD_CG.cpp              : 112 : info           : Norm res 0.0104098
++00:00:01,132 PPGD_CG.cpp              : 114 : info           : Max rank Res = 12
++00:00:01,651 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6526 -23.6526 1.00034
++00:00:01,651 PPGD_CG.cpp              : 133 : info           : alpha = 3.33632
++00:00:01,655 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:02,009 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00115
++00:00:02,011 PPGD_CG.cpp              : 162 : info           : -76.075778
++00:00:02,011 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 12
++00:00:02,019 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 2
++00:00:02,019 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:02,019 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:02,936 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:02,936 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:02,943 PPGD_CG.cpp              : 104 : info           : Beta = 1.24099
++00:00:02,943 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:02,963 PPGD_CG.cpp              : 112 : info           : Norm res 0.0182472
++00:00:02,963 PPGD_CG.cpp              : 114 : info           : Max rank Res = 24
++00:00:02,963 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6567 -23.6567 1.00124
++00:00:02,964 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:02,976 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:04,096 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00282
++00:00:04,098 PPGD_CG.cpp              : 162 : info           : -76.088029
++00:00:04,098 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 24
++00:00:04,109 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 3
++00:00:04,109 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:04,109 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:07,169 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:07,169 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:07,178 PPGD_CG.cpp              : 104 : info           : Beta = 0.797347
++00:00:07,179 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:07,202 PPGD_CG.cpp              : 112 : info           : Norm res 0.0213034
++00:00:07,202 PPGD_CG.cpp              : 114 : info           : Max rank Res = 48
++00:00:07,202 PPGD_CG.cpp              : 127 : info           : count = 0 -23.669 -23.669 1.00356
++00:00:07,202 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:07,251 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:11,649 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00224
++00:00:11,658 PPGD_CG.cpp              : 162 : info           : -76.104529
++00:00:11,658 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 48
++00:00:11,660 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 4
++00:00:11,660 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:11,660 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:25,056 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:25,056 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:25,078 PPGD_CG.cpp              : 104 : info           : Beta = 0.94154
++00:00:25,078 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:25,110 PPGD_CG.cpp              : 112 : info           : Norm res 0.0291916
++00:00:25,110 PPGD_CG.cpp              : 114 : info           : Max rank Res = 96
++00:00:25,110 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6855 -23.6855 1.00615
++00:00:25,110 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:25,327 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:34,981 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00141
++00:00:35,006 PPGD_CG.cpp              : 162 : info           : -76.132868
++00:00:35,006 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:00:35,009 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 5
++00:00:35,009 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:35,011 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:02,800 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:02,800 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:02,845 PPGD_CG.cpp              : 104 : info           : Beta = 0.731829
++00:01:02,846 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:02,893 PPGD_CG.cpp              : 112 : info           : Norm res 0.0302886
++00:01:02,893 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:01:02,893 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7138 -23.7138 1.01169
++00:01:02,893 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:03,378 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:13,802 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00095
++00:01:13,828 PPGD_CG.cpp              : 162 : info           : -76.162719
++00:01:13,828 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:01:13,832 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 6
++00:01:13,832 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:13,832 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:42,433 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:42,433 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:42,492 PPGD_CG.cpp              : 104 : info           : Beta = 0.672753
++00:01:42,493 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:42,546 PPGD_CG.cpp              : 112 : info           : Norm res 0.0281633
++00:01:42,546 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:01:42,546 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7437 -23.7437 1.01571
++00:01:42,546 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:43,084 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:01:53,544 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00088
++00:01:53,575 PPGD_CG.cpp              : 162 : info           : -76.188144
++00:01:53,575 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:01:53,579 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 7
++00:01:53,579 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:01:53,579 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:02:22,196 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:02:22,196 PPGD_CG.cpp              : 101 : info           : Project last update
++00:02:22,255 PPGD_CG.cpp              : 104 : info           : Beta = 0.662677
++00:02:22,255 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:02:22,303 PPGD_CG.cpp              : 112 : info           : Norm res 0.0254476
++00:02:22,303 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:02:22,303 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7691 -23.7691 1.01721
++00:02:22,303 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:02:22,814 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:33,217 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00068
++00:02:33,243 PPGD_CG.cpp              : 162 : info           : -76.208581
++00:02:33,243 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:02:33,245 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 8
++00:02:33,245 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:33,245 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:01,918 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:01,918 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:01,974 PPGD_CG.cpp              : 104 : info           : Beta = 0.621399
++00:03:01,974 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:02,022 PPGD_CG.cpp              : 112 : info           : Norm res 0.0215194
++00:03:02,022 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:03:02,022 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7895 -23.7895 1.01709
++00:03:02,022 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:02,544 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:12,848 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00032
++00:03:12,875 PPGD_CG.cpp              : 162 : info           : -76.223382
++00:03:12,875 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:03:12,879 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 9
++00:03:12,879 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:12,879 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:03:41,669 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:03:41,669 PPGD_CG.cpp              : 101 : info           : Project last update
++00:03:41,726 PPGD_CG.cpp              : 104 : info           : Beta = 0.60458
++00:03:41,726 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:03:41,775 PPGD_CG.cpp              : 112 : info           : Norm res 0.0178152
++00:03:41,775 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:03:41,775 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8043 -23.8043 1.01495
++00:03:41,775 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:03:42,294 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:03:52,595 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.0001
++00:03:52,620 PPGD_CG.cpp              : 162 : info           : -76.233693
++00:03:52,620 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:03:52,624 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 10
++00:03:52,624 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:03:52,624 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:04:21,162 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:04:21,162 PPGD_CG.cpp              : 101 : info           : Project last update
++00:04:21,218 PPGD_CG.cpp              : 104 : info           : Beta = 0.579483
++00:04:21,219 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:04:21,268 PPGD_CG.cpp              : 112 : info           : Norm res 0.0141109
++00:04:21,268 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:04:21,268 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8146 -23.8146 1.01204
++00:04:21,268 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:04:21,798 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:04:32,089 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00006
++00:04:32,115 PPGD_CG.cpp              : 162 : info           : -76.239978
++00:04:32,115 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:04:32,120 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 11
++00:04:32,120 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:04:32,120 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:05:00,742 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:05:00,742 PPGD_CG.cpp              : 101 : info           : Project last update
++00:05:00,797 PPGD_CG.cpp              : 104 : info           : Beta = 0.595309
++00:05:00,798 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:05:00,846 PPGD_CG.cpp              : 112 : info           : Norm res 0.0112666
++00:05:00,846 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:05:00,846 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8209 -23.8209 1.0088
++00:05:00,846 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:05:01,375 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:05:11,667 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00005
++00:05:11,692 PPGD_CG.cpp              : 162 : info           : -76.243961
++00:05:11,692 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:05:11,697 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 12
++00:05:11,697 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:05:11,697 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:05:40,200 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:05:40,200 PPGD_CG.cpp              : 101 : info           : Project last update
++00:05:40,256 PPGD_CG.cpp              : 104 : info           : Beta = 0.607734
++00:05:40,256 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:05:40,305 PPGD_CG.cpp              : 112 : info           : Norm res 0.00917878
++00:05:40,305 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:05:40,305 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8249 -23.8249 1.00632
++00:05:40,305 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:05:40,826 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:05:51,275 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00003
++00:05:51,300 PPGD_CG.cpp              : 162 : info           : -76.246679
++00:05:51,300 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:05:51,307 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 13
++00:05:51,307 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:05:51,307 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:06:20,093 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:06:20,093 PPGD_CG.cpp              : 101 : info           : Project last update
++00:06:20,149 PPGD_CG.cpp              : 104 : info           : Beta = 0.592557
++00:06:20,149 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:06:20,197 PPGD_CG.cpp              : 112 : info           : Norm res 0.00735621
++00:06:20,197 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:06:20,197 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8276 -23.8276 1.00453
++00:06:20,197 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:06:20,717 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:06:30,984 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00002
++00:06:31,010 PPGD_CG.cpp              : 162 : info           : -76.248435
++00:06:31,010 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:06:31,015 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 14
++00:06:31,015 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:06:31,015 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:06:59,797 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:06:59,797 PPGD_CG.cpp              : 101 : info           : Project last update
++00:06:59,853 PPGD_CG.cpp              : 104 : info           : Beta = 0.574095
++00:06:59,854 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:06:59,903 PPGD_CG.cpp              : 112 : info           : Norm res 0.00570056
++00:06:59,903 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:06:59,903 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8294 -23.8294 1.00315
++00:06:59,903 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:07:00,424 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:07:10,879 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:07:10,904 PPGD_CG.cpp              : 162 : info           : -76.249479
++00:07:10,904 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:07:10,908 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 15
++00:07:10,908 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:07:10,908 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:07:39,665 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:07:39,666 PPGD_CG.cpp              : 101 : info           : Project last update
++00:07:39,723 PPGD_CG.cpp              : 104 : info           : Beta = 0.583633
++00:07:39,723 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:07:39,772 PPGD_CG.cpp              : 112 : info           : Norm res 0.00446044
++00:07:39,772 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:07:39,772 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8304 -23.8304 1.00212
++00:07:39,772 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:07:40,292 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:07:50,579 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:07:50,605 PPGD_CG.cpp              : 162 : info           : -76.250129
++00:07:50,605 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:07:50,609 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 16
++00:07:50,609 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:07:50,609 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:08:19,213 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:08:19,213 PPGD_CG.cpp              : 101 : info           : Project last update
++00:08:19,269 PPGD_CG.cpp              : 104 : info           : Beta = 0.602422
++00:08:19,269 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:08:19,318 PPGD_CG.cpp              : 112 : info           : Norm res 0.003619
++00:08:19,318 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:08:19,318 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8311 -23.8311 1.00145
++00:08:19,318 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:08:19,844 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:08:30,186 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:08:30,212 PPGD_CG.cpp              : 162 : info           : -76.250571
++00:08:30,212 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:08:30,217 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 17
++00:08:30,217 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:08:30,217 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:08:58,853 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:08:58,853 PPGD_CG.cpp              : 101 : info           : Project last update
++00:08:58,909 PPGD_CG.cpp              : 104 : info           : Beta = 0.594758
++00:08:58,909 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:08:58,958 PPGD_CG.cpp              : 112 : info           : Norm res 0.00293847
++00:08:58,958 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:08:58,958 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8315 -23.8315 1.00101
++00:08:58,958 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:08:59,466 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:09:09,812 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:09:09,839 PPGD_CG.cpp              : 162 : info           : -76.250873
++00:09:09,840 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:09:09,848 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 18
++00:09:09,848 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:09:09,848 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:09:38,331 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:09:38,331 PPGD_CG.cpp              : 101 : info           : Project last update
++00:09:38,386 PPGD_CG.cpp              : 104 : info           : Beta = 0.591523
++00:09:38,386 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:09:38,435 PPGD_CG.cpp              : 112 : info           : Norm res 0.0024101
++00:09:38,435 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:09:38,435 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8318 -23.8318 1.00069
++00:09:38,435 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:09:38,950 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:09:49,425 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:09:49,451 PPGD_CG.cpp              : 162 : info           : -76.251085
++00:09:49,451 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:09:49,453 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 19
++00:09:49,453 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:09:49,453 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:10:18,031 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:10:18,031 PPGD_CG.cpp              : 101 : info           : Project last update
++00:10:18,093 PPGD_CG.cpp              : 104 : info           : Beta = 0.582611
++00:10:18,093 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:10:18,142 PPGD_CG.cpp              : 112 : info           : Norm res 0.00198514
++00:10:18,142 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:10:18,142 PPGD_CG.cpp              : 127 : info           : count = 0 -23.832 -23.832 1.00046
++00:10:18,142 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:10:18,654 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:10:28,957 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:10:28,984 PPGD_CG.cpp              : 162 : info           : -76.251232
++00:10:28,984 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:10:28,989 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 20
++00:10:28,989 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:10:28,989 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:10:57,544 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:10:57,544 PPGD_CG.cpp              : 101 : info           : Project last update
++00:10:57,604 PPGD_CG.cpp              : 104 : info           : Beta = 0.549548
++00:10:57,604 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:10:57,654 PPGD_CG.cpp              : 112 : info           : Norm res 0.00156616
++00:10:57,654 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:10:57,654 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8322 -23.8322 1.0003
++00:10:57,654 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:10:58,161 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:11:08,459 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:11:08,484 PPGD_CG.cpp              : 162 : info           : -76.251327
++00:11:08,484 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:11:08,492 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 21
++00:11:08,492 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:11:08,492 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:11:37,124 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:11:37,124 PPGD_CG.cpp              : 101 : info           : Project last update
++00:11:37,179 PPGD_CG.cpp              : 104 : info           : Beta = 0.525697
++00:11:37,180 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:11:37,229 PPGD_CG.cpp              : 112 : info           : Norm res 0.00119349
++00:11:37,229 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:11:37,229 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8323 -23.8323 1.00019
++00:11:37,229 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:11:37,746 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:11:48,220 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:11:48,247 PPGD_CG.cpp              : 162 : info           : -76.251383
++00:11:48,247 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:11:48,251 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 22
++00:11:48,251 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:11:48,251 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:12:16,879 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:12:16,879 PPGD_CG.cpp              : 101 : info           : Project last update
++00:12:16,934 PPGD_CG.cpp              : 104 : info           : Beta = 0.533181
++00:12:16,935 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:12:16,983 PPGD_CG.cpp              : 112 : info           : Norm res 0.000935831
++00:12:16,983 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:12:16,983 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8323 -23.8323 1.00011
++00:12:16,983 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:12:17,491 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:12:27,745 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:12:27,771 PPGD_CG.cpp              : 162 : info           : -76.25142
++00:12:27,771 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:12:27,773 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 23
++00:12:27,773 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:12:27,773 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:12:56,345 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:12:56,345 PPGD_CG.cpp              : 101 : info           : Project last update
++00:12:56,400 PPGD_CG.cpp              : 104 : info           : Beta = 0.574917
++00:12:56,400 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:12:56,449 PPGD_CG.cpp              : 112 : info           : Norm res 0.000819182
++00:12:56,449 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:12:56,449 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8324 -23.8324 1.00007
++00:12:56,449 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:12:56,953 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:13:07,385 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:13:07,410 PPGD_CG.cpp              : 162 : info           : -76.251452
++00:13:07,411 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:13:07,419 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 24
++00:13:07,419 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:13:07,419 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:13:36,088 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:13:36,088 PPGD_CG.cpp              : 101 : info           : Project last update
++00:13:36,146 PPGD_CG.cpp              : 104 : info           : Beta = 0.63613
++00:13:36,147 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:13:36,195 PPGD_CG.cpp              : 112 : info           : Norm res 0.000825219
++00:13:36,195 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:13:36,195 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8324 -23.8324 1.00004
++00:13:36,195 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:13:36,715 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:13:46,944 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:13:46,969 PPGD_CG.cpp              : 162 : info           : -76.25149
++00:13:46,970 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:13:46,972 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 25
++00:13:46,972 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:13:46,972 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:14:15,520 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:14:15,520 PPGD_CG.cpp              : 101 : info           : Project last update
++00:14:15,576 PPGD_CG.cpp              : 104 : info           : Beta = 0.728785
++00:14:15,576 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:14:15,626 PPGD_CG.cpp              : 112 : info           : Norm res 0.00097452
++00:14:15,626 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:14:15,626 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8324 -23.8324 1.00003
++00:14:15,626 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:14:16,141 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:14:26,392 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:14:26,417 PPGD_CG.cpp              : 162 : info           : -76.251544
++00:14:26,418 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:14:26,424 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 26
++00:14:26,424 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:14:26,424 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:14:54,991 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:14:54,991 PPGD_CG.cpp              : 101 : info           : Project last update
++00:14:55,047 PPGD_CG.cpp              : 104 : info           : Beta = 0.718815
++00:14:55,047 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:14:55,096 PPGD_CG.cpp              : 112 : info           : Norm res 0.00113599
++00:14:55,096 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:14:55,096 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8325 -23.8325 1.00003
++00:14:55,096 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:14:55,604 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:15:06,018 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:15:06,044 PPGD_CG.cpp              : 162 : info           : -76.251611
++00:15:06,044 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:15:06,048 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 27
++00:15:06,048 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:15:06,048 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:15:34,715 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:15:34,715 PPGD_CG.cpp              : 101 : info           : Project last update
++00:15:34,770 PPGD_CG.cpp              : 104 : info           : Beta = 0.567458
++00:15:34,770 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:15:34,819 PPGD_CG.cpp              : 112 : info           : Norm res 0.00104188
++00:15:34,819 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:15:34,819 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8326 -23.8326 1.00003
++00:15:34,819 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:15:35,334 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:15:45,744 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:15:45,769 PPGD_CG.cpp              : 162 : info           : -76.25166
++00:15:45,769 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:15:45,775 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 28
++00:15:45,776 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:15:45,776 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:16:14,552 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:16:14,552 PPGD_CG.cpp              : 101 : info           : Project last update
++00:16:14,608 PPGD_CG.cpp              : 104 : info           : Beta = 0.435743
++00:16:14,609 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:16:14,658 PPGD_CG.cpp              : 112 : info           : Norm res 0.000720541
++00:16:14,658 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:16:14,658 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8326 -23.8326 1.00003
++00:16:14,658 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:16:15,177 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:16:25,438 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:16:25,464 PPGD_CG.cpp              : 162 : info           : -76.251682
++00:16:25,464 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:16:25,466 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 29
++00:16:25,466 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:16:25,466 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:16:54,066 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:16:54,066 PPGD_CG.cpp              : 101 : info           : Project last update
++00:16:54,122 PPGD_CG.cpp              : 104 : info           : Beta = 0.409888
++00:16:54,122 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:16:54,172 PPGD_CG.cpp              : 112 : info           : Norm res 0.000458281
++00:16:54,172 PPGD_CG.cpp              : 114 : info           : Max rank Res = 128
++00:16:54,172 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8326 -23.8326 1.00002
++00:16:54,172 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:16:54,689 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:17:04,950 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:17:04,976 PPGD_CG.cpp              : 162 : info           : -76.251691
++00:17:04,976 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 64
++00:00:00,159 RunDmrg.cpp              :  41 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,159 RunDmrg.cpp              :  48 : info           : nuc -52.419060 
+
++00:00:00,390 RunDmrg.cpp              : 206 : info           : A = { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,967 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 0 Eigenvalue -23.6824 -76.1015041714184
++00:00:00,967 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 4, 3, 5, 6, 6, 6, 5, 5, 5, 4, 6, 6, 6, 6, 5, 5, 6, 6, 6, 5, 5, 4, 3, 2, 3, 4, 2,  }
++00:00:02,392 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 1 Eigenvalue -23.7026 -76.12164882420034
++00:00:02,392 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 10, 9, 8, 6, 6, 10, 12, 12, 10, 10, 10, 8, 9, 12, 12, 12, 10, 10, 12, 12, 11, 10, 9, 8, 6, 4, 4, 7, 4, 2,  }
++00:00:05,982 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 2 Eigenvalue -23.7357 -76.15476695109922
++00:00:05,982 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 20, 18, 15, 12, 11, 13, 22, 24, 20, 20, 20, 16, 18, 23, 24, 24, 20, 20, 24, 24, 22, 19, 18, 15, 12, 8, 8, 9, 8, 4, 2,  }
++00:00:24,662 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 3 Eigenvalue -23.7751 -76.19420289267973
++00:00:24,662 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 40, 36, 30, 24, 21, 23, 27, 46, 40, 40, 40, 32, 36, 45, 46, 48, 40, 40, 48, 48, 44, 38, 35, 29, 24, 16, 16, 15, 12, 8, 4, 2,  }
++00:02:04,409 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 4 Eigenvalue -23.7993 -76.21839179365364
++00:02:04,409 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 60, 48, 42, 43, 48, 60, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 52, 42, 31, 29, 28, 22, 14, 8, 4, 2,  }
++00:06:07,768 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 5 Eigenvalue -23.8219 -76.24098141663833
++00:06:07,768 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 54, 51, 46, 39, 26, 16, 8, 4, 2,  }
++00:10:00,864 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 6 Eigenvalue -23.8275 -76.24654477539028
++00:10:00,864 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 58, 43, 28, 16, 8, 4, 2,  }
++00:13:44,732 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 7 Eigenvalue -23.8299 -76.24897505657151
++00:13:44,732 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 56, 43, 28, 16, 8, 4, 2,  }
++00:17:02,409 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 8 Eigenvalue -23.8303 -76.2493418118233
++00:17:02,409 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 57, 44, 28, 16, 8, 4, 2,  }
++00:20:18,410 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 9 Eigenvalue -23.8308 -76.24986014430169
++00:20:18,410 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 57, 44, 28, 16, 8, 4, 2,  }
++00:23:41,526 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 10 Eigenvalue -23.8313 -76.25034155421726
++00:23:41,526 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 55, 43, 27, 16, 8, 4, 2,  }
++00:26:56,554 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 11 Eigenvalue -23.8316 -76.25065910975431
++00:26:56,554 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 54, 43, 27, 16, 8, 4, 2,  }
++00:30:09,194 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 12 Eigenvalue -23.8318 -76.25088827158289
++00:30:09,194 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 63, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 54, 42, 28, 16, 8, 4, 2,  }
++00:33:10,969 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 13 Eigenvalue -23.8319 -76.25100392866997
++00:33:10,969 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 62, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 54, 42, 28, 16, 8, 4, 2,  }
++00:36:06,471 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 14 Eigenvalue -23.832 -76.25103609411548
++00:36:06,471 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 62, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 54, 42, 28, 16, 8, 4, 2,  }
++00:36:06,559 RunDmrg.cpp              :  77 : info           : The ranks of phi are { 2, 4, 8, 16, 32, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 62, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 54, 42, 28, 16, 8, 4, 2,  }
++00:36:06,559 RunDmrg.cpp              :  78 : info           : Size of Solution 298514
++00:36:06,559 RunDmrg.cpp              :  80 : info           : Final Energy =  -76.25103609411548
++00:00:00,157 PPGD_CG.cpp              :  33 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,158 PPGD_CG.cpp              :  47 : info           : --- Loading operators ---
++00:00:00,158 PPGD_CG.cpp              :  48 : info           : Loading inverse of Fock Operator
++00:00:00,158 PPGD_CG.cpp              :  57 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,158 PPGD_CG.cpp              :  59 : info           : { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  }
++00:00:00,158 PPGD_CG.cpp              :  61 : info           : --- Initializing Start Vector ---
++00:00:00,158 PPGD_CG.cpp              :  62 : info           : Setting Startvector
++00:00:00,158 PPGD_CG.cpp              :  66 : info           : { 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 2,  }
++00:00:00,158 PPGD_CG.cpp              :  68 : info           : --- starting gradient descent ---
++00:00:00,211 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 0
++00:00:00,211 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:00,211 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:00,395 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:00,399 PPGD_CG.cpp              : 112 : info           : Norm res 0.00333159
++00:00:00,399 PPGD_CG.cpp              : 114 : info           : Max rank Res = 6
++00:00:00,666 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6508 -23.6508 1
++00:00:00,666 PPGD_CG.cpp              : 133 : info           : alpha = 7.84193
++00:00:00,668 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:00,772 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 7.99998
++00:00:00,773 PPGD_CG.cpp              : 162 : info           : -76.071678
++00:00:00,773 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 6
++00:00:00,778 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 1
++00:00:00,778 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:00,778 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:01,104 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:01,104 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:01,109 PPGD_CG.cpp              : 104 : info           : Beta = 2.20725
++00:00:01,109 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:01,129 PPGD_CG.cpp              : 112 : info           : Norm res 0.0104098
++00:00:01,129 PPGD_CG.cpp              : 114 : info           : Max rank Res = 12
++00:00:01,644 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6526 -23.6526 1.00034
++00:00:01,644 PPGD_CG.cpp              : 133 : info           : alpha = 3.33632
++00:00:01,649 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:02,000 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00115
++00:00:02,001 PPGD_CG.cpp              : 162 : info           : -76.075778
++00:00:02,001 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 12
++00:00:02,007 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 2
++00:00:02,007 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:02,008 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:02,916 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:02,916 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:02,922 PPGD_CG.cpp              : 104 : info           : Beta = 1.24099
++00:00:02,922 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:02,943 PPGD_CG.cpp              : 112 : info           : Norm res 0.0182472
++00:00:02,943 PPGD_CG.cpp              : 114 : info           : Max rank Res = 24
++00:00:02,943 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6567 -23.6567 1.00124
++00:00:02,943 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:02,956 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:04,100 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00282
++00:00:04,102 PPGD_CG.cpp              : 162 : info           : -76.088029
++00:00:04,102 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 24
++00:00:04,106 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 3
++00:00:04,107 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:04,107 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:07,170 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:07,170 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:07,180 PPGD_CG.cpp              : 104 : info           : Beta = 0.797347
++00:00:07,180 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:07,203 PPGD_CG.cpp              : 112 : info           : Norm res 0.0213034
++00:00:07,203 PPGD_CG.cpp              : 114 : info           : Max rank Res = 48
++00:00:07,203 PPGD_CG.cpp              : 127 : info           : count = 0 -23.669 -23.669 1.00356
++00:00:07,203 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:07,252 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:11,653 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00224
++00:00:11,662 PPGD_CG.cpp              : 162 : info           : -76.104529
++00:00:11,662 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 48
++00:00:11,666 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 4
++00:00:11,666 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:11,666 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:00:25,114 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:00:25,114 PPGD_CG.cpp              : 101 : info           : Project last update
++00:00:25,135 PPGD_CG.cpp              : 104 : info           : Beta = 0.94154
++00:00:25,135 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:00:25,166 PPGD_CG.cpp              : 112 : info           : Norm res 0.0291916
++00:00:25,166 PPGD_CG.cpp              : 114 : info           : Max rank Res = 96
++00:00:25,166 PPGD_CG.cpp              : 127 : info           : count = 0 -23.6855 -23.6855 1.00615
++00:00:25,167 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:00:25,400 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:00:44,119 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00148
++00:00:44,178 PPGD_CG.cpp              : 162 : info           : -76.132491
++00:00:44,178 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 96
++00:00:44,180 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 5
++00:00:44,180 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:00:44,182 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:01:51,627 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:01:51,627 PPGD_CG.cpp              : 101 : info           : Project last update
++00:01:51,693 PPGD_CG.cpp              : 104 : info           : Beta = 0.759847
++00:01:51,694 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:01:51,761 PPGD_CG.cpp              : 112 : info           : Norm res 0.0314078
++00:01:51,761 PPGD_CG.cpp              : 114 : info           : Max rank Res = 192
++00:01:51,761 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7134 -23.7134 1.0117
++00:01:51,761 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:01:52,711 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:02:36,753 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00124
++00:02:36,912 PPGD_CG.cpp              : 162 : info           : -76.163149
++00:02:36,912 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:02:36,914 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 6
++00:02:36,914 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:02:36,914 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:04:32,383 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:04:32,383 PPGD_CG.cpp              : 101 : info           : Project last update
++00:04:32,548 PPGD_CG.cpp              : 104 : info           : Beta = 0.712927
++00:04:32,549 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:04:32,705 PPGD_CG.cpp              : 112 : info           : Norm res 0.0308171
++00:04:32,705 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:04:32,705 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7441 -23.7441 1.01654
++00:04:32,705 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:04:35,201 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:05:18,462 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00129
++00:05:18,627 PPGD_CG.cpp              : 162 : info           : -76.192093
++00:05:18,627 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:05:18,629 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 7
++00:05:18,629 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:05:18,629 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:07:16,050 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:07:16,050 PPGD_CG.cpp              : 101 : info           : Project last update
++00:07:16,255 PPGD_CG.cpp              : 104 : info           : Beta = 0.670541
++00:07:16,257 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:07:16,418 PPGD_CG.cpp              : 112 : info           : Norm res 0.0279009
++00:07:16,418 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:07:16,418 PPGD_CG.cpp              : 127 : info           : count = 0 -23.773 -23.773 1.01962
++00:07:16,418 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:07:19,033 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:08:02,302 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00098
++00:08:02,474 PPGD_CG.cpp              : 162 : info           : -76.215304
++00:08:02,474 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:08:02,481 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 8
++00:08:02,481 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:08:02,481 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:09:59,896 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:09:59,896 PPGD_CG.cpp              : 101 : info           : Project last update
++00:10:00,110 PPGD_CG.cpp              : 104 : info           : Beta = 0.614186
++00:10:00,111 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:10:00,268 PPGD_CG.cpp              : 112 : info           : Norm res 0.0229208
++00:10:00,268 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:10:00,268 PPGD_CG.cpp              : 127 : info           : count = 0 -23.7962 -23.7962 1.02003
++00:10:00,268 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:10:02,885 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:10:46,386 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00048
++00:10:46,557 PPGD_CG.cpp              : 162 : info           : -76.231196
++00:10:46,557 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:10:46,560 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 9
++00:10:46,560 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:10:46,560 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:12:43,961 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:12:43,962 PPGD_CG.cpp              : 101 : info           : Project last update
++00:12:44,178 PPGD_CG.cpp              : 104 : info           : Beta = 0.596213
++00:12:44,179 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:12:44,338 PPGD_CG.cpp              : 112 : info           : Norm res 0.0183286
++00:12:44,339 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:12:44,339 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8121 -23.8121 1.01738
++00:12:44,339 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:12:46,976 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:13:30,320 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00019
++00:13:30,490 PPGD_CG.cpp              : 162 : info           : -76.241413
++00:13:30,490 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:13:30,501 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 10
++00:13:30,501 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:13:30,501 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:15:28,909 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:15:28,909 PPGD_CG.cpp              : 101 : info           : Project last update
++00:15:29,122 PPGD_CG.cpp              : 104 : info           : Beta = 0.558847
++00:15:29,124 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:15:29,284 PPGD_CG.cpp              : 112 : info           : Norm res 0.013639
++00:15:29,285 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:15:29,285 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8224 -23.8224 1.0137
++00:15:29,285 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:15:31,916 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:16:15,215 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.0001
++00:16:15,379 PPGD_CG.cpp              : 162 : info           : -76.24693
++00:16:15,379 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:16:15,383 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 11
++00:16:15,383 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:16:15,384 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:18:12,754 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:18:12,754 PPGD_CG.cpp              : 101 : info           : Project last update
++00:18:12,968 PPGD_CG.cpp              : 104 : info           : Beta = 0.569832
++00:18:12,970 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:18:13,128 PPGD_CG.cpp              : 112 : info           : Norm res 0.0101921
++00:18:13,128 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:18:13,128 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8279 -23.8279 1.00951
++00:18:13,129 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:18:15,742 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:18:59,133 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00008
++00:18:59,295 PPGD_CG.cpp              : 162 : info           : -76.250042
++00:18:59,295 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:18:59,299 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 12
++00:18:59,299 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:18:59,299 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:20:56,933 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:20:56,933 PPGD_CG.cpp              : 101 : info           : Project last update
++00:20:57,150 PPGD_CG.cpp              : 104 : info           : Beta = 0.595785
++00:20:57,151 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:20:57,312 PPGD_CG.cpp              : 112 : info           : Norm res 0.00800166
++00:20:57,312 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:20:57,312 PPGD_CG.cpp              : 127 : info           : count = 0 -23.831 -23.831 1.00635
++00:20:57,312 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:20:59,902 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:21:43,735 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00005
++00:21:43,897 PPGD_CG.cpp              : 162 : info           : -76.251998
++00:21:43,898 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:21:43,902 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 13
++00:21:43,902 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:21:43,902 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:23:42,126 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:23:42,126 PPGD_CG.cpp              : 101 : info           : Project last update
++00:23:42,346 PPGD_CG.cpp              : 104 : info           : Beta = 0.579932
++00:23:42,347 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:23:42,502 PPGD_CG.cpp              : 112 : info           : Norm res 0.00612974
++00:23:42,502 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:23:42,502 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8329 -23.8329 1.00427
++00:23:42,502 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:23:45,115 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:24:28,432 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00002
++00:24:28,594 PPGD_CG.cpp              : 162 : info           : -76.253128
++00:24:28,594 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:24:28,599 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 14
++00:24:28,599 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:24:28,599 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:26:26,550 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:26:26,550 PPGD_CG.cpp              : 101 : info           : Project last update
++00:26:26,770 PPGD_CG.cpp              : 104 : info           : Beta = 0.580951
++00:26:26,771 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:26:26,928 PPGD_CG.cpp              : 112 : info           : Norm res 0.00465091
++00:26:26,928 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:26:26,928 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8341 -23.8341 1.00277
++00:26:26,928 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:26:29,542 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:27:13,139 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:27:13,307 PPGD_CG.cpp              : 162 : info           : -76.253768
++00:27:13,307 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:27:13,311 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 15
++00:27:13,311 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:27:13,312 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:29:10,900 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:29:10,900 PPGD_CG.cpp              : 101 : info           : Project last update
++00:29:11,111 PPGD_CG.cpp              : 104 : info           : Beta = 0.599536
++00:29:11,113 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:29:11,276 PPGD_CG.cpp              : 112 : info           : Norm res 0.00361213
++00:29:11,276 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:29:11,276 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8347 -23.8347 1.00181
++00:29:11,276 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:29:13,839 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:29:57,662 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:29:57,828 PPGD_CG.cpp              : 162 : info           : -76.25415
++00:29:57,828 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:29:57,832 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 16
++00:29:57,832 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:29:57,832 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:31:55,836 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:31:55,836 PPGD_CG.cpp              : 101 : info           : Project last update
++00:31:56,048 PPGD_CG.cpp              : 104 : info           : Beta = 0.609344
++00:31:56,049 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:31:56,207 PPGD_CG.cpp              : 112 : info           : Norm res 0.00283501
++00:31:56,207 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:31:56,207 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8351 -23.8351 1.00123
++00:31:56,207 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:31:58,793 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:32:42,214 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8.00001
++00:32:42,377 PPGD_CG.cpp              : 162 : info           : -76.254387
++00:32:42,377 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:32:42,384 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 17
++00:32:42,384 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:32:42,384 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:34:39,854 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:34:39,854 PPGD_CG.cpp              : 101 : info           : Project last update
++00:34:40,078 PPGD_CG.cpp              : 104 : info           : Beta = 0.623603
++00:34:40,080 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:34:40,240 PPGD_CG.cpp              : 112 : info           : Norm res 0.00227865
++00:34:40,240 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:34:40,240 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8353 -23.8353 1.00085
++00:34:40,240 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:34:42,836 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:35:26,382 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:35:26,544 PPGD_CG.cpp              : 162 : info           : -76.254543
++00:35:26,544 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:35:26,551 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 18
++00:35:26,551 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:35:26,551 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:37:24,347 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:37:24,347 PPGD_CG.cpp              : 101 : info           : Project last update
++00:37:24,583 PPGD_CG.cpp              : 104 : info           : Beta = 0.630828
++00:37:24,585 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:37:24,747 PPGD_CG.cpp              : 112 : info           : Norm res 0.00187281
++00:37:24,747 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:37:24,747 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8355 -23.8355 1.0006
++00:37:24,747 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:37:27,332 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:38:10,865 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:38:11,031 PPGD_CG.cpp              : 162 : info           : -76.254653
++00:38:11,031 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:38:11,033 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 19
++00:38:11,033 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:38:11,033 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:40:08,363 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:40:08,363 PPGD_CG.cpp              : 101 : info           : Project last update
++00:40:08,581 PPGD_CG.cpp              : 104 : info           : Beta = 0.614427
++00:40:08,582 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:40:08,742 PPGD_CG.cpp              : 112 : info           : Norm res 0.00151856
++00:40:08,742 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:40:08,742 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8356 -23.8356 1.00041
++00:40:08,742 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:40:11,370 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:40:55,068 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:40:55,234 PPGD_CG.cpp              : 162 : info           : -76.254727
++00:40:55,234 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:40:55,236 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 20
++00:40:55,236 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:40:55,236 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:42:52,750 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:42:52,750 PPGD_CG.cpp              : 101 : info           : Project last update
++00:42:52,972 PPGD_CG.cpp              : 104 : info           : Beta = 0.59213
++00:42:52,973 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:42:53,131 PPGD_CG.cpp              : 112 : info           : Norm res 0.00118985
++00:42:53,131 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:42:53,131 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8357 -23.8357 1.00027
++00:42:53,131 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:42:55,716 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:43:39,478 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:43:39,642 PPGD_CG.cpp              : 162 : info           : -76.254772
++00:43:39,642 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:43:39,646 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 21
++00:43:39,646 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:43:39,646 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:45:37,079 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:45:37,079 PPGD_CG.cpp              : 101 : info           : Project last update
++00:45:37,293 PPGD_CG.cpp              : 104 : info           : Beta = 0.587577
++00:45:37,294 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:45:37,459 PPGD_CG.cpp              : 112 : info           : Norm res 0.000925237
++00:45:37,459 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:45:37,459 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8357 -23.8357 1.00017
++00:45:37,459 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:45:40,030 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:46:24,020 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:46:24,190 PPGD_CG.cpp              : 162 : info           : -76.2548
++00:46:24,190 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:46:24,192 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 22
++00:46:24,192 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:46:24,192 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:48:21,776 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:48:21,776 PPGD_CG.cpp              : 101 : info           : Project last update
++00:48:21,988 PPGD_CG.cpp              : 104 : info           : Beta = 0.591606
++00:48:21,990 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:48:22,153 PPGD_CG.cpp              : 112 : info           : Norm res 0.000728502
++00:48:22,153 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:48:22,153 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8357 -23.8357 1.00011
++00:48:22,153 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:48:24,726 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:49:08,290 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:49:08,450 PPGD_CG.cpp              : 162 : info           : -76.254817
++00:49:08,450 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:49:08,455 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 23
++00:49:08,455 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:49:08,455 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:51:06,898 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:51:06,898 PPGD_CG.cpp              : 101 : info           : Project last update
++00:51:07,113 PPGD_CG.cpp              : 104 : info           : Beta = 0.590119
++00:51:07,115 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:51:07,277 PPGD_CG.cpp              : 112 : info           : Norm res 0.000579487
++00:51:07,277 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:51:07,277 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1.00007
++00:51:07,277 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:51:09,840 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:51:53,713 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:51:53,880 PPGD_CG.cpp              : 162 : info           : -76.254829
++00:51:53,880 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:51:53,884 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 24
++00:51:53,884 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:51:53,884 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:53:51,932 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:53:51,932 PPGD_CG.cpp              : 101 : info           : Project last update
++00:53:52,143 PPGD_CG.cpp              : 104 : info           : Beta = 0.577943
++00:53:52,144 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:53:52,314 PPGD_CG.cpp              : 112 : info           : Norm res 0.00046034
++00:53:52,314 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:53:52,314 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1.00004
++00:53:52,314 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:53:54,888 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:54:38,105 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:54:38,271 PPGD_CG.cpp              : 162 : info           : -76.254836
++00:54:38,271 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:54:38,273 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 25
++00:54:38,273 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:54:38,273 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:56:35,610 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:56:35,610 PPGD_CG.cpp              : 101 : info           : Project last update
++00:56:35,820 PPGD_CG.cpp              : 104 : info           : Beta = 0.557774
++00:56:35,821 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:56:35,979 PPGD_CG.cpp              : 112 : info           : Norm res 0.000360915
++00:56:35,979 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:56:35,979 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1.00003
++00:56:35,979 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:56:38,568 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++00:57:22,140 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++00:57:22,307 PPGD_CG.cpp              : 162 : info           : -76.254841
++00:57:22,307 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:57:22,313 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 26
++00:57:22,313 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++00:57:22,313 PPGD_CG.cpp              :  92 : info           : Project Gradient
++00:59:20,187 PPGD_CG.cpp              :  96 : info           : Calc update direction
++00:59:20,187 PPGD_CG.cpp              : 101 : info           : Project last update
++00:59:20,408 PPGD_CG.cpp              : 104 : info           : Beta = 0.536738
++00:59:20,409 PPGD_CG.cpp              : 106 : info           : Assemble update
++00:59:20,564 PPGD_CG.cpp              : 112 : info           : Norm res 0.000278354
++00:59:20,564 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++00:59:20,564 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1.00002
++00:59:20,564 PPGD_CG.cpp              : 133 : info           : alpha = 3
++00:59:23,150 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++01:00:06,547 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++01:00:06,717 PPGD_CG.cpp              : 162 : info           : -76.254844
++01:00:06,717 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++01:00:06,720 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 27
++01:00:06,720 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++01:00:06,720 PPGD_CG.cpp              :  92 : info           : Project Gradient
++01:02:04,745 PPGD_CG.cpp              :  96 : info           : Calc update direction
++01:02:04,745 PPGD_CG.cpp              : 101 : info           : Project last update
++01:02:04,955 PPGD_CG.cpp              : 104 : info           : Beta = 0.529223
++01:02:04,957 PPGD_CG.cpp              : 106 : info           : Assemble update
++01:02:05,114 PPGD_CG.cpp              : 112 : info           : Norm res 0.000217302
++01:02:05,114 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++01:02:05,114 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1.00001
++01:02:05,114 PPGD_CG.cpp              : 133 : info           : alpha = 3
++01:02:07,725 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++01:02:51,224 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++01:02:51,386 PPGD_CG.cpp              : 162 : info           : -76.254846
++01:02:51,386 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++01:02:51,390 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 28
++01:02:51,390 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++01:02:51,390 PPGD_CG.cpp              :  92 : info           : Project Gradient
++01:04:48,761 PPGD_CG.cpp              :  96 : info           : Calc update direction
++01:04:48,761 PPGD_CG.cpp              : 101 : info           : Project last update
++01:04:48,982 PPGD_CG.cpp              : 104 : info           : Beta = 0.531073
++01:04:48,983 PPGD_CG.cpp              : 106 : info           : Assemble update
++01:04:49,140 PPGD_CG.cpp              : 112 : info           : Norm res 0.00017628
++01:04:49,141 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++01:04:49,141 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1.00001
++01:04:49,141 PPGD_CG.cpp              : 133 : info           : alpha = 3
++01:04:51,712 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++01:05:34,980 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++01:05:35,139 PPGD_CG.cpp              : 162 : info           : -76.254848
++01:05:35,139 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++01:05:35,141 PPGD_CG.cpp              :  88 : info           : ------ Iteration = 29
++01:05:35,141 PPGD_CG.cpp              :  89 : info           : Projected Gradient step with PC (non symmetric)
++01:05:35,141 PPGD_CG.cpp              :  92 : info           : Project Gradient
++01:07:32,397 PPGD_CG.cpp              :  96 : info           : Calc update direction
++01:07:32,397 PPGD_CG.cpp              : 101 : info           : Project last update
++01:07:32,609 PPGD_CG.cpp              : 104 : info           : Beta = 0.523404
++01:07:32,610 PPGD_CG.cpp              : 106 : info           : Assemble update
++01:07:32,766 PPGD_CG.cpp              : 112 : info           : Norm res 0.000145783
++01:07:32,766 PPGD_CG.cpp              : 114 : info           : Max rank Res = 256
++01:07:32,766 PPGD_CG.cpp              : 127 : info           : count = 0 -23.8358 -23.8358 1
++01:07:32,766 PPGD_CG.cpp              : 133 : info           : alpha = 3
++01:07:35,376 PPGD_CG.cpp              : 146 : info           : Calculate new eigenvalue
++01:08:18,923 PPGD_CG.cpp              : 156 : info           : Particle Number Phi 8
++01:08:19,086 PPGD_CG.cpp              : 162 : info           : -76.254849
++01:08:19,086 PPGD_CG.cpp              : 163 : info           : Max rank Phi = 128
++00:00:00,172 RunDmrg.cpp              :  41 : info           : The ranks of H are { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,172 RunDmrg.cpp              :  48 : info           : nuc -52.419060 
+
++00:00:00,396 RunDmrg.cpp              : 206 : info           : A = { 99, 104, 113, 126, 143, 164, 189, 218, 251, 288, 329, 374, 423, 476, 533, 594, 659, 728, 801, 878, 959, 1044, 1133, 1226, 1133, 1044, 959, 878, 801, 728, 659, 594, 533, 476, 423, 374, 329, 288, 251, 218, 189, 164, 143, 126, 113, 104, 99,  }
++00:00:00,976 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 0 Eigenvalue -23.6824 -76.1015041714184
++00:00:00,976 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 4, 3, 5, 6, 6, 6, 5, 5, 5, 4, 6, 6, 6, 6, 5, 5, 6, 6, 6, 5, 5, 4, 3, 2, 3, 4, 2,  }
++00:00:02,392 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 1 Eigenvalue -23.7026 -76.12164882420034
++00:00:02,392 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 10, 9, 8, 6, 6, 10, 12, 12, 10, 10, 10, 8, 9, 12, 12, 12, 10, 10, 12, 12, 11, 10, 9, 8, 6, 4, 4, 7, 4, 2,  }
++00:00:05,974 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 2 Eigenvalue -23.7357 -76.15476695109922
++00:00:05,974 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 20, 18, 15, 12, 11, 13, 22, 24, 20, 20, 20, 16, 18, 23, 24, 24, 20, 20, 24, 24, 22, 19, 18, 15, 12, 8, 8, 9, 8, 4, 2,  }
++00:00:24,791 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 3 Eigenvalue -23.7751 -76.19420289267973
++00:00:24,791 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 40, 36, 30, 24, 21, 23, 27, 46, 40, 40, 40, 32, 36, 45, 46, 48, 40, 40, 48, 48, 44, 38, 35, 29, 24, 16, 16, 15, 12, 8, 4, 2,  }
++00:03:06,108 RunDmrg.cpp              : 291 : simpleMALS     : Iteration: 4 Eigenvalue -23.8003 -76.21940094701691
++00:03:06,108 RunDmrg.cpp              : 292 : simpleMALS     : Ranks: { 2, 4, 8, 16, 32, 64, 96, 96, 96, 96, 96, 96, 96, 96, 80, 72, 60, 48, 42, 43, 48, 59, 80, 80, 80, 64, 72, 90, 90, 89, 80, 80, 95, 94, 86, 74, 69, 55, 44, 31, 30, 29, 22, 15, 8, 4, 2,  }
+./run.sh: line 41: 24859 Killed                  build/dmrg.out $FILE $BASIS 0 128 $DMRG_ITER $eps 0

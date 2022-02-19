@@ -1,0 +1,53 @@
++00:00:00,000 TestHamil_2.cpp          : 415 : info           : ---- Start building operator left to right! ----
++00:00:00,009 TestHamil_2.cpp          :  40 : BuildOpL2R     : ---- Initializing Building Operator L2R ----
++00:00:00,009 TestHamil_2.cpp          :  41 : BuildOpL2R     : - Loading 1e and 2e Integrals and Nuclear Potential
++00:00:00,009 TestHamil_2.cpp          :  42 : BuildOpL2R     : - Initializing Storage Operators H,S,Q,P
++00:00:00,011 TestHamil_2.cpp          : 472 : test           : Build 1
++00:00:00,011 TestHamil_2.cpp          :  53 : BuildOpL2R     : ---- Building Operator ----
++00:00:00,011 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 1
++00:00:00,011 TestHamil_2.cpp          : 138 : info           : k = 1
++00:00:00,057 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 2,  }
++00:00:00,057 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 2
++00:00:00,057 TestHamil_2.cpp          : 138 : info           : k = 2
++00:00:00,098 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 4,  }
++00:00:00,098 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 3
++00:00:00,098 TestHamil_2.cpp          : 138 : info           : k = 3
++00:00:00,149 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 4,  }
++00:00:00,149 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 4
++00:00:00,149 TestHamil_2.cpp          : 138 : info           : k = 4
++00:00:00,205 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 16, 4,  }
++00:00:00,205 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 5
++00:00:00,206 TestHamil_2.cpp          : 138 : info           : k = 5
++00:00:00,266 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 26, 16, 4,  }
++00:00:00,266 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 6
++00:00:00,266 TestHamil_2.cpp          : 138 : info           : k = 6
++00:00:00,332 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 31, 31, 16, 4,  }
++00:00:00,332 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 7
++00:00:00,332 TestHamil_2.cpp          : 138 : info           : k = 7
++00:00:00,399 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 33, 46, 33, 16, 4,  }
++00:00:00,399 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 8
++00:00:00,399 TestHamil_2.cpp          : 138 : info           : k = 8
++00:00:00,465 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 48, 48, 35, 16, 4,  }
++00:00:00,465 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 9
++00:00:00,465 TestHamil_2.cpp          : 138 : info           : k = 9
++00:00:00,531 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 50, 61, 50, 35, 16, 4,  }
++00:00:00,531 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 10
++00:00:00,531 TestHamil_2.cpp          : 138 : info           : k = 10
++00:00:00,598 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 52, 69, 69, 52, 35, 16, 4,  }
++00:00:00,598 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 11
++00:00:00,598 TestHamil_2.cpp          : 138 : info           : k = 11
++00:00:00,668 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 54, 71, 92, 71, 54, 35, 16, 4,  }
++00:00:00,668 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 12
++00:00:00,668 TestHamil_2.cpp          : 138 : info           : k = 12
++00:00:00,739 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 56, 73, 94, 94, 73, 56, 35, 16, 4,  }
++00:00:00,739 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 13
++00:00:00,739 TestHamil_2.cpp          : 138 : info           : k = 13
++00:00:00,815 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 58, 75, 96, 112, 96, 75, 58, 35, 16, 4,  }
++00:00:00,815 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 14
++00:00:00,815 TestHamil_2.cpp          : 138 : info           : k = 14
++00:00:00,902 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 58, 77, 98, 123, 123, 98, 77, 60, 35, 16, 4,  }
++00:00:00,902 TestHamil_2.cpp          :  64 : BuildOpL2R     : - Step 15
++00:00:00,902 TestHamil_2.cpp          : 138 : info           : k = 15
++00:00:01,006 TestHamil_2.cpp          :  56 : BuildOpL2R     : - Ranks of Operator { 4, 16, 35, 58, 79, 100, 125, 154, 125, 100, 79, 58, 35, 16, 4,  }
++00:00:01,018 TestHamil_2.cpp          : 478 : info           : 5388.34
++00:00:01,035 TestHamil_2.cpp          : 479 : info           : 4551.75
